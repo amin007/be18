@@ -86,10 +86,13 @@ function dpt_senarai($pilih)
 		$jadual = unserialize(MSICBARU);
 	elseif ($pilih == 'produk') : 
 		$jadual = unserialize(PRODUK);
+	elseif ($pilih == 'jadual_login') : 
+		$jadual = unserialize(JADUAL_LOGIN);
 	else : $jadual = array(); //unserialize()
 	endif;
 
 	//echo 'dpt_senarai($pilih = ' . $pilih . ')<hr>';
+	//echo '<pre>$jadual =>'; print_r($jadual); echo '</pre><hr>';
 
 	return $jadual;
 }

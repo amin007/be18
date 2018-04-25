@@ -75,17 +75,6 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #---------------------------------------------------------------------------------------------------#
-	function semakid()
-	{
-		# debug $_POST
-		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
-		//$this->tanya->dapatid($_POST['password']);
-
-		# semak data $this->tanya->ujiID(); 
-		$this->tanya->semakid();
-		//*/
-	}
-#---------------------------------------------------------------------------------------------------#
 	function salah()
 	{
 		# debug
@@ -101,6 +90,18 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan('index', 'salah');
 	}
 #---------------------------------------------------------------------------------------------------#
+	function semakid()
+	{
+		# debug $_POST
+		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
+		//$this->tanya->dapatid($_POST['password']);
+
+		# semak data $this->tanya->ujiID(); 
+		//$this->tanya->semakid();
+		$this->loginid();
+		//*/
+	}
+#---------------------------------------------------------------------------------------------------#
 	function login()
 	{
 		# Pergi papar kandungan
@@ -111,28 +112,27 @@ class Login extends \Aplikasi\Kitab\Kawal
 	function loginid()
 	{
 		# semak data $_POST
-		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
-		$email = $_POST['biodata'][0]['email'];
-		$passwordAsal = $_POST['biodata'][0]['password'];
+		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
+		$email = $_POST['username'];
+		$passwordAsal = $_POST['password'];
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
 		//echo '<pre>password->'; print_r($password); echo '</pre>';
 
 		# semak database
-			$myTable = 'biodata';
-			$medan = 'namaawal, namaakhir, phone_number, email, password, level';
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
-				'medan' => 'email', # cari dalam medan apa
+				'medan' => $medan01, # cari dalam medan apa
 				'apa' => $email); # benda yang dicari
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'AND', # WHERE / OR / AND
-				'medan' => 'password', # cari dalam medan apa
+				'medan' => $medan02, # cari dalam medan apa
 				'apa' => $password); # benda yang dicari
 			# mula cari $cariID dalam $myJadual
 				$cariNama = 
 					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
 					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
-				$kira = sizeof($cariNama);
+				$kira = sizeof($cariNama);//*/
+		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
 		//echo '<pre>$cariNama::'; print_r($cariNama) . '<pre>';
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
@@ -146,9 +146,8 @@ class Login extends \Aplikasi\Kitab\Kawal
 		{	# login berjaya
 			\Aplikasi\Kitab\Sesi::init(); # setkan $_SESSION utk 
 			# namaPenuh,namaPendek,kataLaluan,level 
-			\Aplikasi\Kitab\Sesi::set('namaawal', $data[0]['namaawal']);
-			\Aplikasi\Kitab\Sesi::set('namaakhir', $data[0]['namaakhir']);
-			\Aplikasi\Kitab\Sesi::set('phone_number', $data[0]['phone_number']);
+			\Aplikasi\Kitab\Sesi::set('namaPendek', $data[0]['namaPendek']);
+			\Aplikasi\Kitab\Sesi::set('namaPenuh', $data[0]['namaPenuh']);
 			\Aplikasi\Kitab\Sesi::set('email', $data[0]['email']);
 			\Aplikasi\Kitab\Sesi::set('levelPengguna', $data[0]['level']);
 			\Aplikasi\Kitab\Sesi::set('loggedIn', true);
@@ -156,7 +155,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 			$this->levelPengguna($kira, $data, $data[0]['level']);
 		} 
 		else # login gagal
-		{	//echo '<hr>Tidak Berjaya';
+		{	echo '<hr>Tidak Berjaya';
 			header('location:' . URL . 'login/salah');
 		}//*/
 	}
@@ -164,9 +163,9 @@ class Login extends \Aplikasi\Kitab\Kawal
 	function levelPengguna($kira, $data, $level)
 	{
 		//header('location:' . URL . 'ruangtamu');
-		if ($level == 'user')
-			header('location:' . URL . 'homeuser');
-		elseif($level == 'admin')
+		if ($level == 'kawal')
+			header('location:' . URL . 'ruangtamu');
+		elseif($level == 'pegawai')
 			header('location:' . URL . 'homeadmin');
 		else
 			header('location:' . URL . ''); //*/

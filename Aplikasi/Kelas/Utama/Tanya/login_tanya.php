@@ -7,7 +7,7 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		parent::__construct();
 	}
-
+#---------------------------------------------------------------------------------------------------#
 	function dapatid($nama)
 	{
 		//echo '<pre>$_POST->'; print_r($_POST) . '</pre>| ';
@@ -21,7 +21,7 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 		echo '<br>Kod:' . \Aplikasi\Kitab\RahsiaHash::sahkan($nama, $garam) . ': ';
 		//*/
 	}
-
+#---------------------------------------------------------------------------------------------------#
 	function ujiID($medan = 'namaPenuh,namaPendek,email,kataLaluan,level', $jadual = 'nama_pengguna')
 	{
 		echo 'class Login_Tanya::ujiID() extends \Aplikasi\Kitab\Tanya<br>';
@@ -34,10 +34,13 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 		$hasil = $this->//tatasusunanUbah2A//cariSemuaData//
 			cariSql($jadual, $medan, $cari, $susun = null);
 	}
-
+#---------------------------------------------------------------------------------------------------#
+	function semak2id($medan = 'namaPenuh,namaPendek,email,kataLaluan,level', $jadual = 'nama_pengguna')
+	{}
+#---------------------------------------------------------------------------------------------------#
 	function semakid($medan = 'namaPenuh,namaPendek,email,kataLaluan,level', $jadual = 'nama_pengguna')
 	{
-		/*$semakLogin = $this->db->prepare("
+		$semakLogin = $this->db->prepare("
 			SELECT  $medan FROM  $jadual WHERE 
 			email = :username AND kataLaluan = :password");
 
@@ -47,17 +50,17 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 			//':password' => \Aplikasi\Kitab\RahsiaHash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY)
 		));
 
-		//$semakLogin->debugDumpParams(); # semak $sth->debugDumpParams()
+		$semakLogin->debugDumpParams(); # semak $sth->debugDumpParams()
 		$data = $semakLogin->fetch(); # dapatkan medan terlibat
 		$kira = $semakLogin->rowCount(); # kira jumlah data
 		//*/
-		$data = $this->data_contoh(0); # data olok-olok | dapatkan medan terlibat
-		$kira = $this->data_contoh(1); # data olok-olok | kira jumlah data	
-		//echo ' |<pre>$data='; print_r($data); echo '</pre> | $kira=' . $kira;
+		//$data = $this->data_contoh(0); # data olok-olok | dapatkan medan terlibat
+		//$kira = $this->data_contoh(1); # data olok-olok | kira jumlah data	
+		echo ' |<pre>$data='; print_r($data); echo '</pre> | $kira=' . $kira;
 
-		$this->kunciPintu($kira, $data); # pilih pintu masuk
+		//$this->kunciPintu($kira, $data); # pilih pintu masuk
 	}
-
+#---------------------------------------------------------------------------------------------------#
 	function data_contoh($pilih)
 	{
 		$data = array(
@@ -69,7 +72,7 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 		
 		return ($pilih==1) ? $kira : $data; # pulangkan nilai
 	}
-
+#---------------------------------------------------------------------------------------------------#
 	function kunciPintu($kira, $data)
 	{
 		if ($kira == 1) 
@@ -80,15 +83,15 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 			\Aplikasi\Kitab\Sesi::set('namaPenuh', $data['namaPenuh']);
 			\Aplikasi\Kitab\Sesi::set('levelPengguna', $data['level']);
 			\Aplikasi\Kitab\Sesi::set('loggedIn', true);
-			//echo '<hr>Berjaya';
-			$this->levelPengguna($kira, $data, $data['level']);
+			echo '<hr>Berjaya';
+			//$this->levelPengguna($kira, $data, $data['level']);
 		} 
 		else # login gagal
 		{	//echo '<hr>Tidak Berjaya';
 			header('location:' . URL . 'login/salah');
 		}//*/
 	}
-
+#---------------------------------------------------------------------------------------------------#
 	function levelPengguna($kira, $data, $level)
 	{
 		//header('location:' . URL . 'ruangtamu');
@@ -98,4 +101,5 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 			header('location:' . URL . 'ruangtamu/pelawat'); //*/
 	}
 #---------------------------------------------------------------------------------------------------#
+#==========================================================================================
 }
