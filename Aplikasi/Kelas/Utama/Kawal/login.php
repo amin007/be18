@@ -54,9 +54,8 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//$this->tanya->dapatid($_POST['password']);
 
 		# Set pemboleubah utama
-		$myTable = 'biodata';
+		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
 		$senarai = array($myTable);
-		$medan = '`namaawal`,`namaakhir`,`phone_number`,`email`,`password`,`level`';
 
 		# bentuk tatasusunan
 		$posmen = $this->tanya->semakPOST($myTable, $senarai, $_POST);
