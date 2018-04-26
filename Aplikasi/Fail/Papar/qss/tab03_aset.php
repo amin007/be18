@@ -3,65 +3,55 @@ box-shadow: inset 0 0 0 .1em hsla(0,0%,0%,.1),
                 inset 0 0 1em hsla(0,0%,0%,.05),
                 0 .1em .25em hsla(0,0%,0%,.5); 
 margin-top:0px; padding-left:10px;" onSubmit="return hantar()">
-  <table width="940px" border="0" align="center" >
+<table width="940px" border="0" align="center" >
 <tr>
-  <td width="537" align="center" class="textdescrp"><p>
-    <input type="hidden" name="nosiri" id="nosiri" value="000000337030" />
-    <input type="hidden" name="iduser" id="iduser" value="ABD MUHAIMIN BIN ABD GHANI" />
-        
-  <p>BAHAGIAN D : PERBELANJAAN MODAL (Tidak termasuk CBP)</p></td>
-  <td width="31"></td>
-          <td width="358" height="30" align="center" class="textdescrp2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td height="36" colspan="2"  align="left" class="textdescrp2">
-       <table  width="543" border="0" style="background-color: #F0F8FF;
-box-shadow: inset 0 0 0 .1em hsla(0,0%,0%,.1),
+	<td width="537" align="center" class="textdescrp"><p>
+		<input type="hidden" name="nosiri" id="nosiri" value="" />
+		<input type="hidden" name="iduser" id="iduser" value="" />
+		<p>BAHAGIAN D : PERBELANJAAN MODAL (Tidak termasuk CBP)</p>
+	</td>
+	<td width="31"></td>
+	<td width="358" height="30" align="center" class="textdescrp2">&nbsp;</td>
+</tr>
+<tr>
+	<td height="36" colspan="2"  align="left" class="textdescrp2">
+		<table  width="543" border="0" style="background-color: #F0F8FF;
+		box-shadow: inset 0 0 0 .1em hsla(0,0%,0%,.1),
                 inset 0 0 1em hsla(0,0%,0%,.05),
                 0 .1em .25em hsla(0,0%,0%,.5);">
-          <tr id="belian">
-            <td height="36" colspan="2" style="padding-top:10px;padding-left:5px;">Adakah pertubuhan ini membuat pembelian / jualan harta dari tarikh 1 Januari - 31 Mac 2018&nbsp;?</td>
-          </tr>
-          
-          <tr >
-            <td width="104" height="31"><input type="hidden" id="enable1" name="enable1" value="2" />
-              <input type="radio" name="enable" id="enable" value="1"  />&nbsp;Ya</td>
-            <td width="429">Jika Ya, sila lengkapkan jadual di bawah.</td>
-          </tr>
-          <tr>
-            <td><input type="radio" name="enable" id="enable" value="2" checked />&nbsp;Tidak</td>
-            <td style="padding-bottom:12px;">Jika Tidak, sila ke Bahagian E : Maklumat Tambahan.</td>
-          </tr>
-      </table>     
-      <td>
-   <table width="342" height="79" border="0" id="maklumat">
-  <tr>
-    <td width="84" bgcolor="#e9e7e9">No Siri</td>
-    <td width="252">000000337030</td>
-    </tr>
-  <tr>
-    <td bgcolor="#e9e7e9">Syarikat</td>
-    <td>CHEE SIONG CONTRACT WORKS</td>
-    </tr>
-  <tr>
-    <td bgcolor="#e9e7e9">Suku Tahun</td>
-    <td>1</td>
-    </tr>
-  <tr>
-    <td bgcolor="#e9e7e9">Tahun</td>
-    <td>2018</td>
-    </tr>
-    <tr>
-    <td bgcolor="#e9e7e9">BBU/SBU</td>
-    <td>BBU</td>
-    </tr>
-</table>      </td>  
-    <tr>
-      <td height="31" colspan="3"><div align="center" class="textdescrp2"><b>
-      SUKU TAHUN <br>(1S 2018)<br>1 Januari - 31 Mac 2018</b></div></td>
-    </tr>
-  </table>
- 
+		<tr id="belian">
+			<td height="36" colspan="2" style="padding-top:10px;padding-left:5px;">
+				Adakah pertubuhan ini membuat pembelian / 
+				jualan harta dari tarikh 1 Januari - 31 Mac 2018&nbsp;?
+			</td>
+		</tr>
+		<tr>
+			<td width="104" height="31"><input type="hidden" id="enable1" name="enable1" value="2" />
+				<input type="radio" name="enable" id="enable" value="1"  />&nbsp;Ya</td>
+			<td width="429">Jika Ya, sila lengkapkan jadual di bawah.</td>
+		</tr>
+		<tr>
+			<td><input type="radio" name="enable" id="enable" value="2" checked />&nbsp;Tidak</td>
+			<td style="padding-bottom:12px;">Jika Tidak, sila ke Bahagian E : Maklumat Tambahan.</td>
+		</tr>
+		</table>     
+	<td>
+		<table width="342" height="79" border="0" id="maklumat">
+		<tr><td width="84" bgcolor="#e9e7e9">No Siri</td><td width="252">000000337030</td></tr>
+		<tr><td bgcolor="#e9e7e9">Syarikat</td><td>CHEE SIONG CONTRACT WORKS</td></tr>
+		<tr><td bgcolor="#e9e7e9">Suku Tahun</td><td>1</td></tr>
+		<tr><td bgcolor="#e9e7e9">Tahun</td><td>2018</td></tr>
+		<tr><td bgcolor="#e9e7e9">BBU/SBU</td><td>BBU</td> </tr>
+		</table>
+	</td>  
+</tr>
+<tr>
+	<td height="31" colspan="3"><div align="center" class="textdescrp2"><b>
+	SUKU TAHUN <br>(1S 2018)<br>1 Januari - 31 Mac 2018</b></div>
+	</td>
+</tr>
+</table>
+<!-- ############################################################################################################################ -->
   <table id="tbl2" width="917" align="center">
     <tr>
       <td colspan="2" rowspan="2" bgcolor="#FFFF99" class="textdescrp1" ><div align="center"><b>Item</b></div></td>
