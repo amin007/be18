@@ -1,87 +1,3 @@
-	
-
-
-  
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link rel="shortcut icon" href="favicon1.png" />
-<meta charset="utf-8" />
-<title>E-QSS</title>
-<link rel="stylesheet" href="css_file/css/reset.css" />
-<link rel="stylesheet" href="css_file/css/text.css" />
-<link rel="stylesheet" href="css_file/css/960.css" />
-<link rel="stylesheet" href="css_file/css/display.css" />
-<SCRIPT  language='JavaScript' type='text/javascript' src='jquery8.js'></SCRIPT>
-<!--<link rel="stylesheet" href="css/demo.css" />
-<link type="text/css" href="menu2/menu.css" rel="stylesheet" />
-<script type="text/javascript" src="menu2/jquery.js"></script>-->
-<style> 
-#idletimeout { background:#CC5100; border:3px solid #FF6500; color:#fff; font-family:arial, sans-serif; text-align:center; font-size:12px; padding:10px; position:relative; top:0px; left:0; right:0; z-index:100000; display:none; }
-#idletimeout a { color:#fff; font-weight:bold }
-#idletimeout span { font-weight:bold }
-</style>  	
-        
-</head>
-<body>
-<div id="idletimeout">
-	Anda akan log keluar dalam masa <span><!-- countdown place holder --></span>&nbsp;saat kerana tidak aktif. 
-	<a id="idletimeout-resume" href="#">Klik di sini untuk terus menggunakan sistem ini</a>.	
-    
-
-</div>
-<h1>
-  
-</h1>
-<div class="container_12">
-<div id='banner'></div>
-
-
-<link href="css_file/main_menu/styles1.css" rel="stylesheet" type="text/css" />
-
-<div id='cssmenu1'>
-<ul>
-   <li><a href='pagemenu.php?pref=10' ><span>Arahan Am</span></a></li>
-   <li><a href="pagemenu.php?pref=1" >Carian Borang</a></li>
-    <li><a href="pagemenu.php?pref=57" >Jadual</a></li>
-    <li><a href="pagemenu.php?pref=9" >Rekod Terdahulu</a></li>
-    <li><a href="pagemenu.php?pref=17" >Kata laluan</a></li>
-   <li><a href="logout.php">Keluar<img src="img/logout.png" width="25" height="20"/></a></li>
-   <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-   <li><div style=" font-size:12;color:#0033CC; font-style:italic; font-stretch:narrower; text-transform:capitalize; text-align:right;">ABD MUHAIMIN BIN ABD GHANI 
-     &nbsp;&nbsp;&nbsp;&nbsp; [ Jp Negeri Johor ] </div> 
-   </li>
-</ul>
-</div>
-
-
-
-
-
-
-
-
-
-
-  
-  <div class="grid_12">
-  	<script type="text/javascript" src="js_file/js/jquery8.js"></script>
-<script type="text/javascript" src="js_file/js/autoNumeric.js"></script>
-<script  language='JavaScript' type='text/javascript' src='js_file/js/d_valid.js'></SCRIPT>
-
-<link href="css_file/cssmenu/menu_assets/styles.css" rel="stylesheet" type="text/css">
-<link href="css_file/cssmenu/text.css" rel="stylesheet" type="text/css">
-
-
-<div id='cssmenu'>
-<ul>
-   <li ><b style="font-size:12px;">AKTIVITI PENTADBIRAN DAN KHIDMAT SOKONGAN</b></li>
-    <li ><a href='pagemenu.php?pref=qw3%as5%zx4%&getSerial=000000337030'><span>Penghantaran</span></a></li>    <li ><a href='pagemenu.php?pref=5&getSerial=000000337030'><span>Bahagian E</span></a></li>   <li class='active'><a href='pagemenu.php?pref=4&getSerial=000000337030'><span>Bahagian D</span></a></li>
-   <li><a href='pagemenu.php?pref=3&getSerial=000000337030'><span>Bahagian A, B dan C</span></a></li>
-   <li><a href='pagemenu.php?pref=2&getSerial=000000337030'><span>Profil Pertubuhan</span></a></li>
- 
-</ul>
-</div>
 <form id="form1" name="form1" method="post" action="pengguna_dalam/kemaskini/borang/borangD_proses.php" style="background-color: #F8F8FF;
 box-shadow: inset 0 0 0 .1em hsla(0,0%,0%,.1),
                 inset 0 0 1em hsla(0,0%,0%,.05),
@@ -274,88 +190,57 @@ box-shadow: inset 0 0 0 .1em hsla(0,0%,0%,.1),
       <td class="textdescrp2">(h)</td>
       <td class="textdescrp2">Harta-harta lain (cth: paten, muhibah, kerja dalam proses, dll)</td>
       <td><div align="right">RM 
-          <input  name="d27" type="text" size="10" value="0" onkeyup="total_d31();" class="auto" data-v-max="999999999999" data-v-min="-999999999" style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;"/>
+          <input  name="d27" type="text" size="10" value="0" onkeyup="total_d31();" 
+		  class="auto" data-v-max="999999999999" data-v-min="-999999999" style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;"/>
       F0108</div></td>
       <td><div align="right">RM 
-          <input  name="d28" type="text" size="10" value="0" onkeyup="total_d32();" class="auto" data-v-max="999999999999" data-v-min="-999999999" style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;"/>
+          <input  name="d28" type="text" size="10" value="0" onkeyup="total_d32();" 
+		  class="auto" data-v-max="999999999999" data-v-min="-999999999" style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;"/>
       F0208</div></td>
       <td><div align="right">RM 
-          <input  name="d29" type="text" size="10" value="0" onkeyup="total_d33();" class="auto" data-v-max="999999999999" data-v-min="-999999999" style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;"/>
+          <input  name="d29" type="text" size="10" value="0" onkeyup="total_d33();" 
+		  class="auto" data-v-max="999999999999" data-v-min="-999999999" style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;"/>
       F0308</div></td>
       <td><div align="right">RM 
-          <input  name="d30" type="text" size="10" value="0" onkeyup="total_d34();" class="auto" data-v-max="999999999999" data-v-min="-999999999" style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;"/>
+          <input  name="d30" type="text" size="10" value="0" onkeyup="total_d34();" class="auto" 
+		  data-v-max="999999999999" data-v-min="-999999999" style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;"/>
       F0408</div></td>
     </tr>
     <tr>
       <td class="textdescrp2">&nbsp;</td>
       <td class="textdescrp1"><div align="center">JUMLAH (a hingga h)</div></td>
       <td><div align="right">RM 
-          <input style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;" name="d31" type="text" size="10" value="0" class="ta6" readonly />
+          <input style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;" 
+		  name="d31" type="text" size="10" value="0" class="ta6" readonly />
       F0199</div></td>
       <td><div align="right">RM 
-          <input style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;" name="d32" type="text" size="10" value="0" class="ta6" readonly/>
+          <input style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;" 
+		  name="d32" type="text" size="10" value="0" class="ta6" readonly/>
       F0299</div></td>
       <td><div align="right">RM 
-          <input style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;" name="d33" type="text" size="10" value="0" class="ta6" readonly/>
+          <input style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;" 
+		  name="d33" type="text" size="10" value="0" class="ta6" readonly/>
       F0399</div></td>
       <td><div align="right">RM 
-          <input style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;" name="d34" type="text" size="10" value="0" class="ta6" readonly/>
+          <input style="width:108px;text-align:right;	border: 1.5px solid #a5a5a5;border-radius: 1px;" 
+		  name="d34" type="text" size="10" value="0" class="ta6" readonly/>
       F0499</div></td>
     </tr>
  </table>
     
  
 <table width="937" border="0" align="center">
-   
-    <tr>
-      <td width="947" height="8" align="left">*Merujuk kepada perolehan aset baru termasuk harta tetap yang diimport sama ada baru atau terpakai.</td>
-    </tr>
-    <tr>
-       <td height="19" align="center">&nbsp;</td>
-    </tr>
-     <tr>
-       <td height="19" colspan="2" align="center"><input type='submit' name='simpan' id='simpan' value='Simpan' style='width: 250px; height:50px;' class='blue' /></td>
-     </tr>
-     <tr>
-     <td height="15" colspan="2" align="center">&nbsp;</td>
-    </tr>
-  </table>
+<tr>
+	<td width="947" height="8" align="left">*Merujuk kepada perolehan aset baru termasuk harta tetap yang diimport sama ada baru atau terpakai.</td>
+</tr><tr>
+	<td height="19" align="center">&nbsp;</td>
+</tr><tr>
+	<td height="19" colspan="2" align="center">
+		<!-- input type='submit' name='simpan' id='simpan' value='Simpan' style='width: 250px; height:50px;' class='blue' / -->
+	</td>
+</tr><tr>
+	<td height="15" colspan="2" align="center">&nbsp;</td>
+</tr>
+</table>
   
 </form>
-<script  language='JavaScript' type='text/javascript' src='js_file/js/validasi/d_internaluser.js'></SCRIPT>	
-  </div>
-  
-  <!-- end .grid_6 --><!-- end .grid_6 -->
-  <div class="clear"></div>
-<div id="footer"><br><div style="text-align:center;">Paparan Terbaik dengan menggunakan Mozilla Firefox 3.6+ / Google Chrome versi terkini dengan resolusi melebihi 1024 x 768<br>
-&#169; 2013 Jabatan Perangkaan Malaysia<br>
-Blok C6, Kompleks C, Pusat Pentadbiran Kerajaan Persekutuan, 62514 PUTRAJAYA<br>
-Tel: 03 8885 7000 | Faks: 03 8888 9248<br>
-</div>
-</div>
-</div><!-- end .container_12 -->
-</body>
-</html>
-<script src="js_file/idle/src/jquery.idletimer.js" type="text/javascript"></script>
-<script src="js_file/idle/src/jquery.idletimeout.js" type="text/javascript"></script>
-<script type="text/javascript">
-$.idleTimeout('#idletimeout', '#idletimeout a', {
-	idleAfter: 900,
-	pollingInterval: 2,
-	keepAliveURL: 'keepalive.php',
-	serverResponseEquals: 'OK',
-	onTimeout: function(){
-		$(this).slideUp();
-		window.location = "logout.php";
-	},
-	onIdle: function(){
-		$(this).slideDown(); // show the warning bar
-	},
-	onCountdown: function( counter ){
-		$(this).find("span").html( counter ); // update the counter
-	},
-	onResume: function(){
-		$(this).slideUp(); // hide the warning bar
-	}
-});
-</script>
