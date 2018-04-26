@@ -76,7 +76,7 @@ $icon['Stats'] = '<span class="glyphicon glyphicon-stats"></span>';
 <li class="dropdown"><a <?php echo $nav ?> href="#">
 	<i class="fa fa-trophy fa-2x" aria-hidden="true"></i>
 	Ko-kurikulum</a></li>
-<li class="dropdown"><a <?php echo $nav ?> href="qss/suku1">
+<li class="dropdown"><a <?php echo $nav ?> href="#">
 	<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
 	Displin</a></li>
 </ul>

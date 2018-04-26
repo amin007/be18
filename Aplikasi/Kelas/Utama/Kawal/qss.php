@@ -1,6 +1,6 @@
 <?php
 namespace Aplikasi\Kawal; //echo __NAMESPACE__; 
-class Ruangtamu extends \Aplikasi\Kitab\Kawal
+class Qss extends \Aplikasi\Kitab\Kawal
 {
 #==========================================================================================
 	function __construct()
@@ -38,17 +38,15 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		print_r($senarai);
 		echo '</pre>|';//*/
 	}
-#==========================================================================================
-	public function pelawat()
-	{
-		# Set pemboleubah utama
-		$this->papar->tajuk = 'Ruangtamu';
-		$this->papar->senarai['modul'] = $this->tanya->jadualModul();
 
-		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan('pelawat');
+	function logout()
+	{
+		//echo '<pre>sebelum:'; print_r($_SESSION) . '</pre>';
+		\Aplikasi\Kitab\Sesi::destroy();
+		header('location: ' . URL);
+		//exit;
 	}
+#==========================================================================================
 #-------------------------------------------------------------------------------------------
 	function semaknama($nama)
 	{
@@ -58,23 +56,21 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		echo 'Kod:' . \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $nama) . ': ';
 		//echo 'Kod:' . RahsiaHash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY) . ': ';
 	}
-
-	function menu()
+#-------------------------------------------------------------------------------------------
+	public function suku1()
 	{
 		# Set pemboleubah utama
-		$this->papar->pegawai = senarai_kakitangan();
-		$this->papar->tajuk = 'Menu';
+		$this->papar->tajuk = namaClass($this);
+		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
 
 		# Pergi papar kandungan
-		$this->papar->baca('mobile/mobile');
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan($this->_folder, 'qss01_hasil', $noInclude=1);
 	}
-
-	function logout()
-	{
-		//echo '<pre>sebelum:'; print_r($_SESSION) . '</pre>';
-		\Aplikasi\Kitab\Sesi::destroy();
-		header('location: ' . URL);
-		//exit;
-	}
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 #==========================================================================================
 }
