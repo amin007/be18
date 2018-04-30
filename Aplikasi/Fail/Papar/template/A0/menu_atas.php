@@ -16,6 +16,8 @@ else
 
 echo "\r\r"; 
 
+$iconFA['home2'] = '<i class="fa fa-home fa-2x" aria-hidden="true"></i>';
+$iconFA['video'] = '<i class="fa fa-video-camera" aria-hidden="true"></i>';
 //if ($paras == null): else: ?>
 <nav class="navbar navbar-inverse" role="navigation">
 <!-- div class="navbar navbar-custom" role="navigation" -->
@@ -25,11 +27,10 @@ echo "\r\r";
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 			<span class="sr-only">Toggle navigation</span>
 			<?php for ($iconbar=1; $iconbar < 3; $iconbar++):
-			?><span class="icon-bar"></span><?php endfor; ?>
+			?><span class="icon-bar"></span><?php endfor; echo "\n"?>
 			</button>
 			<a class="navbar-brand" href="<?php echo URL ?>">
-				<i class="fa fa-home fa-2x" aria-hidden="true"></i>
-				<?php echo Tajuk_Muka_Surat . ':' . $paras ?></a>
+				<?php echo $iconFA['video'] . Tajuk_Muka_Surat . ':' . $paras ?></a>
 			<a class="navbar-brand" href="<?php echo URL ?>ruangtamu/logout">
 				<i class="fa fa-times fa-2x" aria-hidden="true"></i>Keluar</a>
 		</div>
