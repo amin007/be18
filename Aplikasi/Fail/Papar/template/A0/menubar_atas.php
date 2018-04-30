@@ -6,7 +6,74 @@ $icon['User'] = '<span class="glyphicon glyphicon-user"></span>';
 $icon['Barcode'] = '<span class="glyphicon glyphicon-barcode"></span>';
 $icon['Filter'] = '<span class="glyphicon glyphicon-filter"></span>';
 $icon['Stats'] = '<span class="glyphicon glyphicon-stats"></span>';
-?>
+
+$pilihMenu = 1;
+
+if($pilihMenu == '1'): echo "\n";?>
+<!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+<ul class="<?php echo $classUL ?>">
+<li class="dropdown">
+	<a <?php echo $nav ?> href="#"><?=$icon['User']?>Staf
+	<b class="caret"></b></a>
+	<ul class="dropdown-menu">
+	<li><a href="<?php echo URL ?>profile/ubah">
+		<?=$icon['User']?>Profile <?=$pengguna?>
+	</a></li>
+	<li class="divider"></li>
+	<li><a href="<?php echo URL ?>rangkabaru/masukdata/1"><?=$icon['Barcode']?>Tambah Kes</a></li>
+	<li><a href="<?php echo URL ?>operasi/batch"><?=$icon['Barcode']?>Semak Barcode</a></li>
+	<li><a href="<?php echo URL ?>operasi/hantar"><?=$icon['Barcode']?>Hantar Kes</a></li>
+	<li><a href="<?php echo URL ?>prosesan/batch"><?=$icon['Barcode']?>Terima Di Prosesan</a></li>
+	<li class="divider"></li>
+	<li><a href="<?php echo URL ?>ruangtamu/logout">
+		<span class="glyphicon glyphicon-off"></span>Keluar
+	</a></li>
+	</ul>
+</li>
+<li class="dropdown">
+	<a <?php echo $nav ?> href="#">
+		<?=$icon['Filter']?>Cari
+	<b class="caret"></b></a>
+	<ul class="dropdown-menu">
+	<li><a href="<?php echo URL ?>cari/tentang/msic/1"><?=$icon['Filter']?>MSIC</a></li>
+	<li><a href="<?php echo URL ?>cari/tentang/produk/1"><?=$icon['Filter']?>PRODUK</a></li>
+	<li><a href="<?php echo URL ?>cari/tentang/johor/2"><?=$icon['Filter']?>LOKALITI JOHOR</a></li>
+	<li><a href="<?php echo URL ?>cari/tentang/malaysia/2"><?=$icon['Filter']?>LOKALITI MALAYSIA</a></li>
+	<li><a href="<?php echo URL ?>cari/tentang/prosesan/1"><?=$icon['Filter']?>Prosesan</a></li>
+	</ul>
+</li>
+<li class="dropdown">
+	<a <?php echo $nav ?> href="#">
+		<?=$icon['Stats']?>Laporan
+	<b class="caret"></b></a>
+	<ul class="dropdown-menu">
+	<li><a href="<?php echo URL ?>laporan/bulanan">Laporan Bulanan</a></li>
+		<li><a href="<?php echo URL ?>qss/suku1">Laporan QSS</a></li>
+	<li class="divider"></li><?php
+/*	
+	echo "\n\t";
+	$bulanan = bulanan('nama_bulan', null);
+	foreach ($bulanan as $key => $bln):?>
+	<li><a target="_blank" href="<?php echo URL ?>laporan/bulan/<?php echo $bln 
+	?>">Bulan <?php echo ($key+1) . ' - ' . (huruf('Besar_Depan',$bln)) ?></a></li><?php
+	echo "\n\t";
+	endforeach;
+//*/?>	
+	</ul>
+</li>
+<li class="dropdown">
+	<a <?php echo $nav ?> href="#">
+		<span class="glyphicon glyphicon-question-sign"></span>Bantuan
+	<b class="caret"></b></a>
+	<ul class="dropdown-menu">
+	<li><a href="#">Sistem</a></li>
+	<li><a href="<?php echo URL ?>forum/perdana">Forum</a></li>
+	<li><a href="<?php echo URL ?>mesej/utama">Email</a></li>
+	</ul>
+</li>
+</ul>
+<!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+<?php elseif($pilihMenu == '1'): echo "\n";?>
 <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 <ul class="<?php echo $classUL ?>">
 <li class="dropdown"><a <?php echo $nav ?> href="#">
@@ -80,5 +147,5 @@ $icon['Stats'] = '<span class="glyphicon glyphicon-stats"></span>';
 	<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
 	Displin</a></li>
 </ul>
-<!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
-<?php 
+<!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ --><?php 
+endif; echo "\n";?>

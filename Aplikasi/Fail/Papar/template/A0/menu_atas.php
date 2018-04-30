@@ -37,6 +37,17 @@ echo "\r\r";
 <!-- menu kanan mula -->
 		<div class="navbar-collapse collapse">
 <?php require 'menubar_atas.php'; ?>
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+			<!-- borang cari kp-->
+			<form class="navbar-form navbar-right" action="<?php echo URL ?>cari/idnama" method="POST">
+				<div class="input-group">
+					<div class="input-group-btn">
+						<a class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a>
+					</div>
+					<input type="text" name="cari" placeholder="Cari Newss / Nama" class="form-control" />
+				</div>
+			</form>
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		</div>
 <!-- menu kanan tamat -->
 	</div>
