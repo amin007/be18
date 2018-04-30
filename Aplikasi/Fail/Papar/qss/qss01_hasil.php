@@ -27,7 +27,7 @@ $pautan = URL . 'sumber/rangka-dawai/qss/';
 <!-- isi borang tamat ########################################################################################################## -->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<?php include 'kiraTextbox.php'; ?>
+<?php include 'kiraTextbox02_hasil.php'; ?>
 
 <!-- input type="text" name="value1" id="textone">
 <input type="text" name="value2" id="texttwo">

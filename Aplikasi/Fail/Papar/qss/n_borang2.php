@@ -224,7 +224,7 @@ foreach ($ulang as $papar):?>
 		style="width:120px;text-align:right;" value="1" tabindex="22"
 		onblur="this.value=addCommas(this.value);info_pekerja_A();" 
 		class="auto" data-v-max="999999999999" data-v-min="-9999999999999"/>
-	F0022</td>
+		F0022</td>
 </tr>
 <tr>
 	<td colspan="4" height="60" align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;
