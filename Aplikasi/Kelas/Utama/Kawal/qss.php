@@ -57,17 +57,33 @@ class Qss extends \Aplikasi\Kitab\Kawal
 		//echo 'Kod:' . RahsiaHash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY) . ': ';
 	}
 #-------------------------------------------------------------------------------------------
-	public function suku1()
+	public function suku1($action = 'hasil')
 	{
 		# Set pemboleubah utama
 		$this->papar->tajuk = namaClass($this);
 		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
+		$pilihFail = $this->pilihFail($action);
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, 'qss01_hasil', $noInclude=1);
+		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
+	function pilihFail($action = 'hasil')
+	{
+		if($action == 'rangka'):
+			$pilihFail = 'tab01_rangka';
+		elseif($action == 'hasil'):
+			$pilihFail = 'qss01_hasil';
+			//$pilihFail = 'tab02_hasil';
+		elseif($action == 'aset'):
+			$pilihFail = 'tab03_aset';
+		elseif($action == 'tambahan'):
+			$pilihFail = 'tab04_tambahan';
+		endif;
+
+		return $pilihFail;
+	}
 #-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
