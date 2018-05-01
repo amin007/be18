@@ -72,6 +72,9 @@ else
 define('KAKITANGAN', serialize( 
 	array ('abu','bakar','umar','osman','ali','hasan')
 	));
+define('ALAMAT_IP', serialize( 
+	array ('8.8.8.8','1.1.1.1')
+	));
 ## data dalam database lain
 $e = 'db_lain.';
 define('MSICBARU', serialize (
@@ -79,3 +82,9 @@ define('MSICBARU', serialize (
 		$e.'msic_v1',$e.'msic_bandingan',
 		$e.'msic',$e.'msic_nota_kaki')
 	));	
+# namaPenuh,namaPendek,kataLaluan,level 
+$loginMedan01 = '`full_name` as namaPenuh,`user` as namaPendek,'
+. '`password`,`level`';	
+define('JADUAL_LOGIN', serialize( 
+	array ('biodata','email','password',$loginMedan01)
+	));
