@@ -6,7 +6,7 @@ foreach ($this->senarai as $myTable => $row)
 	{	echo "\n"; ?>
 <hr><h2>Jadual <?php echo $myTable ?></h2>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
-<?php include 'papar_jadual_' . $pilihJadual . '.php'; ?>
+<?php include 'papar_' . $pilihJadual . '.php'; ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
 <?php
 	} // if ( count($row)==0 )
