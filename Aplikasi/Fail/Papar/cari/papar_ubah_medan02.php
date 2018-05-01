@@ -1,10 +1,10 @@
 <form class="form-horizontal"><!-- form class="form-inline" -->
 <?php
-include 'z_medan01_tajuk.php';
+$html = new \Aplikasi\Kitab\Html_Input;
+$html->medanTajuk($myTable, $class = 'col-sm-7');
+$class = 'col-sm-6 '; # untuk $data
 for ($kira=0; $kira < count($row); $kira++)
 {## papar data $row ------------------------------------------------
-	$html = new \Aplikasi\Kitab\Html_Input;
-	$class = 'col-sm-6 ';
 	foreach ( $row[$kira] as $key=>$data )
 	{
 		?><div class="form-group"><?php echo "\n\t";
