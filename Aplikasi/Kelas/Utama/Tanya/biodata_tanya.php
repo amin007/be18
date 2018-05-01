@@ -25,5 +25,22 @@ class Biodata_Tanya extends \Aplikasi\Kitab\Tanya
 		//ALTER TABLE Employees MODIFY COLUMN empName VARCHAR(50) AFTER department;
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function semakPosmen($myTable, $posmen, $pass)
+	{
+		if(isset($posmen[$myTable][$pass])):
+			if($posmen[$myTable][$pass] == null):
+				//echo '<br> buang ' . $pass;
+				unset($posmen[$myTable][$pass]);
+			else:
+				$posmen[$myTable][$pass] = 
+					\Aplikasi\Kitab\RahsiaHash::rahsia('md5', 
+					$posmen[$myTable][$pass]);
+			endif;
+		endif;
+
+		return $posmen;
+	}
+#---------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
 }
