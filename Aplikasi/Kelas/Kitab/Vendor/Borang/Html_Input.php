@@ -56,6 +56,7 @@ class Html_Input
 #------------------------------------------------------------------------------------------
 	public function medanTajuk($myTable, $class = 'col-sm-7')
 	{
+		echo "\n";
 ?><div class="form-group">
 	<div class="<?php echo $class ?>">
 		<div class="input-group input-group-lg">
