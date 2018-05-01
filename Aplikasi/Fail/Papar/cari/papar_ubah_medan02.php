@@ -5,7 +5,7 @@ $class1 = 'col-sm-7'; # untuk tajuk dan hantar
 $class2 = 'col-sm-6 '; # untuk $data ?>
 <form method="POST" action="<?php echo $aksi ?>"
 class="form-horizontal"><!-- class="form-inline" --><?php
-$html->medanTajuk($myTable, $class1);
+$html->medanTajuk($myTable, $class1); 
 for ($kira=0; $kira < count($row); $kira++)
 {	foreach ( $row[$kira] as $key=>$data )
 	{## papar data $row ------------------------------------------------
@@ -20,6 +20,7 @@ for ($kira=0; $kira < count($row); $kira++)
 		echo "\n";
 	}#-----------------------------------------------------------------
 }#-----------------------------------------------------------------
-$html->medanHantar($myTable, $class1); ?>
+$html->medanHantar($myTable, $class1); 
+/*<!-- / class="container" -->*/ ?>
 </form><!-- / class="form-horizontal" -->
-<!-- / class="container" -->
+
