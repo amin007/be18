@@ -20,9 +20,9 @@ function dpt_url_xfilter()
 	return $url;
 }
 
-function namaClass($this)
-{
-	$class = explode('\\',get_class($this));
+function namaClass($ini)
+{	# $ini merujuk kepada $this->
+	$class = explode('\\',get_class($ini));
 
 	return $class[2];
 }
