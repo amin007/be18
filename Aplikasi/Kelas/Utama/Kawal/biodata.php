@@ -143,7 +143,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		}# tamat ulang table
 
 		# pergi papar kandungan
-		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
+		//echo 'location: ' . URL . 'biodata/ubah/' . $dataID;
 		header('location: ' . URL . 'biodata/ubah/' . $dataID); //*/
 	}
 #-------------------------------------------------------------------------------------------
