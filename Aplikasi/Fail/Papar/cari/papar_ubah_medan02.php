@@ -3,7 +3,7 @@ $html = new \Aplikasi\Kitab\Html_Input;
 $aksi = URL . 'biodata/ubahSimpan';
 $class1 = 'col-sm-7'; # untuk tajuk dan hantar
 $class2 = 'col-sm-6 '; # untuk $data ?>
-<form form method="POST" action="<?php echo $aksi ?>"
+<form method="POST" action="<?php echo $aksi ?>"
 class="form-horizontal"><!-- class="form-inline" --><?php
 $html->medanTajuk($myTable, $class1);
 for ($kira=0; $kira < count($row); $kira++)
