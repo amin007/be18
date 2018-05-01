@@ -90,19 +90,19 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 	{		
 		# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
-		$this->jadualBiodata();
+		$this->papar->senarai = $this->jadualBiodata();
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->_folder = ''; # jika mahu ubah lokasi Papar
-		//$this->paparKandungan($this->_folder, 'b_ubah' , $noInclude=0); 
+		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
+		$this->paparKandungan($this->_folder, 'b_ubah' , $noInclude=0); 
 		//*/
     }
 #-------------------------------------------------------------------------------------------
 	private function jadualBiodata()
 	{
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_biodata');
-		list($pengguna, $level) = $this->pembolehubahSesi(); echo "<pre>";
+		list($pengguna, $level) = $this->pembolehubahSesi(); //echo "<pre>";
 
 		# semak database
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
@@ -114,13 +114,15 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 				'medan' => $medan02, # cari dalam medan apa
 				'apa' => $level); # benda yang dicari
 			# mula cari $cariID dalam $myJadual
-				$cariNama = 
+				$cariNama[$myTable] = 
 					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
 					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
-		echo '<pre>$cariNama::'; print_r($cariNama) . '<pre>';
-		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';		
+		//echo '<pre>$cariNama::'; print_r($cariNama) . '<pre>';
+		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
+
+		return $cariNama;
 	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
