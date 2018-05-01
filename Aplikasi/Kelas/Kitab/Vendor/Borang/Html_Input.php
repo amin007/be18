@@ -54,6 +54,20 @@ class Html_Input
 		return $input2;
 	}
 #------------------------------------------------------------------------------------------
+	public function medanTajuk($myTable, $class = 'col-sm-7')
+	{
+?><div class="form-group">
+	<div class="<?php echo $class ?>">
+		<div class="input-group input-group-lg">
+		<span class="input-group-addon">Jadual <?php echo $myTable ?></span>
+		</div>
+	</div>
+</div><?php echo "\n";
+	}
+#------------------------------------------------------------------------------------------
+	public function medanHantar()
+	{}
+#------------------------------------------------------------------------------------------
 	public function updateInput($class, $myTable, $kira, $namaMedan, $data)
 	{
 		# istihar pembolehubah 
