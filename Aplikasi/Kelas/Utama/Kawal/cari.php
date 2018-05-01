@@ -61,17 +61,17 @@ class Cari extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function pembolehubah()
 	{
-        //echo '<pre>$_POST=>'; print_r($_POST) . '</pre>';
-        /*  $_POST[] => Array ( [cari] => 0000000123456 or [nama] => ABC ) */
+		//echo '<pre>$_POST=>'; print_r($_POST) . '</pre>';
+		/* $_POST[] => Array ( [cari] => 0000000123456 or [nama] => ABC ) */
 
-        $myJadual = array('aes','kawalan_aes','aes_alam_sekitar',
+		$myJadual = array('aes','kawalan_aes','aes_alam_sekitar',
 		'aes_kp_205','aes_kp_206','aes_kp_207','aes_kp_800',
 		'aes_perkhidmatan','aes_pertanian');
 		$medan = '*';
-        $this->papar->senarai = array();
-        # cari id berasaskan newss/ssm/sidap/nama
-        $id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
-        //$id['nama'] = isset($_POST['id']['nama']) ? $_POST['id']['nama'] : null;
+		$this->papar->senarai = array();
+		# cari id berasaskan newss/ssm/sidap/nama
+		$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
+		//$id['nama'] = isset($_POST['id']['nama']) ? $_POST['id']['nama'] : null;
 		$bilSemua = $item = 10; $ms = 1; ## set pembolehubah utama
 		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 		$jum = pencamSqlLimit($bilSemua, $item, $ms);
