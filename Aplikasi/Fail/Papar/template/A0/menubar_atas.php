@@ -16,7 +16,7 @@ if($pilihMenu == '1'): echo "\n";?>
 	<a <?php echo $nav ?> href="#"><?=$icon['User']?>Staf
 	<b class="caret"></b></a>
 	<ul class="dropdown-menu">
-	<li><a href="<?php echo URL ?>profile/ubah">
+	<li><a href="<?php echo URL ?>biodata/ubah">
 		<?=$icon['User']?>Profile <?=$pengguna?>
 	</a></li>
 	<li class="divider"></li>

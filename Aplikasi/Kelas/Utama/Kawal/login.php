@@ -93,7 +93,6 @@ class Login extends \Aplikasi\Kitab\Kawal
 	{
 		# debug $_POST
 		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
-		//$this->tanya->dapatid($_POST['password']);
 
 		# semak data $this->tanya->ujiID(); 
 		//$this->tanya->semakid();
@@ -144,7 +143,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		if ($kira == 1) 
 		{	# login berjaya
 			\Aplikasi\Kitab\Sesi::init(); # setkan $_SESSION utk 
-			# namaPenuh,namaPendek,kataLaluan,level 
+			# namaPenuh,namaPendek,email,kataLaluan,level 
 			\Aplikasi\Kitab\Sesi::set('namaPendek', $data[0]['namaPendek']);
 			\Aplikasi\Kitab\Sesi::set('namaPenuh', $data[0]['namaPenuh']);
 			\Aplikasi\Kitab\Sesi::set('email', $data[0]['email']);

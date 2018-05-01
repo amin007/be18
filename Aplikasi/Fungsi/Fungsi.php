@@ -88,6 +88,8 @@ function dpt_senarai($pilih)
 		$jadual = unserialize(PRODUK);
 	elseif ($pilih == 'jadual_login') : 
 		$jadual = unserialize(JADUAL_LOGIN);
+	elseif ($pilih == 'jadual_biodata') : 
+		$jadual = unserialize(JADUAL_BIODATA);
 	else : $jadual = array(); //unserialize()
 	endif;
 
