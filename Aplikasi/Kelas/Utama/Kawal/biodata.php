@@ -90,7 +90,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 	{		
 		# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
-		$this->papar->senarai = $this->jadualBiodata();
+		list($this->papar->senarai,$this->papar->dataID) = $this->jadualBiodata();
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -122,7 +122,50 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$cariNama::'; print_r($cariNama) . '<pre>';
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
 
-		return $cariNama;
+		return array($cariNama, $pengguna);
+	}
+#-------------------------------------------------------------------------------------------
+	public function ubahSimpan($dataID)
+	{
+		list($medanID,$senaraiJadual,$pass) = dpt_senarai('jadual_biodata3');
+		# ubahsuai $posmen
+		$posmen = $this->ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass);
+		//echo '<br>$dataID=' . $dataID . '<br>';
+		//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{# mula ulang table
+			$this->tanya->//ubahSqlSimpan
+			ubahSimpan
+			($posmen[$jadual], $jadual, $medanID);
+		}# tamat ulang table
+
+		# pergi papar kandungan
+		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
+		header('location: ' . URL . 'biodata/ubah/' . $dataID); //*/
+	}
+#-------------------------------------------------------------------------------------------
+	function ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass)
+	{
+		$posmen = array();
+		foreach ($_POST as $myTable => $value): 
+			if ( in_array($myTable,$senaraiJadual) ):
+				foreach ($value as $kekunci => $papar)
+				{
+					$posmen[$myTable][$kekunci] = bersih($papar);
+					$posmen[$myTable][$medanID] = $dataID;
+				}//*/
+		endif; endforeach;
+
+		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual) . '</pre>';
+		//echo '<pre>$medanID='; print_r($medanID) . '</pre>';
+		//echo '<pre>$dataID='; print_r($dataID) . '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+
+		return $posmen = $this->tanya->semakPosmen(
+			$senaraiJadual[0], $posmen, $pass);
 	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
