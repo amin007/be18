@@ -65,8 +65,20 @@ class Html_Input
 </div><?php echo "\n";
 	}
 #------------------------------------------------------------------------------------------
-	public function medanHantar()
-	{}
+	public function medanHantar($myTable, $class = 'col-sm-7')
+	{
+?><div class="form-group">
+	<div class="<?php echo $class ?>">
+		<div class="input-group input-group-lg">
+		<span class="input-group-addon">
+			<input type="hidden" name="jadual" value="<?php echo $myTable ?>">
+			<input type="submit" name="Simpan" value="Simpan" class="btn btn-primary btn-large">
+			<input type="reset" name="Reset" value="Reset" class="btn btn-default btn-large">
+		</span>
+		</div>
+	</div>
+</div><?php
+	}
 #------------------------------------------------------------------------------------------
 	public function updateInput($class, $myTable, $kira, $namaMedan, $data)
 	{
