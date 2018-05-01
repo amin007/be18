@@ -64,7 +64,6 @@ class Html_Input
 		//$labelDibawah = isset($senarai['label_dibawah'])? $senarai['label_dibawah']: '';
 		$labelDibawah = $data;
 		$name = 'name="' . $myTable . '[' . $namaMedan . ']"';
-		//$input = $name . ' value="' . $data . '"';
 		$tab2 = "\n\t\t";
 		$tab3 = "\n\t\t\t";
 		$tab4 = "\n\t\t\t\t";
@@ -84,7 +83,7 @@ class Html_Input
 				   . '</div>' . $komen
 				   . '';
 		}
-		elseif(in_array($namaMedan,array('website_id', 'item_id', 'category_id', 'rating_id')))
+		elseif(in_array($namaMedan,array('no')))
 		{#untuk medan primary key
 			$data = null;
 			$input = $tab2 . '<div class="'.$classInput.'">' . $tab3
@@ -104,7 +103,7 @@ class Html_Input
 				   . '';
 		}
 		elseif(in_array($namaMedan,$medan))
-		{#senarai medan untuk table admin_website
+		{#senarai medan untuk type="text"
 			//$data = null;
 			$input = $tab2 . '<div class="'.$classInput.'">' . $tab3
 				   //. '<span class="input-group-addon"></span>' . $tab3
