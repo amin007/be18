@@ -86,7 +86,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->mesej); # Semak data dulu
-		$this->paparKandungan('index', 'salah');
+		$this->paparKandungan('index', 'salah', $noInclude=1);
 	}
 #---------------------------------------------------------------------------------------------------#
 	function semakid()

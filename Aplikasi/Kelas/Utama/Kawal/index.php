@@ -73,7 +73,7 @@ class Index extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan('keluar', $noInclude=0); # $noInclude=0
+		$this->paparKandungan('keluar', $noInclude=1); # $noInclude=0
 	}
 #==========================================================================================
 }
