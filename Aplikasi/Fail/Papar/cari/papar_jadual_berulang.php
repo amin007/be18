@@ -21,10 +21,10 @@ foreach ($this->senarai as $myTable => $row)
 	if ( count($row)==0 ) echo '';
 	else
 	{
-		$mula2 = ($jadual=='rangka13') ? ' active' : ''; ?>
+		$mula2 = ($jadual=='***') ? ' active' : ''; ?>
 	<div class="tab-pane<?php echo $mula2?>" id="<?php echo $myTable ?>">
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
-<?php include 'papar_jadual_operasi.php'; ?>
+<?php include 'papar_jadual_' . $pilihJadual . '.php'; ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
 	</div>
 <?php
