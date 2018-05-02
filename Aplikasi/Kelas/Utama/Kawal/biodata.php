@@ -18,8 +18,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		# Set pembolehubah utama
 		$this->papar->tajuk = namaClass($this);
 		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
-		//echo $this->namaClass;
-		//echo $this->namaFunction;
+		//echo $this->namaClass; //echo $this->namaFunction;
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -46,7 +45,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 
 	function logout()
 	{
-		//echo '<pre>sebelum:'; print_r($_SESSION) . '</pre>';
+		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
 		\Aplikasi\Kitab\Sesi::destroy();
 		header('location: ' . URL);
 		//exit;
@@ -67,7 +66,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 	public function pembolehubahSesi()
 	{
 		$sesi = \Aplikasi\Kitab\Sesi::init();
-		//echo '<pre>MENU_ATAS - $_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
+		//echo '<pre>MENU_ATAS - $_SESSION:'; print_r($_SESSION, 1); echo '</pre><br>';
 		# set pembolehubah
 		$pengguna = \Aplikasi\Kitab\Sesi::get('namaPendek');
 		$level = \Aplikasi\Kitab\Sesi::get('levelPengguna');
@@ -118,8 +117,8 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
 					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
 		# semak pembolehubah
-		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
-		//echo '<pre>$cariNama::'; print_r($cariNama) . '<pre>';
+		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
+		//echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
 
 		return array($cariNama, $pengguna);
@@ -131,8 +130,8 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		# ubahsuai $posmen
 		$posmen = $this->ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass);
 		//echo '<br>$dataID=' . $dataID . '<br>';
-		//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
-		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		# mula ulang $senaraiJadual
 		foreach ($senaraiJadual as $kunci => $jadual)
@@ -159,10 +158,10 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 				}//*/
 		endif; endforeach;
 
-		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual) . '</pre>';
-		//echo '<pre>$medanID='; print_r($medanID) . '</pre>';
-		//echo '<pre>$dataID='; print_r($dataID) . '</pre>';
-		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
+		//echo '<pre>$medanID='; print_r($medanID); echo '</pre>';
+		//echo '<pre>$dataID='; print_r($dataID); echo '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		return $posmen = $this->tanya->semakPosmen(
 			$senaraiJadual[0], $posmen, $pass);
