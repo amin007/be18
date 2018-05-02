@@ -59,29 +59,26 @@ else # $this->carian=='ada' - mula
 { 	$mencari2 = URL . 'kawalan/ubahSimpan/' . $this->cariID; ?>
 	<form method="POST" action="<?php echo $mencari2 ?>"
 	class="form-horizontal"><?php
-	$html = new Aplikasi\Kitab\Html;
+	$html = new Aplikasi\Kitab\Html_TD_Kawalan;
 	foreach ($this->senarai as $myTable => $row)
 	{# mula ulang $row
 		for ($kira=0; $kira < count($row); $kira++)
 		{# print the data row // <button type="button" class="btn btn-info">Info</button>
 		#----------------------------------------------------------------------------
 		foreach ($row[$kira] as $key=>$data): echo "\n\t\t";
-			if (in_array($key,array('no','batu','jalan','tmn_kg','dp_baru','respon3')) 
-				&& Sesi::get('namaPegawai')!='amin'): echo '';
-			else:?><div class="form-group">
+			?><div class="form-group">
 			<label for="input<?php echo $key 
 			?>" class="col-sm-2 control-label"><?php echo $key ?></label>
 			<div class="col-sm-6">
-			<?php echo $html->cariInput($this->_cariIndustri,$this->_jadual,$kira, $key, $data);
+			<?php echo $html->ubahInput($this->_cariIndustri,$this->_jadual,$kira, $key, $data);
 			echo "\n\t\t\t"; ?></div>
 		</div><?php 
-			endif;
 		endforeach;
 		}# final print the data row
 		#----------------------------------------------------------------------------
 	}# tamat ulang $row
 	echo "\n\t\t";
-	if(isset($this->kawalan['kes'][0]['newss'])):
+	if(isset($this->senarai['kes'][0]['newss'])):
 	?><div class="form-group">
 			<label for="inputSubmit" class="col-sm-3 control-label"><?=$this->_jadual?></label>
 			<div class="col-sm-6">
