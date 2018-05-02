@@ -52,14 +52,14 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
         $medanKawalan = 'newss,'
 			//. '( if (hasil is null, "", '
 			. 'concat_ws("|",nama,operator,'.$url1 . ',' . $url3 .') nama,'
-			. ' concat_ws("|",' . "\r"
+			/*. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
 			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
 			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
 			. ' 	concat_ws("="," aset",format(aset,0)),' . "\r"
 			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
 			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
- 			. ' ) as data5P,' . "\r"
+ 			. ' ) as data5P,' . "\r"//*/
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," responden",responden),' . "\r"
 			. ' 	concat_ws("="," notel",notel),' . "\r"
@@ -68,9 +68,9 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," notel_a",notel_a),' . "\r"
 			. ' 	concat_ws("="," nofax_a",nofax_a)' . "\r"
  			. ' ) as dataHubungi,' . "\r"
-			. 'concat_ws(" | ",nossm,kp) as nossm,' . "\r"
-			. 'fe,mko,respon,nota,nota_prosesan,' . "\r"
-			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,' . "\r"
+			. 'concat_ws(" | ",nossm,kp) as nossm,fe,po,' . "\r"
+			//. 'mko,respon,nota,nota_prosesan,' . "\r"
+			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar,daerah,ngdbbp) as alamat,' . "\r"
 			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
 			//. 'concat_ws(" ",no,batu,'
 			//. '( if (jalan is null, "", concat("JALAN ",jalan) ) ),
