@@ -74,6 +74,18 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		return array($pengguna, $level);
 	}
 #-------------------------------------------------------------------------------------------
+	public function ubahCari()
+	{
+		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
+		# Bersihkan data $_POST
+		$input = bersih($_GET['cari']);
+		$dataID = str_pad($input, 12, "0", STR_PAD_LEFT);
+
+		# Pergi papar kandungan
+		//echo '<br>location: ' . URL . 'kawalan/ubah/' . $dataID . '';
+		header('location: ' . URL . 'kawalan/ubah/' . $dataID);
+	}
+#-------------------------------------------------------------------------------------------
 	public function ubah($cariID) 
 	{		
 		# Set pembolehubah utama
@@ -92,6 +104,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	private function jadualKawalan($cariID)
 	{
 		list($myTable, $this->papar->carian) = dpt_senarai('jadual_kawalan');
+		$this->papar->_jadual = $myTable;
 		$medan = $this->tanya->medanKawalan($cariID); //$carian = null; echo '<pre>';
 		
 		# semak database
