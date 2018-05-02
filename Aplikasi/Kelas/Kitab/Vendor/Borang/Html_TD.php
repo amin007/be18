@@ -7,7 +7,7 @@ class Html_TD
 	{
 		if ($key=='newss')
 		{# primary key
-				$k0 = URL . 'kawalan/' . $data;
+				$k0 = URL . 'kawalan/ubah/' . $data;
 				$k1 = $this->iconFA(1) . '<a target="_blank" href="' . $k0 . '">'
 				. $data . '</a>&nbsp;';
 
