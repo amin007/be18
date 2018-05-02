@@ -54,7 +54,7 @@ class Html_TD_Kawalan
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		elseif(in_array($key,array('email','pecah5P')))
+		elseif(in_array($key,array('email','pecah5P','po')))
 		{#kod utk input text saiz biasa
 			$input = '<div class="input-group input-group">' . $tabline
 				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
