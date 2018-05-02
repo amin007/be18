@@ -9,6 +9,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = huruf('kecil', namaClass($this));
+		$this->_namaClass = '<hr>Nama class :' . __METHOD__ . '<hr>';
+		$this->_namaFunction = '<hr>Nama function :' .__FUNCTION__ . '<hr>';
 	}
 
 	public function index()
@@ -16,6 +18,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->tajuk = namaClass($this);
 		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
+		//echo $this->namaClass; //echo $this->namaFunction;
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -41,27 +44,26 @@ class Cari extends \Aplikasi\Kitab\Kawal
 
 	function logout()
 	{
-		//echo '<pre>sebelum:'; print_r($_SESSION) . '</pre>';
+		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
 		\Aplikasi\Kitab\Sesi::destroy();
 		header('location: ' . URL);
 		//exit;
 	}
 #==========================================================================================
-#-------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 	public function suku1($action = 'hasil')
-	{
+	{	//echo $this->namaClass; 
 		# Set pemboleubah utama
 		$this->papar->tajuk = namaClass($this);
-		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1);
+		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1); //*/
 	}
-#-------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 	public function pembolehubah()
 	{
-		//echo '<pre>$_POST=>'; print_r($_POST) . '</pre>';
+		//echo '<pre>$_POST=>'; print_r($_POST); echo '</pre>';
 		/* $_POST[] => Array ( [cari] => 0000000123456 or [nama] => ABC ) */
 
 		$myJadual = array('aes','kawalan_aes','aes_alam_sekitar',
@@ -79,9 +81,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 
 		return array($myJadual, $medan, $id, $this->papar->senarai, $susun); //*/
 	}
-#-------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 	public function idnama() 
-	{	//echo '<br>Anda berada di class Cari extends Kawal:idnama()<br>';       
+	{	//echo $this->namaClass; 
         # senaraikan tatasusunan jadual
 		list($myJadual, $medan, $id, $this->papar->senarai, $susun) = $this->pembolehubah();
         if (!empty($id['nama'])) 
@@ -109,11 +111,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); 
-		//*/
+		$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
     }
-#-------------------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 #==========================================================================================
 }
