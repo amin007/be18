@@ -120,14 +120,14 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 				$cariNama['kes'] = 
 					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
 					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
-				$this->cariMsic($cariNama['kes']); # mula cari Msic
+				$newss = $this->cariMsic($cariNama['kes']); # mula cari Msic
 				
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
 		//echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
 
-		return array($cariNama, $cariID);
+		return array($cariNama, $newss);
 	}
 #-------------------------------------------------------------------------------------------
 	function cariMsic($cariApa)
@@ -140,6 +140,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			$jadualMSIC = dpt_senarai('msicbaru');
 			$this->cariIndustri($jadualMSIC, $cariApa[0]['msic2008']);
 		endif;
+
+		return $newss;
 	}
 #---------------------------------------------------------------------------------------------------
 	private function cariIndustri($jadualMSIC, $msic)
@@ -165,7 +167,6 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			$this->papar->_cariIndustri[$jadualPendek] = $this->tanya->//cariSql
 				cariSemuaData($msic, $medanM6, $cariM6, null);
 		}# tamat ulang table
-
 	}
 #---------------------------------------------------------------------------------------------------
 	public function ubahSimpan($dataID)
@@ -186,8 +187,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		}# tamat ulang table
 
 		# pergi papar kandungan
-		//echo 'location: ' . URL . 'biodata/ubah/' . $dataID;
-		header('location: ' . URL . 'biodata/ubah/' . $dataID); //*/
+		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
+		header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass)
@@ -207,8 +208,43 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$dataID='; print_r($dataID); echo '</pre>';
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
+		$posmen = $this->pecah5P($senaraiJadual[0], $posmen);
 		return $posmen = $this->tanya->semakPosmen(
 			$senaraiJadual[0], $posmen, $pass);
+	}
+#-------------------------------------------------------------------------------------------
+	function pecah5P($myTable, $posmen) 
+	{
+		$pecah5P = $posmen[$myTable]['pecah5P']; 
+
+		if (!empty($pecah5P))
+		{
+			$pos = explode(" ", $pecah5P);
+			  $posmen[$myTable]['hasil'] = str_replace( ',', '', bersih($pos[0]) );
+			$posmen[$myTable]['belanja'] = str_replace( ',', '', bersih($pos[1]) );
+			   $posmen[$myTable]['gaji'] = str_replace( ',', '', bersih($pos[2]) );
+			   $posmen[$myTable]['aset'] = str_replace( ',', '', bersih($pos[3]) );
+			   $posmen[$myTable]['staf'] = str_replace( ',', '', bersih($pos[4]) );
+			   $posmen[$myTable]['stok'] = str_replace( ',', '', bersih($pos[5]) );
+		}
+		else
+		{
+			foreach ($posmen as $jadual => $value)
+			foreach ($value as $kekunci => $papar)
+				$posmen[$myTable][$kekunci]= 
+					( in_array($kekunci,array('hasil','belanja','gaji','aset','staf','stok')) ) ?
+					str_replace( ',', '', bersih($papar) )# buang koma	
+					: bersih($papar);			
+		}
+
+		unset($posmen[$myTable]['pecah5P']);
+
+		/*# debug
+		echo '<pre>$hasil='; print_r($hasil); echo '</pre>';
+		echo '<pre>$pos='; print_r($pos); echo '</pre>';
+		echo '<pre>$posmen2='; print_r($posmen); echo '</pre>';//*/
+
+		return $posmen; # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
