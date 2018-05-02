@@ -244,8 +244,8 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 			foreach ($value as $kekunci => $papar)
 				$posmen[$myTable][$kekunci]= 
 					( in_array($kekunci,array('hasil','belanja','gaji','aset','staf','stok')) ) ?
-					str_replace( ',', '', bersih($papar) )# buang koma	
-					: bersih($papar);			
+					str_replace( ',', '', bersih($papar) )# buang koma
+					: bersih($papar);
 		}
 
 		unset($posmen[$myTable]['pecah5P']);
