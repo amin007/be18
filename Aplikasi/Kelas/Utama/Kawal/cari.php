@@ -103,6 +103,27 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
     }
 #------------------------------------------------------------------------------------------
+	public function tentang($apa, $bil=1, $mesej=null) 
+	{	
+		# Fungsi ini memaparkan borang
+		//echo 'mana ko pergi daa lokaliti($negeri)<br>';
+
+		if ($apa=='msic') $jadual = 'pom_dataekonomi.msic2000';
+		elseif ($apa=='produk') $jadual = 'pom_dataekonomi.kodproduk_mei2011';
+		elseif ($apa=='johor') $jadual = 'pom_lokaliti.johor'; # negeri johor/malaysia
+		elseif ($apa=='malaysia') $jadual = 'pom_lokaliti.malaysia'; # negeri johor/malaysia
+		elseif ($apa=='prosesan') $jadual = 'pom_dataekonomi.data_mm_prosesan';
+
+		# Set pemboleubah utama
+		$this->papar->senarai = $this->tanya->paparMedan($jadual);
+		$this->papar->url = dpt_url();
+		$this->papar->mesej = $mesej;
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->url); # Semak data dulu
+		$this->paparKandungan($this->_folder, 'a_mula' , $noInclude=0); //*/
+	}
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
