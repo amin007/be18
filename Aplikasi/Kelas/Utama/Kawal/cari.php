@@ -295,16 +295,16 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		list($medanAsal, $medanBaru) = $this->tanya->bentukMedanJohor();
 
 		# mula cari $cariID dalam $jadual
-		foreach ($jadual as $key => $$myTable)
+		foreach ($jadual as $key => $namaPanjang)
 		{# mula ulang table
-			$medan = ($myTable=='pom_lokaliti.johor') ?
+			$medan = ($namaPanjang == 'pom_lokaliti.johor') ?
 				$medanAsal : $medanBaru;
-			$myJadual = ($myTable=='pom_lokaliti.johor') ?
+			$myTable = ($namaPanjang == 'pom_lokaliti.johor') ?
 				'JOHOR':'LK-JOHOR';
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
-				cariSql("`$myTable`", $medan, $carian, $susun);
-				//cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
+				cariSql($namaPanjang, $medan, $carian, $susun);
+				//cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;//*/
