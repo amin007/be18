@@ -86,40 +86,41 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	}
 #------------------------------------------------------------------------------------------
 	public function idnama() 
-	{	//echo $this->namaClass; 
-        # senaraikan tatasusunan jadual
+	{
+		//echo $this->namaClass; # senaraikan tatasusunan jadual
 		list($myJadual, $medan, $id, $susun) = $this->pembolehubah();
 		$this->papar->senarai = array();
-        if (!empty($id['nama'])) 
-        {
+
+		if (!empty($id['nama']))
+		{
 			$carian[] = array('fix'=>'z%like%', # cari = atau %%
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => 'concat_ws("",newss,nossm,nama)', # cari dalam medan apa
 				'apa' => $id['nama']); # benda yang dicari
 
-            foreach ($myJadual as $key => $myTable)
-            {# mula cari $cariID dalam $myJadual
-                $this->papar->senarai[$myTable] = 
-					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);
-					//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
-            }# tamat
+			foreach ($myJadual as $key => $myTable)
+			{# mula cari $cariID dalam $myJadual
+			$this->papar->senarai[$myTable] =
+			$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);
+			//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
+			}# tamat
 
 			# isytihar pembolehubah untuk dalam class Papar
 			$this->papar->primaryKey = 'newss';
 			$this->papar->carian[] = $id['nama'];
-        }
-        else
-        {
-            $this->papar->carian[]='[id:0]';
-        }
+		}
+		else
+		{
+			$this->papar->carian[]='[id:0]';
+		}
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
     }
 #------------------------------------------------------------------------------------------
-	public function tentang($apa, $bil=1, $mesej=null) 
-	{	
+	public function tentang($apa, $bil=1, $mesej=null)
+	{
 		# Fungsi ini memaparkan borang
 		//echo 'mana ko pergi daa lokaliti($negeri)<br>';
 
@@ -140,29 +141,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, 'a_mula' , $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
-	function pecah_post()
-	{
-		$papar['atau'] = isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null;
-		$papar['pilih'] = isset($_POST['jika']['pilih']) ? $_POST['jika']['pilih'] : null;
-		$papar['cari'] = isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null;
-		$papar['fix'] = isset($_POST['jika']['fix']) ? $_POST['jika']['fix'] : null;
-
-		$kira['atau'] = count($papar['atau']);
-		$kira['pilih'] = count($papar['pilih']);
-		$kira['cari'] = count($papar['cari']);
-		$kira['fix'] = count($papar['fix']);
-
-		return $kira; //echo '<pre>'; print_r($kira) . '</pre>';
-	}
-#------------------------------------------------------------------------------------------
 	function pada($bil = 400, $muka = 1)
 	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		/* fungsi ini memaparkan hasil carian
 		 * untuk jadual msic2000 dan msic2008
 		 */
 
-		$kira = $this->pecah_post($_POST); //$this->semakPembolehubah($kira);
-		$this->sayaMestiPilih($bil, $muka, $kira);
+		$this->sayaMestiPilih($bil, $muka);
 		$this->papar->cariID = '';
 
 		/*echo '<pre>'; # semak output
@@ -179,7 +164,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			//echo 'Patah balik ke ' . $lokasi . $mesej . '<hr>' . $data;
 			header('location:' . URL . 'cari/' . $lokasi . $namajadual . '/2');
 		}
-		else 
+		else
 		{	//echo 'Tak patah balik';
 			$this->papar->primaryKey = 'newss';
 			$this->papar->baca('cari/cari', 0);
@@ -208,7 +193,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		return array($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau);
 	}
 #------------------------------------------------------------------------------------------
-	function sayaMestiPilih($bil, $muka, $kira)
+	function sayaMestiPilih($bil, $muka)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		list($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau)
@@ -225,13 +210,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
 		}
 		elseif (!empty($namajadual) && $namajadual=='msic')
-			list($mesej, $lokasi) = $this->sayaPilihMsic($namajadual, $bil, $muka, $kira, $cari);
+			list($mesej, $lokasi) = $this->sayaPilihMsic($namajadual, $bil, $muka, $cari);
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihMsic($namajadual, $bil, $muka, $kira, $cari)
+	function sayaPilihMsic($namajadual, $bil, $muka, $cari)
 	{
-		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		$jadual = dpt_senarai('msicbaru');
+		echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
+		$jadual = dpt_senarai('msicbaru'); echo '<pre>';
 		$kumpulSusun = array('kumpul'=>null,'susun'=>null);
 		$susun = $this->menyusun($kumpulSusun, '0', $bil);
 		//echo 'susun:' . $this->semakPembolehubah($susun);
@@ -242,20 +227,19 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		{# mula ulang table
 			$myTable = substr($namaPanjang, 16);
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
-			# senarai nama medan
-			$medan = ($myTable=='msic2008') ?
-				'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,' .
-				'msic2000,msic,keterangan,notakaki' : '*'; 
+			$medan = ($myTable=='msic2008') ? # senarai nama medan
+				'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,'
+				. 'msic2000,msic,keterangan,notakaki' 
+				: '*';
 			$this->papar->senarai[$myTable] =
 				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
 				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
-		
-		return($mesej = null, $lokasi = null);
-	}
-#------------------------------------------------------------------------------------------
+
+		return array($mesej = null, $lokasi = null);
+	}	
 #------------------------------------------------------------------------------------------
 	public function syarikat($carilah = null)
 	{
