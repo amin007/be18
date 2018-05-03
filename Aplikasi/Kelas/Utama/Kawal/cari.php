@@ -224,17 +224,17 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
 		$jadual = dpt_senarai('msicbaru'); //echo '<pre>';
-		//$this->semakPembolehubah($_POST['jika']); # Semak data dulu
 
 		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $namaPanjang)
 		{# mula ulang table
 			$myTable = substr($namaPanjang, 16);
-			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			//echo "<br>Msic) $myTable|$namaPanjang";
 			$medan = ($myTable=='msic2008') ? # senarai nama medan
 				'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,'
 				. 'msic2000,msic,keterangan,notakaki'
 				: '*';
+			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] =
 				$this->tanya->cariSql($namaPanjang, $medan, $carian, $susun);
 				//$this->tanya->cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
