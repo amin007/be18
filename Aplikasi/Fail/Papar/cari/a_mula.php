@@ -61,7 +61,8 @@ $u = 1;
 	<div class="col-sm-<?php echo $saizLabel?>">
 		<div class="input-group">
 			<span class="input-group-addon"><?php echo $paparJika?>Medan</span>
-			<select name="pilih[<?php echo $u?>]" class="form-control">
+			<input type="hidden" name="jika[atau][1]" value="WHERE">
+			<select name="jika[pilih][<?php echo $u?>]" class="form-control">
 			<?php echo $pilihMedan; ?></select>
 			<span class="input-group-addon"></span>
 		</div><!-- class="input-group" -->
@@ -69,9 +70,9 @@ $u = 1;
 	<div class="col-sm-<?php echo $saizInput?>">
 		<div class="input-group">
 			<span class="input-group-addon"><?php echo $pilihU?></span>
-			<input type="text" name="cari[<?php echo $u?>]" class="form-control">
+			<input type="text" name="jika[cari][<?php echo $u?>]" class="form-control">
 			<span class="input-group-addon">
-				<input type="checkbox" name="fix[<?php echo $u?>]" value="x">
+				<input type="checkbox" name="jika[fix][<?php echo $u?>]" value="x">
 			</span>
 		</div><!-- class="input-group" -->
 	</div><!-- class="col-sm-5" -->
@@ -80,7 +81,7 @@ $u = 1;
 <?php
 # buat array or/and/in dalam sql
 //$jikalau = array('atau' => 'or', 'dan' => 'and','dalam' => 'in');
-$jikalau = array('atau' => 'or', 'dan' => 'and');
+$jikalau = array('atau' => 'OR', 'dan' => 'AND');
 
 //$ulang = 6;
 for ( $u = 2 ; $u <= $ulang ; $u++ )
@@ -90,7 +91,7 @@ for ( $u = 2 ; $u <= $ulang ; $u++ )
 	foreach ($jikalau as $kunci => $isian)
 	{// mula ulang $jikalau
 		# memilih or/and/in dalam sql
-		$jika .= '<input type="radio" name="atau[' 
+		$jika .= '<input type="radio" name="jika[atau][' 
 			. $u . ']" value="' . $isian . '" >' . $kunci
 			. "\r\t\t";
 	}// tamat ulang $jikalau
@@ -107,7 +108,7 @@ for ( $u = 2 ; $u <= $ulang ; $u++ )
 	<div class="col-sm-<?php echo $saizLabel?>">
 		<div class="input-group">
 			<span class="input-group-addon"><?php echo $paparJika?></span>
-			<select name="pilih[<?php echo $u?>]" class="form-control">
+			<select name="jika[pilih][<?php echo $u?>]" class="form-control">
 			<?php echo $pilihMedan; ?></select>
 			<span class="input-group-addon">&nbsp;</span>
 		</div><!-- class="input-group" -->
@@ -115,9 +116,9 @@ for ( $u = 2 ; $u <= $ulang ; $u++ )
 	<div class="col-sm-<?php echo $saizInput?>">
 		<div class="input-group">
 			<span class="input-group-addon"><?php echo $pilihU?></span>
-			<input type="text" name="cari[<?php echo $u?>]" class="form-control">
+			<input type="text" name="jika[cari][<?php echo $u?>]" class="form-control">
 			<span class="input-group-addon">
-				<input type="checkbox" name="fix[<?php echo $u?>]" value="x">
+				<input type="checkbox" name="jika[fix][<?php echo $u?>]" value="x">
 				<input type="radio" name="mula[<?php echo $u?>]" value="(">(
 				<input type="radio" name="tmt[<?php echo $u?>]" value=")">)
 			</span>
