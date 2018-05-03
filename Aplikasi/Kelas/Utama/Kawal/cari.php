@@ -317,7 +317,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$medan = '*';
 
 		# mula cari $cariID dalam $jadual
-		foreach ($jadual as $key => $$myTable)
+		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
@@ -335,7 +335,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$medan = '*';
 
 		# mula cari $cariID dalam $jadual
-		foreach ($jadual as $key => $$myTable)
+		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
