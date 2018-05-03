@@ -6,12 +6,12 @@
 	{
 		if ( !$printed_headers ) # papar tajuk medan sekali sahaja:
 		{
-			?><thead><tr><?php
+			?><thead><tr><th>#</th><?php
 			foreach ( array_keys($row[$kira]) as $tajuk ) 
 			{	# anda mempunyai kunci integer serta kunci rentetan
 				# kerana cara PHP mengendalikan tatasusunan.
 				if ($tajuk=='newss')
-				{	?><th>#</th><th><?php echo $tajuk ?></th><?php }
+				{	?><th><?php echo $tajuk ?></th><?php }
 				else
 				{	?><th><?php echo $tajuk ?></th><?php }
 			}
