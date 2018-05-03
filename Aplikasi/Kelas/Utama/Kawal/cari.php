@@ -252,7 +252,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				cariSql($namaPanjang, $medan, $carian, $susun);
-				//cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
+				//cariSemuaData($namaPanjang, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
@@ -276,7 +276,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				//cariSql($namaPanjang, $medan, $carian, $susun);
-				cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
+				cariSemuaData($namaPanjang, $medan, $carian, $susun);
 		}# tamat ulang table
 
 		# papar jadual kod unit
@@ -285,7 +285,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->senarai[$unit] = $this->tanya->
 			cariSemuaData($unitPanjang, '*', null, null);
 
-		$this->papar->carian = $cari;//*/
+		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihJohor($namajadual, $cari, $susun)
@@ -304,10 +304,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				cariSql($namaPanjang, $medan, $carian, $susun);
-				//cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
+				//cariSemuaData($namaPanjang, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
-		$this->papar->carian = $cari;//*/
+		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihSyarikat($namajadual, $cari, $susun)
@@ -322,10 +322,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				cariSql("`$myTable`", $medan, $carian, $susun);
-				//cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
+				//cariSemuaData("`$myTable`", $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
-		$this->papar->carian = $cari;//*/
+		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihDataMM($namajadual, $cari, $susun)
@@ -340,10 +340,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				cariSql("`$myTable`", $medan, $carian, $susun);
-				//cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
+				//cariSemuaData("`$myTable`", $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
-		$this->papar->carian = $cari;//*/
+		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
