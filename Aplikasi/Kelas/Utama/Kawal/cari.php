@@ -81,13 +81,14 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
 		//$id['nama'] = isset($_POST['id']['nama']) ? $_POST['id']['nama'] : null;
 		$kumpulSusun = array('kumpul'=>null,'susun'=>'nama');
-		$susun = menyusun($kumpulSusun);
+		$susun = $this->menyusun($kumpulSusun);
 		return array($myJadual, $medan, $id, $susun); //*/
 	}
 #------------------------------------------------------------------------------------------
 	public function idnama() 
 	{
-		//echo $this->namaClass; # senaraikan tatasusunan jadual
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>'; 
+		# senaraikan tatasusunan jadual
 		list($myJadual, $medan, $id, $susun) = $this->pembolehubah();
 		$this->papar->senarai = array();
 
@@ -97,21 +98,15 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => 'concat_ws("",newss,nossm,nama)', # cari dalam medan apa
 				'apa' => $id['nama']); # benda yang dicari
-
-			foreach ($myJadual as $key => $myTable)
-			{# mula cari $cariID dalam $myJadual
-			$this->papar->senarai[$myTable] =
-			$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);
-			//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
-			}# tamat
-
+			$kira = $this->cariSyarikat($jadual, $medan, $carian, $susun);
 			# isytihar pembolehubah untuk dalam class Papar
 			$this->papar->primaryKey = 'newss';
 			$this->papar->carian[] = $id['nama'];
+			$this->papar->cariID = count($kira);
 		}
 		else
 		{
-			$this->papar->carian[]='[id:0]';
+			$this->papar->carian[]='[id:0]'; //$this->papar->cariID = '[id:0]';
 		}
 
 		# Pergi papar kandungan
@@ -344,6 +339,18 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
+	}
+#------------------------------------------------------------------------------------------
+	function cariSyarikat($jadual, $medan, $carian, $susun)
+	{
+		# mula cari $cariID dalam $jadual
+		foreach ($jadual as $key => $myTable)
+		{# mula ulang table
+			//$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			$this->papar->senarai[$myTable] = $this->tanya->
+				cariSql("`$myTable`", $medan, $carian, $susun);
+				//cariSemuaData("`$myTable`", $medan, $carian, $susun);
+		}# tamat ulang table//*/
 	}
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
