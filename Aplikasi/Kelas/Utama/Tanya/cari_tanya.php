@@ -84,14 +84,14 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 	function bentukCarian($post, $myTable)
 	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//echo '<pre>$post->'; print_r($post); echo '</pre>';
-		$ca = null; //' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
+		$carian = null; //' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
 		if($_POST==null || empty($_POST) ):
-			$ca .= null;
+			$carian .= null;
 		else:
 			foreach ($post['pilih'] as $key=>$cari)
 			{	//echo "\r$key => $f  | ";
 				list($f, $at, $m1, $m2, $apa) = bentukPembolehubah($post, $key);
-				$ca[] = ($myTable=='msic2008') ?
+				$carian[] = ($myTable=='msic2008') ?
 					( ($cari=='msic') ?
 					array('fix'=>$f1,'atau'=>$atau,'medan'=>$m1,'apa'=>$apa)
 					: array('fix'=>$f1,'atau'=>$atau,'medan'=>$m2,'apa'=>$apa) )
@@ -99,7 +99,7 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 			}
 		endif; //echo '<pre>$carian->'; print_r($carian); echo '</pre>';
 
-		return $ca;
+		return $carian;
 	}
 #---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
