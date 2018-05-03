@@ -17,7 +17,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		$this->papar->tajuk = namaClass($this);
-		//echo $this->namaClass; //echo $this->namaFunction;
+		//echo $this->_namaClass; //echo $this->_namaFunction;
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -41,6 +41,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		echo '</pre>|';//*/
 	}
 
+	public function semakRujuk($senarai)
+	{
+		//echo '<pre>$senarai:<br>';
+		print_r($senarai);
+		//echo '</pre>|';//*/
+	}
+
 	function logout()
 	{
 		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
@@ -49,6 +56,17 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//exit;
 	}
 #==========================================================================================
+#------------------------------------------------------------------------------------------
+	public function menyusun($kumpulSusun, $bilSemua = 20, $item = 10)
+	{
+		$ms = 1; ## set pembolehubah utama
+		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
+		$jum = pencamSqlLimit($bilSemua, $item, $ms);
+		///$kumpulSusun = array('kumpul'=>null,'susun'=>'nama');
+		$susun[] = array_merge($jum,  $kumpulSusun);
+
+		return $susun;
+	}
 #------------------------------------------------------------------------------------------
 	public function pembolehubah()
 	{
@@ -62,11 +80,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		# cari id berasaskan newss/ssm/sidap/nama
 		$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
 		//$id['nama'] = isset($_POST['id']['nama']) ? $_POST['id']['nama'] : null;
-		$bilSemua = $item = 10; $ms = 1; ## set pembolehubah utama
-		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
-		$jum = pencamSqlLimit($bilSemua, $item, $ms);
-		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'nama') );
-
+		$kumpulSusun = array('kumpul'=>null,'susun'=>'nama');
+		$susun = menyusun($kumpulSusun);
 		return array($myJadual, $medan, $id, $susun); //*/
 	}
 #------------------------------------------------------------------------------------------
@@ -81,7 +96,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => 'concat_ws("",newss,nossm,nama)', # cari dalam medan apa
 				'apa' => $id['nama']); # benda yang dicari
-			
+
             foreach ($myJadual as $key => $myTable)
             {# mula cari $cariID dalam $myJadual
                 $this->papar->senarai[$myTable] = 
@@ -97,7 +112,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
         {
             $this->papar->carian[]='[id:0]';
         }
-			
+
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
@@ -125,7 +140,124 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, 'a_mula' , $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
+	function pecah_post()
+	{
+		$papar['atau'] = isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null;
+		$papar['pilih'] = isset($_POST['jika']['pilih']) ? $_POST['jika']['pilih'] : null;
+		$papar['cari'] = isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null;
+		$papar['fix'] = isset($_POST['jika']['fix']) ? $_POST['jika']['fix'] : null;
+
+		$kira['atau'] = count($papar['atau']);
+		$kira['pilih'] = count($papar['pilih']);
+		$kira['cari'] = count($papar['cari']);
+		$kira['fix'] = count($papar['fix']);
+
+		return $kira; //echo '<pre>'; print_r($kira) . '</pre>';
+	}
 #------------------------------------------------------------------------------------------
+	function pada($bil = 400, $muka = 1)
+	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		/* fungsi ini memaparkan hasil carian
+		 * untuk jadual msic2000 dan msic2008
+		 */
+		//$this->semakPembolehubah($_POST['jika']); 
+		$kira = $this->pecah_post($_POST); //$this->semakPembolehubah($kira);
+		$this->sayaMestiPilih($bil, $muka, $kira);
+		$this->papar->cariID = '';
+
+		/*echo '<pre>'; # semak output
+		//echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
+		echo '$this->papar->carian :'; $this->semakRujuk($this->papar->carian);
+		echo '$this->papar->senarai:'; $this->semakRujuk($this->papar->senarai);
+		//	. '$this->papar->apa : ' . $this->papar->apa . '<br>';
+		echo '</pre>';//*/
+		
+		# paparkan ke fail cari/$namajadual.php
+		/*if ($mesej != null ) 
+		{
+			$_SESSION['mesej'] = $mesej;
+			//echo 'Patah balik ke ' . $lokasi . $mesej . '<hr>' . $data;
+			header('location:' . URL . 'cari/' . $lokasi . $namajadual . '/2');
+		}
+		else 
+		{	//echo 'Tak patah balik';
+			$this->papar->primaryKey = 'newss';
+			$this->papar->baca('cari/cari', 0);	
+		}//*/
+
+		# Pergi papar kandungan
+		$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
+	}
+#------------------------------------------------------------------------------------------
+	function susunPembolehubah($bil, $muka)
+	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		# setkan pembolehubah dulu
+		$namajadual = isset($_POST['namajadual']) ? $_POST['namajadual'] : null;
+		$cari = isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null;
+		$susun = isset($_POST['susun']) ? $_POST['susun'] : 1;
+		$pilih = isset($_POST['jika']['pilih'][1]) ? $_POST['jika']['pilih'][1] : null;
+		$semak = isset($_POST['jika']['cari'][1]) ? $_POST['jika']['cari'][1] : null;
+		$semak2 = isset($_POST['jika']['cari'][2]) ? $_POST['jika']['cari'][2] : null;
+		$atau = isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null;
+
+		//$this->semakPembolehubah($_POST);
+		//echo '$bil=' . $bil. '<br>$muka=' . $muka . '<br>';
+		//echo '$pilih=' . $pilih. '<br>$semak=' . $semak . '<br>';
+		//echo '$pilih=' . $pilih. '<br>$semak=' . $semak . '<br>';
+
+		return array($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau);
+	}
+#------------------------------------------------------------------------------------------
+	function sayaMestiPilih($bil, $muka, $kira)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		list($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau) 
+			= $this->susunPembolehubah($bil, $muka);
+
+		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
+		{	//echo ')$namajadual=' . $namajadual . '<br>';
+			$mesej = 'tak isi atau-dan pada carian';
+			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
+		}
+		elseif ( (empty($semak) || ( empty($semak2) && $namajadual=='johor') ) ) 
+		{	//echo '2)$namajadual=' . $namajadual . '<br>';
+			$mesej = 'tak isi pada carian';
+			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
+		}
+		elseif (!empty($namajadual) && $namajadual=='msic') 
+			list($mesej, $lokasi) = $this->sayaPilihMsic($namajadual, $bil, $muka, $kira, $cari);
+	}
+#------------------------------------------------------------------------------------------
+	function sayaPilihMsic($namajadual, $bil, $muka, $kira, $cari)
+	{	
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		$jadual = dpt_senarai('msicbaru');
+		$kumpulSusun = array('kumpul'=>null,'susun'=>null);
+		$susun = $this->menyusun($kumpulSusun, '0', $bil);
+		//echo 'susun:' . $this->semakPembolehubah($susun); 
+		$had = ' LIMIT 0, ' . $bil; // setkan $had untuk sql
+		//$this->semakPembolehubah($_POST['jika']); # Semak data dulu
+
+		# mula cari $cariID dalam $jadual
+		foreach ($jadual as $key => $namaPanjang)
+		{# mula ulang table
+			$myTable = substr($namaPanjang, 16); 
+			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable); 
+			# senarai nama medan
+			$medan = ($myTable=='msic2008') ? 
+				'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,' .
+				'msic2000,msic,keterangan,notakaki' 
+				: '*'; 
+			$this->papar->senarai[$myTable] = 
+				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
+				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);
+				//$this->tanya->cariPOST($namaPanjang, $medan, $had);//*/
+		}# tamat ulang table//*/
+
+		$this->papar->carian = $cari;
+		
+		return($mesej = null, $lokasi = null);
+	}
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
 	public function syarikat($carilah = null)
@@ -134,16 +266,17 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		if($cari == null) echo '<li>Kosong Laa</li>';
 		elseif (isset($cari)) 
 		{
-			if(strlen($cari) > 0) 
+			if(strlen($cari) > 0)
 			{
 				list($myTable, $medan01) = dpt_senarai('jadual_kawalan');
 				$medan = 'newss,nama,nossm,operator,kp';
-				$carian[] = array('fix'=>'z%like%','atau'=>'WHERE','medan'=>'concat_ws(" ",newss,nossm,nama)','apa'=>$cari);
+				$carian[] = array('fix'=>'z%like%','atau'=>'WHERE',
+					'medan'=>'concat_ws(" ",newss,nossm,nama)','apa'=>$cari);
 				$susun['dari'] = 10;
 
 				$paparKes = //$this->tanya->cariSql($myTable, $medan, $carian, $susun);
 					$this->tanya->cariSemuaData($myTable, $medan, $carian, $susun);
-				$bilKes = count($paparKes); //echo $bilKes . '=>'; //print_r($paparKes) . '<pre></pre>';
+				$bilKes = count($paparKes); //echo $bilKes . '=>'; //print_r($paparKes);
 
 				if($bilKes==0) {echo '<li>Takde Laa</li>';}
 				else
@@ -151,7 +284,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 					foreach($paparKes as $key => $data)
 					{
 						echo '<li onClick="fill(\'' . $data['newss'] . '\');">' 
-							. ($key+1) . '-' . $data['nama'] . '-' . $data['newss'] 
+							. ($key+1) . '-' . $data['nama'] . '-' . $data['newss']
 							. '-SSM ' . $data['nossm'] . '-' . $data['operator'] 
 							. '-KP' . $data['kp'] . '</li>';
 					}# tamat - foreach($paparKes as $key => $data)
