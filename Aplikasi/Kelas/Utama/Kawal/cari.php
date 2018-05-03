@@ -17,7 +17,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		$this->papar->tajuk = namaClass($this);
-		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
 		//echo $this->namaClass; //echo $this->namaFunction;
 
 		# Pergi papar kandungan
@@ -51,16 +50,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	}
 #==========================================================================================
 #------------------------------------------------------------------------------------------
-	public function suku1($action = 'hasil')
-	{	//echo $this->namaClass; 
-		# Set pemboleubah utama
-		$this->papar->tajuk = namaClass($this);
-
-		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1); //*/
-	}
-#------------------------------------------------------------------------------------------
 	public function pembolehubah()
 	{
 		//echo '<pre>$_POST=>'; print_r($_POST); echo '</pre>';
@@ -70,7 +59,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		'aes_kp_205','aes_kp_206','aes_kp_207','aes_kp_800',
 		'aes_perkhidmatan','aes_pertanian');
 		$medan = '*';
-		$this->papar->senarai = array();
 		# cari id berasaskan newss/ssm/sidap/nama
 		$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
 		//$id['nama'] = isset($_POST['id']['nama']) ? $_POST['id']['nama'] : null;
@@ -79,13 +67,14 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'nama') );
 
-		return array($myJadual, $medan, $id, $this->papar->senarai, $susun); //*/
+		return array($myJadual, $medan, $id, $susun); //*/
 	}
 #------------------------------------------------------------------------------------------
 	public function idnama() 
 	{	//echo $this->namaClass; 
         # senaraikan tatasusunan jadual
-		list($myJadual, $medan, $id, $this->papar->senarai, $susun) = $this->pembolehubah();
+		list($myJadual, $medan, $id, $susun) = $this->pembolehubah();
+		$this->papar->senarai = array();
         if (!empty($id['nama'])) 
         {
 			$carian[] = array('fix'=>'z%like%', # cari = atau %%
