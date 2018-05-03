@@ -72,10 +72,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<pre>$_POST=>'; print_r($_POST); echo '</pre>';
 		/* $_POST[] => Array ( [cari] => 0000000123456 or [nama] => ABC ) */
-
-		$myJadual = array('aes','kawalan_aes','aes_alam_sekitar',
-		'aes_kp_205','aes_kp_206','aes_kp_207','aes_kp_800',
-		'aes_perkhidmatan','aes_pertanian');
+		$myJadual = array('`aes`','`kawalan_aes`','`aes_alam_sekitar`',
+		'`aes_kp_205`','`aes_kp_206`','`aes_kp_207`','`aes_kp_800`',
+		'`aes_perkhidmatan`','`aes_pertanian`');
 		$medan = '*';
 		# cari id berasaskan newss/ssm/sidap/nama
 		$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
@@ -97,7 +96,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => 'concat_ws("",newss,nossm,nama)', # cari dalam medan apa
 				'apa' => $id['nama']); # benda yang dicari
-			$this->cariSyarikat($jadual, $medan, $carian, $susun, $id['nama']);
+			$this->cariSyarikat($myJadual, $medan, $carian, $susun, $id['nama']);
 		}
 		else
 		{
@@ -342,8 +341,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
 			$this->papar->senarai[$myTable] = $this->tanya->
-				cariSql("`$myTable`", $medan, $carian, $susun);
-				//cariSemuaData("`$myTable`", $medan, $carian, $susun);
+				//cariSql($myTable, $medan, $carian, $susun);
+				cariSemuaData($myTable, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 		# isytihar pembolehubah untuk dalam class Papar
 		$this->papar->primaryKey = 'newss';
