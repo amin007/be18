@@ -78,12 +78,10 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 			$carian .= null;
 		else:
 			foreach ($post['pilih'] as $key=>$cari)
-			{
+			{	//echo "\r$key => $f  | "; // '%like%' 'x='
 				$f = isset($post['fix'][$key]) ? $post['fix'][$key] : null;
 				$atau = isset($post['atau'][$key]) ? $post['atau'][$key] : 'WHERE';
 				$apa = isset($post['cari'][$key]) ? $post['cari'][$key] : null;
-
-				//echo "\r$key => $f  | "; // '%like%' 'x='
 
 				if ($myTable=='msic2008')
 				{	//" $atau (`$cari`='$apa' OR msic2000='$apa')\r" :
