@@ -70,34 +70,36 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		return $where;
 	} // private function dimanaPOST()
 #---------------------------------------------------------------------------------------------------#
+	function bentukPembolehubah($post, $key)
+	{
+		$fx = isset($post['fix'][$key]) ? $post['fix'][$key] : null;
+		$f = ($fx=='x') ? 'or(x=)' : 'or(%like%)';
+		$at = isset($post['atau'][$key]) ? $post['atau'][$key] : 'WHERE';
+		$m1 = $cari . '|msic2000'; $m2 = $cari . '||notakaki';
+		$apa = isset($post['cari'][$key]) ? $post['cari'][$key] : null;
+
+		return array($f, $at, $m1, $m2, $apa);
+	}
+#---------------------------------------------------------------------------------------------------#
 	function bentukCarian($post, $myTable)
 	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//echo '<pre>$post->'; print_r($post); echo '</pre>';
-		$carian = null; //' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
+		$ca = null; //' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
 		if($_POST==null || empty($_POST) ):
-			$carian .= null;
+			$ca .= null;
 		else:
 			foreach ($post['pilih'] as $key=>$cari)
 			{	//echo "\r$key => $f  | "; // '%like%' 'x='
-				$f = isset($post['fix'][$key]) ? $post['fix'][$key] : null;
-				$atau = isset($post['atau'][$key]) ? $post['atau'][$key] : 'WHERE';
-				$apa = isset($post['cari'][$key]) ? $post['cari'][$key] : null;
-
+				list($f, $at, $m1, $m2, $apa) = bentukPembolehubah($post, $key);
 				if ($myTable=='msic2008')
-				{	//" $atau (`$cari`='$apa' OR msic2000='$apa')\r" :
-					if ($cari=='msic') $carian[] = ($f=='x') ?
-						array('fix'=>'or(x=)','atau'=>$atau,'medan'=>$cari . '|msic2000','apa'=>$apa):
-						array('fix'=>'or(%like%)','atau'=>$atau,'medan'=>$cari . '|msic2000','apa'=>$apa);
-					else $carian[] = ($f=='x') ?
-					//" $atau (`$cari`='$apa' OR notakaki='$apa')\r" :
-						array('fix'=>'or(x=)','atau'=>$atau,'medan'=>$cari . '|notakaki','apa'=>$apa):
-						array('fix'=>'or(%like%)','atau'=>$atau,'medan'=>$cari . '|notakaki','apa'=>$apa);
+				{
+					$ca[] = ($cari=='msic') ?
+						array('fix'=>$f1,'atau'=>$atau,'medan'=>$m1,'apa'=>$apa)
+						: array('fix'=>$f1,'atau'=>$atau,'medan'=>$m2,'apa'=>$apa);
 				}
 				else
 				{
-					$carian[] = ($f=='x') ?
-					array('fix'=>'x=','atau'=>$atau,'medan'=>$cari,'apa'=>$apa)
-					: array('fix'=>'%like%','atau'=>$atau,'medan'=>$cari,'apa'=>$apa);
+					$ca[] = array('fix'=>'%like%','atau'=>$at,'medan'=>$cari,'apa'=>$apa);
 				}
 			}
 		endif; //echo '<pre>$carian->'; print_r($carian); echo '</pre>';
