@@ -297,6 +297,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $$myTable)
 		{# mula ulang table
+			$medan = ($myTable=='pom_lokaliti.johor') ?
+				$medanAsal : $medanBaru;
+			$myJadual = ($myTable=='pom_lokaliti.johor') ?
+				'JOHOR':'LK-JOHOR';
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				cariSql("`$myTable`", $medan, $carian, $susun);
