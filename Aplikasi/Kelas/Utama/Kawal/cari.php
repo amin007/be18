@@ -292,7 +292,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	{
 		$jadual = dpt_senarai('***');
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
-		$medan = '*';
+		list($medanAsal, $medanBaru) = $this->tanya->bentukMedanJohor();
 
 		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $$myTable)
