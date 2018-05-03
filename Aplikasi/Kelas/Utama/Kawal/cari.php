@@ -216,9 +216,19 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->sayaPilihProduk($namajadual, $cari, $susun);
 			$mesej = $lokasi = null;
 		}
-		elseif (!empty($namajadual) && $namajadual=='johor') 
+		elseif (!empty($namajadual) && $namajadual=='johor')
 		{
 			$this->sayaPilihJohor($namajadual, $cari, $susun);
+			$mesej = $lokasi = null;
+		}
+		elseif (!empty($namajadual) && $namajadual=='syarikat')
+		{
+			$this->sayaPilihSyarikat($namajadual, $cari, $susun);
+			$mesej = $lokasi = null;
+		}
+		elseif (!empty($namajadual) && $namajadual=='data_mm_prosesan')
+		{
+			$this->sayaPilihDataMM($namajadual, $cari, $susun);
 			$mesej = $lokasi = null;
 		}
 
@@ -275,11 +285,62 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->senarai[$unit] = $this->tanya->
 			cariSemuaData($unitPanjang, '*', null, null);
 			
-		$this->papar->carian=$carian;//*/	
+		$this->papar->carian = $cari;//*/
 	}
 #------------------------------------------------------------------------------------------
+	function sayaPilihJohor($namajadual, $cari, $susun)
+	{
+		$jadual = dpt_senarai('***');
+		//echo 'jadual:' . $this->semakPembolehubah($jadual);
+		$medan = '*';
+
+		# mula cari $cariID dalam $jadual
+		foreach ($jadual as $key => $$myTable)
+		{# mula ulang table
+			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			$this->papar->senarai[$myTable] =
+				$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
+				//$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
+		}# tamat ulang table//*/
+
+		$this->papar->carian = $cari;//*/
+	}
 #------------------------------------------------------------------------------------------
+	function sayaPilihSyarikat($namajadual, $cari, $susun)
+	{
+		$jadual = dpt_senarai('***');
+		//echo 'jadual:' . $this->semakPembolehubah($jadual);
+		$medan = '*';
+
+		# mula cari $cariID dalam $jadual
+		foreach ($jadual as $key => $$myTable)
+		{# mula ulang table
+			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			$this->papar->senarai[$myTable] =
+				$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
+				//$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
+		}# tamat ulang table//*/
+
+		$this->papar->carian = $cari;//*/
+	}
 #------------------------------------------------------------------------------------------
+	function sayaPilihDataMM($namajadual, $cari, $susun)
+	{
+		$jadual = dpt_senarai('***');
+		//echo 'jadual:' . $this->semakPembolehubah($jadual);
+		$medan = '*';
+
+		# mula cari $cariID dalam $jadual
+		foreach ($jadual as $key => $$myTable)
+		{# mula ulang table
+			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			$this->papar->senarai[$myTable] =
+				$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
+				//$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
+		}# tamat ulang table//*/
+
+		$this->papar->carian = $cari;//*/
+	}
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
 	public function syarikat($carilah = null)
