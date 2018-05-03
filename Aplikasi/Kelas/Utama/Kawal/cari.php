@@ -284,7 +284,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$unit = 'unitkuantiti';
 		$this->papar->senarai[$unit] = $this->tanya->
 			cariSemuaData($unitPanjang, '*', null, null);
-			
+
 		$this->papar->carian = $cari;//*/
 	}
 #------------------------------------------------------------------------------------------
