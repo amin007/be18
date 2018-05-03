@@ -150,13 +150,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		list($mesej, $lokasi, $namajadual) = $this->sayaMestiPilih($bil, $muka);
 		$this->papar->cariID = '';
 
-		/*echo '<pre>'; # semak output
+		echo '<pre>'; # semak output
 		echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
 		echo '$this->papar->carian :'; $this->semakRujuk($this->papar->carian);
 		echo '$this->papar->senarai:'; $this->semakRujuk($this->papar->senarai);
 		echo '</pre>';//*/
 
-		# paparkan ke fail cari/$namajadual.php
+		/*# paparkan ke fail cari/$namajadual.php
 		if ($mesej != null )
 		{
 			@$_SESSION['mesej'] = $mesej;
@@ -208,6 +208,11 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->sayaPilihMsic($namajadual, $bil, $muka, $cari);
 			$mesej = $lokasi = null;
 		}
+		elseif (!empty($namajadual) && $namajadual=='produk')
+		{
+			$this->sayaPilihProduk($namajadual, $bil, $muka, $cari);
+			$mesej = $lokasi = null;
+		}
 
 		return array($mesej,$lokasi, $namajadual);
 	}
@@ -237,6 +242,38 @@ class Cari extends \Aplikasi\Kitab\Kawal
 
 		$this->papar->carian = $cari;
 	}
+#------------------------------------------------------------------------------------------
+	function sayaPilihProduk($namajadual, $bil, $muka, $cari)
+	{
+		$jadual = dpt_senarai('produk');
+		echo 'jadual:' . $this->semakPembolehubah($jadual);
+		/*# mula cari $cariID dalam $jadual
+		foreach ($jadual as $key => $namaPanjang)
+		{# mula ulang table
+			$myTable = substr($namaPanjang, 16); //echo "<br>4) $myTable";
+			# senarai nama medan
+			$medan = ($myTable=='kodproduk_aup') ? 
+				'bil,substring(kod_produk_lama,1,5) as msic,kod_produk_lama,'
+				. 'kod_produk,unit_kuantiti unit,keterangan,keterangan_bi,aup,min,max' 
+				: '*';
+			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			$this->papar->senarai[$myTable] =
+				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
+				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);
+		}# tamat ulang table
+			
+		# papar jadual kod unit
+		$unitPanjang = 'pom_dataekonomi.kodproduk_unitkuantiti';
+		$unit = 'unitkuantiti';
+		$this->papar->senarai[$unit] = $this->tanya->
+			cariSemuaData($unitPanjang, '*', null, null);
+			
+		$this->papar->carian=$carian;//*/	
+	}
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
 	public function syarikat($carilah = null)
 	{
