@@ -251,8 +251,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				: '*';
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
-				cariSql($namaPanjang, $medan, $carian, $susun);
-				//cariSemuaData($namaPanjang, $medan, $carian, $susun);
+				//cariSql($namaPanjang, $medan, $carian, $susun);
+				cariSemuaData($namaPanjang, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
@@ -275,8 +275,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				: '*';
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
-				//cariSql($namaPanjang, $medan, $carian, $susun);
-				cariSemuaData($namaPanjang, $medan, $carian, $susun);
+				cariSql($namaPanjang, $medan, $carian, $susun);
+				//cariSemuaData($namaPanjang, $medan, $carian, $susun);
 		}# tamat ulang table
 
 		# papar jadual kod unit
