@@ -221,9 +221,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihMsic($namajadual, $cari, $susun)
-	{
-		//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
+	{	//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
 		$jadual = dpt_senarai('msicbaru'); //echo '<pre>';
+		//echo 'jadual:' . $this->semakPembolehubah($jadual);
 
 		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $namaPanjang)
