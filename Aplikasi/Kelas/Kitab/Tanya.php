@@ -68,6 +68,14 @@ class Tanya
 			$dimana .= " $atau$medan in $cariApa $akhir\r";
 		elseif($fix=='zxin')
 			$dimana .= " $atau$medan not in $cariApa $akhir\r";
+		elseif($fix=='or(x=)') //" $atau (`$cari`='$apa' OR msic2000='$apa')\r" :
+		{	$pecah = explode('|', $medan);
+			$dimana .= " $atau(`" . $pecah[0] . "` = '$cariApa' "
+			. " OR `" . $pecah[1] . "` = '$cariApa')\r";	}
+		elseif($fix=='or(%like%)')
+		{	$pecah = explode('|', $medan);
+			$dimana .= " $atau(`" . $pecah[0] . "` like '%$cariApa%' "
+			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";	}
 
 		return $dimana; //echo '<br>' . $dimana;
 	}
