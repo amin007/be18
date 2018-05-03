@@ -10,7 +10,7 @@ foreach ($this->senarai as $key => $row)
 {// mula ulang $row
 	$pilihMedan .= '<option>' . $row['Field'] . '</option>';
 }// tamat ulang $row
-echo '$this->url:'; print_r($this->url); # semak url 
+echo '$this->url:'; print_r($this->url); # semak url
 
 $url = $this->url;
 $class  = isset($url[0]) ? $url[0] : null;
@@ -38,19 +38,19 @@ $saizInput = 5;
 			<select name="namajadual" class="form-control">
 			<option><?php echo $jadual ?></option></select>
 			<span class="input-group-addon">Jadual</span>
-		</div><!-- class="input-group" -->			
+		</div><!-- class="input-group" -->
 	</div>
 	<div class="col-sm-<?php echo $saizInput?>">
 		<div class="input-group">
 			<label class="form-control">
 			Carian/Fix/(AntaraKurungan)
 			</label>
-		</div>		
+		</div>
 	</div>
 </div>
 <!-- =============================================================================== -->
-<?php 
-$u = 1 ;
+<?php
+$u = 1;
 	$paparJika = ''; //echo $paparJika;
 	$linkTambah = URL . "$class/$method/$jadual/" . ($u+1);
 	$pilihU = '<a href="' . $linkTambah . '">+</a> '
@@ -64,7 +64,7 @@ $u = 1 ;
 			<select name="pilih[<?php echo $u?>]" class="form-control">
 			<?php echo $pilihMedan; ?></select>
 			<span class="input-group-addon"></span>
-		</div><!-- class="input-group" -->			
+		</div><!-- class="input-group" -->
 	</div>
 	<div class="col-sm-<?php echo $saizInput?>">
 		<div class="input-group">
@@ -110,7 +110,7 @@ for ( $u = 2 ; $u <= $ulang ; $u++ )
 			<select name="pilih[<?php echo $u?>]" class="form-control">
 			<?php echo $pilihMedan; ?></select>
 			<span class="input-group-addon">&nbsp;</span>
-		</div><!-- class="input-group" -->			
+		</div><!-- class="input-group" -->
 	</div>
 	<div class="col-sm-<?php echo $saizInput?>">
 		<div class="input-group">
@@ -141,7 +141,7 @@ for ( $u = 2 ; $u <= $ulang ; $u++ )
 			<?php echo $pilihMedan; ?></select>
 			<span class="input-group-addon">
 			</span>
-		</div><!-- class="input-group" -->			
+		</div><!-- class="input-group" -->
 	</div>
 	<div class="col-sm-<?php echo $saizInput?>">
 		<div class="input-group">
