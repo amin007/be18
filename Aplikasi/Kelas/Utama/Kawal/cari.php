@@ -310,8 +310,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		{# mula ulang table
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
-				cariSql("`$myTable`", $medan, $carian, $susun);
-				//cariSemuaData("`$myTable`", $medan, $carian, $susun);
+				cariSql($myTable, $medan, $carian, $susun);
+				//cariSemuaData($myTable, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
@@ -328,8 +328,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		{# mula ulang table
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
-				cariSql("`$myTable`", $medan, $carian, $susun);
-				//cariSemuaData("`$myTable`", $medan, $carian, $susun);
+				cariSql($myTable, $medan, $carian, $susun);
+				//cariSemuaData($myTable, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
