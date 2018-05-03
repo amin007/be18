@@ -102,5 +102,32 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		return $carian;
 	}
 #---------------------------------------------------------------------------------------------------#
+	function bentukMedanJohor()
+	{
+		//`KOD NEGERI`, `NEGERI`,
+		//echo '6)$namajadual=' . $namajadual . '<br>';
+		# senarai nama medan
+		$medanAsal = '`KOD NGDBBP 2010`,`PEJABAT OPERASI`,' .
+		"\r" . ' concat(`KOD DAERAH BANCI`,"-",`DAERAH BANCI`," | ",`NEGERI`) as DB,' .
+		"\r" . ' concat(`KOD STRATA`,"-",`STRATA`) as STRATA,' .
+		"\r" . ' concat(`KOD MUKIM`,"-",`MUKIM`) as MUKIM,' .
+		"\r" . ' concat(`KOD BP`,"-",`DAERAH PENTADBIRAN`) as DAERAH,' .
+		"\r" . ' concat(`KOD PBT`,"-",`PIHAK BERKUASA TEMPATAN`) as PBT,' .
+		"\r" . ' concat(`KOD BDR`,"-",`NAMA BANDAR`) as BANDAR,' .
+		"\r" . '`DESKRIPSI (LOKALITI STATISTIC KAWKECIL)`, `LOKALITI UNTUK INDEKS`';
+		# senarai nama medan
+		$medanBaru = '`KOD NGDBBP 2010`,' .
+		//"\r" . ' concat("01",`no_db`, `no_bp_baru`) as `KodNGDBBP`,' .
+		"\r" . ' `kod_strata` as STRATA, NEGERI,' .
+		"\r" . ' concat(`KodMukim`,"-",`Mukim`) as MUKIM,' .
+		"\r" . ' concat(`KodDP`,"-",`Daerah Pentadbiran`) as DAERAH,' .
+		"\r" . ' concat(`KodPBT`,"-",`PBT`) as PBT,' .
+		"\r" . ' `catatan`, `kawasan`,' .
+		"\r" . ' `LOKALITI UNTUK INDEKS`';
+
+		return array($medanAsal, $medanBaru);
+	}
+#---------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
 }
