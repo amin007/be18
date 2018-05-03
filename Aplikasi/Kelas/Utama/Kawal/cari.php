@@ -160,7 +160,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		/* fungsi ini memaparkan hasil carian
 		 * untuk jadual msic2000 dan msic2008
 		 */
-		//$this->semakPembolehubah($_POST['jika']); 
+
 		$kira = $this->pecah_post($_POST); //$this->semakPembolehubah($kira);
 		$this->sayaMestiPilih($bil, $muka, $kira);
 		$this->papar->cariID = '';
@@ -171,9 +171,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		echo '$this->papar->senarai:'; $this->semakRujuk($this->papar->senarai);
 		//	. '$this->papar->apa : ' . $this->papar->apa . '<br>';
 		echo '</pre>';//*/
-		
+
 		# paparkan ke fail cari/$namajadual.php
-		/*if ($mesej != null ) 
+		/*if ($mesej != null )
 		{
 			$_SESSION['mesej'] = $mesej;
 			//echo 'Patah balik ke ' . $lokasi . $mesej . '<hr>' . $data;
@@ -182,7 +182,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		else 
 		{	//echo 'Tak patah balik';
 			$this->papar->primaryKey = 'newss';
-			$this->papar->baca('cari/cari', 0);	
+			$this->papar->baca('cari/cari', 0);
 		}//*/
 
 		# Pergi papar kandungan
@@ -211,7 +211,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	function sayaMestiPilih($bil, $muka, $kira)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		list($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau) 
+		list($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau)
 			= $this->susunPembolehubah($bil, $muka);
 
 		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
@@ -219,39 +219,36 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$mesej = 'tak isi atau-dan pada carian';
 			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
 		}
-		elseif ( (empty($semak) || ( empty($semak2) && $namajadual=='johor') ) ) 
+		elseif ( (empty($semak) || ( empty($semak2) && $namajadual=='johor') ) )
 		{	//echo '2)$namajadual=' . $namajadual . '<br>';
 			$mesej = 'tak isi pada carian';
 			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
 		}
-		elseif (!empty($namajadual) && $namajadual=='msic') 
+		elseif (!empty($namajadual) && $namajadual=='msic')
 			list($mesej, $lokasi) = $this->sayaPilihMsic($namajadual, $bil, $muka, $kira, $cari);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihMsic($namajadual, $bil, $muka, $kira, $cari)
-	{	
+	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		$jadual = dpt_senarai('msicbaru');
 		$kumpulSusun = array('kumpul'=>null,'susun'=>null);
 		$susun = $this->menyusun($kumpulSusun, '0', $bil);
-		//echo 'susun:' . $this->semakPembolehubah($susun); 
-		$had = ' LIMIT 0, ' . $bil; // setkan $had untuk sql
+		//echo 'susun:' . $this->semakPembolehubah($susun);
 		//$this->semakPembolehubah($_POST['jika']); # Semak data dulu
 
 		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $namaPanjang)
 		{# mula ulang table
-			$myTable = substr($namaPanjang, 16); 
-			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable); 
+			$myTable = substr($namaPanjang, 16);
+			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			# senarai nama medan
-			$medan = ($myTable=='msic2008') ? 
+			$medan = ($myTable=='msic2008') ?
 				'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,' .
-				'msic2000,msic,keterangan,notakaki' 
-				: '*'; 
-			$this->papar->senarai[$myTable] = 
+				'msic2000,msic,keterangan,notakaki' : '*'; 
+			$this->papar->senarai[$myTable] =
 				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
 				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);
-				//$this->tanya->cariPOST($namaPanjang, $medan, $had);//*/
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
