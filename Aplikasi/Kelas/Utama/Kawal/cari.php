@@ -150,21 +150,20 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		list($mesej, $lokasi, $namajadual) = $this->sayaMestiPilih($bil, $muka);
 		$this->papar->cariID = '';
 
-		echo '<pre>'; # semak output
+		/*echo '<pre>'; # semak output
 		echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
 		echo '$this->papar->carian :'; $this->semakRujuk($this->papar->carian);
 		echo '$this->papar->senarai:'; $this->semakRujuk($this->papar->senarai);
 		echo '</pre>';//*/
 
-		/*# paparkan ke fail cari/$namajadual.php
+		# paparkan ke fail cari/$namajadual.php
 		if ($mesej != null )
 		{
 			@$_SESSION['mesej'] = $mesej;
 			//echo 'Patah balik ke ' . $lokasi . $mesej . '<hr>' . $data;
 			header('location:' . URL . 'cari/' . $lokasi . $namajadual . '/2');
 		}
-		else
-			# Pergi papar kandungan
+		else# Pergi papar kandungan
 			$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
@@ -192,6 +191,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		list($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau)
 			= $this->susunPembolehubah($bil, $muka);
+		# susun limit ikut $bil
+		$kumpulSusun = array('kumpul'=>null,'susun'=>null);
+		$susun = $this->menyusun($kumpulSusun, '0', $bil);
+		//echo 'susun:' . $this->semakPembolehubah($susun);
 
 		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
 		{	//echo ')$namajadual=' . $namajadual . '<br>';
@@ -205,25 +208,22 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		}
 		elseif (!empty($namajadual) && $namajadual=='msic')
 		{
-			$this->sayaPilihMsic($namajadual, $bil, $muka, $cari);
+			$this->sayaPilihMsic($namajadual, $cari, $susun);
 			$mesej = $lokasi = null;
 		}
 		elseif (!empty($namajadual) && $namajadual=='produk')
 		{
-			$this->sayaPilihProduk($namajadual, $bil, $muka, $cari);
+			$this->sayaPilihProduk($namajadual, $cari, $susun);
 			$mesej = $lokasi = null;
 		}
 
 		return array($mesej,$lokasi, $namajadual);
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihMsic($namajadual, $bil, $muka, $cari)
+	function sayaPilihMsic($namajadual, $cari, $susun)
 	{
 		//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
 		$jadual = dpt_senarai('msicbaru'); //echo '<pre>';
-		$kumpulSusun = array('kumpul'=>null,'susun'=>null);
-		$susun = $this->menyusun($kumpulSusun, '0', $bil);
-		//echo 'susun:' . $this->semakPembolehubah($susun);
 		//$this->semakPembolehubah($_POST['jika']); # Semak data dulu
 
 		# mula cari $cariID dalam $jadual
@@ -236,21 +236,23 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				. 'msic2000,msic,keterangan,notakaki'
 				: '*';
 			$this->papar->senarai[$myTable] =
-				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
-				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);
+				$this->tanya->cariSql($namaPanjang, $medan, $carian, $susun);
+				//$this->tanya->cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihProduk($namajadual, $bil, $muka, $cari)
+	function sayaPilihProduk($namajadual, $cari, $susun)
 	{
 		$jadual = dpt_senarai('produk');
-		echo 'jadual:' . $this->semakPembolehubah($jadual);
-		/*# mula cari $cariID dalam $jadual
+		//echo 'jadual:' . $this->semakPembolehubah($jadual);
+
+		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $namaPanjang)
 		{# mula ulang table
-			$myTable = substr($namaPanjang, 16); //echo "<br>4) $myTable";
+			$myTable = substr($namaPanjang, 16); 
+			//echo "<br>Produk) $myTable|$namaPanjang";
 			# senarai nama medan
 			$medan = ($myTable=='kodproduk_aup') ? 
 				'bil,substring(kod_produk_lama,1,5) as msic,kod_produk_lama,'
@@ -258,10 +260,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				: '*';
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] =
-				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
-				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);
+				//$this->tanya->cariSql($namaPanjang, $medan, $carian, $susun);
+				$this->tanya->cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
 		}# tamat ulang table
-			
+
 		# papar jadual kod unit
 		$unitPanjang = 'pom_dataekonomi.kodproduk_unitkuantiti';
 		$unit = 'unitkuantiti';
