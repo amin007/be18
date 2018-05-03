@@ -216,6 +216,11 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->sayaPilihProduk($namajadual, $cari, $susun);
 			$mesej = $lokasi = null;
 		}
+		elseif (!empty($namajadual) && $namajadual=='johor') 
+		{
+			$this->sayaPilihJohor($namajadual, $cari, $susun);
+			$mesej = $lokasi = null;
+		}
 
 		return array($mesej,$lokasi, $namajadual);
 	}
