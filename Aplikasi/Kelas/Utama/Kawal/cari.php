@@ -250,9 +250,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				. 'msic2000,msic,keterangan,notakaki'
 				: '*';
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
-			$this->papar->senarai[$myTable] =
-				$this->tanya->cariSql($namaPanjang, $medan, $carian, $susun);
-				//$this->tanya->cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
+			$this->papar->senarai[$myTable] = $this->tanya->
+				cariSql($namaPanjang, $medan, $carian, $susun);
+				//cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
@@ -274,9 +274,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				. 'kod_produk,unit_kuantiti unit,keterangan,keterangan_bi,aup,min,max' 
 				: '*';
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
-			$this->papar->senarai[$myTable] =
-				//$this->tanya->cariSql($namaPanjang, $medan, $carian, $susun);
-				$this->tanya->cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
+			$this->papar->senarai[$myTable] = $this->tanya->
+				//cariSql($namaPanjang, $medan, $carian, $susun);
+				cariSemuaData($namaPanjang, $medan, $carian, $susun);//*/
 		}# tamat ulang table
 
 		# papar jadual kod unit
@@ -298,9 +298,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		foreach ($jadual as $key => $$myTable)
 		{# mula ulang table
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
-			$this->papar->senarai[$myTable] =
-				$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
-				//$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
+			$this->papar->senarai[$myTable] = $this->tanya->
+				cariSql("`$myTable`", $medan, $carian, $susun);
+				//cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;//*/
@@ -316,9 +316,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		foreach ($jadual as $key => $$myTable)
 		{# mula ulang table
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
-			$this->papar->senarai[$myTable] =
-				$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
-				//$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
+			$this->papar->senarai[$myTable] = $this->tanya->
+				cariSql("`$myTable`", $medan, $carian, $susun);
+				//cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;//*/
@@ -334,9 +334,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		foreach ($jadual as $key => $$myTable)
 		{# mula ulang table
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
-			$this->papar->senarai[$myTable] =
-				$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
-				//$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
+			$this->papar->senarai[$myTable] = $this->tanya->
+				cariSql("`$myTable`", $medan, $carian, $susun);
+				//cariSemuaData("`$myTable`", $medan, $carian, $susun);//*/
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;//*/
