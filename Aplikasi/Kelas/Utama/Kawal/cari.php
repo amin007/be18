@@ -147,31 +147,25 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		 * untuk jadual msic2000 dan msic2008
 		 */
 
-		$this->sayaMestiPilih($bil, $muka);
+		list($mesej, $lokasi, $namajadual) = $this->sayaMestiPilih($bil, $muka);
 		$this->papar->cariID = '';
 
 		/*echo '<pre>'; # semak output
-		//echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
+		echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
 		echo '$this->papar->carian :'; $this->semakRujuk($this->papar->carian);
 		echo '$this->papar->senarai:'; $this->semakRujuk($this->papar->senarai);
-		//	. '$this->papar->apa : ' . $this->papar->apa . '<br>';
 		echo '</pre>';//*/
 
 		# paparkan ke fail cari/$namajadual.php
-		/*if ($mesej != null )
+		if ($mesej != null )
 		{
-			$_SESSION['mesej'] = $mesej;
+			@$_SESSION['mesej'] = $mesej;
 			//echo 'Patah balik ke ' . $lokasi . $mesej . '<hr>' . $data;
 			header('location:' . URL . 'cari/' . $lokasi . $namajadual . '/2');
 		}
 		else
-		{	//echo 'Tak patah balik';
-			$this->papar->primaryKey = 'newss';
-			$this->papar->baca('cari/cari', 0);
-		}//*/
-
-		# Pergi papar kandungan
-		$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
+			# Pergi papar kandungan
+			$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
 	function susunPembolehubah($bil, $muka)
@@ -210,13 +204,18 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
 		}
 		elseif (!empty($namajadual) && $namajadual=='msic')
-			list($mesej, $lokasi) = $this->sayaPilihMsic($namajadual, $bil, $muka, $cari);
+		{
+			$this->sayaPilihMsic($namajadual, $bil, $muka, $cari);
+			$mesej = $lokasi = null;
+		}
+
+		return array($mesej,$lokasi, $namajadual);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihMsic($namajadual, $bil, $muka, $cari)
 	{
-		echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
-		$jadual = dpt_senarai('msicbaru'); echo '<pre>';
+		//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
+		$jadual = dpt_senarai('msicbaru'); //echo '<pre>';
 		$kumpulSusun = array('kumpul'=>null,'susun'=>null);
 		$susun = $this->menyusun($kumpulSusun, '0', $bil);
 		//echo 'susun:' . $this->semakPembolehubah($susun);
@@ -229,7 +228,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$medan = ($myTable=='msic2008') ? # senarai nama medan
 				'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,'
-				. 'msic2000,msic,keterangan,notakaki' 
+				. 'msic2000,msic,keterangan,notakaki'
 				: '*';
 			$this->papar->senarai[$myTable] =
 				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $susun);
@@ -237,9 +236,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
-
-		return array($mesej = null, $lokasi = null);
-	}	
+	}
 #------------------------------------------------------------------------------------------
 	public function syarikat($carilah = null)
 	{
