@@ -89,22 +89,17 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 			$ca .= null;
 		else:
 			foreach ($post['pilih'] as $key=>$cari)
-			{	//echo "\r$key => $f  | "; // '%like%' 'x='
+			{	//echo "\r$key => $f  | ";
 				list($f, $at, $m1, $m2, $apa) = bentukPembolehubah($post, $key);
-				if ($myTable=='msic2008')
-				{
-					$ca[] = ($cari=='msic') ?
-						array('fix'=>$f1,'atau'=>$atau,'medan'=>$m1,'apa'=>$apa)
-						: array('fix'=>$f1,'atau'=>$atau,'medan'=>$m2,'apa'=>$apa);
-				}
-				else
-				{
-					$ca[] = array('fix'=>'%like%','atau'=>$at,'medan'=>$cari,'apa'=>$apa);
-				}
+				$ca[] = ($myTable=='msic2008') ?
+					( ($cari=='msic') ?
+					array('fix'=>$f1,'atau'=>$atau,'medan'=>$m1,'apa'=>$apa)
+					: array('fix'=>$f1,'atau'=>$atau,'medan'=>$m2,'apa'=>$apa) )
+					: array('fix'=>'%like%','atau'=>$at,'medan'=>$cari,'apa'=>$apa);
 			}
 		endif; //echo '<pre>$carian->'; print_r($carian); echo '</pre>';
 
-		return $carian;
+		return $ca;
 	}
 #---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
