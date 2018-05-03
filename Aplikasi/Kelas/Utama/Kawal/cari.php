@@ -90,7 +90,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>'; 
 		# senaraikan tatasusunan jadual
 		list($myJadual, $medan, $id, $susun) = $this->pembolehubah();
-		$this->papar->senarai = array();
 
 		if (!empty($id['nama']))
 		{
@@ -98,11 +97,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => 'concat_ws("",newss,nossm,nama)', # cari dalam medan apa
 				'apa' => $id['nama']); # benda yang dicari
-			$kira = $this->cariSyarikat($jadual, $medan, $carian, $susun);
-			# isytihar pembolehubah untuk dalam class Papar
-			$this->papar->primaryKey = 'newss';
-			$this->papar->carian[] = $id['nama'];
-			$this->papar->cariID = count($kira);
+			$this->cariSyarikat($jadual, $medan, $carian, $susun, $id['nama']);
 		}
 		else
 		{
@@ -341,16 +336,19 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
-	function cariSyarikat($jadual, $medan, $carian, $susun)
+	function cariSyarikat($jadual, $medan, $carian, $susun, $cariID)
 	{
 		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
-			//$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				cariSql("`$myTable`", $medan, $carian, $susun);
 				//cariSemuaData("`$myTable`", $medan, $carian, $susun);
 		}# tamat ulang table//*/
+		# isytihar pembolehubah untuk dalam class Papar
+		$this->papar->primaryKey = 'newss';
+		$this->papar->cariID =
+		$this->papar->carian[] = $cariID;
 	}
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
