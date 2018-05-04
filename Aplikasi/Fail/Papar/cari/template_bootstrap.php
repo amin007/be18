@@ -22,7 +22,9 @@ foreach ($this->senarai as $myTable => $row)
 	if ( count($row)==0 ) echo '';
 	else
 	{
-		$mula2 = ($jadual=='***') ? ' active' : ''; ?>
+		$mula2 = ($jadual=='***') ? ' active' : ''; 
+		$tajukjadual = '<span class="badge badge-success">' . $myTable . '</span>'
+		. "\r" . '<span class="badge">' . count($row) . '</span>'; ?>
 	<div class="tab-pane<?php echo $mula2?>" id="<?php echo $myTable ?>">
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
 <?php include 'pilih_' . $pilihJadual . '.php'; ?>

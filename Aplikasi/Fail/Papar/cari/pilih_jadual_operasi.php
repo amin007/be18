@@ -1,5 +1,5 @@
 	<table border="1" class="excel" id="example">
-	<?php echo '<h3>'. $myTable . $carian . '</h3>';
+	<?php echo '<h3>'. $tajukjadual . '</h3>';
 	$printed_headers = false; # mula bina jadual
 	#-----------------------------------------------------------------
 	for ($kira=0; $kira < count($row); $kira++)
@@ -28,5 +28,5 @@
 		} 
 		?></tr></tbody>
 	<?php
-	}#-----------------------------------------------------------------?>
-	</table>
+	}#-----------------------------------------------------------------
+	?></table>
