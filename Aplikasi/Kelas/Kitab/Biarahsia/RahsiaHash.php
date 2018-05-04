@@ -16,7 +16,7 @@ class RahsiaHash
 
 		return hash_final($context);
 	}
-
+#---------------------------------------------------------------------------------------------
 	public static function rahsia($algo, $data)
 	{
 		$context = hash_init($algo);
@@ -24,7 +24,7 @@ class RahsiaHash
 
 		return hash_final($context);
 	}
-	
+#---------------------------------------------------------------------------------------------
 	public static function cincang($data, $numAlgo = 12, $arrOptions = array())
 	{
 		if (function_exists('password_hash')) 
@@ -41,7 +41,7 @@ class RahsiaHash
 
 		return $cincang;
 	}
-
+#---------------------------------------------------------------------------------------------
 	public static function sahkan($data, $cincang)
 	{
 		if (function_exists('password_verify'))
