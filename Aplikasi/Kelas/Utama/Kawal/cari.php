@@ -166,7 +166,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	function susunPembolehubah($bil, $muka)
 	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		# setkan pembolehubah dulu
-		$namajadual = isset($_POST['namajadual']) ? $_POST['namajadual'] : null;
+		$jadual = isset($_POST['namajadual']) ? $_POST['namajadual'] : null;
 		$cari = isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null;
 		$susunX = isset($_POST['susun']) ? $_POST['susun'] : 1;
 		$pilih = isset($_POST['jika']['pilih'][1]) ? $_POST['jika']['pilih'][1] : null;
@@ -176,10 +176,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 
 		//$this->semakPembolehubah($_POST);
 		//echo '$bil=' . $bil. '<br>$muka=' . $muka . '<br>';
-		echo '$susunX =' . $susunX . '<br>';//echo '$pilih=' . $pilih . '<br>';
+		//echo '$susunX =' . $susunX . '<br>';//echo '$pilih=' . $pilih . '<br>';
 		//echo '$semak =' . $semak1 . '<br>$semak2=' . $semak2 . '<br>';
 
-		return array($namajadual,$susunX,$cari,$pilih,$semak,$semak2,$atau);
+		return array($jadual,$susunX,$cari,$pilih,$semak,$semak2,$atau);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilih($bil, $muka)
