@@ -205,33 +205,27 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$mesej = 'tak isi pada carian';
 			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
 		}
-		elseif (!empty($namajadual) && $namajadual=='msic')
+		elseif (!empty($namajadual) )
 		{
-			$this->sayaPilihMsic($namajadual, $cari, $susun);
-			$mesej = $lokasi = null;
-		}
-		elseif (!empty($namajadual) && $namajadual=='produk')
-		{
-			$this->sayaPilihProduk($namajadual, $cari, $susun);
-			$mesej = $lokasi = null;
-		}
-		elseif (!empty($namajadual) && $namajadual=='johor')
-		{
-			$this->sayaPilihJohor($namajadual, $cari, $susun);
-			$mesej = $lokasi = null;
-		}
-		elseif (!empty($namajadual) && $namajadual=='syarikat')
-		{
-			$this->sayaPilihSyarikat($namajadual, $cari, $susun);
-			$mesej = $lokasi = null;
-		}
-		elseif (!empty($namajadual) && $namajadual=='data_mm_prosesan')
-		{
-			$this->sayaPilihDataMM($namajadual, $cari, $susun);
+			$this->pilihYangWujud($namajadual, $cari, $susun);
 			$mesej = $lokasi = null;
 		}//*/
 
 		return array($mesej,$lokasi, $namajadual);
+	}
+#------------------------------------------------------------------------------------------
+	function pilihYangWujud($namajadual, $cari, $susun)
+	{
+		if ($namajadual=='msic')
+			$this->sayaPilihMsic($namajadual, $cari, $susun);
+		elseif ($namajadual=='produk')
+			$this->sayaPilihProduk($namajadual, $cari, $susun);
+		elseif ($namajadual=='johor')
+			$this->sayaPilihJohor($namajadual, $cari, $susun);
+		elseif ($namajadual=='syarikat')
+			$this->sayaPilihSyarikat($namajadual, $cari, $susun);
+		elseif ($namajadual=='data_mm_prosesan')
+			$this->sayaPilihDataMM($namajadual, $cari, $susun);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihMsic($namajadual, $cari, $susun)
