@@ -70,12 +70,13 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		return $where;
 	} // private function dimanaPOST()
 #---------------------------------------------------------------------------------------------------#
-	function bentukPembolehubah($post, $key)
+	function bentukPembolehubah($post, $key, $m0)
 	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		$fx = isset($post['fix'][$key]) ? $post['fix'][$key] : null;
 		$f = ($fx=='x') ? 'or(x=)' : 'or(%like%)';
 		$at = isset($post['atau'][$key]) ? $post['atau'][$key] : 'WHERE';
-		$m1 = $cari . '|msic2000'; $m2 = $cari . '||notakaki';
+		$m1 = $m0 . '|msic2000'; $m2 = $m0 . '|notakaki';
 		$apa = isset($post['cari'][$key]) ? $post['cari'][$key] : null;
 
 		return array($f, $at, $m1, $m2, $apa);
@@ -89,17 +90,50 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 			$carian .= null;
 		else:
 			foreach ($post['pilih'] as $key=>$cari)
-			{	//echo "\r$key => $f  | ";
-				list($f, $at, $m1, $m2, $apa) = bentukPembolehubah($post, $key);
-				$carian[] = ($myTable=='msic2008') ?
-					( ($cari=='msic') ?
-					array('fix'=>$f1,'atau'=>$atau,'medan'=>$m1,'apa'=>$apa)
-					: array('fix'=>$f1,'atau'=>$atau,'medan'=>$m2,'apa'=>$apa) )
-					: array('fix'=>'%like%','atau'=>$at,'medan'=>$cari,'apa'=>$apa);
+			{	//echo "\r$key => $cari ($myTable)| ";
+				$carian[] = $this->bentukCarian2($myTable, $post, $key, $cari);
 			}
 		endif; //echo '<pre>$carian->'; print_r($carian); echo '</pre>';
 
+		return $carian;//*/
+	}
+#---------------------------------------------------------------------------------------------------#
+	function bentukCarian1($myTable, $post, $key, $m0)
+	{
+		list($f1, $at, $m1, $m2, $apa) = $this->bentukPembolehubah($post, $key, $m0);
+		if($myTable=='msic2008')
+		{
+			if ($m0=='msic')
+				$carian = array('fix'=>$f1,'atau'=>$at,'medan'=>$m1,'apa'=>$apa);
+			else
+				$carian = array('fix'=>$f1,'atau'=>$at,'medan'=>$m2,'apa'=>$apa);
+		}
+		else
+		{
+			$carian = array('fix'=>'%like%','atau'=>$at,'medan'=>$m0,'apa'=>$apa);
+		}//*/
 		return $carian;
+	}
+#---------------------------------------------------------------------------------------------------#
+	function bentukCarian2($myTable, $post, $key, $m0)
+	{
+		list($f1, $at, $m1, $m2, $apa) = $this->bentukPembolehubah($post, $key, $m0);
+		$carian = ($myTable=='msic2008') ?
+		( ($m0=='msic') ?
+			array('fix'=>$f1,'atau'=>$at,'medan'=>$m1,'apa'=>$apa)
+			: array('fix'=>$f1,'atau'=>$at,'medan'=>$m2,'apa'=>$apa) )
+			: array('fix'=>'%like%','atau'=>$at,'medan'=>$m0,'apa'=>$apa);
+		return $carian;
+	}
+#---------------------------------------------------------------------------------------------------#
+	function bentukCarian0($myTable, $post, $key, $m0)
+	{
+		echo '<br>$myTable : ' . $myTable;
+		list($f1, $at, $m1, $m2, $apa) = $this->bentukPembolehubah($post, $key, $m0);
+		echo '<br>$f1 : ' . $f1; echo '<br>$at : ' . $at;
+		echo '<br>$m0 : ' . $m0 . '<br>$m1 : ' . $m1 . '<br>$m2 : ' . $m2;
+		echo '<br>$apa : ' . $apa;
+		echo '<br>';
 	}
 #---------------------------------------------------------------------------------------------------#
 	function bentukMedanJohor()
