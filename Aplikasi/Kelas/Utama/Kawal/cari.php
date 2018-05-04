@@ -113,7 +113,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		# Fungsi ini memaparkan borang
 		//echo 'mana ko pergi daa lokaliti($negeri)<br>';
 
-		if ($apa=='msic') $jadual = 'pom_dataekonomi.msic2000';
+		//if ($apa=='msic') $jadual = 'pom_dataekonomi.msic2000';
+		if ($apa=='msic') $jadual = 'msic2000';
 		elseif ($apa=='produk') $jadual = 'pom_dataekonomi.kodproduk_mei2011';
 		elseif ($apa=='johor') $jadual = 'pom_lokaliti.johor'; # negeri johor/malaysia
 		elseif ($apa=='malaysia') $jadual = 'pom_lokaliti.malaysia'; # negeri johor/malaysia
@@ -137,7 +138,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		 */
 
 		list($mesej, $lokasi, $namajadual) = $this->sayaMestiPilih($bil, $muka);
-		$this->papar->cariID = '';
 
 		/*echo '<pre>'; # semak output
 		echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
@@ -153,7 +153,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			header('location:' . URL . 'cari/' . $lokasi . $namajadual . '/2');
 		}
 		else# Pergi papar kandungan
-			$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
+			$this->paparKandungan($this->_folder, 'index' , $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
 	function susunPembolehubah($bil, $muka)
@@ -232,7 +232,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $namaPanjang)
 		{# mula ulang table
-			$myTable = substr($namaPanjang, 16);
+			//$myTable = substr($namaPanjang, 16);
+			$myTable = $namaPanjang;
 			//echo "<br>Msic) $myTable|$namaPanjang";
 			$medan = ($myTable=='msic2008') ? # senarai nama medan
 				'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,'
