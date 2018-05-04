@@ -70,15 +70,6 @@ function dpt_ip()
 	return $IP;
 }
 
-function senarai_kakitangan($pilih = 0)
-{
-	# define('PEGAWAI', serialize (array()) );
-	$pegawai = ($pilih==2) ? 
-		unserialize(PROSESAN) : unserialize(PEGAWAI);
-
-    return $pegawai;
-}
-
 function dpt_senarai($pilih)
 {
 	# define('MSICBARU', serialize (array()) );
@@ -86,7 +77,6 @@ function dpt_senarai($pilih)
 		$jadual = unserialize(MSICBARU);
 	elseif ($pilih == 'produk') : 
 		$jadual = unserialize(PRODUK);
-	elseif ($pilih == 'jadual_login') : 
 		$jadual = unserialize(JADUAL_LOGIN);
 	elseif ($pilih == 'jadual_biodata') : 
 		$jadual = unserialize(JADUAL_BIODATA);
@@ -94,6 +84,11 @@ function dpt_senarai($pilih)
 		$jadual = unserialize(JADUAL_BIODATA2);
 	elseif ($pilih == 'jadual_biodata3') : 
 		$jadual = unserialize(JADUAL_BIODATA3);
+	elseif ($pilih == 'staf_prosesan') : 
+		$jadual = unserialize(PROSESAN);
+	elseif ($pilih == 'staf_biasa') : 
+		$jadual = unserialize(PEGAWAI);
+	elseif ($pilih == 'jadual_login') : 
 	elseif ($pilih == 'jadual_kawalan') : 
 		$jadual = unserialize(JADUAL_KAWALAN);
 	elseif ($pilih == 'jadual_kawalan2') : 
@@ -167,16 +162,16 @@ function pencamSqlLimit($bilSemua, $item, $ms)
  */
 function myGetType($var)
 {
-		if (is_array($var)) return "array";
-		if (is_bool($var)) return "boolean";
-		if (is_float($var)) return "float";
-		if (is_int($var)) return "integer";
-		if (is_null($var)) return "NULL";
-		if (is_numeric($var)) return "numeric";
-		if (is_object($var)) return "object";
-		if (is_resource($var)) return "resource";
-		if (is_string($var)) return "string";
-		return "unknown type";
+	if (is_array($var)) return "array";
+	if (is_bool($var)) return "boolean";
+	if (is_float($var)) return "float";
+	if (is_int($var)) return "integer";
+	if (is_null($var)) return "NULL";
+	if (is_numeric($var)) return "numeric";
+	if (is_object($var)) return "object";
+	if (is_resource($var)) return "resource";
+	if (is_string($var)) return "string";
+	return "unknown type";
 }
 # format perpuluhan
 function kiraPerpuluhan($kiraan, $perpuluhan = 1)
