@@ -1,4 +1,4 @@
-<h1> Ini Template Bootstrap </h1>
+<!-- h1> Ini Template Bootstrap </h1 -->
 <div class="tabbable tabs-top">
 	<ul class="nav nav-tabs putih">
 <?php
@@ -23,8 +23,7 @@ foreach ($this->senarai as $myTable => $row)
 	else
 	{
 		$mula2 = ($jadual=='***') ? ' active' : ''; 
-		$tajukjadual = '<span class="badge badge-success">' . $myTable . '</span>'
-		. "\r" . '<span class="badge">' . count($row) . '</span>'; ?>
+		$tajukjadual = ''; ?>
 	<div class="tab-pane<?php echo $mula2?>" id="<?php echo $myTable ?>">
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
 <?php include 'pilih_' . $pilihJadual . '.php'; ?>
