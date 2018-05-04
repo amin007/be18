@@ -239,10 +239,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			//$myTable = substr($namaPanjang, 16);
 			$myTable = $namaPanjang;
 			//echo "<br>Msic) $myTable|$namaPanjang";
-			$medan = ($myTable=='msic2008') ? # senarai nama medan
-				'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,'
-				. 'msic2000,msic,keterangan,notakaki'
-				: '*';
+			$medan = $this->tanya->medanIndustri($myTable);
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				//cariSql($namaPanjang, $medan, $carian, $susun);

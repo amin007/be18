@@ -70,6 +70,21 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		return $where;
 	} // private function dimanaPOST()
 #---------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------#
+	function medanIndustri($myTable)
+	{
+		if ($myTable=='msic2008'):
+			$medan = 'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,'
+			. 'msic2000,msic,keterangan,notakaki';
+		elseif ($myTable=='msic_v1'):
+			$medan = 'survey kp,msic,keterangan,notakaki';
+		else : $medan = '*';
+		endif;
+
+		return $medan;
+	}
+#---------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------#
 	function bentukPembolehubah($post, $key, $m0)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
