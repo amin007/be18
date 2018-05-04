@@ -131,6 +131,15 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, 'a_mula' , $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
+	function semakOutput()
+	{
+		echo '<pre>'; # semak output
+		echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
+		echo '$this->papar->carian :'; $this->semakRujuk($this->papar->carian);
+		echo '$this->papar->senarai:'; $this->semakRujuk($this->papar->senarai);
+		echo '</pre>';
+	}
+#------------------------------------------------------------------------------------------
 	function pada($bil = 400, $muka = 1)
 	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		/* fungsi ini memaparkan hasil carian
@@ -138,12 +147,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		 */
 
 		list($mesej, $lokasi, $namajadual) = $this->sayaMestiPilih($bil, $muka);
-
-		/*echo '<pre>'; # semak output
-		echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
-		echo '$this->papar->carian :'; $this->semakRujuk($this->papar->carian);
-		echo '$this->papar->senarai:'; $this->semakRujuk($this->papar->senarai);
-		echo '</pre>';//*/
+		$this->semakOutput();
+		$this->papar->template = 'bootstrap';
+		//$this->papar->template = 'biasa';
+		$fail[] = 'a_syarikat'; $fail[] = 'index';
 
 		# paparkan ke fail cari/$namajadual.php
 		if ($mesej != null )
@@ -153,7 +160,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			header('location:' . URL . 'cari/' . $lokasi . $namajadual . '/2');
 		}
 		else# Pergi papar kandungan
-			$this->paparKandungan($this->_folder, 'index' , $noInclude=0); //*/
+			$this->paparKandungan($this->_folder, $fail[1], $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
 	function susunPembolehubah($bil, $muka)
