@@ -136,6 +136,43 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		echo '<br>';
 	}
 #---------------------------------------------------------------------------------------------------#
+	function jadualDataCorp()
+	{
+		/*$jadual = array('`aes`','`kawalan_aes`','`aes_alam_sekitar`',
+		'`aes_kp_205`','`aes_kp_206`','`aes_kp_207`','`aes_kp_800`',
+		'`aes_perkhidmatan`','`aes_pertanian`');//*/
+		$jadual = array('aes','kawalan_aes','aes_alam_sekitar',
+		'aes_kp_205','aes_kp_206','aes_kp_207','aes_kp_800',
+		'aes_perkhidmatan','aes_pertanian');
+		$medan = '*';
+		# cari id berasaskan newss/ssm/sidap/nama
+		//$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
+
+		return array($jadual,$medan);
+	}
+#---------------------------------------------------------------------------------------------------#
+	function dataCorp($apa)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//echo '<pre>$apa->'; print_r($apa); echo '</pre>';
+		$carian = null; 
+		if($_POST==null || empty($_POST) ):
+			$carian .= null;
+		else:
+			list($jadual, $medan) = $this->jadualDataCorp();
+			$carian[] = array('fix'=>'z%like%','atau'=>'WHERE',
+				'medan' => 'concat_ws("",newss,nossm,nama)',
+				'apa' => $apa[1]);
+		endif;
+
+		//echo '<pre>$jadual->'; print_r($jadual); echo '</pre>';
+		//echo '<pre>$medan->'; print_r($medan); echo '</pre>';
+		//echo '<pre>$carian->'; print_r($carian); echo '</pre>';
+
+		return array($jadual, $medan, $carian);
+	}
+#---------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------#
 	function bentukMedanJohor()
 	{
 		//`KOD NEGERI`, `NEGERI`,
