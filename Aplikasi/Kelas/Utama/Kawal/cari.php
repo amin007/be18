@@ -233,7 +233,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$jadual = dpt_senarai('msicbaru'); //echo '<pre>';
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
 
-		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $namaPanjang)
 		{# mula ulang table
 			//$myTable = substr($namaPanjang, 16);
@@ -254,7 +253,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$jadual = dpt_senarai('produk');
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
 
-		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $namaPanjang)
 		{# mula ulang table
 			$myTable = substr($namaPanjang, 16); 
@@ -285,7 +283,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
 		list($medanAsal, $medanBaru) = $this->tanya->bentukMedanJohor();
 
-		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $namaPanjang)
 		{# mula ulang table
 			$myTable = ($namaPanjang == 'pom_lokaliti.johor') ?
@@ -305,7 +302,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
 		list($jadual, $medan, $carian) = $this->tanya->dataCorp($cari);
-		# mula cari $cariID dalam $jadual
+
 		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
 			$this->papar->senarai[$myTable] = $this->tanya->
@@ -322,7 +319,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
 		$medan = '*';
 
-		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
@@ -336,7 +332,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 #------------------------------------------------------------------------------------------
 	function cariSyarikat($jadual, $medan, $carian, $susun, $cariID)
 	{
-		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
 			$this->papar->senarai[$myTable] = $this->tanya->
@@ -345,8 +340,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		}# tamat ulang table//*/
 		# isytihar pembolehubah untuk dalam class Papar
 		$this->papar->primaryKey = 'newss';
-		$this->papar->cariID =
-		$this->papar->carian[] = $cariID;
+		$this->papar->cariID = $this->papar->carian[] = $cariID;
 	}
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
