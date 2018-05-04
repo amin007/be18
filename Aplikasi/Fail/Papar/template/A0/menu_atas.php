@@ -39,17 +39,17 @@ $iconFA['video'] = '<i class="fa fa-video-camera" aria-hidden="true"></i>';
 		<div class="navbar-collapse collapse">
 <?php require 'menubar_atas.php'; ?>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-			<!-- borang cari kp-->
-			<form class="navbar-form navbar-right" action="<?php echo URL ?>cari/pada/400/1" method="POST">
-				<div class="input-group">
-					<div class="input-group-btn">
-						<a class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a>
-					</div>
-					<input type="hidden" name="namajadual" value="syarikat">
-					<input type="text" name="jika[cari][0]" placeholder="Cari Newss / Nama" class="form-control" />
-					<input type="hidden" name="susun" value="nama ASC">
-				</div>
-			</form>
+<!-- borang cari kp-->
+<form class="navbar-form navbar-right" action="<?php echo URL ?>cari/pada/400/1" method="POST">
+<div class="input-group">
+	<div class="input-group-btn">
+		<a class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a>
+	</div>
+	<input type="hidden" name="namajadual" value="syarikat">
+	<input type="text" name="jika[cari][1]" placeholder="Cari Newss / Nama" class="form-control" />
+	<input type="hidden" name="susun" value="nama ASC">
+</div>
+</form>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		</div>
 <!-- menu kanan tamat -->
