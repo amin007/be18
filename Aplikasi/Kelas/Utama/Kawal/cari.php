@@ -148,12 +148,12 @@ class Cari extends \Aplikasi\Kitab\Kawal
 
 		list($mesej, $lokasi, $namajadual) = $this->sayaPilih($bil, $muka);
 		//$this->semakOutput();
-		//$this->papar->template = 'bootstrap';
-		$this->papar->template = 'biasa';
+		$this->papar->template = 'bootstrap';
+		//$this->papar->template = 'biasa';
 		$fail[] = 'a_syarikat'; $fail[] = 'index';
 
 		# paparkan ke fail cari/$namajadual.php
-		/*if ($mesej != null )
+		if ($mesej != null )
 		{
 			@$_SESSION['mesej'] = $mesej;
 			//echo 'Patah balik ke ' . $lokasi . $mesej . '<hr>' . $data;
@@ -173,26 +173,25 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$semak = isset($_POST['jika']['cari'][1]) ? $_POST['jika']['cari'][1] : null;
 		$semak2 = isset($_POST['jika']['cari'][2]) ? $_POST['jika']['cari'][2] : null;
 		$atau = isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null;
-
+		# susun limit ikut $bil
+		$kumpulSusun = array('kumpul'=>null,'susun'=>$susunX);
+		$susun = $this->menyusun($kumpulSusun, '0', $bil);
+		//echo 'susun:' . $this->semakPembolehubah($susun);
 		//$this->semakPembolehubah($_POST);
 		//echo '$bil=' . $bil. '<br>$muka=' . $muka . '<br>';
 		//echo '$susunX =' . $susunX . '<br>';//echo '$pilih=' . $pilih . '<br>';
 		//echo '$semak =' . $semak1 . '<br>$semak2=' . $semak2 . '<br>';
 
-		return array($jadual,$susunX,$cari,$pilih,$semak,$semak2,$atau);
+		return array($jadual,$susun,$cari,$pilih,$semak,$semak2,$atau);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilih($bil, $muka)
 	{
-		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		list($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau)
 			= $this->susunPembolehubah($bil, $muka);
-		# susun limit ikut $bil
-		//$kumpulSusun = array('kumpul'=>null,'susun'=>null);
-		//$susun = $this->menyusun($kumpulSusun, '0', $bil);
-		//echo 'susun:' . $this->semakPembolehubah($susun);
 
-		/*if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
+		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
 		{	//echo ')$namajadual=' . $namajadual . '<br>';
 			$mesej = 'tak isi atau-dan pada carian';
 			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
@@ -228,7 +227,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$mesej = $lokasi = null;
 		}//*/
 
-		//return array($mesej,$lokasi, $namajadual);
+		return array($mesej,$lokasi, $namajadual);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihMsic($namajadual, $cari, $susun)
