@@ -135,12 +135,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, 'a_mula' , $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
-	function semakOutput()
+	function semakOutput($mesej, $lokasi, $namajadual)
 	{
 		echo '<pre>'; # semak output
-		echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
-		echo '$this->papar->carian :'; $this->semakRujuk($this->papar->carian);
-		echo '$this->papar->senarai:'; $this->semakRujuk($this->papar->senarai);
+		echo 'Patah balik ke ' . $lokasi . '/' . $namajadual . '<hr>';
+		echo '$mesej = ' . $mesej . '';
+		echo '<br>$this->papar->carian :'; $this->semakRujuk($this->papar->carian);
+		echo '<br>$this->papar->senarai:'; $this->semakRujuk($this->papar->senarai);
 		echo '</pre>';
 	}
 #------------------------------------------------------------------------------------------
@@ -149,11 +150,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		/* fungsi ini memaparkan hasil carian
 		 * untuk jadual msic2000 dan msic2008
 		 */
-
 		list($mesej, $lokasi, $namajadual) = $this->sayaPilih($bil, $muka);
-		//$this->semakOutput();
-		$this->papar->template = 'bootstrap';
-		//$this->papar->template = 'biasa';
+		//$this->semakOutput($mesej, $lokasi, $namajadual);
+		$this->papar->template = ($namajadual=='syarikat') ?
+			'biasa' : 'bootstrap';
 		$fail[] = 'a_syarikat'; $fail[] = 'index';
 
 		# paparkan ke fail cari/$namajadual.php
@@ -195,6 +195,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		list($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau)
 			= $this->susunPembolehubah($bil, $muka);
 
+		//echo '<br>namajadual:' . $namajadual;
 		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
 		{	//echo ')$namajadual=' . $namajadual . '<br>';
 			$mesej = 'tak isi atau-dan pada carian';
@@ -312,17 +313,14 @@ class Cari extends \Aplikasi\Kitab\Kawal
 #------------------------------------------------------------------------------------------
 	function sayaPilihSyarikat($namajadual, $cari, $susun)
 	{
-		$jadual = dpt_senarai('***');
-		//echo 'jadual:' . $this->semakPembolehubah($jadual);
-		$medan = '*';
-
+		//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
+		list($jadual, $medan, $carian) = $this->tanya->dataCorp($cari);
 		# mula cari $cariID dalam $jadual
 		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
-			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
-				cariSql($myTable, $medan, $carian, $susun);
-				//cariSemuaData($myTable, $medan, $carian, $susun);
+				//cariSql($myTable, $medan, $carian, $susun);
+				cariSemuaData($myTable, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
