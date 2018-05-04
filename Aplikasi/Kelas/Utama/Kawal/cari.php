@@ -195,7 +195,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		list($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau)
 			= $this->susunPembolehubah($bil, $muka);
 
-		//echo '<br>namajadual:' . $namajadual;
 		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
 		{	//echo ')$namajadual=' . $namajadual . '<br>';
 			$mesej = 'tak isi atau-dan pada carian';
