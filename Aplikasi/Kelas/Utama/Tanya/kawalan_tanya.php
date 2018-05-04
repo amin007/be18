@@ -16,7 +16,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			'level' => 'pelawat'
 		); # dapatkan medan terlibat
 		$kira = 1; # kira jumlah data
-		
+
 		return ($pilih==1) ? $kira : $data; # pulangkan nilai
 	}
 #---------------------------------------------------------------------------------------------------#

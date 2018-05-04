@@ -58,7 +58,7 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		echo 'Kod:' . \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $nama) . ': ';
 		//echo 'Kod:' . RahsiaHash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY) . ': ';
 	}
-
+#-------------------------------------------------------------------------------------------
 	function menu()
 	{
 		# Set pemboleubah utama
@@ -68,7 +68,7 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		$this->papar->baca('mobile/mobile');
 	}
-
+#-------------------------------------------------------------------------------------------
 	function logout()
 	{
 		//echo '<pre>sebelum:'; print_r($_SESSION) . '</pre>';
