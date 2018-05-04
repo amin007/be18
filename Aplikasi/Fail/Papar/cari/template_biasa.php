@@ -1,4 +1,4 @@
-<h1> Ini Template Biasa </h1>
+<!-- h1> Ini Template Biasa </h1 -->
 <?php
 foreach ($this->senarai as $myTable => $row)
 {
