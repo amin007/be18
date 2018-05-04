@@ -103,9 +103,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->papar->carian[]='[id:0]'; //$this->papar->cariID = '[id:0]';
 		}
 
+		//$this->papar->template = 'bootstrap';
+		$this->papar->template = 'biasa';
+		$fail[] = 'a_syarikat'; $fail[] = 'index';
+
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); //*/
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=0); //*/
     }
 #------------------------------------------------------------------------------------------
 	public function tentang($apa, $bil=1, $mesej=null)
