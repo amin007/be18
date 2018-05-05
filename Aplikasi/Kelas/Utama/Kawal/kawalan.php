@@ -196,20 +196,20 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# ubahsuai $posmen
 		$posmen = $this->ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass);
 		//echo '<br>$dataID=' . $dataID . '<br>';
-		echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
-		echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		# mula ulang $senaraiJadual
-		/*foreach ($senaraiJadual as $kunci => $jadual)
+		foreach ($senaraiJadual as $kunci => $jadual)
 		{# mula ulang table
-			$this->tanya->ubahSqlSimpan
-			//ubahSimpan
+			$this->tanya->//ubahSqlSimpan
+			ubahSimpan
 			($posmen[$jadual], $jadual, $medanID);
 		}# tamat ulang table
 
 		# pergi papar kandungan
 		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
-		//header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
+		header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass)
@@ -230,7 +230,9 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		$posmen = $this->pecah5P($senaraiJadual[0], $posmen);
-		$posmen = $this->kira5P($senaraiJadual[0], $posmen);
+		//$posmen = $this->kira5P($senaraiJadual[0], $posmen);
+		$posmen = $this->tukarHuruf($senaraiJadual[0], $posmen);
+		$posmen = $this->tambahAksara($senaraiJadual[0], $posmen);
 		$posmen = $this->tarikh($senaraiJadual[0], $posmen);
 		return $posmen = $this->tanya->semakPosmen(
 			$senaraiJadual[0], $posmen, $pass);
@@ -284,6 +286,39 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			$posmen[$myTable][$kekunci] = $mengira;
 			$mengira = null;
 		}
+
+		return $posmen; # pulangkan nilai
+	}
+#-------------------------------------------------------------------------------------------
+	function tukarHuruf($myTable, $posmen)
+	{
+		$huruf['kecil'] = array('fe','email');
+		$huruf['BESAR'] = array('respon');
+		$huruf['Depan'] = array('responden','no','batu','jalan','tmn_kg','daerah');
+
+		foreach ($huruf as $jenis=>$key): foreach ($key as $v=>$kekunci):
+		if (isset($posmen[$myTable][$kekunci])):
+			if ($jenis == 'kecil') # huruf('kecil', )
+				$posmen[$myTable][$kekunci] = huruf('kecil', $posmen[$myTable][$kekunci]);
+			if ($jenis == 'BESAR') # huruf('Besar', )
+				$posmen[$myTable][$kekunci] = huruf('Besar', $posmen[$myTable][$kekunci]);
+			if ($jenis == 'Depan') # huruf('Besar_Depan', )
+				$posmen[$myTable][$kekunci] = huruf('Besar_Depan', $posmen[$myTable][$kekunci]);
+		endif; endforeach; endforeach; //echo '<hr><hr>';
+
+		return $posmen; # pulangkan nilai
+	}
+#-------------------------------------------------------------------------------------------
+	function tambahAksara($myTable, $posmen)
+	{
+		$aksara['angkasa'] = array('fe');
+
+		foreach ($aksara as $jenis=>$key): foreach ($key as $v=>$kekunci):
+		if (isset($posmen[$myTable][$kekunci])):
+			if ($jenis == 'angkasa') #  str_replace('_','&nbsp;', $asal);
+				$posmen[$myTable][$kekunci] = str_replace(' ','-',
+					$posmen[$myTable][$kekunci]);
+		endif; endforeach; endforeach; //echo '<hr><hr>';
 
 		return $posmen; # pulangkan nilai
 	}
