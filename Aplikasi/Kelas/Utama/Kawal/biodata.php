@@ -92,7 +92,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		list($this->papar->senarai,$this->papar->carian[]) = $this->jadualBiodata();
 		$this->papar->template = 'biasa';
 		//$this->papar->template = 'bootstrap';
-		$fail[] = 'index'; $fail[] = 'b_ubah';
+		$fail = array('index','b_ubah','b_ubah_kawalan');
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
