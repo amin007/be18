@@ -243,12 +243,26 @@ function huruf($jenis , $papar)
 	return $papar;
 }
 
-function bersih($papar) 
+function bersih($papar)
 {
 	# lepas lari aksara khas dalam SQL
 	//$papar = mysql_real_escape_string($papar);
 	# buang ruang kosong (atau aksara lain) dari mula & akhir 
 	$papar = trim($papar);
+
+	return $papar;
+}
+
+function bersih2X($papar)
+{
+	# buang ruang kosong (atau aksara lain) dari mula & akhir
+	$papar = trim($papar);
+	# https://stackoverflow.com/questions/1176904/php-how-to-remove-all-non-printable-characters-in-a-string
+	$papar = preg_replace('/[\x00-\x1F\x7F-\xFF]/', '', $papar);
+	$papar = preg_replace('/[\x00-\x1F\x7F-\xFF]/', '', $papar);
+	$papar = preg_replace('/[\x00-\x1F\x7F]/', '', $papar);
+	$papar = preg_replace('/[\x00-\x1F\x7F]/u', '', $papar);
+	$papar = preg_replace('/[\x00-\x1F\x7F\xA0]/u', '', $papar);
 
 	return $papar;
 }
