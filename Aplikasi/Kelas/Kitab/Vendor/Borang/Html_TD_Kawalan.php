@@ -153,6 +153,15 @@ class Html_TD_Kawalan
 				   . $tabline2 . '</div>'
 				   . '';
 		}
+		elseif(in_array($key,array('no','batu','jalan','tmn_kg','daerah')))
+		{#kod utk alamat baru
+			$input = '<div class="input-group input-group">' . $tabline
+				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
+				   . '<input type="text" ' . $inputText
+				   . ' class="form-control">'
+				   . $tabline2 . '</div>'
+				   . '';
+		}
 		elseif(in_array($key,array('notel','nofax','nohp')))
 		{#kod utk input text saiz kecil
 			$input = '<div class="input-group input-group-sm">' . $tabline
