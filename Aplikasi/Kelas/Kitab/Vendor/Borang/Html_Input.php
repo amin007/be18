@@ -141,6 +141,18 @@ class Html_Input
 				   . '</div>' . $komen
 				   . '';
 		}
+		elseif ( in_array($jenisMedan,array('blockquote')) )
+		{#kod untuk blockquote
+			$data = null;
+			$input = '<blockquote>'
+				   . '<p class="form-control-static text-info">' . $data . '</p>'
+				   //. '<small>Alamat <cite title="Source Title">baru</cite></small>'
+				   . '</blockquote>';
+		}
+		else
+		{#kod untuk lain2
+			$input = '<p class="form-control-static text-info">' . $data . '</p>';
+		}
 		
 		return $input; # pulangkan nilai
 	}
