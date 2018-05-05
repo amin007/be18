@@ -80,7 +80,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'concat_ws("=>ngdbbp baru=",ngdbbp,ngdbbp_baru) ngdbbp,ngdbbp_baru,' . "\r"
 			//. 'batchAwal,dsk,mko,batchProses,'
 			. 'lawat,terima,hantar,hantar_prosesan,' . "\r" 
-			. '"" as pecah5P,hasil,belanja,gaji,aset,staf,stok' . "\r" 
+			. 'null as pecah5P,hasil,belanja,gaji,aset,staf,stok' . "\r"
 			. '';	
 		return $medanKawalan;
 	}
