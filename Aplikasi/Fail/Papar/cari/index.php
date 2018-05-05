@@ -2,6 +2,8 @@
 # pilih paparan ke bawah atau melintang
 //$pilihJadual = 'jadual_operasi';
 $pilihJadual = 'jadual_am';
+//$pilihJadual = 'ubah_medan01';
+//$pilihJadual = 'ubah_medan02';
 
 # untuk carian syarikat sahaja
 /*echo '<pre>$primaryKey='; print_r($this->primaryKey); echo '</pre>';
