@@ -14,6 +14,7 @@ echo '<pre>$cariID='; print_r($this->$cariID); echo '</pre>';//*/
 # untuk kod baru
 //echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
+//echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
 
 # jenis template
 include 'template_' . $this->template . '.php';
