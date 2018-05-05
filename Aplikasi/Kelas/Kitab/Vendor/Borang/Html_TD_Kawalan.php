@@ -80,7 +80,7 @@ class Html_TD_Kawalan
 	{
 ?><div class="form-group">
 	<div class="<?php echo $class ?>">
-		<label for="inputSubmit" class="col-sm-3 control-label"><?=$myTable?></label>
+		<!--label for="inputSubmit" class="col-sm-3 control-label"><?=$myTable?></label -->
 		<div class="input-group input-group-lg">
 		<span class="input-group-addon">
 			<input type="hidden" name="jadual" value="<?php echo $myTable ?>">
