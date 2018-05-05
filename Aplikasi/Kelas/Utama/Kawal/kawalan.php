@@ -111,6 +111,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# semak pembolehubah dari jadual lain
 		echo '<br>$this->papar->medanID::'; print_r($this->papar->medanID);
 		echo '<br>$this->papar->carian::'; print_r($this->papar->carian);
+		echo '<br>$this->papar->cariID::'; print_r($this->papar->cariID);
 		echo '<br>$this->papar->_jadual::';	print_r($this->papar->_jadual);
 		echo '<br>$this->papar->senarai::'; print_r($this->papar->senarai);
 		echo '<br>$this->papar->_cariIndustri::'; print_r($this->papar->_cariIndustri);
@@ -140,7 +141,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			$newss = $this->cariMsic($senarai['kes']); # mula cari Msic
 		# semak semua $pencam di sini
 			$this->papar->senarai = $senarai;
-			$this->papar->carian[] = $newss;
+			$this->papar->carian[] = $this->papar->cariID = $newss;
 			//$this->semakDataJadual($senarai);
 
 		return array($senarai, $newss);
