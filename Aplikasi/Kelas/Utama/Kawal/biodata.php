@@ -86,8 +86,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
     }
 #-------------------------------------------------------------------------------------------
 	public function ubah() 
-	{
-		# Set pembolehubah utama
+	{# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
 		list($this->papar->senarai,$this->papar->carian[]) = $this->jadualBiodata();
 		$this->papar->template = 'biasa';
@@ -106,7 +105,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_biodata');
 		list($pengguna, $level) = $this->pembolehubahSesi(); //echo "<pre>";
 
-		# bentuk tatasusunan $carian
+		# bentuk tatasusunan $carian //$carian = null; 
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => $medan01, # cari dalam medan apa
