@@ -116,15 +116,15 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 				'medan' => $medan02, # cari dalam medan apa
 				'apa' => $level); # benda yang dicari
 		# semak database
-			$cariNama[$myTable] = $this->tanya->
+			$senarai[$myTable] = $this->tanya->
 				cariSemuaData("`$myTable`", $medan, $carian, null);
 				//cariSql("`$myTable`", $medan, $carian, null);
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
-		//echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
-		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
+		//echo '<pre>$senarai::'; print_r($senarai); echo '</pre>';
+		//echo '<hr>$data->' . sizeof($senarai) . '<hr>';
 
-		return array($cariNama, $pengguna);
+		return array($senarai, $pengguna);
 	}
 #-------------------------------------------------------------------------------------------
 	public function ubahSimpan($dataID)
