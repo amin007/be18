@@ -97,7 +97,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
 		//$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
 		//$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0); 
 		//*/
@@ -122,11 +122,11 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			$senarai['kes'] = $this->tanya->
 				cariSemuaData("`$myTable`", $medan, $carian, null);
 				//cariSql("`$myTable`", $medan, $carian, null);
-			$newss = $this->cariMsic($cariNama['kes']); # mula cari Msic
+			$newss = $this->cariMsic($senarai['kes']); # mula cari Msic
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
-		//echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
-		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
+		//echo '<pre>$senarai::'; print_r($senarai); echo '</pre>';
+		//echo '<hr>$kira=' . sizeof($senarai) . '<hr>';
 
 		return array($senarai, $newss);
 	}
