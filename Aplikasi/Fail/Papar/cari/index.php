@@ -5,13 +5,13 @@ $pilihJadual = 'jadual_am';
 //$pilihJadual = 'ubah_medan01';
 //$pilihJadual = 'ubah_medan02';
 
-# untuk carian syarikat sahaja
+# untuk kod lama
 /*echo '<pre>$primaryKey='; print_r($this->primaryKey); echo '</pre>';
 echo '<pre>$carian='; print_r($this->carian[0]); echo '</pre>';
 echo '<pre>$cariID='; print_r($this->$cariID); echo '</pre>';*/
 //include 'papar_jadual_berulang_mudah.php';
 
-# untuk carian msic/produk/kod ngdbbp
+# untuk kod baru
 echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
 
