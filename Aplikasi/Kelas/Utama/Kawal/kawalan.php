@@ -87,20 +87,19 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	}
 #-------------------------------------------------------------------------------------------
 	public function ubah($cariID) 
-	{		
-		# Set pembolehubah utama
+	{# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
-		list($this->papar->senarai,$this->papar->cariID) 
+		list($this->papar->senarai,$this->papar->carian)
 			= $this->jadualKawalan($cariID);
 		$this->papar->template = 'biasa';
 		//$this->papar->template = 'bootstrap';
 		$fail = array('index','b_ubah','b_ubah_kawalan');
 
 		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
-		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
-		$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0); 
+		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
+		//$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
+		//$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0); 
 		//*/
     }
 #-------------------------------------------------------------------------------------------
@@ -108,9 +107,9 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	{
 		list($myTable, $this->papar->carian) = dpt_senarai('jadual_kawalan');
 		$this->papar->_jadual = $myTable;
-		$medan = $this->tanya->medanKawalan($cariID); //$carian = null; echo '<pre>';
+		$medan = $this->tanya->medanKawalan($cariID); //echo '<pre>';
 		
-		# semak database
+		# bentuk tatasusunan $carian //$carian = null; 
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => $this->papar->carian, # cari dalam medan apa
@@ -119,18 +118,17 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 				'atau'=>'AND', # WHERE / OR / AND
 				'medan' => $medan02, # cari dalam medan apa
 				'apa' => $level); # benda yang dicari//*/
-			# mula cari $cariID dalam $myJadual
-				$cariNama['kes'] = 
-					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
-					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
-				$newss = $this->cariMsic($cariNama['kes']); # mula cari Msic
-				
+		# semak database
+			$senarai['kes'] = $this->tanya->
+				cariSemuaData("`$myTable`", $medan, $carian, null);
+				//cariSql("`$myTable`", $medan, $carian, null);
+			$newss = $this->cariMsic($cariNama['kes']); # mula cari Msic
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
 		//echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
 
-		return array($cariNama, $newss);
+		return array($senarai, $newss);
 	}
 #-------------------------------------------------------------------------------------------
 	function cariMsic($cariApa)
