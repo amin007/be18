@@ -257,7 +257,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			$data5P = array('hasil','belanja','gaji','aset','staf','stok');
 			foreach ($posmen as $jadual => $value)
 			foreach ($value as $kekunci => $papar)
-				$posmen[$myTable][$kekunci]= 
+				$posmen[$myTable][$kekunci] =
 					( in_array($kekunci,$data5P) ) ?
 					str_replace( ',', '', bersih($papar) )# buang koma
 					: bersih($papar);
