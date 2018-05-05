@@ -94,7 +94,7 @@ class Html_TD_Kawalan
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
 	public function ubahInput($paparSahaja,$jadual,$kira,$key,$data)
-	{	# istihar pembolehubah 
+	{	# istihar pembolehubah
 		$name = 'name="' . $jadual . '[' . $key . ']"';
 		$inputText = $name . ' value="' . $data . '"';
 		$dataType = myGetType($data);
@@ -404,8 +404,8 @@ class Html_TD_Kawalan
 			# cetak hasil $data --------------------------------------------
 			?><tbody><tr>
 			<td><?php echo $kira+1 ?></td><?php 
-				foreach ( $row[$kira] as $key=>$data ) : 
-			?><td><?php echo $data ?></td><?php 
+				foreach ( $row[$kira] as $key=>$data ) :
+			?><td><?php echo bersih2X($data); ?></td><?php
 				endforeach; ?>  
 			</tr></tbody>
 			<?php
