@@ -13,7 +13,7 @@ echo '<pre>$cariID='; print_r($this->$cariID); echo '</pre>';//*/
 //include 'papar_jadual_berulang_mudah.php';
 
 # untuk kod baru
-echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
+//echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
 //echo '<pre>$_cariIndustri='; print_r($this->_cariIndustri); echo '</pre>';
 
