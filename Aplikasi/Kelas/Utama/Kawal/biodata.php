@@ -12,7 +12,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		$this->_namaClass = '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$this->_namaFunction = '<hr>Nama function :' .__FUNCTION__ . '<hr>';
 	}
-
+##------------------------------------------------------------------------------------------
 	public function index()
 	{
 		# Set pembolehubah utama
@@ -25,7 +25,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		//$this->_folder = ''; # jika mahu ubah lokasi Papar
 		$this->paparKandungan($this->_folder, 'index', $noInclude=0);
 	}
-
+##------------------------------------------------------------------------------------------
 	public function paparKandungan($folder, $fail, $noInclude)
 	{	# Pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
@@ -35,14 +35,14 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 			//'mobile/mobile',$jenis,0); # $noInclude=0
 		//*/
 	}
-
+##------------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai)
 	{
 		echo '<pre>$senarai:<br>';
 		print_r($senarai);
 		echo '</pre>|';//*/
 	}
-
+##------------------------------------------------------------------------------------------
 	function logout()
 	{
 		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
@@ -75,7 +75,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 	}
 #-------------------------------------------------------------------------------------------
 	public function register() 
-	{		
+	{
 		# Set pembolehubah utama
 
 		# Pergi papar kandungan
@@ -86,15 +86,18 @@ class Biodata extends \Aplikasi\Kitab\Kawal
     }
 #-------------------------------------------------------------------------------------------
 	public function ubah() 
-	{		
+	{
 		# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
 		list($this->papar->senarai,$this->papar->dataID) = $this->jadualBiodata();
+		$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap';
+		$fail[] = 'a_syarikat'; $fail[] = 'index'; $fail[] = 'b_ubah';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
-		$this->paparKandungan($this->_folder, 'b_ubah' , $noInclude=0); 
+		$this->paparKandungan($this->_folder, $fail[2] , $noInclude=0);
 		//*/
     }
 #-------------------------------------------------------------------------------------------
