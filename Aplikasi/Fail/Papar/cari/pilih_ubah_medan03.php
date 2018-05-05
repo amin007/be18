@@ -17,9 +17,10 @@ for ($kira=0; $kira < count($row); $kira++)
 		?><label for="inputTajuk" class="col-sm-2 control-label"><?php echo $key
 		?></label><?php //echo "\n\t"; 
 		?><div class="<?php echo $class2 ?>"><?php
-		$paparData = $html->ubahInput($this->_cariIndustri, $myTable, $kira, $key, $data);
+		$paparData = $html->ubahInput($this->_cariIndustri, $this->_jadual,
+			$kira, $key, $data);
 		echo $paparData . "\n";
-		?></div><!-- / class="<?php echo $class ?>" --><?php
+		?></div><!-- / class="<?php echo $class2 ?>" --><?php
 		?></div><!-- / class="form-group" --><?php
 		echo "\n";
 	}## --------------------------------------------------------------------------
