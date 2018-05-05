@@ -86,7 +86,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		header('location: ' . URL . 'kawalan/ubah/' . $dataID);
 	}
 #-------------------------------------------------------------------------------------------
-	public function ubah($cariID) 
+	public function ubah($cariID)
 	{# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
 		$this->jadualKawalan($cariID);
@@ -196,20 +196,20 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# ubahsuai $posmen
 		$posmen = $this->ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass);
 		//echo '<br>$dataID=' . $dataID . '<br>';
-		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
-		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+		echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+		echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		# mula ulang $senaraiJadual
-		foreach ($senaraiJadual as $kunci => $jadual)
+		/*foreach ($senaraiJadual as $kunci => $jadual)
 		{# mula ulang table
-			$this->tanya->//ubahSqlSimpan
-			ubahSimpan
+			$this->tanya->ubahSqlSimpan
+			//ubahSimpan
 			($posmen[$jadual], $jadual, $medanID);
 		}# tamat ulang table
 
 		# pergi papar kandungan
 		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
-		header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
+		//header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass)
@@ -230,6 +230,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		$posmen = $this->pecah5P($senaraiJadual[0], $posmen);
+		$posmen = $this->kira5P($senaraiJadual[0], $posmen);
 		$posmen = $this->tarikh($senaraiJadual[0], $posmen);
 		return $posmen = $this->tanya->semakPosmen(
 			$senaraiJadual[0], $posmen, $pass);
@@ -251,12 +252,13 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		}
 		else
 		{
+			$data5P = array('hasil','belanja','gaji','aset','staf','stok');
 			foreach ($posmen as $jadual => $value)
 			foreach ($value as $kekunci => $papar)
 				$posmen[$myTable][$kekunci]= 
-					( in_array($kekunci,array('hasil','belanja','gaji','aset','staf','stok')) ) ?
-					str_replace( ',', '', bersih($papar) )# buang koma	
-					: bersih($papar);			
+					( in_array($kekunci,$data5P) ) ?
+					str_replace( ',', '', bersih($papar) )# buang koma
+					: bersih($papar);
 		}
 
 		unset($posmen[$myTable]['pecah5P']);
@@ -265,6 +267,23 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		echo '<pre>$hasil='; print_r($hasil); echo '</pre>';
 		echo '<pre>$pos='; print_r($pos); echo '</pre>';
 		echo '<pre>$posmen2='; print_r($posmen); echo '</pre>';//*/
+
+		return $posmen; # pulangkan nilai
+	}
+#-------------------------------------------------------------------------------------------
+	function kira5P($myTable, $posmen)
+	{
+		$data5P = array('hasil','belanja','gaji','aset','staf','stok');
+		$mengira = null;
+		foreach ($data5P as $kekunci)
+		if (isset($posmen[$myTable][$kekunci]))
+		{
+			//echo '<br>' . $kekunci .'|'. $posmen[$myTable][$kekunci];
+			//@eval( '$mengira = (' . $posmen[$myTable][$kekunci] . ');' );
+			$mengira = ($posmen[$myTable][$kekunci]);
+			$posmen[$myTable][$kekunci] = $mengira;
+			$mengira = null;
+		}
 
 		return $posmen; # pulangkan nilai
 	}
