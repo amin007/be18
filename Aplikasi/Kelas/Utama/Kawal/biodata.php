@@ -106,7 +106,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_biodata');
 		list($pengguna, $level) = $this->pembolehubahSesi(); //echo "<pre>";
 
-		# semak database
+		# bentuk tatasusunan $carian
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => $medan01, # cari dalam medan apa
@@ -115,10 +115,10 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 				'atau'=>'AND', # WHERE / OR / AND
 				'medan' => $medan02, # cari dalam medan apa
 				'apa' => $level); # benda yang dicari
-			# mula cari $cariID dalam $myJadual
-				$cariNama[$myTable] = 
-					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
-					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
+		# semak database
+			$cariNama[$myTable] = $this->tanya->
+				cariSemuaData("`$myTable`", $medan, $carian, null);
+				//cariSql("`$myTable`", $medan, $carian, null);
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
 		//echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
