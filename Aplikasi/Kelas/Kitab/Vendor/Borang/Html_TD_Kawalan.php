@@ -3,6 +3,96 @@ namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Html_TD_Kawalan
 {
 #==========================================================================================
+#------------------------------------------------------------------------------------------
+	public function medanCarian($pindah, $class = 'col-sm-7')
+	{
+		list($myTable, $senarai, $cariID, $_jadual) = $pindah;
+		$this->atasLabelSyarikat();
+		list($mencari, $carian, $mesej) = $this->atasSemakData($senarai, $cariID, $_jadual);
+		$this->atasInputCarian($mencari, $carian, $mesej, $class);
+	}
+#------------------------------------------------------------------------------------------
+	public function atasLabelSyarikat()
+	{
+		echo "\n"; ?><style>
+.floating-menu {
+	padding: 5px;; width: 300px; z-index: 100;
+	position: fixed; bottom: 0px; right: 0px;
+}
+</style><?php echo "\n";
+	}
+#------------------------------------------------------------------------------------------
+	public function atasSemakData($senarai, $cariID, $_jadual)
+	{
+		if(isset($senarai['kes'][0]['newss'])):
+			# set pembolehubah
+			$mencari = URL . 'kawalan/ubahCari/';
+			$carian = $cariID;
+			$mesej = ''; //$carian .' ada dalam ' . $this->_jadual;
+			list($namaSyarikat, $semak1, $semak3) = explode("|", $senarai['kes'][0]['nama']);
+			?><nav class="floating-menu">
+			<p class="bg-primary">
+			<?php echo "\n&nbsp;" . $namaSyarikat ?>
+			</p></nav>
+			<?php
+		else: # set pembolehubah
+			$mencari = URL . 'kawalan/ubahCari/';
+			$carian = null;
+			$mesej = '::' . $cariID . ' tiada dalam ' . $_jadual;
+		endif;
+
+		return array($mencari, $carian, $mesej);
+	}
+#------------------------------------------------------------------------------------------
+	public function atasInputCarian($mencari, $carian, $mesej, $class)
+	{
+		echo "\n";?><div class="container">
+<form method="GET" action="<?=$mencari;?>" class="form-inline" autocomplete="off">
+<div class="form-group">
+	<label for="carian"><h1>Ubah Kawalan<?=$mesej?></h1></label>
+	<div class="input-group">
+		<input type="text" name="cari" value="<?=$carian;?>"
+		class="form-control" id="inputString"
+		onkeyup="lookup(this.value);" onblur="fill();">
+		<span class="input-group-addon"><input type="submit" value="mencari"></span>
+	</div>
+</div>
+<div class="suggestionsBox" id="suggestions" style="display: none;">
+	<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
+</div>
+</form></div><br><?php echo "\n";
+	}
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+	public function medanTajuk($myTable, $class = 'col-sm-7')
+	{
+		echo "\n";
+?><div class="form-group">
+	<div class="<?php echo $class ?>">
+		<div class="input-group input-group-lg">
+		<span class="input-group-addon">Jadual <?php echo $myTable ?></span>
+		</div>
+	</div>
+</div><?php echo "\n";
+	}
+#------------------------------------------------------------------------------------------
+	public function medanHantar($myTable, $class = 'col-sm-7')
+	{
+?><div class="form-group">
+	<div class="<?php echo $class ?>">
+		<label for="inputSubmit" class="col-sm-3 control-label"><?=$myTable?></label>
+		<div class="input-group input-group-lg">
+		<span class="input-group-addon">
+			<input type="hidden" name="jadual" value="<?php echo $myTable ?>">
+			<input type="submit" name="Simpan" value="Simpan" class="btn btn-primary btn-large">
+			<input type="reset" name="Reset" value="Reset" class="btn btn-default btn-large">
+		</span>
+		</div>
+	</div>
+</div><?php
+	}
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 	public function ubahInput($paparSahaja,$jadual,$kira,$key,$data)
 	{	# istihar pembolehubah 
 		$name = 'name="' . $jadual . '[' . $key . ']"';
