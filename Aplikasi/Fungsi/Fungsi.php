@@ -217,10 +217,11 @@ function pilihValueData($key,$keyData,$data)
 function huruf($jenis , $papar) 
 {
 	/*
-	$_POST=strtoupper($_POST['']['']);
-	$_POST=strtolower($_POST['']['']);
-	$_POST=mb_convert_case($_POST[''][''], MB_CASE_TITLE);
-	ucfirst
+	$_POST=strtoupper($papar);
+	$_POST=strtolower($papar);
+	$_POST=mb_convert_case($papar, MB_CASE_TITLE);
+	ucfirst($papar)
+	ucwords(strtolower($papar))
 	*/
 
 	switch ($jenis) 
