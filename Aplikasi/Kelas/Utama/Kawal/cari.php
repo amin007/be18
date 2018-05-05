@@ -154,7 +154,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//$this->semakOutput($mesej, $lokasi, $namajadual);
 		$this->papar->template = ($namajadual=='syarikat') ?
 			'biasa' : 'bootstrap';
-		$fail[] = 'a_syarikat'; $fail[] = 'index';
+		$fail[] = 'index'; $fail[] = 'b_ubah';
 
 		# paparkan ke fail cari/$namajadual.php
 		if ($mesej != null )
@@ -164,7 +164,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			header('location:' . URL . 'cari/' . $lokasi . $namajadual . '/2');
 		}
 		else# Pergi papar kandungan
-			$this->paparKandungan($this->_folder, $fail[1], $noInclude=0); //*/
+			$this->paparKandungan($this->_folder, $fail[0], $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
 	function susunPembolehubah($bil, $muka)

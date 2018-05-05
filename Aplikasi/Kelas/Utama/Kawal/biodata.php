@@ -92,12 +92,12 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		list($this->papar->senarai,$this->papar->dataID) = $this->jadualBiodata();
 		$this->papar->template = 'biasa';
 		//$this->papar->template = 'bootstrap';
-		$fail[] = 'a_syarikat'; $fail[] = 'index'; $fail[] = 'b_ubah';
+		$fail[] = 'index'; $fail[] = 'b_ubah';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
-		$this->paparKandungan($this->_folder, $fail[2] , $noInclude=0);
+		$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0);
 		//*/
     }
 #-------------------------------------------------------------------------------------------
