@@ -71,7 +71,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws(" | ",nossm,kp) as nossm,fe,po,' . "\r"
 			//. 'mko,respon,nota,nota_prosesan,' . "\r"
 			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar,daerah,ngdbbp) as alamat,' . "\r"
-			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
+			. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
 			//. 'concat_ws(" ",no,batu,'
 			//. '( if (jalan is null, "", concat("JALAN ",jalan) ) ),
 			//. 'tmn_kg,poskod,dp_baru) alamat_baru,' . "\r"
@@ -80,8 +80,8 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'concat_ws("=>ngdbbp baru=",ngdbbp,ngdbbp_baru) ngdbbp,ngdbbp_baru,' . "\r"
 			//. 'batchAwal,dsk,mko,batchProses,'
 			. 'lawat,terima,hantar,hantar_prosesan,' . "\r" 
-			. 'null as pecah5P,hasil,belanja,gaji,aset,staf,stok' . "\r"
-			. '';	
+			. 'null as pecah5P,hasil,belanja,gaji,aset,staf,stok,' . "\r"
+			. 'null as notapendek';
 		return $medanKawalan;
 	}
 #---------------------------------------------------------------------------------------------------#
