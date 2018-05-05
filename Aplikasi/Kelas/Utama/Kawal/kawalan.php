@@ -216,12 +216,12 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	{
 		$posmen = array();
 		foreach ($_POST as $myTable => $value): 
-			if ( in_array($myTable,$senaraiJadual) ):
-				foreach ($value as $kekunci => $papar)
-				{
-					$posmen[$myTable][$kekunci] = bersih($papar);
-					$posmen[$myTable][$medanID] = $dataID;
-				}//*/
+		if ( in_array($myTable,$senaraiJadual) ):
+			foreach ($value as $kekunci => $papar)
+			{
+				$posmen[$myTable][$kekunci] = bersih($papar);
+				$posmen[$myTable][$medanID] = $dataID;
+			}//*/
 		endif; endforeach;
 
 		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
@@ -230,6 +230,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		$posmen = $this->pecah5P($senaraiJadual[0], $posmen);
+		$posmen = $this->tarikh($senaraiJadual[0], $posmen);
 		return $posmen = $this->tanya->semakPosmen(
 			$senaraiJadual[0], $posmen, $pass);
 	}
@@ -264,6 +265,22 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		echo '<pre>$hasil='; print_r($hasil); echo '</pre>';
 		echo '<pre>$pos='; print_r($pos); echo '</pre>';
 		echo '<pre>$posmen2='; print_r($posmen); echo '</pre>';//*/
+
+		return $posmen; # pulangkan nilai
+	}
+#-------------------------------------------------------------------------------------------
+	function tarikh($myTable, $posmen)
+	{
+		$tarikh = array('lawat','terima','hantar','hantar_prosesan');
+		//$tarikhX = array('lawatX','terimaX','hantarX','hantar_prosesanX');
+		foreach ($tarikh as $kekunci)
+		if (isset($posmen[$myTable][$kekunci . 'X']))
+		{
+			//echo '<br>' . $kekunci . 'X|'. $posmen[$myTable][$kekunci . 'X'];
+			//echo '<br>' . $kekunci .'|'. $posmen[$myTable][$kekunci];
+			$posmen[$myTable][$kekunci] = null;
+			unset($posmen[$myTable][$kekunci . 'X']);
+		}
 
 		return $posmen; # pulangkan nilai
 	}
