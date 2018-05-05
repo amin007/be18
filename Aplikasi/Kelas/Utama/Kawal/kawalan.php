@@ -89,8 +89,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	public function ubah($cariID) 
 	{# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
-		list($this->papar->senarai,$this->papar->carian)
-			= $this->jadualKawalan($cariID);
+		$this->jadualKawalan($cariID);
 		$this->papar->template = 'biasa';
 		//$this->papar->template = 'bootstrap';
 		$fail = array('index','b_ubah','b_ubah_kawalan');
@@ -98,21 +97,37 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		//$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
-		//$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
-		//$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0); 
-		//*/
+		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
+		$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0); //*/
     }
+#-------------------------------------------------------------------------------------------
+	function semakDataJadual($senarai)
+	{
+		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		echo '<pre>';
+		//echo '<br>Test $_POST->'; print_r($_POST);
+		//echo '<br>$senarai::'; print_r($senarai);
+		//echo '<hr>$kira=' . sizeof($senarai) . '<hr>';
+		# semak pembolehubah dari jadual lain
+		echo '<br>$this->papar->medanID::'; print_r($this->papar->medanID);
+		echo '<br>$this->papar->carian::'; print_r($this->papar->carian);
+		echo '<br>$this->papar->_jadual::';	print_r($this->papar->_jadual);
+		echo '<br>$this->papar->senarai::'; print_r($this->papar->senarai);
+		echo '<br>$this->papar->_cariIndustri::'; print_r($this->papar->_cariIndustri);
+		echo '</pre>';
+	}
 #-------------------------------------------------------------------------------------------
 	private function jadualKawalan($cariID)
 	{
-		list($myTable, $this->papar->carian) = dpt_senarai('jadual_kawalan');
-		$this->papar->_jadual = $myTable; echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		list($myTable, $this->papar->medanID) = dpt_senarai('jadual_kawalan');
+		$this->papar->_jadual = $myTable;
 		$medan = $this->tanya->medanKawalan($cariID); //echo '<pre>';
 		
 		# bentuk tatasusunan $carian //$carian = null; 
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
-				'medan' => $this->papar->carian, # cari dalam medan apa
+				'medan' => $this->papar->medanID, # cari dalam medan apa
 				'apa' => $cariID); # benda yang dicari
 			/*$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'AND', # WHERE / OR / AND
@@ -123,30 +138,27 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 				cariSemuaData("`$myTable`", $medan, $carian, null);
 				//cariSql("`$myTable`", $medan, $carian, null);
 			$newss = $this->cariMsic($senarai['kes']); # mula cari Msic
-		# semak pembolehubah
-		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
-		//echo '<pre>$senarai::'; print_r($senarai); echo '</pre>';
-		//echo '<hr>$kira=' . sizeof($senarai) . '<hr>';
-		# semak pembolehubah dari jadual lain
-		echo '<pre>$this->papar->_cariIndustri::'; print_r($this->papar->_cariIndustri); echo '</pre>';
-		echo '<pre>$newss::'; print_r($newss); echo '</pre>';
+		# semak semua $pencam di sini
+			$this->papar->senarai = $senarai;
+			$this->papar->carian[] = $newss;
+			//$this->semakDataJadual($senarai);
 
 		return array($senarai, $newss);
 	}
 #-------------------------------------------------------------------------------------------
 	function cariMsic($cariApa)
 	{
-		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
-		echo '<pre>$cariApa::'; print_r($cariApa); echo '</pre>';
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		//echo '<pre>$cariApa::'; print_r($cariApa); echo '</pre>';
 		if(isset($cariApa[0]['newss'])):
 			# 1.1 ambil nilai newss
 			$newss = $cariApa[0]['newss'];
 
 			# 1.2 cari nilai msic & msic08 dalam jadual msic2008
-			$jadualMSIC = dpt_senarai('msicbaru');
-			# substr("abcdef", 0, -1); # returns "abcde"
-			$msic08 = substr($msic, 4); # 326-46312 -> returns "46312"
-			$this->cariIndustri($jadualMSIC, $cariApa[0]['msic2008']);
+			$this->cariIndustri(dpt_senarai('msicbaru'), 
+				# substr("abcdef", 0, -1); # returns "abcde"
+				# 326-46312 -> returns "46312"
+				substr($cariApa[0]['msic2008'], 4));
 		endif;
 
 		return $newss;//*/
@@ -154,13 +166,13 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 #---------------------------------------------------------------------------------------------------
 	private function cariIndustri($jadualMSIC, $msic08)
 	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$cariM6[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'msic','apa'=>$msic08);
-		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 
-		# mula cari $msis08 dalam $jadual
+		# mula cari $msis08 dalam database
 		foreach ($jadualMSIC as $m6 => $msic)
 		{# mula ulang table
-			$jadualPendek = substr($msic, 16); 
+			$jadualPendek = $msic; //substr($msic, 16);
 			//echo "\$msic=$msic|\$jadualPendek=$jadualPendek<br>";
 			# senarai nama medan
 			if($jadualPendek=='msic2008') /*bahagian B,kumpulan K,kelas Kls,*/
@@ -172,8 +184,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			else $medanM6 = '*'; 
 
 			$this->papar->_cariIndustri[$msic] = $this->tanya->
-				cariSql($msic, $medanM6, $cariM6, null);
-				//cariSemuaData($msic, $medanM6, $cariM6, null);
+				//cariSql($msic, $medanM6, $cariM6, null);
+				cariSemuaData($msic, $medanM6, $cariM6, null);
 		}# tamat ulang table
 	}
 #---------------------------------------------------------------------------------------------------

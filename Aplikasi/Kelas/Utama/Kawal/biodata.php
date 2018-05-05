@@ -88,7 +88,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 	public function ubah() 
 	{# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
-		list($this->papar->senarai,$this->papar->carian[]) = $this->jadualBiodata();
+		$this->jadualBiodata();
 		$this->papar->template = 'biasa';
 		//$this->papar->template = 'bootstrap';
 		$fail = array('index','b_ubah','b_ubah_kawalan');
@@ -96,9 +96,24 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
-		$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0);
-		//*/
+		$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0); //*/
     }
+#-------------------------------------------------------------------------------------------
+	function semakDataJadual($senarai)
+	{
+		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		echo '<pre>';
+		//echo '<br>Test $_POST->'; print_r($_POST);
+		//echo '<br>$senarai::'; print_r($senarai); 
+		//echo '<hr>$kira=' . sizeof($senarai) . '<hr>';
+		# semak pembolehubah dari jadual lain
+		echo '<br>$this->papar->medanID::'; print_r($this->papar->medanID);
+		echo '<br>$this->papar->carian::'; print_r($this->papar->carian);
+		echo '<br>$this->papar->_jadual::';	print_r($this->papar->_jadual);
+		echo '<br>$this->papar->senarai::'; print_r($this->papar->senarai);
+		echo '<br>$this->papar->_cariIndustri::'; print_r($this->papar->_cariIndustri);
+		echo '</pre>';
+	}
 #-------------------------------------------------------------------------------------------
 	private function jadualBiodata()
 	{
@@ -119,9 +134,9 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 				cariSemuaData("`$myTable`", $medan, $carian, null);
 				//cariSql("`$myTable`", $medan, $carian, null);
 		# semak pembolehubah
-		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
-		//echo '<pre>$senarai::'; print_r($senarai); echo '</pre>';
-		//echo '<hr>$kira=' . sizeof($senarai) . '<hr>';
+			$this->papar->senarai = $senarai;
+			$this->papar->carian[] = $pengguna;
+			//$this->semakDataJadual($senarai);
 
 		return array($senarai, $pengguna);
 	}
