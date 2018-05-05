@@ -1,6 +1,6 @@
 <?php
 $html = new \Aplikasi\Kitab\Html_Input;
-$aksi = URL . 'biodata/ubahSimpan/' . $this->dataID;
+$aksi = URL . 'biodata/ubahSimpan/' . $this->carian[0];
 $class1 = 'col-sm-7'; # untuk tajuk dan hantar
 $class2 = 'col-sm-6 '; # untuk $data ?>
 <form method="POST" action="<?php echo $aksi ?>"
