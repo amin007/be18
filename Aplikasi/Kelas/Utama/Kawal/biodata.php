@@ -122,7 +122,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
 		//echo '<pre>$senarai::'; print_r($senarai); echo '</pre>';
-		//echo '<hr>$data->' . sizeof($senarai) . '<hr>';
+		//echo '<hr>$kira=' . sizeof($senarai) . '<hr>';
 
 		return array($senarai, $pengguna);
 	}
