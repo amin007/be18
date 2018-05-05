@@ -12,7 +12,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		$this->_namaClass = '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$this->_namaFunction = '<hr>Nama function :' .__FUNCTION__ . '<hr>';
 	}
-
+##------------------------------------------------------------------------------------------
 	public function index()
 	{
 		# Set pembolehubah utama
@@ -25,7 +25,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//$this->_folder = ''; # jika mahu ubah lokasi Papar
 		$this->paparKandungan($this->_folder, 'index', $noInclude=0);
 	}
-
+##------------------------------------------------------------------------------------------
 	public function paparKandungan($folder, $fail, $noInclude)
 	{	# Pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
@@ -35,14 +35,14 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			//'mobile/mobile',$jenis,0); # $noInclude=0
 		//*/
 	}
-
+##------------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai)
 	{
 		echo '<pre>$senarai:<br>';
 		print_r($senarai);
 		echo '</pre>|';//*/
 	}
-
+##------------------------------------------------------------------------------------------
 	function logout()
 	{
 		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
@@ -92,12 +92,15 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//echo '<hr>' . $this->_namaClass . '<hr>';
 		list($this->papar->senarai,$this->papar->cariID) 
 			= $this->jadualKawalan($cariID);
+		$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap';
+		$fail = array('index','b_ubah','b_ubah_kawalan');
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		//$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
 		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
-		$this->paparKandungan($this->_folder, 'b_ubah_kawalan' , $noInclude=0); 
+		$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0); 
 		//*/
     }
 #-------------------------------------------------------------------------------------------
