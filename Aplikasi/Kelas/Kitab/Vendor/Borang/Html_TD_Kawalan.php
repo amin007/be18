@@ -4,6 +4,18 @@ class Html_TD_Kawalan
 {
 #==========================================================================================
 #------------------------------------------------------------------------------------------
+	public static function labelBawah($labelDibawah)
+	{
+		$input2 = null;
+		$tab2 = "\n\t\t";
+		$input2 = ($labelDibawah==null) ? '' :
+				'<span class="input-group-addon">'
+				. $labelDibawah . '</span>'
+				. $tab2;
+
+		return $input2;
+	}
+#------------------------------------------------------------------------------------------
 	public function medanCarian($pindah, $class = 'col-sm-7')
 	{
 		list($myTable, $senarai, $cariID, $_jadual) = $pindah;
@@ -95,18 +107,37 @@ class Html_TD_Kawalan
 #------------------------------------------------------------------------------------------
 	public function ubahInput($paparSahaja,$jadual,$kira,$key,$data)
 	{	# istihar pembolehubah
+		$medanBiodata = dpt_senarai('jadual_biodata2');
 		$name = 'name="' . $jadual . '[' . $key . ']"';
 		$inputText = $name . ' value="' . $data . '"';
+		$labelDibawah = $data;
 		$dataType = myGetType($data);
 		$tabline = "\n\t\t\t\t\t";
 		$tabline2 = "\n\t\t\t\t";
+		$tab2 = "\n\t\t";
+		$tab3 = "\n\t\t\t";
+		$tab4 = "\n\t\t\t\t";
 		# butang 
 		$birutua = 'btn btn-primary btn-mini';
 		$birumuda = 'btn btn-info btn-mini';
 		$merah = 'btn btn-danger btn-mini';
+		$classInput = 'input-group input-group';
+		$komen = '<!-- / "input-group input-group" -->';
 
 		//if ( in_array($key,array(...)) )
-		if(in_array($key,array('nota','catatan','CatatNota')))
+		if(in_array($key,$medanBiodata))
+		{#senarai medan untuk biodata
+			//$data = null;
+			$input = $tab2 . '<div class="'.$classInput.'">' . $tab3
+				   //. '<span class="input-group-addon"></span>' . $tab3
+				   . '<input type="text" ' . $name
+				   . ' value="' . $data . '"'
+				   . ' class="form-control">' . $tab3
+				   . $this->labelBawah($labelDibawah)
+				   . '</div>' . $komen
+				   . '';
+		}
+		elseif(in_array($key,array('nota','catatan','CatatNota')))
 		{#kod utk textarea
 			$input = '<textarea ' . $name . ' rows="1" cols="20"' . $tabline2 
 				   . ' class="form-control">' . $data . '</textarea>'
