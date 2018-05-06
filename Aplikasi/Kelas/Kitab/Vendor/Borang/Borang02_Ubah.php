@@ -100,7 +100,6 @@ class Borang02_Ubah
 #------------------------------------------------------------------------------------------
 	public function ubahInput($paparSahaja,$jadual,$kira,$key,$data)
 	{	# istihar pembolehubah
-		$medanBiodata = dpt_senarai('jadual_biodata2');
 		$name = 'name="' . $jadual . '[' . $key . ']"';
 		$dataType = myGetType($data);
 		# css
@@ -113,7 +112,7 @@ class Borang02_Ubah
 		elseif ( in_array($key,array('password','kataLaluan')) )
 			$input = $this->inputPassword($tab2, $tab3, $name, $data, 
 				$classInput, $komenInput, $jadual, $key);
-		elseif(in_array($key,$medanBiodata)) #senarai medan untuk biodata
+		elseif(in_array($key,dpt_senarai('jadual_biodata2') )) #senarai medan untuk biodata
 			$input = $this->inputBiodata($tab2, $tab3, $name, $data, 
 				$classInput, $komenInput);
 		elseif ( in_array($key,array('keterangan')) ) # kod html untuk bukan input type
