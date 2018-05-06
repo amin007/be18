@@ -207,26 +207,26 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	function sayaPilih($bil, $muka)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		list($namajadual,$susun,$pilih,$semak,$semak2,$cari,$atau)
+		list($jadual,$susun,$pilih,$semak,$semak2,$cari,$atau)
 			= $this->susunPembolehubah($bil, $muka);
 
 		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
-		{	//echo ')$namajadual=' . $namajadual . '<br>';
+		{	//echo ')$jadual=' . $jadual . '<br>';
 			$mesej = 'tak isi atau-dan pada carian';
-			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
+			$lokasi = ($jadual=='johor') ? 'lokaliti/' : 'semua/';
 		}
-		elseif ( (empty($semak) || ( empty($semak2) && $namajadual=='johor') ) )
-		{	//echo '2)$namajadual=' . $namajadual . '<br>';
+		elseif ( (empty($semak) || ( empty($semak2) && $jadual=='johor') ) )
+		{	//echo '2)$jadual=' . $jadual . '<br>';
 			$mesej = 'tak isi pada carian';
-			$lokasi = ($namajadual=='johor') ? 'lokaliti/' : 'semua/';
+			$lokasi = ($jadual=='johor') ? 'lokaliti/' : 'semua/';
 		}
-		elseif (!empty($namajadual) )
+		elseif (!empty($jadual) )
 		{
-			$this->pilihYangWujud($namajadual, $cari, $susun);
+			$this->pilihYangWujud($jadual, $cari, $susun);
 			$mesej = $lokasi = null;
 		}//*/
 
-		return array($mesej,$lokasi, $namajadual);
+		return array($mesej,$lokasi,$jadual);
 	}
 #------------------------------------------------------------------------------------------
 	function pilihYangWujud($namajadual, $cari, $susun)
