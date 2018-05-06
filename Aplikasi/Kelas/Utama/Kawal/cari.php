@@ -184,14 +184,15 @@ class Cari extends \Aplikasi\Kitab\Kawal
 #------------------------------------------------------------------------------------------
 	function susunPembolehubah($bil, $muka)
 	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		# setkan pembolehubah dulu
+		# ini adalah bukan tatasusunan
 		$jadual = isset($_POST['namajadual']) ? bersih($_POST['namajadual']) : null;
-		$cari = isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null;
 		$susunX = isset($_POST['susun']) ? bersih($_POST['susun']) : 1;
+		# ini adalah tatasusunan
+		$cari = isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null;
+		$atau = isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null;
 		$pilih = isset($_POST['jika']['pilih'][1]) ? $_POST['jika']['pilih'][1] : null;
 		$semak = isset($_POST['jika']['cari'][1]) ? $_POST['jika']['cari'][1] : null;
 		$semak2 = isset($_POST['jika']['cari'][2]) ? $_POST['jika']['cari'][2] : null;
-		$atau = isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null;
 		# susun limit ikut $bil
 		$kumpulSusun = array('kumpul'=>null,'susun'=>$susunX);
 		$susun = $this->menyusun($kumpulSusun, '0', $bil);
