@@ -10,7 +10,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		$this->_folder = huruf('kecil', namaClass($this));
 	}
-#==========================================================================================
+##-----------------------------------------------------------------------------------------
 	public function index()
 	{
 		# Set pemboleubah utama
@@ -21,7 +21,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//$this->semakPembolehubah($this->papar->mesej); # Semak data dulu
 		$this->paparKandungan($this->_folder, 'index');
 	}
-
+##-----------------------------------------------------------------------------------------
 	public function paparKandungan($folder, $fail, $noInclude = 0)
 	{	# Pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
@@ -31,22 +31,23 @@ class Login extends \Aplikasi\Kitab\Kawal
 			//'mobile/mobile',$jenis,0); # $noInclude=0
 		//*/
 	}
-
+##-----------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai)
 	{
 		echo '<pre>$senarai:<br>';
 		print_r($senarai);
 		echo '</pre>|';//*/
 	}
+##-----------------------------------------------------------------------------------------
 #==========================================================================================
-#---------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------
 	function register()
 	{
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->mesej); # Semak data dulu
 		$this->paparKandungan('index', 'register');
 	}
-#---------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------
 	function registerid()
 	{
 		# debug $_POST
@@ -73,7 +74,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		header('location: ' . URL . '');
 		//*/
 	}
-#---------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------
 	function salah()
 	{
 		# debug
@@ -88,7 +89,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//$this->semakPembolehubah($this->papar->mesej); # Semak data dulu
 		$this->paparKandungan('index', 'salah', $noInclude=1);
 	}
-#---------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------
 	function semakid()
 	{
 		# debug $_POST
@@ -99,14 +100,14 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->loginid();
 		//*/
 	}
-#---------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------
 	function login()
 	{
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->mesej); # Semak data dulu
 		$this->paparKandungan('index', 'login2', $noInclude=1);
 	}
-#---------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------
 	function loginid()
 	{
 		# semak data $_POST
@@ -137,7 +138,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 
 		$this->kunciPintu($kira, $cariNama); # pilih pintu masuk
 	}
-#---------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------
 	function kunciPintu($kira, $data)
 	{
 		if ($kira == 1) 
@@ -157,7 +158,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 			header('location:' . URL . 'login/salah');
 		}//*/
 	}
-#---------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------
 	function levelPengguna($kira, $data, $level)
 	{
 		//header('location:' . URL . 'ruangtamu');
@@ -168,5 +169,6 @@ class Login extends \Aplikasi\Kitab\Kawal
 		else
 			header('location:' . URL . ''); //*/
 	}
+#------------------------------------------------------------------------------------------
 #==========================================================================================
 }

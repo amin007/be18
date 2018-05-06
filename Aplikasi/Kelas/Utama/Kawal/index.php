@@ -10,7 +10,7 @@ class Index extends \Aplikasi\Kitab\Kawal
 		\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		$this->_folder = huruf('kecil', namaClass($this));
 	}
-
+##-----------------------------------------------------------------------------------------
 	function index()
 	{
 		# Set pemboleubah utama
@@ -20,7 +20,7 @@ class Index extends \Aplikasi\Kitab\Kawal
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan('login', $noInclude=1); # $noInclude=0
 	}
-
+##-----------------------------------------------------------------------------------------
 	public function paparKandungan($fail, $noInclude)
 	{
 		//$theme = array(0,1,2,3,4);
@@ -36,13 +36,14 @@ class Index extends \Aplikasi\Kitab\Kawal
 			//'mobile/mobile',$jenis,0); # $noInclude=0
 		//*
 	}
-
+##-----------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai)
 	{
 		echo '<pre>$senarai:<br>';
 		print_r($senarai);
 		echo '</pre>|';//*
 	}
+##-----------------------------------------------------------------------------------------
 #==========================================================================================
 	function login($user)
 	{
@@ -54,7 +55,7 @@ class Index extends \Aplikasi\Kitab\Kawal
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan('login', $noInclude=0); # $noInclude=0
 	}
-
+#------------------------------------------------------------------------------------------
 	function login_automatik($user)
 	{
 		# Set pemboleubah utama
@@ -65,7 +66,7 @@ class Index extends \Aplikasi\Kitab\Kawal
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan('login_automatik', $noInclude=0); # $noInclude=0
 	}
-
+#------------------------------------------------------------------------------------------
 	function keluar()
 	{
 		# Set pemboleubah utama
