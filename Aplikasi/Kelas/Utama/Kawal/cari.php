@@ -351,30 +351,43 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		{
 			if(strlen($cari) > 0)
 			{
-				list($myTable, $medan01) = dpt_senarai('jadual_kawalan');
-				$medan = 'newss,nama,nossm,operator,kp';
-				$carian[] = array('fix'=>'z%like%','atau'=>'WHERE',
-					'medan'=>'concat_ws(" ",newss,nossm,nama)','apa'=>$cari);
-				$susun['dari'] = 10;
-
-				$paparKes = //$this->tanya->cariSql($myTable, $medan, $carian, $susun);
-					$this->tanya->cariSemuaData($myTable, $medan, $carian, $susun);
-				$bilKes = count($paparKes); //echo $bilKes . '=>'; //print_r($paparKes);
-
-				if($bilKes==0) {echo '<li>Takde Laa</li>';}
-				else
-				{	echo '<li>Jumpa ' . $bilKes . '</li>';
-					foreach($paparKes as $key => $data)
-					{
-						echo '<li onClick="fill(\'' . $data['newss'] . '\');">' 
-							. ($key+1) . '-' . $data['nama'] . '-' . $data['newss']
-							. '-SSM ' . $data['nossm'] . '-' . $data['operator'] 
-							. '-KP' . $data['kp'] . '</li>';
-					}# tamat - foreach($paparKes as $key => $data)
-				}# tamat - $bilKes ==0
+				list($paparKes, $bilKes) = $this->syarikatDB();
+				$this->syarikatPapar($paparKes, $bilKes);
 			}# tamat - strlen($cari) > 0
 		}# tamat - isset($cari)//*/
 	}
+#------------------------------------------------------------------------------------------
+	function syarikatPapar($paparKes, $bilKes)
+	{
+		if($bilKes==0) {echo '<li>Takde Laa</li>';}
+		else
+		{	echo '<li>Jumpa ' . $bilKes . '</li>';
+			foreach($paparKes as $key => $data)
+			{
+				echo '<li onClick="fill(\'' . $data['newss'] . '\');">'
+				. ($key+1) . '-' . $data['nama'] . '-' . $data['newss']
+				. '-SSM ' . $data['nossm'] . '-' . $data['operator']
+				. '-KP' . $data['kp'] . '</li>';
+			}# tamat - foreach($paparKes as $key => $data)
+		}# tamat - $bilKes ==0
+	}
+#------------------------------------------------------------------------------------------
+	function syarikatDB()
+	{
+		list($myTable, $medan01) = dpt_senarai('jadual_kawalan');
+		$medan = 'newss,nama,nossm,operator,kp';
+		$carian[] = array('fix'=>'z%like%','atau'=>'WHERE',
+			'medan'=>'concat_ws(" ",newss,nossm,nama)','apa'=>$cari);
+		$susun['dari'] = 10;
+
+		$paparKes = //$this->tanya->cariSql($myTable, $medan, $carian, $susun);
+		$this->tanya->cariSemuaData($myTable, $medan, $carian, $susun);
+		$bilKes = count($paparKes); //echo $bilKes . '=>'; //print_r($paparKes);
+
+		return array($paparKes, $bilKes);
+	}
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
 #==========================================================================================
 }
