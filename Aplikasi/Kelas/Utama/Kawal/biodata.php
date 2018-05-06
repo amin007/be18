@@ -121,7 +121,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 	{
 		list($senarai, $pengguna, $medan01, $pengguna, $myTable) = $umpuk;
 		$this->papar->medanID = $medan01;
-		$this->papar->cariID = null;
+		$this->papar->cariID = $pengguna;
 		$this->papar->carian[] = $pengguna;
 		$this->papar->_jadual = $myTable;
 		$this->papar->senarai = $senarai;
