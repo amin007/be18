@@ -170,13 +170,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	function susunPembolehubah($bil, $muka)
 	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		# setkan pembolehubah dulu
-		$jadual = isset($_POST['namajadual']) ? $_POST['namajadual'] : null;
-		$cari = isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null;
-		$susunX = isset($_POST['susun']) ? $_POST['susun'] : 1;
-		$pilih = isset($_POST['jika']['pilih'][1]) ? $_POST['jika']['pilih'][1] : null;
-		$semak = isset($_POST['jika']['cari'][1]) ? $_POST['jika']['cari'][1] : null;
-		$semak2 = isset($_POST['jika']['cari'][2]) ? $_POST['jika']['cari'][2] : null;
-		$atau = isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null;
+		$jadual = bersih(isset($_POST['namajadual']) ? $_POST['namajadual'] : null);
+		$cari = bersih(isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null);
+		$susunX = bersih(isset($_POST['susun']) ? $_POST['susun'] : 1);
+		$pilih = bersih(isset($_POST['jika']['pilih'][1]) ? $_POST['jika']['pilih'][1] : null);
+		$semak = bersih(isset($_POST['jika']['cari'][1]) ? $_POST['jika']['cari'][1] : null);
+		$semak2 = bersih(isset($_POST['jika']['cari'][2]) ? $_POST['jika']['cari'][2] : null);
+		$atau = bersih(isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null);
 		# susun limit ikut $bil
 		$kumpulSusun = array('kumpul'=>null,'susun'=>$susunX);
 		$susun = $this->menyusun($kumpulSusun, '0', $bil);
