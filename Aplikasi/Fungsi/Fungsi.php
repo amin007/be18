@@ -95,6 +95,8 @@ function dpt_senarai($pilih)
 		$jadual = unserialize(JADUAL_KAWALAN2);
 	elseif ($pilih == 'jadual_rangka') :
 		$jadual = unserialize(JADUAL_RANGKA);
+	elseif ($pilih == 'jadual_peta') :
+		$jadual = unserialize(JADUAL_PETA);
 	else : $jadual = array(); //unserialize()
 	endif;
 
