@@ -232,18 +232,18 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	function pilihYangWujud($jadual, $cari, $susun)
 	{
 		if($jadual=='msic')
-			$this->sayaPilihMsic($jadual, $cari, $susun);
+			$this->sayaPilihMsic($cari, $susun);
 		elseif($jadual=='produk')
-			$this->sayaPilihProduk($jadual, $cari, $susun);
+			$this->sayaPilihProduk($cari, $susun);
 		elseif($jadual=='johor')
-			$this->sayaPilihJohor($jadual, $cari, $susun);
+			$this->sayaPilihJohor($cari, $susun);
 		elseif($jadual=='syarikat')
-			$this->sayaPilihSyarikat($jadual, $cari, $susun);
+			$this->sayaPilihSyarikat($cari, $susun);
 		elseif($jadual=='data_mm_prosesan')
-			$this->sayaPilihDataMM($jadual, $cari, $susun);
+			$this->sayaPilihDataMM($cari, $susun);
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihMsic($namajadual, $cari, $susun)
+	function sayaPilihMsic($cari, $susun)
 	{	//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
 		$jadual = dpt_senarai('msicbaru'); //echo '<pre>';
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
@@ -263,7 +263,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihProduk($namajadual, $cari, $susun)
+	function sayaPilihProduk($cari, $susun)
 	{
 		$jadual = dpt_senarai('produk');
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
@@ -292,7 +292,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihJohor($namajadual, $cari, $susun)
+	function sayaPilihJohor($cari, $susun)
 	{
 		list($namaPanjang,$medanAsal,$medanBaru) = dpt_senarai('jadual_peta');
 		//echo 'jadual:' . $this->semakPembolehubah($namaPanjang); echo '<pre>';
@@ -312,7 +312,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihSyarikat($namajadual, $cari, $susun)
+	function sayaPilihSyarikat($cari, $susun)
 	{
 		//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
 		list($jadual, $medan, $carian) = $this->tanya->dataCorp($cari);
@@ -327,7 +327,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihDataMM($namajadual, $cari, $susun)
+	function sayaPilihDataMM($cari, $susun)
 	{
 		$jadual = dpt_senarai('***');
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
