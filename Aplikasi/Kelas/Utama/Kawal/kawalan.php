@@ -174,6 +174,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			//echo '<br>$msic08:'; # Semak data dulu
 			//$this->semakPembolehubah($msic08);
 			$this->cariIndustri(dpt_senarai('msicbaru'),$msic08[1]);
+		else:
+			$newss = $this->papar->_cariIndustri = null;
 		endif;
 
 		return $newss;//*/
