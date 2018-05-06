@@ -40,6 +40,8 @@ class Peta
 			# semak sama ada method ada dalam $kawal
 			if ( !method_exists($kawal, $method))
 				$this->parameter();
+			//elseif( !is_callable($kawal, $method) )
+				//$this->methodRahsia();
 			else $this->cari_pengawal($kawal, $url);
 			//*/
 		}
@@ -129,6 +131,15 @@ class Peta
 		require KAWAL . '/sesat.php';
 		$kawal = new \Aplikasi\Kawal\Sesat();
 		$kawal->parameter();
+		return false;
+	}
+
+	function methodRahsia()
+	{
+		$amaran = 'method Rahsia Alam katanya';
+		require KAWAL . '/sesat.php';
+		$kawal = new \Aplikasi\Kawal\Sesat();
+		$kawal->methodRahsia($amaran);
 		return false;
 	}
 
