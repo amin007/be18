@@ -186,12 +186,12 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		# ini adalah bukan tatasusunan
 		$jadual = isset($_POST['namajadual']) ? bersih($_POST['namajadual']) : null;
 		$susunX = isset($_POST['susun']) ? bersih($_POST['susun']) : 1;
+		$pilih = isset($_POST['jika']['pilih'][1]) ? bersih($_POST['jika']['pilih'][1]) : null;
+		$semak = isset($_POST['jika']['cari'][1]) ? bersih($_POST['jika']['cari'][1]) : null;
+		$semak2 = isset($_POST['jika']['cari'][2]) ? bersih($_POST['jika']['cari'][2]) : null;
 		# ini adalah tatasusunan
 		$cari = isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null;
 		$atau = isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null;
-		$pilih = isset($_POST['jika']['pilih'][1]) ? $_POST['jika']['pilih'][1] : null;
-		$semak = isset($_POST['jika']['cari'][1]) ? $_POST['jika']['cari'][1] : null;
-		$semak2 = isset($_POST['jika']['cari'][2]) ? $_POST['jika']['cari'][2] : null;
 		# susun limit ikut $bil
 		$kumpulSusun = array('kumpul'=>null,'susun'=>$susunX);
 		$susun = $this->menyusun($kumpulSusun, '0', $bil);
@@ -201,13 +201,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//echo '$susunX =' . $susunX . '<br>';//echo '$pilih=' . $pilih . '<br>';
 		//echo '$semak =' . $semak1 . '<br>$semak2=' . $semak2 . '<br>';
 
-		return array($jadual,$susun,$cari,$pilih,$semak,$semak2,$atau);
+		return array($jadual,$susun,$pilih,$semak,$semak2,$cari,$atau);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilih($bil, $muka)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		list($namajadual,$susun,$cari,$pilih,$semak,$semak2,$atau)
+		list($namajadual,$susun,$pilih,$semak,$semak2,$cari,$atau)
 			= $this->susunPembolehubah($bil, $muka);
 
 		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
