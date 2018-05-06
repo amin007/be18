@@ -229,18 +229,18 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		return array($mesej,$lokasi,$jadual);
 	}
 #------------------------------------------------------------------------------------------
-	function pilihYangWujud($namajadual, $cari, $susun)
+	function pilihYangWujud($jadual, $cari, $susun)
 	{
-		if ($namajadual=='msic')
-			$this->sayaPilihMsic($namajadual, $cari, $susun);
-		elseif ($namajadual=='produk')
-			$this->sayaPilihProduk($namajadual, $cari, $susun);
-		elseif ($namajadual=='johor')
-			$this->sayaPilihJohor($namajadual, $cari, $susun);
-		elseif ($namajadual=='syarikat')
-			$this->sayaPilihSyarikat($namajadual, $cari, $susun);
-		elseif ($namajadual=='data_mm_prosesan')
-			$this->sayaPilihDataMM($namajadual, $cari, $susun);
+		if($jadual=='msic')
+			$this->sayaPilihMsic($jadual, $cari, $susun);
+		elseif($jadual=='produk')
+			$this->sayaPilihProduk($jadual, $cari, $susun);
+		elseif($jadual=='johor')
+			$this->sayaPilihJohor($jadual, $cari, $susun);
+		elseif($jadual=='syarikat')
+			$this->sayaPilihSyarikat($jadual, $cari, $susun);
+		elseif($jadual=='data_mm_prosesan')
+			$this->sayaPilihDataMM($jadual, $cari, $susun);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihMsic($namajadual, $cari, $susun)
