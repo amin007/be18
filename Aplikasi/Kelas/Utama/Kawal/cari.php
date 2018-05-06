@@ -279,9 +279,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 #------------------------------------------------------------------------------------------
 	function sayaPilihJohor($namajadual, $cari, $susun)
 	{
-		$namaPanjang = array('pom_lokaliti.johor','pom_lokaliti.lk_johor');
-		//echo 'jadual:' . $this->semakPembolehubah($namaPanjang);
-		list($medanAsal, $medanBaru) = $this->tanya->bentukMedanJohor(); //echo '<pre>';
+		list($namaPanjang,$medanAsal,$medanBaru) = dpt_senarai('jadual_peta');
+		//echo 'jadual:' . $this->semakPembolehubah($namaPanjang); echo '<pre>';
 
 		foreach ($namaPanjang as $key => $jadual)
 		{# mula ulang table
