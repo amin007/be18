@@ -113,6 +113,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		echo '<br>$this->papar->_jadual::';	print_r($this->papar->_jadual);
 		echo '<br>$this->papar->senarai::'; print_r($this->papar->senarai);
 		echo '<br>$this->papar->_cariIndustri::'; print_r($this->papar->_cariIndustri);
+		echo '<br>$this->papar->_method::'; print_r($this->papar->_method);
 		echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------
@@ -125,6 +126,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		$this->papar->_jadual = $myTable;
 		$this->papar->senarai = $senarai;
 		$this->papar->_cariIndustri = null;
+		$this->papar->_method = huruf('kecil', namaClass($this));
 		//$this->semakDataJadual($senarai); # semak Pembolehubah
 	}
 #-------------------------------------------------------------------------------------------
