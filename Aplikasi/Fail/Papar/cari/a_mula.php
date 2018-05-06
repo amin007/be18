@@ -138,7 +138,8 @@ for ( $u = 2 ; $u <= $ulang ; $u++ )
 				<input type="radio" name="ikut">ASC
 				<input type="radio" name="ikut" value="DESC">DESC
 			</span>
-			<select name="susun" class="form-control">
+			<select class="form-control">
+			<!-- select name="susun" class="form-control" -->
 			<?php echo $pilihMedan; ?></select>
 			<span class="input-group-addon">
 			</span>
