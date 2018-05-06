@@ -1,5 +1,5 @@
 <?php
-namespace Aplikasi\Kawal; //echo __NAMESPACE__; 
+namespace Aplikasi\Kawal; //echo __NAMESPACE__;
 class Cari extends \Aplikasi\Kitab\Kawal
 {
 #==========================================================================================
@@ -279,20 +279,20 @@ class Cari extends \Aplikasi\Kitab\Kawal
 #------------------------------------------------------------------------------------------
 	function sayaPilihJohor($namajadual, $cari, $susun)
 	{
-		$jadual = dpt_senarai('***');
-		//echo 'jadual:' . $this->semakPembolehubah($jadual);
-		list($medanAsal, $medanBaru) = $this->tanya->bentukMedanJohor();
+		$namaPanjang = array('pom_lokaliti.johor','pom_lokaliti.lk_johor');
+		//echo 'jadual:' . $this->semakPembolehubah($namaPanjang);
+		list($medanAsal, $medanBaru) = $this->tanya->bentukMedanJohor(); //echo '<pre>';
 
-		foreach ($jadual as $key => $namaPanjang)
+		foreach ($namaPanjang as $key => $jadual)
 		{# mula ulang table
-			$myTable = ($namaPanjang == 'pom_lokaliti.johor') ?
+			$myTable = ($jadual == 'pom_lokaliti.johor') ?
 				'JOHOR' : 'LK-JOHOR';
-			$medan = ($namaPanjang == 'pom_lokaliti.johor') ?
+			$medan = ($jadual == 'pom_lokaliti.johor') ?
 				$medanAsal : $medanBaru;
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
-				cariSql($namaPanjang, $medan, $carian, $susun);
-				//cariSemuaData($namaPanjang, $medan, $carian, $susun);
+				//cariSql("$jadual\r", $medan, $carian, $susun);
+				cariSemuaData("$jadual\r", $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
