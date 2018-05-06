@@ -24,7 +24,7 @@ foreach ($this->carian as $kunci => $nilai)
 foreach ($this->senarai as $kunci2 => $nilai2)
 	$cari2 .= ( count($nilai2)==0 ) ? $kunci2 . " = Kosong<br>\r"
 	: $kunci2 . ' = ' . count($nilai2) . "<br>\r";
-echo "Anda mencari = $cari1\r<br>$cari2\r<hr>";
+//echo "Anda mencari = $cari1\r<br>$cari2\r<hr>";
 
 # jenis template
 include 'template_' . $this->template . '.php';
