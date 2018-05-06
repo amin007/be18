@@ -233,7 +233,7 @@ class Tanya
 #--- mula - contoh tambah sql guna set ---#
 	public function tambahSql($myTable, $data)
 	{
-		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
 		foreach ($data as $medan => $nilai)
 		{
 			$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
@@ -249,7 +249,7 @@ class Tanya
 
 	public function tambahData($myTable, $data)
 	{
-		$senarai = null; //echo '<pre>$data->', print_r($data, 1); echo '</pre>';
+		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
 		foreach ($data as $medan => $nilai)
 		{
 			$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
@@ -266,13 +266,13 @@ class Tanya
 #--- mula - contoh tambah sql guna values ---#
 	public function tambahSimpanBanyak($myTable, $data)
 	{
-		//echo '<pre>$myTable->', print_r($data, 1); echo '</pre>';
+		//echo '<pre>$myTable->'; print_r($data); echo '</pre>';
 		$this->db->insert($myTable, $data);
 	}
 
 	public function tambahSqlBanyakNilai($myTable, $medan, $data)
 	{
-		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 
 		# set sql
 		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
@@ -284,7 +284,7 @@ class Tanya
 
 	public function tambahArahanSqlBanyakNilai($myTable, $medan, $data)
 	{
-		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 
 		# set sql
 		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
@@ -295,7 +295,7 @@ class Tanya
 
 	public function tambahBanyakNilai($myTable, $medan, $data)
 	{
-		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 
 		# set sql
 		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
@@ -307,7 +307,7 @@ class Tanya
 
 	public function tambahPDOBanyakNilai($myTable, $medan, $dataProksi, $data)
 	{
-		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 
 		# set sql
 		$sql  = "INSERT INTO `$myTable`\r($medan) VALUES \r";
