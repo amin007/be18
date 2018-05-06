@@ -28,6 +28,8 @@ class Html_Table
 			Html_Table::table_gaya_4_2($classTable, $myTable, $row, $header, $id);
 		elseif ($pilih == '5'): 
 			Html_Table::table_gaya_5($classTable, $myTable, $row, $header, $id);
+		elseif ($pilih == '6'): 
+			Html_Table::table_gaya_5($classTable, $myTable, $row, $header, $id);
 		endif;
 	}
 #------------------------------------------------------------------------------------------
@@ -237,38 +239,61 @@ class Html_Table
 			?></table><?php
 	}//////////////////////////////////////////////////////////////////////////////////////////////////////////
 #------------------------------------------------------------------------------------------
-	public static function table_gaya_5($classTable = 'excel', $myTable, $row)
+	public static function table_gaya_5($classTable = 'excel', $myTable, $row,
+	$header = null, $id = null)
 	{	# nilai akan dipulangkan balik
-			$output  = null; 
-			$output .= '<table border="1" class="' . $classTable . '" id="example">
-			<thead><tr><th><strong>Jadual ' . $myTable . '
-			</strong></th></tr></thead>';
-
-			$printed_headers = false; # mula bina jadual
+			echo "\n\t\t\t";
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			?><table class="<?php echo $classTable ?>" id="<?php echo $id ?>">
+			<?php $printed_headers = false; # mula bina jadual
 			#-----------------------------------------------------------------
-			for ($kira=0; $kira < $bil_baris; $kira++)
+			for ($kira=0; $kira < count($row); $kira++)
 			{	# cetak tajuk hanya sekali sahaja:
-				if ( !$printed_headers ) 
-				{##=================================================
+				$printed_headers = Html_Table::tajukjadual_0(
+				$printed_headers, $row, $kira, $myTable);
+			# cetak hasil $data --------------------------------------------
+			?><tbody><tr><?php 
+				foreach ( $row[$kira] as $key=>$data ) : echo "\n\t\t\t";
+				?><td><?php echo bersih2X($data) ?></td><?php 
+				endforeach; ?>  
+			</tr></tbody><?php
+			}#-----------------------------------------------------------------
+			?></table><?php echo "\r\t\t\t"; 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+#------------------------------------------------------------------------------------------
+	public static function table_gaya_6($classTable = 'excel', $myTable, $row,
+	$header = null, $id = null)
+	{	# nilai akan dipulangkan balik
+		$output  = "\r"; 
+		$output .= '<table border="1" class="' . $classTable . '" id="example">
+		<thead><tr><th><strong>Jadual ' . $myTable . '
+		</strong></th></tr></thead>';
+
+		$printed_headers = false; # mula bina jadual
+		#-----------------------------------------------------------------
+		for ($kira=0; $kira < count($row); $kira++)
+		{	# cetak tajuk hanya sekali sahaja:
+			if ( !$printed_headers ) 
+			{##=================================================
 				$output .= "\r\t<thead><tr>\r\t<th>#</th>";
 				foreach ( array_keys($row[$kira]) as $tajuk ) :
 					$output .= "\r\t" . '<th>' . $tajuk . '</th>';
 				endforeach;
 				$output .= "\r\t" . '</tr></thead>';
-				##==================================================
-					$printed_headers = true; 
-				} 
+			##==================================================
+			$printed_headers = true; 
+			} 
 			#--- cetak hasil $data ------------------------------------------
 				$output .= "\r\t<tbody><tr>\r\t<td>" . ($kira+1) . '</td>';
 				foreach ( $row[$kira] as $key=>$data ) :
 					$output .= "\r\t" . '<td>' . $data . '</td>';
 				endforeach; 
 				$output .= "\r\t" . '</tr></tbody>';
-			}
-			#-----------------------------------------------------------------
-			$output .= "\r\t" . '</table>';
+		}#-----------------------------------------------------------------
+		$output .= "\r\t" . '</table>' . "\r";
 
-			return $output;
+		return $output;
 	}
 #------------------------------------------------------------------------------------------
 	public static function tajukjadual_no($printed_headers, $row, $kira)
@@ -298,9 +323,10 @@ class Html_Table
 		return $printed_headers;
 	}
 #------------------------------------------------------------------------------------------
-	public static function tajukjadual_0($printed_headers, $row, $kira)
+	public static function tajukjadual_0($printed_headers, $row, $kira, $myTable)
 	{# cetak tajuk hanya sekali sahaja:
-		if ( !$printed_headers ) : ?><thead><tr>
+		if ( !$printed_headers ) : 
+			?><thead><tr>
 			<?php foreach ( array_keys($row[$kira]) as $tajuk ) :
 			?><th><?php echo $tajuk ?></th><?php endforeach; 
 			?></tr></thead>
