@@ -3,7 +3,7 @@
 //$pilihJadual = 'jadual_operasi';
 $pilihJadual = 'jadual_am';
 //$pilihJadual = 'ubah_medan01'; # borang biodata berasaskan table
-//$pilihJadual = 'ubah_medan02'; # borang biodata berasaskan bootstrap
+//$pilihJadual = 'ubah_medan02'; # borang ubah berasaskan bootstrap
 
 # untuk kod baru
 //echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
