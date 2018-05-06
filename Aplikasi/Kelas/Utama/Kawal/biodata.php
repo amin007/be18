@@ -108,11 +108,24 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		//echo '<hr>$kira=' . sizeof($senarai) . '<hr>';
 		# semak pembolehubah dari jadual lain
 		echo '<br>$this->papar->medanID::'; print_r($this->papar->medanID);
+		echo '<br>$this->papar->cariID::'; print_r($this->papar->cariID);
 		echo '<br>$this->papar->carian::'; print_r($this->papar->carian);
 		echo '<br>$this->papar->_jadual::';	print_r($this->papar->_jadual);
 		echo '<br>$this->papar->senarai::'; print_r($this->papar->senarai);
 		echo '<br>$this->papar->_cariIndustri::'; print_r($this->papar->_cariIndustri);
 		echo '</pre>';
+	}
+#-------------------------------------------------------------------------------------------
+	function umpukNilai($umpuk)
+	{
+		list($senarai, $pengguna, $medan01, $pengguna, $myTable) = $umpuk;
+		$this->papar->medanID = $medan01;
+		$this->papar->cariID = null;
+		$this->papar->carian[] = $pengguna;
+		$this->papar->_jadual = $myTable;
+		$this->papar->senarai = $senarai;
+		$this->papar->_cariIndustri = null;
+		//$this->semakDataJadual($senarai); # semak Pembolehubah
 	}
 #-------------------------------------------------------------------------------------------
 	private function jadualBiodata()
@@ -134,9 +147,8 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 				cariSemuaData("`$myTable`", $medan, $carian, null);
 				//cariSql("`$myTable`", $medan, $carian, null);
 		# semak pembolehubah
-			$this->papar->senarai = $senarai;
-			$this->papar->carian[] = $pengguna;
-			//$this->semakDataJadual($senarai);
+			$this->umpukNilai(array($senarai, $pengguna, $medan01,
+				$pengguna, $myTable));
 
 		return array($senarai, $pengguna);
 	}
