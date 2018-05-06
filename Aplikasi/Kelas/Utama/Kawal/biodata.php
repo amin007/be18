@@ -194,8 +194,24 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$dataID='; print_r($dataID); echo '</pre>';
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
+		$posmen = $this->kataLaluanX($senaraiJadual[0], $posmen);
+
 		return $posmen = $this->tanya->semakPosmen(
 			$senaraiJadual[0], $posmen, $pass);
+	}
+#-------------------------------------------------------------------------------------------
+	public function kataLaluanX($myTable, $posmen)
+	{
+		$surat = array('kataLaluan');
+		foreach ($surat as $kekunci)
+		if(isset($posmen[$myTable][$kekunci . 'X']))
+			if(empty($posmen[$myTable][$kekunci . 'X'])):
+				unset($posmen[$myTable][$kekunci . 'X']);
+			else:
+				unset($posmen[$myTable][$kekunci . 'X']);
+			endif;
+
+		return $posmen; # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
