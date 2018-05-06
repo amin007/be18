@@ -298,11 +298,15 @@ class Borang02_Ubah
 		$jadual3 = ' table-hover';
 		$jadual4 = ' table-condensed';
 		$classJadual = 'table' . $jadual4 . $jadual3;
+		$header = $id = null;
+
 		foreach ($paparSahaja as $myTable => $bilang)
 		{# mula ulang $bilang
-			Html_Table::papar_jadual($bilang, $myTable, $pilih=4, $classJadual,
-			$header = null, $id = null);
+			//echo "<h1>$myTable</h1>";
+			Html_Table::papar_jadual($bilang, $myTable, 
+			$pilih=5, $classJadual, $header = 'abc', $id);
 		}# tamat ulang $bilang //*/
+		echo "\n";
 
 		return '';
 	}
