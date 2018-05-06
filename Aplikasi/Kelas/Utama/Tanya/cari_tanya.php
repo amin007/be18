@@ -200,16 +200,18 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		"\r" . ' concat(`KOD BP`,"-",`DAERAH PENTADBIRAN`) as DAERAH,' .
 		"\r" . ' concat(`KOD PBT`,"-",`PIHAK BERKUASA TEMPATAN`) as PBT,' .
 		"\r" . ' concat(`KOD BDR`,"-",`NAMA BANDAR`) as BANDAR,' .
-		"\r" . '`DESKRIPSI (LOKALITI STATISTIC KAWKECIL)`, `LOKALITI UNTUK INDEKS`';
+		"\r" . '`DESKRIPSI (LOKALITI STATISTIC KAWKECIL)`, `LOKALITI UNTUK INDEKS`' .
+		"\r";
 		# senarai nama medan
-		$medanBaru = '`KOD NGDBBP 2010`,' .
-		//"\r" . ' concat("01",`no_db`, `no_bp_baru`) as `KodNGDBBP`,' .
-		"\r" . ' `kod_strata` as STRATA, NEGERI,' .
+		$medanBaru = '' . //"\r" . '`KOD NGDBBP 2010`,' .
+		"\r" . ' concat("01",`no_db`, `no_bp_baru`) as `KOD NGDBBP 2010`,' .
+		"\r" . ' `kod_strata` as STRATA, "JOHOR" as NEGERI,' .
 		"\r" . ' concat(`KodMukim`,"-",`Mukim`) as MUKIM,' .
-		"\r" . ' concat(`KodDP`,"-",`Daerah Pentadbiran`) as DAERAH,' .
+		"\r" . ' concat(`KodDP`,"-",`DAERAH PENTADBIRAN`) as DAERAH,' .
 		"\r" . ' concat(`KodPBT`,"-",`PBT`) as PBT,' .
 		"\r" . ' `catatan`, `kawasan`,' .
-		"\r" . ' `LOKALITI UNTUK INDEKS`';
+		"\r" . ' `LOKALITI UNTUK INDEKS`' .
+		"\r";
 
 		return array($medanAsal, $medanBaru);
 	}
