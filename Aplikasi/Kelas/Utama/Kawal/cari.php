@@ -77,7 +77,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		'`aes_perkhidmatan`','`aes_pertanian`');
 		$medan = '*';
 		# cari id berasaskan newss/ssm/sidap/nama
-		$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
+		$id['nama'] = isset($_POST['cari']) ? bersih($_POST['cari']) : null;
 		//$id['nama'] = isset($_POST['id']['nama']) ? $_POST['id']['nama'] : null;
 		$kumpulSusun = array('kumpul'=>null,'susun'=>'nama');
 		$susun = $this->menyusun($kumpulSusun);
