@@ -171,8 +171,9 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 				# substr("abcdef", 0, -1); # returns "abcde"
 				# 326-46312 -> returns "46312"
 			$msic08 = explode('-', $cariApa[0]['msic2008']);
-			$this->cariIndustri(dpt_senarai('msicbaru'),
-				$msic08[1]);
+			//echo '<br>$msic08:'; # Semak data dulu
+			//$this->semakPembolehubah($msic08);
+			$this->cariIndustri(dpt_senarai('msicbaru'),$msic08[1]);
 		endif;
 
 		return $newss;//*/
@@ -183,21 +184,21 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$cariM6[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'msic','apa'=>$msic08);
 
-		# mula cari $msis08 dalam database
+		# mula cari $msis08 dalam database yang sama
 		foreach ($jadualMSIC as $m6 => $msic)
 		{# mula ulang table
-			$jadualPendek = substr($msic, 16);
-			//echo "\$msic=$msic|\$jadualPendek=$jadualPendek<br>";
+			$jadual = $msic; //substr($msic, 16);
+			//echo "\$msic=$msic|\$jadual=$jadual<br>";
 			# senarai nama medan
-			if($jadualPendek=='msic2008') /*bahagian B,kumpulan K,kelas Kls,*/
+			if($jadual=='msic2008')/*bahagian B,kumpulan K,kelas Kls,*/
 				$medanM6 = 'seksyen S,msic2000,msic,keterangan,notakaki';
-			elseif($jadualPendek=='msic2008_asas') 
+			elseif($jadual=='msic2008_asas')
 				$medanM6 = 'msic,survey kp,keterangan,keterangan_en';
-			elseif($jadualPendek=='msic_v1') 
+			elseif($jadual=='msic_v1')
 				$medanM6 = 'msic,survey kp,bil_pekerja staf,keterangan,notakaki';
 			else $medanM6 = '*'; 
 
-			$this->papar->_cariIndustri[$jadualPendek] = $this->tanya->
+			$this->papar->_cariIndustri[$jadual] = $this->tanya->
 				//cariSql($msic, $medanM6, $cariM6, null);
 				cariSemuaData($msic, $medanM6, $cariM6, null);
 		}# tamat ulang table
