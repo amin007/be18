@@ -249,8 +249,8 @@ class Html_Table
 			#-----------------------------------------------------------------
 			for ($kira=0; $kira < count($row); $kira++)
 			{	# cetak tajuk hanya sekali sahaja:
-				$printed_headers = Html_Table::tajukjadual_0(
-				$printed_headers, $row, $kira, $myTable);
+				$printed_headers = Html_Table::tajukjadual_khas2(
+				$printed_headers, $row, $kira, $myTable, $header);
 			# cetak hasil $data --------------------------------------------
 			?><tbody><tr><?php 
 				foreach ( $row[$kira] as $key=>$data ) : echo "\n\t\t\t";
@@ -309,13 +309,22 @@ class Html_Table
 		return $printed_headers;
 	}
 #------------------------------------------------------------------------------------------
-	public static function tajukjadual_khas($printed_headers, $row, $kira)
+	public static function tajukTH_khas2($myTable, $jum)
+	{
+		$t0 = '<caption>' . $myTable . '|' . $jum . '</caption>';
+		$t1 = '<thead><tr><th colspan="' . $jum . '">'
+			. $myTable . '</th></tr></thead>';
+		return $t1;
+	}
+#------------------------------------------------------------------------------------------
+	public static function tajukjadual_khas2($printed_headers, $row, $kira,
+		$myTable, $header)
 	{# cetak tajuk hanya sekali sahaja: 
-		if ( !$printed_headers ) : ?><thead><tr>
-			<th>No</th><?php 
+		$tajuk = Html_Table::tajukTH_khas2($myTable, count($row[$kira]));
+		if ( !$printed_headers ) : 	echo $tajuk . "\n\t\t\t";
+			?><thead><tr><?php
 			foreach ( array_keys($row[$kira]) as $tajuk ) :
-			$align = ($tajuk != 'Total') ? 'text-left' : 'text-right';
-			?><th class="<?php echo $align ?>"><?php echo $tajuk ?></th><?php
+			?><th><?php echo $tajuk ?></th><?php
 			endforeach; ?></tr></thead>
 			<?php	$printed_headers = true;
 		endif;
@@ -323,10 +332,9 @@ class Html_Table
 		return $printed_headers;
 	}
 #------------------------------------------------------------------------------------------
-	public static function tajukjadual_0($printed_headers, $row, $kira, $myTable)
+	public static function tajukjadual_0($printed_headers, $row, $kira)
 	{# cetak tajuk hanya sekali sahaja:
-		if ( !$printed_headers ) : 
-			?><thead><tr>
+		if ( !$printed_headers ) : ?><thead><tr>
 			<?php foreach ( array_keys($row[$kira]) as $tajuk ) :
 			?><th><?php echo $tajuk ?></th><?php endforeach; 
 			?></tr></thead>
