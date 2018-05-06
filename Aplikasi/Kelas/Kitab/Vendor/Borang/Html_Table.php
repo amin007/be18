@@ -190,7 +190,7 @@ class Html_Table
 			# cetak hasil $data --------------------------------------------
 			?><tbody><tr><?php 
 				foreach ( $row[$kira] as $key=>$data ) : ?>
-			<td><?php echo $data ?></td><?php 
+			<td><?php echo bersih2X($data) ?></td><?php
 				endforeach; ?>  
 			</tr></tbody><?php
 			}#-----------------------------------------------------------------
