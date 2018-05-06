@@ -112,6 +112,21 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[0], $noInclude=0); //*/
     }
 #------------------------------------------------------------------------------------------
+	function cariSyarikat($jadual, $medan, $carian, $susun, $cariID)
+	{
+		foreach ($jadual as $key => $myTable)
+		{# mula ulang table
+			$this->papar->senarai[$myTable] = $this->tanya->
+				//cariSql($myTable, $medan, $carian, $susun);
+				cariSemuaData($myTable, $medan, $carian, $susun);
+		}# tamat ulang table//*/
+		# isytihar pembolehubah untuk dalam class Papar
+		$this->papar->primaryKey = 'newss';
+		$this->papar->cariID = $this->papar->carian[] = $cariID;
+	}
+#------------------------------------------------------------------------------------------
+###########################################################################################
+#------------------------------------------------------------------------------------------
 	public function tentang($apa, $bil=1, $mesej=null)
 	{
 		# Fungsi ini memaparkan borang
@@ -329,19 +344,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->carian = $cari;
 	}
 #------------------------------------------------------------------------------------------
-	function cariSyarikat($jadual, $medan, $carian, $susun, $cariID)
-	{
-		foreach ($jadual as $key => $myTable)
-		{# mula ulang table
-			$this->papar->senarai[$myTable] = $this->tanya->
-				//cariSql($myTable, $medan, $carian, $susun);
-				cariSemuaData($myTable, $medan, $carian, $susun);
-		}# tamat ulang table//*/
-		# isytihar pembolehubah untuk dalam class Papar
-		$this->papar->primaryKey = 'newss';
-		$this->papar->cariID = $this->papar->carian[] = $cariID;
-	}
-#------------------------------------------------------------------------------------------
+###########################################################################################
 #------------------------------------------------------------------------------------------
 	public function syarikat($carilah = null)
 	{
