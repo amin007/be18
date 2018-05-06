@@ -1,5 +1,5 @@
 <?php
-namespace Aplikasi\Kitab; //echo __NAMESPACE__; 
+namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Borang02_Ubah
 {
 #==========================================================================================
@@ -11,7 +11,7 @@ class Borang02_Ubah
 			$this->medanTajuk($myTable, $class);
 		else:
 			$this->atasLabelSyarikat();
-			list($mencari, $carian, $mesej) = 
+			list($mencari, $carian, $mesej) =
 				$this->atasSemakData($senarai, $cariID, $_jadual);
 			$this->atasInputCarian($mencari, $carian, $mesej, $class);
 		endif;
@@ -66,10 +66,10 @@ class Borang02_Ubah
 			list($namaSyarikat, $semak1, $semak3) = explode("|", $senarai['kes'][0]['nama']);
 			?><nav class="floating-menu">
 			<p class="bg-primary"><?php
-			echo "\n&nbsp;" . $namaSyarikat 
-			?></p></nav>
-			<?php
-		else: # set pembolehubah
+			echo "\n&nbsp;" . $namaSyarikat
+			?></p></nav><?php
+
+			else: # set pembolehubah
 			$mencari = URL . 'kawalan/ubahCari/';
 			$carian = null;
 			$mesej = '::' . $cariID . ' tiada dalam ' . $_jadual;
@@ -144,7 +144,7 @@ class Borang02_Ubah
 ###########################################################################################
 #------------------------------------------------------------------------------------------
 	function ccs()
-	{	
+	{
 		$tab2 = "\n\t\t";
 		$tab3 = "\n\t\t\t";
 		$tab4 = "\n\t\t\t\t";
@@ -154,7 +154,7 @@ class Borang02_Ubah
 		$merah = 'btn btn-danger btn-mini';
 		$classInput = 'input-group input-group';
 		$komenInput = '<!-- / "input-group input-group" -->';
-		
+
 		return array($tab2,$tab3,$tab4,$birutua,$birumuda,$merah,$classInput,$komenInput);
 	}
 #------------------------------------------------------------------------------------------
@@ -217,7 +217,7 @@ class Borang02_Ubah
 		. ' value="' . $data . '"'
 		. ' class="form-control">' . $tab2
 		. '<span class="input-group-addon">' . kira($data) . '</span>'
-		. $tab2 . '</div>'
+		. $tab2 . '</div>' . $komenInput
 		. '';
 	}
 #------------------------------------------------------------------------------------------
@@ -237,7 +237,7 @@ class Borang02_Ubah
 		. $tab3 . ' class="form-control date-picker"'
 		. $tab3 . ' placeholder="Cth: 2014-05-01"'
 		. $tab3 . ' id="date' . $key . '" data-date-format="yyyy/mm/dd"/>'
-		. $tab2 . '</div>'
+		. $tab2 . '</div>' . $komenInput
 		. '';
 	}
 #------------------------------------------------------------------------------------------
@@ -248,7 +248,7 @@ class Borang02_Ubah
 		. '<input type="text" ' . $name
 		. ' value="' . $data . '"'
 		. ' class="form-control">'
-		. $tab2 . '</div>'
+		. $tab2 . '</div>' . $komenInput
 		. '';
 	}
 #------------------------------------------------------------------------------------------
@@ -260,7 +260,7 @@ class Borang02_Ubah
 		. '<input type="text" ' . $name
 		. ' value="' . $data . '"'
 		. ' class="form-control">'
-		. $tab2 . '</div>'
+		. $tab2 . '</div>' . $komenInput
 		. '';
 	}
 #------------------------------------------------------------------------------------------
@@ -272,7 +272,7 @@ class Borang02_Ubah
 		. '<input type="text" ' . $name
 		. ' value="' . $data . '"'
 		. ' class="form-control">'
-		. $tab2 . '</div>'
+		. $tab2 . '</div>' . $komenInput
 		. '';
 	}
 #------------------------------------------------------------------------------------------
@@ -284,7 +284,7 @@ class Borang02_Ubah
 		//. '<span class="input-group-addon"></span>' . $tab3
 		. '<input type="text" ' . $name
 		. ' class="form-control">'
-		//. $tab2 . '</div>'
+		//. $tab2 . '</div>' . $komenInput
 		. '';
 	}
 #------------------------------------------------------------------------------------------
@@ -296,15 +296,14 @@ class Borang02_Ubah
 		$jadual1 = ' table-striped'; # tambah zebra
 		$jadual2 = ' table-bordered';
 		$jadual3 = ' table-hover';
-		$jadual4 = ' table-condensed'; 
+		$jadual4 = ' table-condensed';
 		$classJadual = 'table' . $jadual4 . $jadual3;
 		foreach ($paparSahaja as $myTable => $bilang)
 		{# mula ulang $bilang
-			//$this->papar_jadual($bilang, $myTable, $pilih=4, $classJadual);
-			Html_Table::papar_jadual($bilang, $myTable, $pilih=4, $classJadual, 
+			Html_Table::papar_jadual($bilang, $myTable, $pilih=4, $classJadual,
 			$header = null, $id = null);
 		}# tamat ulang $bilang //*/
-	
+
 		return '';
 	}
 #------------------------------------------------------------------------------------------
