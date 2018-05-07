@@ -146,9 +146,9 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$fail = array('index','a_mula','b_ubah','b_ubah_kawalan');
 
 		# Pergi papar kandungan
-		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		//$this->semakPembolehubah($this->papar->url); # Semak data dulu
-		//$this->paparKandungan($this->_folder, $fail[1], $noInclude=0); //*/
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
 	function semakOutput($mesej, $lokasi, $namajadual)
