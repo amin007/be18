@@ -188,7 +188,7 @@ class Tanya
 
 	public function cariSemuaData($myTable, $medan, $carian, $susun)
 	{
-		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
+		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable
 			 . $this->dimana($carian)
 			 . $this->dibawah($susun);
 
@@ -201,7 +201,7 @@ class Tanya
 
 	public function cariSql($myTable, $medan, $carian, $susun)
 	{
-		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
+		$sql = ' SELECT ' . $medan . ' FROM ' . $myTable
 			 . $this->dimana($carian)
 			 . $this->dibawah($susun);
 
