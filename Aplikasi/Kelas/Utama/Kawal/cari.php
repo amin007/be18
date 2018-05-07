@@ -142,14 +142,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->senarai = $this->tanya->paparMedan($jadual);
 		$this->papar->url = dpt_url();
 		$this->papar->mesej = $mesej;
-		//$this->semakOutput($mesej, $lokasi, $namajadual);
 		$this->papar->template = 'bootstrap';
 		$fail = array('index','a_mula','b_ubah','b_ubah_kawalan');
 
 		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		//$this->semakPembolehubah($this->papar->url); # Semak data dulu
-		$this->paparKandungan($this->_folder, $fail[1], $noInclude=0); //*/
+		//$this->paparKandungan($this->_folder, $fail[1], $noInclude=0); //*/
 	}
 #------------------------------------------------------------------------------------------
 	function semakOutput($mesej, $lokasi, $namajadual)
