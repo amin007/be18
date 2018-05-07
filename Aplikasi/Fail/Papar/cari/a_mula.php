@@ -69,11 +69,11 @@ $u = 1;
 	</div>
 	<div class="col-sm-<?php echo $saizInput?>">
 		<div class="input-group">
-			<span class="input-group-addon"><?php echo $pilihU?></span>
-			<input type="text" name="jika[cari][<?php echo $u?>]" class="form-control">
 			<span class="input-group-addon">
 				<input type="checkbox" name="jika[fix][<?php echo $u?>]" value="x">
+				<?php echo '&nbsp;' . $pilihU ?>
 			</span>
+			<input type="text" name="jika[cari][<?php echo $u?>]" class="form-control">
 		</div><!-- class="input-group" -->
 	</div><!-- class="col-sm-5" -->
 </div><!-- class="form-group" -->
@@ -115,10 +115,12 @@ for ( $u = 2 ; $u <= $ulang ; $u++ )
 	</div>
 	<div class="col-sm-<?php echo $saizInput?>">
 		<div class="input-group">
-			<span class="input-group-addon"><?php echo $pilihU?></span>
-			<input type="text" name="jika[cari][<?php echo $u?>]" class="form-control">
 			<span class="input-group-addon">
 				<input type="checkbox" name="jika[fix][<?php echo $u?>]" value="x">
+				<?php echo $pilihU ?>
+			</span>
+			<input type="text" name="jika[cari][<?php echo $u?>]" class="form-control">
+			<span class="input-group-addon">
 				<input type="radio" name="mula[<?php echo $u?>]" value="(">(
 				<input type="radio" name="tmt[<?php echo $u?>]" value=")">)
 			</span>
