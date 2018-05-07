@@ -233,12 +233,15 @@ class Cari extends \Aplikasi\Kitab\Kawal
 #------------------------------------------------------------------------------------------
 	function pilihYangWujud($jadual, $cari, $susun)
 	{
+		//echo '<br>jadual:' . $jadual . '<br>';
 		if($jadual=='msic')
 			$this->sayaPilihMsic($cari, $susun);
 		elseif($jadual=='produk')
 			$this->sayaPilihProduk($cari, $susun);
 		elseif($jadual=='johor')
 			$this->sayaPilihJohor($cari, $susun);
+		elseif($jadual=='malaysia')
+			$this->sayaPilihMalaysia($cari, $susun);
 		elseif($jadual=='syarikat')
 			$this->sayaPilihSyarikat($cari, $susun);
 		elseif($jadual=='data_mm_prosesan')
@@ -305,6 +308,24 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				'JOHOR' : 'LK-JOHOR';
 			$medan = ($jadual == 'pom_lokaliti.johor') ?
 				$medanAsal : $medanBaru;
+			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			$this->papar->senarai[$myTable] = $this->tanya->
+				//cariSql("$jadual\r", $medan, $carian, $susun);
+				cariSemuaData("$jadual\r", $medan, $carian, $susun);
+		}# tamat ulang table//*/
+
+		$this->papar->carian = $cari;
+	}
+#------------------------------------------------------------------------------------------
+	function sayaPilihMalaysia($cari, $susun)
+	{
+		list($namaPanjang,$ngbesar,$medan) = dpt_senarai('jadual_peta2');
+		/*echo 'jadual:' . $this->semakPembolehubah($namaPanjang); *///echo '<pre>';
+		$medan = '*';
+
+		foreach ($namaPanjang as $key => $jadual)
+		{# mula ulang table
+			$myTable = $ngbesar[$key];
 			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				//cariSql("$jadual\r", $medan, $carian, $susun);
