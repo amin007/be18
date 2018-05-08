@@ -9,6 +9,8 @@ class Login extends \Aplikasi\Kitab\Kawal
 		parent::__construct();
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		$this->_folder = huruf('kecil', namaClass($this));
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		//echo '<hr>Nama function :' .__FUNCTION__ . '<hr>';
 	}
 ##-----------------------------------------------------------------------------------------
 	public function index()
@@ -39,6 +41,20 @@ class Login extends \Aplikasi\Kitab\Kawal
 		echo '</pre>|';//*/
 	}
 ##-----------------------------------------------------------------------------------------
+	public function semakRujuk($senarai)
+	{
+		//echo '<pre>$senarai:<br>';
+		print_r($senarai);
+		//echo '</pre>|';//*/
+	}
+##-----------------------------------------------------------------------------------------
+	function logout()
+	{
+		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
+		\Aplikasi\Kitab\Sesi::destroy();
+		header('location: ' . URL);
+		//exit;
+	}
 #==========================================================================================
 #------------------------------------------------------------------------------------------
 	function register()
@@ -52,27 +68,25 @@ class Login extends \Aplikasi\Kitab\Kawal
 	{
 		# debug $_POST
 		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
-		//$this->tanya->dapatid($_POST['password']);
 
 		# Set pemboleubah utama
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
 		$senarai = array($myTable);
-
-		# bentuk tatasusunan
+		# Bentuk tatasusunan
 		$posmen = $this->tanya->semakPOST($myTable, $senarai, $_POST);
 		$senaraiData = $this->tanya->ubahPosmen($posmen, $myTable);
 		# sql insert
 		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
 		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
 		//$this->log_sql($myTable, $medan, $senaraiData);
-		# semak data
+		# Semak data
 			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
 			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
-		# pergi papar kandungan
+
+		# Pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
-		header('location: ' . URL . '');
-		//*/
+		header('location: ' . URL . ''); //*/
 	}
 #------------------------------------------------------------------------------------------
 	function salah()
@@ -164,9 +178,9 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//header('location:' . URL . 'ruangtamu');
 		if ($level == 'kawal')
 			header('location:' . URL . 'ruangtamu');
-		if ($level == 'pegawai')
+		elseif ($level == 'pegawai')
 			header('location:' . URL . 'ruangtamu');
-		elseif($level == 'pegawai')
+		elseif($level == 'pegawai2')
 			header('location:' . URL . 'homeadmin');
 		else
 			header('location:' . URL . ''); //*/
