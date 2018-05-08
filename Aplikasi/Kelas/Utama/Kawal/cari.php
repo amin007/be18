@@ -9,15 +9,15 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = huruf('kecil', namaClass($this));
-		$this->_namaClass = '<hr>Nama class :' . __METHOD__ . '<hr>';
-		$this->_namaFunction = '<hr>Nama function :' .__FUNCTION__ . '<hr>';
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		//echo '<hr>Nama function :' .__FUNCTION__ . '<hr>';
 	}
 ##------------------------------------------------------------------------------------------
 	public function index()
 	{
 		# Set pemboleubah utama
 		$this->papar->tajuk = namaClass($this);
-		//echo $this->_namaClass; //echo $this->_namaFunction;
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -129,7 +129,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	public function tentang($apa, $bil=1, $mesej=null)
 	{
 		# Fungsi ini memaparkan borang
-		//echo 'mana ko pergi daa lokaliti($negeri)<br>';
 
 		//if ($apa=='msic') $jadual = 'pom_dataekonomi.msic2000';
 		if ($apa=='msic') $jadual = 'msic2000';
@@ -210,7 +209,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		list($jadual,$susun,$pilih,$semak,$semak2,$cari,$atau)
-			= $this->susunPembolehubah($bil, $muka);
+			= $this->susunPembolehubah($bil,$muka);
 
 		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
 		{	//echo ')$jadual=' . $jadual . '<br>';
@@ -371,7 +370,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 #------------------------------------------------------------------------------------------
 	public function syarikat($carilah = null)
 	{
-		$cari = bersih($_GET['cari']); //echo "URL \$cari = $cari <br> GET \$cari = $carilah";
+		$cari = bersih($_GET['cari']);
+		//echo "URL \$cari = $cari <br> GET \$cari = $carilah";
 		if($cari == null) echo '<li>Kosong Laa</li>';
 		elseif (isset($cari)) 
 		{
