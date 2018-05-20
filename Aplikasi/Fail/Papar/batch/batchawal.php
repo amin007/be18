@@ -38,7 +38,7 @@ else
 <div class="tabbable tabs-top">
 	<ul class="nav nav-tabs putih">
 <?php 
-foreach ($this->cariApa as $jadual => $baris)
+foreach ($this->senarai as $jadual => $baris)
 {
 	if ( count($baris)==0 )
 		echo '';
@@ -55,7 +55,7 @@ foreach ($this->cariApa as $jadual => $baris)
 ?>	</ul>
 <div class="tab-content">
 <?php 
-foreach ($this->cariApa as $myTable => $row)
+foreach ($this->senarai as $myTable => $row)
 {
 	if ( count($row)==0 )
 		echo '';
