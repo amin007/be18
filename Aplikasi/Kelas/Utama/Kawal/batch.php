@@ -102,25 +102,26 @@ class Batch extends \Aplikasi\Kitab\Kawal
 		//$this->cariGroup($jadual, $cariBatch, $cariID, $this->tanya->medanData);
 
 		# semak pembolehubah
-		$this->semakPembolehubah($this->papar->error); # Semak data dulu
-		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->error); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 
 		# Set pemboleubah utama
 		$this->papar->cariBatch = $cariBatch;
 		$this->papar->cariID = $cariID;
 		$this->papar->carian = 'semua';
-		$fail = array('index','b_ubah','batchawal');
+		$fail = array('index','b_ubah','b_ubah_batch','batchawal',);
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
+		$this->_folder = 'cari';
+		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 	private function cariAwal($senaraiJadual, $cariBatch, $cariID)
 	{
 		$bilSemua = $item = 1000; $ms = 1; ## set pembolehubah utama
 		# sql 1
-			$medan = $this->tanya->medanData;
+			$medan = $this->tanya->medanData();
 			$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
 			foreach ($senaraiJadual as $key => $myTable)
 			{# mula ulang table
@@ -128,7 +129,8 @@ class Batch extends \Aplikasi\Kitab\Kawal
 				$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp DESC,respon DESC,nama') );
 				# sql guna limit //$this->papar->senarai = array();
 				$this->papar->senarai['aes'] = $this->tanya->
-					cariSql($myTable, $medan, $carian, $susun);
+					cariKhas01($myTable, $medan, $carian, $susun);
+					//cariSql($myTable, $medan, $carian, $susun);
 					//cariSemuaData($myTable, $medan, $carian, $susun);
 			}# tamat ulang table
 	}
