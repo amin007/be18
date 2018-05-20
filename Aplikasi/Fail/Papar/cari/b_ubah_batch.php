@@ -1,9 +1,9 @@
 <?php
 # pilih paparan ke bawah atau melintang
 //$pilihJadual = 'jadual_operasi';
-//$pilihJadual = 'jadual_am';
+$pilihJadual = 'jadual_am';
 //$pilihJadual = 'ubah_medan01'; # borang biodata berasaskan table
-$pilihJadual = 'ubah_medan02'; # borang ubah berasaskan bootstrap
+//$pilihJadual = 'ubah_medan02'; # borang ubah berasaskan bootstrap
 
 # untuk kod baru
 //echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
@@ -20,7 +20,8 @@ foreach ($this->senarai as $kunci2 => $nilai2)
 //echo "Anda mencari = $cari1\r<br>$cari2\r<hr>";
 
 if(!isset($this->cariID)):
-	echo '<h1>data kosong daa</h1>';
+	//echo '<h1>data kosong daa</h1>';
+	include 'template_atas.php';
 else:
 	include 'template_atas.php'; 
 	include 'template_' . $this->template . '.php'; # jenis template
