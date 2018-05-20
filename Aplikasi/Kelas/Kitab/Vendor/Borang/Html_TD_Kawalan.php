@@ -166,7 +166,7 @@ class Html_TD_Kawalan
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		elseif(in_array($key,array('respon','nobatch','feprosesan')))
+		elseif(in_array($key,array('respon','mko','nobatch','feprosesan')))
 		{#kod utk input text 3 aksara sahaja
 			$input = '<div class="input-group input-group">' . $tabline
 				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
