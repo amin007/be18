@@ -10,7 +10,7 @@ class Batch extends \Aplikasi\Kitab\Kawal
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = huruf('kecil', namaClass($this));
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
-		//echo '<hr>Nama function :' . __FUNCTION__ . '<hr>';		
+		//echo '<hr>Nama function :' . __FUNCTION__ . '<hr>';
 	}
 ##-----------------------------------------------------------------------------------------
 	public function index()
