@@ -107,7 +107,7 @@ class Borang02_Ubah
 			$classInput,$komenInput) = $this->ccs();
 
 		//if ( in_array($key,array(...)) )
-		if(in_array($key,array('nota','catatan','CatatNota')))
+		if(in_array($key,array('nota','nota_prosesan','catatan','CatatNota')))
 			$input = $this->inputTextarea($tab2, $name, $data); #kod utk textarea
 		elseif ( in_array($key,array('password','kataLaluan')) )
 			$input = $this->inputPassword($tab2, $tab3, $name, $data, 
@@ -127,7 +127,8 @@ class Borang02_Ubah
 		elseif(in_array($key,array('no','batu','jalan','tmn_kg','daerah')))
 			$input = $this->inputAlamatBaru($tab2, $tab3, $name, $data, 
 				$classInput, $komenInput);
-		elseif(in_array($key,array('namax','emailx','responden','fe')))
+		elseif(in_array($key,array('namax','emailx','responden','fe',
+			'mko','respon')))
 			$input = $this->inputTeksBesar($tab2, $tab3, $name, $data, 
 				$classInput, $komenInput);
 		elseif(in_array($key,array('pecah5P')))
