@@ -340,5 +340,56 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		return $posmen; # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
+	public function lihat01()
+	{# Set pembolehubah utama
+		//echo '<hr>' . $this->_namaClass . '<hr>';
+		$this->jadualKhas();
+		$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap';
+		$fail = array('index','b_ubah','b_ubah_kawalan');
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
+		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
+		$this->paparKandungan($this->_folder, $fail[0] , $noInclude=0); //*/
+    }
+#-------------------------------------------------------------------------------------------
+	function umpukNilai2($umpuk)
+	{
+		list($senarai, $myTable) = $umpuk;
+		$this->papar->medanID = 'semua';
+		$this->papar->cariID = 'semua';
+		$this->papar->carian[] = 'semua';
+		$this->papar->_jadual = $myTable;
+		$this->papar->senarai = $senarai;
+		//$this->papar->_cariIndustri = null; # rujuk fungsi cariIndustri()
+		$this->papar->_method = huruf('kecil', namaClass($this));
+		//$this->semakDataJadual($senarai); # semak Pembolehubah
+	}
+#-------------------------------------------------------------------------------------------
+	private function jadualKhas()
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		list($myT1, $myT2, $on, $medan,
+		$a, $b, $c, $d) = dpt_senarai('jadual_kawalan3');
+
+		# bentuk tatasusunan $carian //$carian = null;
+			$myTable = "$myT1 INNER JOIN $myT2 $on";
+			$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
+			$carian[] = array('fix'=>'z3x','atau'=>'OR','medan'=>$b,'apa'=>1);
+			$carian[] = array('fix'=>'z3x','atau'=>'OR','medan'=>$c,'apa'=>1);
+			$carian[] = array('fix'=>'z3x','atau'=>'OR','medan'=>$d,'apa'=>1);
+			$susun[0]['susun'] = '1 ASC, 4 ASC';
+		# semak database
+			$senarai['kes'] = $this->tanya->
+				cariSemuaData($myTable, $medan, $carian, $susun);
+				//cariSql($myTable, $medan, $carian, $susun);
+		# semak semua $pencam di sini
+			$this->umpukNilai2(array($senarai, $myTable));
+
+		return array($senarai);
+	}
+#-------------------------------------------------------------------------------------------
 #===========================================================================================
 }
