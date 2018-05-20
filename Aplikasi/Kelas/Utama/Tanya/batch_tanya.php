@@ -22,16 +22,18 @@ class Batch_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function medanRangka()
 	{
-		return 'newss,ssm,concat_ws("<br>",nama,operator) as nama,'
+		$medan = 'newss,ssm,concat_ws("<br>",nama,operator) as nama,'
 			. 'fe,batchProses,hantar_prosesan,mko,respon R,msic2008,kp,nama_kp,'
 			. 'concat_ws("<br>",alamat1,alamat2,poskod,bandar,negeri) as alamat' 
 			//. 'concat_ws("<br>",semak1,mdt,notamdt2014,notamdt2012,notamdt2011) as nota_lama'
 			. "\r";
+
+		return $medan;
 	}
 #---------------------------------------------------------------------------------------------------#
 	public function medanData()
 	{
-		return 'newss,ssm,nama,fe,batchProses hantar,"<input type=\"checkbox\">" as tik,' . "\r"
+		$medan = 'newss,ssm,nama,fe,batchProses hantar,"<input type=\"checkbox\">" as tik,' . "\r"
 			//. 'concat_ws("<br>",alamat1,alamat2,poskod,bandar,negeri) as alamat,' 
 			. 'mko,respon R,nama_kp,kp,msic2008,' . "\r"
 			. ' concat_ws("|",' . "\r"
@@ -43,8 +45,37 @@ class Batch_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
  			. ' ) as data5P,nota'
 			. "\r";
+
+		return $medan;
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function cariKhas01($a,$b,$c,$d)
+	{
+		$medan[0] = array(
+			'newss' => '000000123456',
+			'nossm' => 'JR0001234',
+			'nama' => 'Biar Rahsia',
+			'fe' => '','hantar' => '',
+			'tik' => '<input type=\"checkbox\">',
+			'mko' => '','R' => '',
+			'nama_kp' => 'pembuatan',
+			'kp' => '205',
+			'msic2008' => '10101'
+		);
+		$medan[1] = array(
+			'newss' => '000000123457',
+			'nossm' => 'JR0001235',
+			'nama' => 'Biar Rahsia2',
+			'fe' => '','hantar' => '',
+			'tik' => '<input type=\"checkbox\">',
+			'mko' => '','R' => '',
+			'nama_kp' => 'pembuatan',
+			'kp' => '205',
+			'msic2008' => '10101'
+		);
+
+		return $medan;
+	}
 #---------------------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------------------#
