@@ -49,6 +49,19 @@ class Batch_Tanya extends \Aplikasi\Kitab\Tanya
 		return $medan;
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function cariKhas02($a,$b,$c,$d)
+	{
+		$medan[0] = array(
+			'newss' => '000000123456',
+			'nossm' => 'JR0001234',
+			'nama' => 'Biar Rahsia',
+			'operator' => '',
+			'alamat' => 'NO 1, JALAN 2, TAMAN 3 48000 MUAR',
+		);
+
+		return $medan;
+	}
+#---------------------------------------------------------------------------------------------------#
 	public function cariKhas01($a,$b,$c,$d)
 	{
 		$medan[0] = array(
@@ -56,7 +69,7 @@ class Batch_Tanya extends \Aplikasi\Kitab\Tanya
 			'nossm' => 'JR0001234',
 			'nama' => 'Biar Rahsia',
 			'fe' => '','hantar' => '',
-			'tik' => '<input type=\"checkbox\">',
+			'tik' => '<input type="checkbox">',
 			'mko' => '','R' => '',
 			'nama_kp' => 'pembuatan',
 			'kp' => '205',
@@ -67,7 +80,7 @@ class Batch_Tanya extends \Aplikasi\Kitab\Tanya
 			'nossm' => 'JR0001235',
 			'nama' => 'Biar Rahsia2',
 			'fe' => '','hantar' => '',
-			'tik' => '<input type=\"checkbox\">',
+			'tik' => '<input type="checkbox">',
 			'mko' => '','R' => '',
 			'nama_kp' => 'pembuatan',
 			'kp' => '205',
