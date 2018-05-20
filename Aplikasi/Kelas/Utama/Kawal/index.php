@@ -5,7 +5,6 @@ class Index extends \Aplikasi\Kitab\Kawal
 #==========================================================================================
 	function __construct()
 	{
-		//echo '<br>class Index extends \Aplikasi\Kelas\Kitab\Kawal';
 		parent::__construct();
 		\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		$this->_folder = huruf('kecil', namaClass($this));
@@ -20,8 +19,9 @@ class Index extends \Aplikasi\Kitab\Kawal
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 
 		# Pergi papar kandungan
+		$fail = array('index','login','login_automatik');
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, 'index', $noInclude=0);
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);
 	}
 ##------------------------------------------------------------------------------------------
 	public function paparKandungan($folder, $fail, $noInclude)
@@ -41,13 +41,6 @@ class Index extends \Aplikasi\Kitab\Kawal
 		echo '</pre>|';//*/
 	}
 ##------------------------------------------------------------------------------------------
-	public function semakRujuk($senarai)
-	{
-		//echo '<pre>$senarai:<br>';
-		print_r($senarai);
-		//echo '</pre>|';//*/
-	}
-##------------------------------------------------------------------------------------------
 	function logout()
 	{
 		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
@@ -56,36 +49,5 @@ class Index extends \Aplikasi\Kitab\Kawal
 		//exit;
 	}
 #==========================================================================================
-	function login($user)
-	{
-		# Set pemboleubah utama
-		$this->papar->nama = $user; # dapatkan nama pengguna
-		$this->papar->IP = dpt_ip(); # dapatkan senarai IP yang dibenarkan
-
-		# Pergi papar kandungan
-		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder,'login', $noInclude=0); # $noInclude=0
-	}
-#------------------------------------------------------------------------------------------
-	function login_automatik($user)
-	{
-		# Set pemboleubah utama
-		$this->papar->nama = $user; # dapatkan nama pengguna
-		$this->papar->IP = dpt_ip(); # dapatkan senarai IP yang dibenarkan
-
-		# Pergi papar kandungan
-		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder,'login_automatik', $noInclude=0); # $noInclude=0
-	}
-#------------------------------------------------------------------------------------------
-	function keluar()
-	{
-		# Set pemboleubah utama
-		$this->papar->IP = dpt_ip(); # dapatkan senarai IP yang dibenarkan
-
-		# Pergi papar kandungan
-		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder,'keluar', $noInclude=1); # $noInclude=0
-	}
 #==========================================================================================
 }
