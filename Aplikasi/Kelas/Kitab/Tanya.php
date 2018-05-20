@@ -116,11 +116,11 @@ class Tanya
 				    $max = isset($carian[$key]['max'])    ? $carian[$key]['max']     : null;
 				//echo "\$cari = $cari, \$key=$key <br>";
 			}
-				if ($kumpul!=null) $susunan .= " GROUP BY $kumpul\r";
-				if ($mengira!=null)$susunan .= " $mengira\r";
-				if ($order!=null)  $susunan .= " ORDER BY $order\r";
+				if ($kumpul!=null) $susunan .= "\r GROUP BY $kumpul\r";
+				if ($mengira!=null)$susunan .= "\r $mengira\r";
+				if ($order!=null)  $susunan .= "\r ORDER BY $order\r";
 				if ($max!=null)    $susunan .= ($dari==0) ? 
-					" LIMIT $max\r" : " LIMIT $dari,$max\r";
+					"\r LIMIT $max\r" : "\r LIMIT $dari,$max\r";
 		endif;
 
 		return $susunan; //echo '<pre>'; print_r($susunan); echo '</pre>';
