@@ -52,17 +52,6 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	}
 #===========================================================================================
 #-------------------------------------------------------------------------------------------
-	public function contoh($action = 'hasil')
-	{
-		# Set pemboleubah utama
-		//echo '<hr>' . $this->_namaClass . '<hr>';
-
-		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->_folder = ''; # jika mahu ubah lokasi Papar
-		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1);
-	}
-#-------------------------------------------------------------------------------------------
 	public function pembolehubahSesi()
 	{
 		$sesi = \Aplikasi\Kitab\Sesi::init();
@@ -143,10 +132,6 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => $medanID, # cari dalam medan apa
 				'apa' => $cariID); # benda yang dicari
-			/*$carian[] = array('fix'=>'like', # cari x= atau %like%
-				'atau'=>'AND', # WHERE / OR / AND
-				'medan' => $medan02, # cari dalam medan apa
-				'apa' => $level); # benda yang dicari//*/
 		# semak database
 			$senarai['kes'] = $this->tanya->
 				cariSemuaData("`$myTable`", $medan, $carian, null);
@@ -342,12 +327,12 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	function tarikh($myTable, $posmen)
 	{
 		$tarikh = array('lawat','terima','hantar','hantar_prosesan');
-		//$tarikhX = array('lawatX','terimaX','hantarX','hantar_prosesanX');
+
 		foreach ($tarikh as $kekunci)
 		if (isset($posmen[$myTable][$kekunci . 'X']))
 		{
-			//echo '<br>' . $kekunci . 'X|'. $posmen[$myTable][$kekunci . 'X'];
-			//echo '<br>' . $kekunci .'|'. $posmen[$myTable][$kekunci];
+			//echo '<br>' . $kekunci . 'X|' . $posmen[$myTable][$kekunci . 'X'];
+			//echo '<br>' . $kekunci . ' |' . $posmen[$myTable][$kekunci];
 			$posmen[$myTable][$kekunci] = null;
 			unset($posmen[$myTable][$kekunci . 'X']);
 		}
