@@ -340,6 +340,19 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		return $posmen; # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
+	function umpukNilai2($umpuk)
+	{
+		list($senarai, $myTable) = $umpuk;
+		$this->papar->medanID = 'semua';
+		$this->papar->cariID = 'semua';
+		$this->papar->carian[] = 'semua';
+		$this->papar->_jadual = $myTable;
+		$this->papar->senarai = $senarai;
+		//$this->papar->_cariIndustri = null; # rujuk fungsi cariIndustri()
+		$this->papar->_method = huruf('kecil', namaClass($this));
+		//$this->semakDataJadual($senarai); # semak Pembolehubah
+	}
+#-------------------------------------------------------------------------------------------
 	public function lihat01()
 	{# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
@@ -354,19 +367,6 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
 		$this->paparKandungan($this->_folder, $fail[0] , $noInclude=0); //*/
     }
-#-------------------------------------------------------------------------------------------
-	function umpukNilai2($umpuk)
-	{
-		list($senarai, $myTable) = $umpuk;
-		$this->papar->medanID = 'semua';
-		$this->papar->cariID = 'semua';
-		$this->papar->carian[] = 'semua';
-		$this->papar->_jadual = $myTable;
-		$this->papar->senarai = $senarai;
-		//$this->papar->_cariIndustri = null; # rujuk fungsi cariIndustri()
-		$this->papar->_method = huruf('kecil', namaClass($this));
-		//$this->semakDataJadual($senarai); # semak Pembolehubah
-	}
 #-------------------------------------------------------------------------------------------
 	private function jadualKhas()
 	{
