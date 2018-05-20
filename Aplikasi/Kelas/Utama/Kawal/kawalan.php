@@ -174,7 +174,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# mula cari $msis08 dalam database yang sama
 		foreach ($jadualMSIC as $m6 => $msic)
 		{# mula ulang table
-			$jadual = $msic; //substr($msic, 16);
+			$jadual = substr($msic, 16);
 			//echo "\$msic=$msic|\$jadual=$jadual<br>";
 			# senarai nama medan
 			if($jadual=='msic2008')/*bahagian B,kumpulan K,kelas Kls,*/
