@@ -76,8 +76,9 @@ class Batch extends \Aplikasi\Kitab\Kawal
 				$susun = null;
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
 				$dataKes = $this->tanya->
+					cariKhas02($jadual[0], $medan, $carian, $susun);
 					//cariSql($jadual[0], $medan, $carian, $susun);
-					cariSemuaData($jadual[0], $medan, $carian, $susun);
+					//cariSemuaData($jadual[0], $medan, $carian, $susun);
 				$paparError = 'Ada id:' . $dataKes[0]['newss'] 
 					. '| ssm:' . $dataKes[0]['nossm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
@@ -108,8 +109,10 @@ class Batch extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->cariBatch = $cariBatch;
 		$this->papar->cariID = $cariID;
-		$this->papar->carian = 'semua';
-		$fail = array('index','b_ubah','b_ubah_batch','batchawal',);
+		$this->papar->carian[] = 'semua';
+		$this->papar->template = 'bootstrap';
+		//$this->papar->template = 'biasa';
+		$fail = array('index','b_ubah','b_ubah_batch','batchawal');
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
