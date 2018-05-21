@@ -155,15 +155,18 @@ class Batch extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	private function cariAwal($senaraiJadual, $cariBatch, $cariID)
 	{
-		$bilSemua = $item = 1000; $ms = 1; ## set pembolehubah utama
+		## set pembolehubah utama
+		$bilSemua = $item = 300; $ms = 1; 
+		$jum = pencamSqlLimit($bilSemua, $item, $ms);
+		$kumpul = array('kumpul'=>null,'susun'=>'kp DESC,respon DESC,nama');
+		$susun[] = array_merge($jum, $kumpul);
+
 		# sql 1
 			$medan = $this->tanya->medanData();
 			$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
 			foreach ($senaraiJadual as $key => $myTable)
 			{# mula ulang table
-				$jum = pencamSqlLimit($bilSemua, $item, $ms);
-				$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp DESC,respon DESC,nama') );
-				# sql guna limit //$this->papar->senarai = array();
+				# sql guna limit 
 				$this->papar->senarai['aes'] = $this->tanya->
 					//cariKhas01($myTable, $medan, $carian, $susun);
 					//cariSql($myTable, $medan, $carian, $susun);
