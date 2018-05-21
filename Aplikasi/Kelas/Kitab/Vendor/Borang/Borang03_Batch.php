@@ -19,10 +19,10 @@ class Borang03_Batch
 		if (($namaPegawai == null)):
 			list($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
 				= $this->pautan01($namaPegawai, $noBatch, $urlStaf);
-		elseif (($namaPegawai != null) && ($thisnoBatch == null)):
+		elseif (($namaPegawai != null) && ($noBatch == null)):
 			list($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
-				= $this->pautan02($namaPegawai, $noBatch, $urlStaf);
-		elseif (($this->namaPegawai != null) && ($noBatch != null)
+				= $this->pautan02($namaPegawai, $noBatch, $urlStaf, $staff);
+		elseif (($namaPegawai != null) && ($noBatch != null)
 			&& ($error == 'Kosong') ):
 			list($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
 				= $this->pautan03($namaPegawai, $noBatch, $urlStaf);
@@ -47,7 +47,7 @@ class Borang03_Batch
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan02($namaPegawai, $noBatch, $urlStaf)
+	public function pautan02($namaPegawai, $noBatch, $urlStaf, $staff)
 	{
 		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
 			= $this->icon($namaPegawai, $urlStaf);
@@ -55,7 +55,7 @@ class Borang03_Batch
 		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
 		$noBatch = (!isset($noBatch)) ? null : $noBatch;
 		$mencari = URL . 'operasi/tambahBatchBaru/' . $namaPegawai;
-		$notaTambahan = ( (in_array($namaPegawai,$senaraiStaf)) ?
+		$notaTambahan = ( (in_array($namaPegawai,$staff)) ?
 			$paparStaf : $paparXStaf );
 		$butangHantar = 'Letak No Batch';
 		$cetak = null;
@@ -81,7 +81,8 @@ class Borang03_Batch
 		'<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">' 
 		. $cetakIcon . 'A1</a></h3>' . "\r";
 		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
-		$notaTambahan = 'Daftar kes masing-masing<br>';
+		$notaTambahan = 'Daftar kes masing-masing<br>' 
+			. 'Nama:' . $namaPegawai . '|Batch:' . $noBatch;
 		$butangHantar = 'Letak No ID';
 
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
