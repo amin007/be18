@@ -61,16 +61,28 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
+	function semakData($namaPegawai,$noBatch,$cariID,$semakID)
+	{
+		# Semak data awal
+		echo '<pre>';
+		echo '<br>$namaPegawai: ' . $namaPegawai;
+		echo '<br>$$noBatch:' . $noBatch;
+		echo '<br>$cariID:' . $cariID;
+		echo '<br>$semakID:' . $semakID;
+		echo '</pre>';//*/
+	}
+#-------------------------------------------------------------------------------------------
 	public function batch($namaPegawai = null, $noBatch = null, $cariID = null, $semakID = null) 
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		# Mencari dalam database
-		$this->cariDatabase($namaPegawai,$noBatch,$semakID,$cariID);
+		//$this->semakData($namaPegawai,$noBatch,$cariID,$semakID);
+		$this->cariDatabase($namaPegawai,$noBatch,$cariID,$semakID);
 		$this->semakSemua($namaPegawai,$noBatch);
 
 		# Pergi papar kandungan
-		$this->papar->template = 'bootstrap';
-		//$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap';
+		$this->papar->template = 'biasa';
 		$fail = array('index','b_ubah','b_ubah_batch','batchawal');
 		$this->_folder = 'cari';
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -87,9 +99,9 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# Semak data dulu
 		/*echo '<pre>';
 		echo '<br>$this->error'; $this->semakPembolehubah($this->papar->error);
-		echo '<br>$this->senarai'; $this->semakPembolehubah($this->papar->senarai);
-		echo '<br>$this->namaPegawai'; $this->semakPembolehubah($this->papar->namaPegawai);
-		echo '<br>$this->noBatch'; $this->semakPembolehubah($this->papar->noBatch);
+		//echo '<br>$this->senarai'; $this->semakPembolehubah($this->papar->senarai);
+		//echo '<br>$this->namaPegawai'; $this->semakPembolehubah($this->papar->namaPegawai);
+		//echo '<br>$this->noBatch'; $this->semakPembolehubah($this->papar->noBatch);
 		echo '</pre>';//*/
 	}
 #-------------------------------------------------------------------------------------------
@@ -106,7 +118,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				$medan = 'newss,nossm,nama,operator,'
 					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,'
 					//. 'concat_ws(" ",posdaftar,posdaftar_terima) as posdaftar,'
-					. 'concat_ws(" ",pegawai,borang) as siapapunya';
+					. 'concat_ws("|",pegawai,borang) as siapapunya';
 				$susun = null;
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
 				$dataKes = $this->tanya->
@@ -132,46 +144,44 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		return $paparError;
 	}
 #-------------------------------------------------------------------------------------------
-	function cariDatabase($namaPegawai,$noBatch,$semakID,$cariID)
+	function cariDatabase($namaPegawai,$noBatch,$cariID,$semakID)
 	{
 		$jadual = array('kawalan_aes'); # set senarai jadual yang terlibat
-		$medan = $this->tanya->medanData();
 		if ($semakID != null):
 			$this->papar->error  = 'Data sudah ada, pandai-pandai ambil ya <br>';
 			$this->papar->error .= $this->wujudBatchAwal($jadual, $noBatch, $cariID);
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID, $medan);
+			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID);
 		elseif ($cariID == null):
 			$this->papar->error = 'Kosong';
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID, $medan);
+			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID);
 		else:
 			# cari $noBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudBatchAwal($jadual, $noBatch, $cariID);
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID, $medan);
+			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID);
 		endif;
 	}
 #-------------------------------------------------------------------------------------------
-	private function cariAwal($senaraiJadual, $noBatch, $cariID)
+	private function cariAwal($jadual, $namaPegawai, $noBatch, $cariID)
 	{
 		## set pembolehubah utama
 		$bilSemua = $item = 300; $ms = 1; 
 		$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$kumpul = array('kumpul'=>null,'susun'=>'kp DESC,respon DESC,nama');
-		$susun[] = array_merge($jum, $kumpul);
-
 		# sql 1
-			$medan = $this->tanya->medanData();
-			$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>$noBatch);
-			foreach ($senaraiJadual as $key => $myTable)
-			{# mula ulang table
-				# sql guna limit 
-				$this->papar->senarai['aes'] = $this->tanya->
-					//cariKhas01($myTable, $medan, $carian, $susun);
-					//cariSql($myTable, $medan, $carian, $susun);
-					cariSemuaData($myTable, $medan, $carian, $susun);
-			}# tamat ulang table
+		$medan = $this->tanya->medanData();
+		$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>'borang','apa'=>$noBatch);
+		$susun[] = array_merge($jum, $kumpul);
+		foreach ($jadual as $key => $myTable)
+		{# mula ulang table
+			$this->papar->senarai['aes'] = $this->tanya->
+				//cariKhas01($myTable, $medan, $carian, $susun);
+				//cariSql($myTable, $medan, $carian, $susun);
+				cariSemuaData($myTable, $medan, $carian, $susun);
+		}# tamat ulang table
 	}
 #-------------------------------------------------------------------------------------------
 	private function cariGroup($senaraiJadual, $cariBatch, $cariID, $medan)
@@ -271,20 +281,22 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# tanya Sql //$semakID[0]['pegawai'] 	$semakID[0]['borang']
 		$semakID = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $cari, $susun = null);
-		//echo '<pre>$semakID->', print_r($semakID); echo '</pre>';
-		//echo '<pre>$posmen->'; print_r($posmen); echo '</pre>';
+		echo '<pre>$semakID->', print_r($semakID); echo '</pre>';
+		echo '<pre>$posmen->'; print_r($posmen); echo '</pre>';
 
 		# masuk dalam database
-		$p1 = "$namaPegawai/$asalBatch/$dataID/";
+		$p1 = "$namaPegawai/$asalBatch/$dataID";
 		$p2 = '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
 		if(is_null($semakID[0]['pegawai'])):
 			if(is_null($semakID[0]['borang'])):
-				$this->tanya->ubahSimpan(
-				//$this->tanya->ubahSqlSimpan(
+				//$this->tanya->ubahSimpan(
+				$this->tanya->ubahSqlSimpan(
 					$posmen[$jadual], $jadual, $medanID);
 				$kodID = $p1;
-			else: $kodID = $p1 . $p2; endif;
-		else:
+			else: //echo 'sudah ada isi';
+				$kodID = $p1 . $p2;
+			endif;
+		else: //echo 'sudah ada isi';
 			$kodID = $p1 . $p2;
 		endif;//*/
 
