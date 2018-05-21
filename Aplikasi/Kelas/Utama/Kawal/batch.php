@@ -61,37 +61,6 @@ class Batch extends \Aplikasi\Kitab\Kawal
 		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	private function wujudBatchAwal($jadual, $cariBatch = null, $cariID = null) 
-	{
-		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		if (!isset($cariBatch) || empty($cariBatch) ):
-			$paparError = 'Tiada batch<br>';
-		else:
-			if((!isset($cariID) || empty($cariID) ))
-				$paparError = 'Tiada id<br>';
-			else
-			{
-				$medan = 'newss,nossm,nama,operator,'
-					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
-				$susun = null;
-				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
-				$dataKes = $this->tanya->
-					cariKhas02($jadual[0], $medan, $carian, $susun);
-					//cariSql($jadual[0], $medan, $carian, $susun);
-					//cariSemuaData($jadual[0], $medan, $carian, $susun);
-				$paparError = 'Ada id:' . $dataKes[0]['newss'] 
-					. '| ssm:' . $dataKes[0]['nossm']
-					. '<br> nama:' . $dataKes[0]['nama'] 
-					. '| operator:' . $dataKes[0]['operator']
-					. '<br> alamat:' . $dataKes[0]['alamat']; //*/
-			}
-		endif;
-
-		//echo '<pre>$dataKes=>'; print_r($dataKes); echo '</pre>';//*/
-		//echo '<pre>$paparError=>'; print_r($paparError); echo '</pre>';//*/
-		return $paparError;
-	}
-#-------------------------------------------------------------------------------------------
 	public function awal($namaPegawai = null, $cariBatch = null, $cariID = null, $semakID = null) 
 	{//echo "\$cariBatch = $cariBatch . \$cariID = $cariID <br>";
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
@@ -120,6 +89,44 @@ class Batch extends \Aplikasi\Kitab\Kawal
 		$this->papar->cariBatch = $cariBatch;
 		$this->papar->cariID = $cariID;
 		$this->papar->carian[] = 'semua';
+	}
+#-------------------------------------------------------------------------------------------
+	private function wujudBatchAwal($jadual, $cariBatch = null, $cariID = null) 
+	{
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		if (!isset($cariBatch) || empty($cariBatch) ):
+			$paparError = 'Tiada batch<br>';
+		else:
+			if((!isset($cariID) || empty($cariID) ))
+				$paparError = 'Tiada id<br>';
+			else
+			{
+				$medan = 'newss,nossm,nama,operator,'
+					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,'
+					. 'concat_ws(" ",posdaftar,posdaftar_terima) as posdaftar,'
+					. 'concat_ws(" ",pegawai,borang) as siapapunya';
+				$susun = null;
+				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
+				$dataKes = $this->tanya->
+					cariKhas02($jadual[0], $medan, $carian, $susun);
+					//cariSql($jadual[0], $medan, $carian, $susun);
+					//cariSemuaData($jadual[0], $medan, $carian, $susun);
+				$paparError = (!isset($dataKes[0]['newss'])) ? 
+					$this->tiadaDalamRangka('newss', $cariID) : # jika jumpa
+					'Ada id: <a target="_blank" href="'. URL . 'kawalan/ubah/' 
+					. $dataKes[0]['newss'] .'">' . $dataKes[0]['newss'] . '</a> '
+					. ( empty($dataKes[0]['nossm']) ? '' : '| nossm:' . $dataKes[0]['nossm'] )
+					. '<br> nama:' . $dataKes[0]['nama'] 
+					. ( empty($dataKes[0]['operator']) ? '' : '| operator:' . $dataKes[0]['operator'] )
+					. '<br> alamat:' . $dataKes[0]['alamat']
+					. ( empty($dataKes[0]['posdaftar']) ? '' : '| posdaftar:' . $dataKes[0]['posdaftar'] )
+					. ( empty($dataKes[0]['siapapunya']) ? '' : '|<br> siapapunya:' . $dataKes[0]['siapapunya'] )
+			}
+		endif;
+
+		//echo '<pre>$dataKes=>'; print_r($dataKes); echo '</pre>';//*/
+		//echo '<pre>$paparError=>'; print_r($paparError); echo '</pre>';//*/
+		return $paparError;
 	}
 #-------------------------------------------------------------------------------------------
 	function cariDatabase()
