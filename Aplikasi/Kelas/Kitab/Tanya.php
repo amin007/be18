@@ -201,9 +201,9 @@ class Tanya
 
 	public function cariSql($myTable, $medan, $carian, $susun)
 	{
-		$sql = ' SELECT ' . $medan . ' FROM ' . $myTable
-			 . $this->dimana($carian)
-			 . $this->dibawah($susun);
+		$sql = ' SELECT ' . $medan . "\r" . ' FROM ' . $myTable
+			 . "\r" . $this->dimana($carian)
+			 . "\r" . $this->dibawah($susun);
 
 		echo htmlentities($sql) . '<br>';
 		//echo '<pre>$sql->' . $sql . '</pre><br>';
