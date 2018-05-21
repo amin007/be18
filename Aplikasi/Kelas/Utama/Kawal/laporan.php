@@ -137,7 +137,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, 'f3responden', $noInclude=0);
+		$this->paparKandungan($this->_folder, 'f3responden', $noInclude=1);
 		//$this->papar->baca($this->_folder . '/f3all', null, 1);
 		//$this->papar->baca($this->_folder . '/f3responden', null, 1);
 	}
