@@ -35,7 +35,7 @@ class Kebenaran
 
 	private static function senaraiLevel()
 	{
-		return array('pentadbir','pelawat','kawal','pegawai');
+		return array('pentadbir','pelawat','kawal','fe','pegawai');
 	}
 	
 	public static function kawalKeluar()
@@ -53,8 +53,7 @@ class Kebenaran
 		if ($kunci == false || !in_array($level,$senaraiLevel))
 		{
 			Sesi::destroy();
-			header('location:' . URL . 'index/keluar');
-			//header('location:' . URL . '');
+			header('location:' . URL . '');
 			exit;
 		}
 		//*/
