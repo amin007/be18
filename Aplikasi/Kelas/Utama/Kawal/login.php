@@ -129,8 +129,6 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$email = $_POST['username'];
 		$passwordAsal = $_POST['password'];
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
-		//echo '<pre>password->'; print_r($password); echo '</pre>';
-
 		# semak database
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
@@ -147,6 +145,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 				$kira = sizeof($cariNama);//*/
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
+		//echo '<pre>password->'; print_r($password); echo '</pre>';
 		//echo '<pre>$cariNama::'; print_r($cariNama) . '<pre>';
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
 
@@ -177,6 +176,8 @@ class Login extends \Aplikasi\Kitab\Kawal
 	{
 		//header('location:' . URL . 'ruangtamu');
 		if ($level == 'kawal')
+			header('location:' . URL . 'ruangtamu');
+		elseif ($level == 'fe')
 			header('location:' . URL . 'ruangtamu');
 		elseif ($level == 'pegawai')
 			header('location:' . URL . 'ruangtamu');
