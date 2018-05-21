@@ -453,9 +453,47 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			//$susun[0]['susun'] = '1 ASC, 4 ASC';
 		# semak database
 			$senarai['kes'] = $this->tanya->
+				//cariSemuaData($myTable, $medan, $carian, $susun);
+				cariSql($myTable, $medan, $carian, $susun);
+		# semak semua $pencam di sini
+			$this->umpukNilai2(array($senarai, $myTable));
+
+		return array($senarai);
+	}
+#-------------------------------------------------------------------------------------------
+	public function lihat04()
+	{# Set pembolehubah utama
+		//echo '<hr>' . $this->_namaClass . '<hr>';
+		$this->jadualKhas04();
+		$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap';
+		$fail = array('index','b_ubah','b_ubah_kawalan');
+
+		# Pergi papar kandungan
+		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
+		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
+		//$this->paparKandungan($this->_folder, $fail[0] , $noInclude=0); //*/
+    }
+#-------------------------------------------------------------------------------------------
+	private function jadualKhas04()
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		list($myTable, $a1, $a2, $b1, $b2, $c1, $c2,
+		$medan) = dpt_senarai('jadual_biodata4');
+
+		# bentuk tatasusunan $carian //$carian = null;
+			$susun = null;
+			//$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
+			$carian[] = array('fix'=>'xnull','atau'=>'WHERE','medan'=>$a1,'apa'=>1);
+			$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>$b1,'apa'=>$b2);
+			$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>$c1,'apa'=>$c2);
+		# semak database
+			$senarai['kes'] = $this->tanya->
 				cariSemuaData($myTable, $medan, $carian, $susun);
 				//cariSql($myTable, $medan, $carian, $susun);
 		# semak semua $pencam di sini
+			$senarai = $this->tanya->ubahData($myTable,$a1,$a2,$senarai);
 			$this->umpukNilai2(array($senarai, $myTable));
 
 		return array($senarai);

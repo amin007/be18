@@ -85,6 +85,20 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $medanKawalan;
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function ubahData($myTable, $a1, $a2, $senarai)
+	{
+		echo '<pre>';
+		foreach($senarai['kes'] as $key => $data):
+			$passAsal = $senarai['kes'][$key][$a1];
+			$pass = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passAsal);
+			echo "\rUPDATE $myTable";
+			echo "\rSET `$a2` = '$pass'";
+			echo "\rWHERE `$a1` = '$passAsal';\r";
+		endforeach;
+		echo '</pre>';
+
+		return $senarai;
+	}
 #---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
 }
