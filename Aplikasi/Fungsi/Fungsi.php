@@ -73,7 +73,11 @@ function dpt_ip()
 function dpt_senarai($pilih)
 {
 	# define('MSICBARU', serialize (array()) );
-	if ($pilih == 'msicbaru') :
+	if ($pilih == 'operasi') :
+		$jadual = unserialize(PEGAWAI);
+	elseif ($pilih == 'prosesan') :
+		$jadual = unserialize(PROSESAN);
+	elseif ($pilih == 'msicbaru') :
 		$jadual = unserialize(MSICBARU);
 	elseif ($pilih == 'produk') :
 		$jadual = unserialize(PRODUK);
