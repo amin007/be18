@@ -33,9 +33,9 @@ class Batch_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function medanData()
 	{
-		$medan = 'newss,ssm,nama,fe,batchProses hantar,"<input type=\"checkbox\">" as tik,' . "\r"
+		$medan = 'newss,nossm,nama,fe,"<input type=\"checkbox\">" as tik,' . "\r"
 			//. 'concat_ws("<br>",alamat1,alamat2,poskod,bandar,negeri) as alamat,' 
-			. 'mko,respon R,nama_kp,kp,msic2008,' . "\r"
+			. 'mko,respon R,survei,kp,msic2008,' . "\r"
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
 			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
