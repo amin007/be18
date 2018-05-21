@@ -275,18 +275,17 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$posmen->'; print_r($posmen); echo '</pre>';
 
 		# masuk dalam database
-		$p = "$namaPegawai/$asalBatch/$dataID/";
+		$p1 = "$namaPegawai/$asalBatch/$dataID/";
+		$p2 = '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
 		if(is_null($semakID[0]['pegawai'])):
 			if(is_null($semakID[0]['borang'])):
 				$this->tanya->ubahSimpan(
 				//$this->tanya->ubahSqlSimpan(
 					$posmen[$jadual], $jadual, $medanID);
-				$kodID = $p; //$semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
-			else:
-			$kodID = $p . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
-			endif;
+				$kodID = $p1;
+			else: $kodID = $p1 . $p2; endif;
 		else:
-			$kodID = $p . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
+			$kodID = $p1 . $p2;
 		endif;//*/
 
 		# Pergi papar kandungan
