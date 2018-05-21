@@ -289,8 +289,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$p2 = '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
 		if(is_null($semakID[0]['pegawai'])):
 			if(is_null($semakID[0]['borang'])):
-				//$this->tanya->ubahSimpan(
-				$this->tanya->ubahSqlSimpan(
+				$this->tanya->ubahSimpan(
+				//$this->tanya->ubahSqlSimpan(
 					$posmen[$jadual], $jadual, $medanID);
 				$kodID = $p1;
 			else: //echo 'sudah ada isi';
