@@ -93,10 +93,10 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		echo '</pre>';//*/
 	}
 #-------------------------------------------------------------------------------------------
-	private function wujudBatchAwal($jadual, $cariBatch = null, $cariID = null) 
+	private function wujudBatchAwal($jadual, $noBatch = null, $cariID = null)
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		if (!isset($cariBatch) || empty($cariBatch) ):
+		if (!isset($noBatch) || empty($noBatch) ):
 			$paparError = 'Tiada batch<br>';
 		else:
 			if((!isset($cariID) || empty($cariID) ))
@@ -132,28 +132,28 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		return $paparError;
 	}
 #-------------------------------------------------------------------------------------------
-	function cariDatabase($namaPegawai,$cariBatch,$semakID,$cariID)
+	function cariDatabase($namaPegawai,$noBatch,$semakID,$cariID)
 	{
 		$jadual = array('kawalan_aes'); # set senarai jadual yang terlibat
 		$medan = $this->tanya->medanData();
 		if ($semakID != null):
 			$this->papar->error  = 'Data sudah ada, pandai-pandai ambil ya <br>';
-			$this->papar->error .= $this->wujudBatchAwal($jadual, $cariBatch, $cariID);
+			$this->papar->error .= $this->wujudBatchAwal($jadual, $noBatch, $cariID);
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($jadual, $namaPegawai, $cariBatch, $cariID, $medan);
+			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID, $medan);
 		elseif ($cariID == null):
 			$this->papar->error = 'Kosong';
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($jadual, $namaPegawai, $cariBatch, $cariID, $medan);
+			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID, $medan);
 		else:
-			# cari $cariBatch atau cariID wujud tak
-			$this->papar->error = $this->wujudBatchAwal($jadual, $cariBatch, $cariID);
+			# cari $noBatch atau cariID wujud tak
+			$this->papar->error = $this->wujudBatchAwal($jadual, $noBatch, $cariID);
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($jadual, $namaPegawai, $cariBatch, $cariID, $medan);
+			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID, $medan);
 		endif;
 	}
 #-------------------------------------------------------------------------------------------
-	private function cariAwal($senaraiJadual, $cariBatch, $cariID)
+	private function cariAwal($senaraiJadual, $noBatch, $cariID)
 	{
 		## set pembolehubah utama
 		$bilSemua = $item = 300; $ms = 1; 
@@ -163,7 +163,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 
 		# sql 1
 			$medan = $this->tanya->medanData();
-			$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
+			$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>$noBatch);
 			foreach ($senaraiJadual as $key => $myTable)
 			{# mula ulang table
 				# sql guna limit 
@@ -222,7 +222,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 
 		# masuk dalam database
 			# ubahsuai $posmen
-			$jadual = 'be16_kawal';
+			$jadual = 'kawalan_aes';
 			$medanID = 'nobatch';
 			//$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
 			$posmen[$jadual][$medanID] = $tukarBatch;
@@ -271,25 +271,27 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# tanya Sql //$semakID[0]['pegawai'] 	$semakID[0]['borang']
 		$semakID = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $cari, $susun = null);
-		echo '<pre>$semakID->', print_r($semakID, 1) . '</pre>';
+		//echo '<pre>$semakID->', print_r($semakID); echo '</pre>';
+		//echo '<pre>$posmen->'; print_r($posmen); echo '</pre>';
 
-		/*# masuk dalam database	
+		# masuk dalam database
+		$p = "$namaPegawai/$asalBatch/$dataID/";
 		if(is_null($semakID[0]['pegawai'])):
 			if(is_null($semakID[0]['borang'])):
 				$this->tanya->ubahSimpan(
 				//$this->tanya->ubahSqlSimpan(
 					$posmen[$jadual], $jadual, $medanID);
-				$kodID = $dataID; //$semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
-			else: 
-			$kodID = $dataID . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
+				$kodID = $p; //$semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
+			else:
+			$kodID = $p . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
 			endif;
-		else: 
-			$kodID = $dataID . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
+		else:
+			$kodID = $p . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
 		endif;//*/
 
 		# Pergi papar kandungan
-		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID" . '';
-		//header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID");
+		//echo '<br>location: ' . URL . $this->_folder . "/batch/$kodID" . '';
+		header('location: ' . URL . $this->_folder . "/batch/$kodID");
 	}
 #-------------------------------------------------------------------------------------------
 	public function buangID($namaPegawai,$cariBatch,$dataID)
@@ -300,7 +302,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 
 		# masuk dalam database
 			# ubahsuai $posmen
-			$jadual = 'be16_kawal'; 
+			$jadual = 'kawalan_aes';
 			$medanID = 'newss';
 			$posmen[$jadual]['pegawai'] = null;
 			$posmen[$jadual]['borang'] = null;
