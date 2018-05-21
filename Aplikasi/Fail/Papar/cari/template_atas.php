@@ -1,26 +1,8 @@
 <?php
-$senaraiStaf = dtr_senarai('operasi'); //echo '<pre>$senaraiStaf->'; print_r($senaraiStaf) . '</pre>';
-$urlStaf = $target = null; //$target = ' target="_blank"';
-foreach ($senaraiStaf as $namaStaf):
-	$urlStaf .=  "\r | " . '<a' . $target . ' href="' . URL .'operasi/batch/' . $namaStaf . '">'
-			 .  $namaStaf . '</a>';
-endforeach;
-
 $html = new Aplikasi\Kitab\Borang03_Batch;
-if (($this->namaPegawai == null)):
-	list($namaPegawai,$cariBatch,$notaTambahan,$mencari,$butangHantar)
-		= pautan01($this->namaPegawai, $this->noBatch, $urlStaf);
-elseif (($this->namaPegawai != null) && ($this->noBatch == null)):
-	list($namaPegawai,$cariBatch,$notaTambahan,$mencari,$butangHantar)
-		= pautan02($this->namaPegawai, $this->noBatch, $urlStaf);
-elseif (($this->namaPegawai != null) && ($this->noBatch != null)
-	&& ($this->error == 'Kosong') ):
-	list($namaPegawai,$cariBatch,$notaTambahan,$mencari,$butangHantar)
-		= pautan03($this->namaPegawai, $this->noBatch, $urlStaf);
-else:
-	list($namaPegawai,$cariBatch,$notaTambahan,$mencari,$butangHantar)
-		= pautan04($this->namaPegawai, $this->noBatch, $urlStaf);
-endif; ?>
+list($namaPegawai,$cariBatch,$notaTambahan,$mencari,$butangHantar)
+	= $html->pilihPautan($this->namaPegawai, $this->noBatch, $this->error);
+?>
 <div class="container"><?php echo (!isset($cetak)) ? null : "\r$cetak" ?>
 	<h1><?=$notaTambahan?></h1>
 
