@@ -18,24 +18,24 @@ class Borang03_Batch
 
 		if (($namaPegawai == null)):
 			list($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
-				= $this->pautan01($namaPegawai, $noBatch, $urlStaf);
+				= $this->pautan01($error, $namaPegawai, $noBatch, $urlStaf);
 		elseif (($namaPegawai != null) && ($noBatch == null)):
 			list($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
-				= $this->pautan02($namaPegawai, $noBatch, $urlStaf, $staff);
+				= $this->pautan02($error, $namaPegawai, $noBatch, $urlStaf, $staff);
 		elseif (($namaPegawai != null) && ($noBatch != null)
 			&& ($error == 'Kosong') ):
 			list($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
-				= $this->pautan03($namaPegawai, $noBatch, $urlStaf);
+				= $this->pautan03($error, $namaPegawai, $noBatch, $urlStaf);
 		else:
 			list($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
-				= $this->pautan04($namaPegawai, $noBatch, $urlStaf);
+				= $this->pautan04($error, $namaPegawai, $noBatch, $urlStaf);
 		endif;
 
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan01($namaPegawai, $noBatch, $urlStaf)
-	{# set pembolehubah $this->namaPegawai == null
+	public function pautan01($error, $namaPegawai, $noBatch, $urlStaf)
+	{# $this->namaPegawai == null
 		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
 		$noBatch = (!isset($noBatch)) ? null : $noBatch;
 		$notaTambahan = 'nama pegawai tidak wujud. klik salah satu pautan staf di bawah ini ' 
@@ -47,8 +47,8 @@ class Borang03_Batch
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan02($namaPegawai, $noBatch, $urlStaf, $staff)
-	{
+	public function pautan02($error, $namaPegawai, $noBatch, $urlStaf, $staff)
+	{# $namaPegawai != null) && ($noBatch == null)
 		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
 			= $this->icon($namaPegawai, $urlStaf);
 		# set pembolehubah 
@@ -56,15 +56,16 @@ class Borang03_Batch
 		$noBatch = (!isset($noBatch)) ? null : $noBatch;
 		$mencari = URL . 'operasi/tambahBatchBaru/' . $namaPegawai;
 		$notaTambahan = ( (in_array($namaPegawai,$staff)) ?
-			$paparStaf : $paparXStaf );
+			$paparStaf : $paparXStaf )
+			. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Letak No Batch';
 		$cetak = null;
 
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan03($namaPegawai, $noBatch, $urlStaf)
-	{
+	public function pautan03($error, $namaPegawai, $noBatch, $urlStaf)
+	{# ($namaPegawai != null) && ($noBatch != null) && ($error == 'Kosong')
 		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
 			= $this->icon($namaPegawai, $urlStaf);
 		# set pembolehubah
@@ -82,20 +83,20 @@ class Borang03_Batch
 		. $cetakIcon . 'A1</a></h3>' . "\r";
 		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
 		$notaTambahan = 'Daftar kes masing-masing<br>' 
-			. 'Nama:' . $namaPegawai . '|Batch:' . $noBatch;
+		. 'Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $noBatch 
+		. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Letak No ID';
 
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan04($namaPegawai, $noBatch, $urlStaf)
+	public function pautan04($error, $namaPegawai, $noBatch, $urlStaf)
 	{
 		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
 			= $this->icon($namaPegawai, $urlStaf);
 		# set pembolehubah
 		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
 		$noBatch = (!isset($noBatch)) ? null : $noBatch;
-		$paparError = (!isset($error)) ? null : $error;
 		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
 		$cetakF03 = URL . 'laporan/cetakf3/' . $namaPegawai . '/' . $noBatch . '/1000/1';
 		//$cetakF10 = URL . 'laporan/cetakf10/' . $namaPegawai . '/' . $noBatch . '/1000/1';
@@ -109,9 +110,9 @@ class Borang03_Batch
 		. $cetakIcon . 'Alamat</a>| ' . "\r" .
 		'<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">' 
 		. $cetakIcon . 'A1</a></h3>' . "\r";
-		$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' 
-		. $noBatch . '<br>' . "\r" .
-		'<small>Nota: ' . $paparError . '</small>';
+		$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai 
+		. ' | BatchOperasi : ' . $noBatch
+		. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Tambah Lagi No ID';
 
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
