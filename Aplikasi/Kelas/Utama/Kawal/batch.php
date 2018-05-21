@@ -36,9 +36,9 @@ class Batch extends \Aplikasi\Kitab\Kawal
 ##-----------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai)
 	{
-		echo '<pre>$senarai:<br>';
+		echo '<pre>';
 		print_r($senarai);
-		echo '</pre>|';//*/
+		echo '</pre>';//*/
 	}
 ##-----------------------------------------------------------------------------------------
 	function logout()
@@ -61,13 +61,12 @@ class Batch extends \Aplikasi\Kitab\Kawal
 		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function awal($namaPegawai = null, $cariBatch = null, $cariID = null, $semakID = null) 
+	public function awal($namaPegawai = null, $noBatch = null, $cariID = null, $semakID = null) 
 	{//echo "\$cariBatch = $cariBatch . \$cariID = $cariID <br>";
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$senaraiJadual = array('kawalan_aes'); # set senarai jadual yang terlibat
-		# mencari dalam database
-		# semak pembolehubah
-		$this->semakSemua($namaPegawai,$cariBatch);
+		# Mencari dalam database
+		$this->cariDatabase($namaPegawai,$noBatch,$semakID,$cariID);
+		$this->semakSemua($namaPegawai,$noBatch);
 
 		# Pergi papar kandungan
 		$this->papar->template = 'bootstrap';
@@ -75,20 +74,23 @@ class Batch extends \Aplikasi\Kitab\Kawal
 		$fail = array('index','b_ubah','b_ubah_batch','batchawal');
 		$this->_folder = 'cari';
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
+		$this->paparKandungan($this->_folder, $fail[2], $noInclude=0);
 	}
 #-------------------------------------------------------------------------------------------
-	public function semakSemua($namaPegawai,$cariBatch)
+	public function semakSemua($namaPegawai,$noBatch)
 	{
-		//$this->semakPembolehubah($this->papar->error); # Semak data dulu
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
-		$this->papar->noBatch = $cariBatch;
-		$this->papar->cariBatch = $cariBatch;
-		$this->papar->cariID = $cariID;
+		$this->papar->noBatch = $noBatch;
+		$this->papar->cariID = 'semua';
 		$this->papar->carian[] = 'semua';
+		# Semak data dulu
+		/*echo '<pre>';
+		echo '<br>$this->error'; $this->semakPembolehubah($this->papar->error);
+		echo '<br>$this->senarai'; $this->semakPembolehubah($this->papar->senarai);
+		echo '<br>$this->namaPegawai'; $this->semakPembolehubah($this->papar->namaPegawai);
+		echo '<br>$this->noBatch'; $this->semakPembolehubah($this->papar->noBatch);
+		echo '</pre>';//*/
 	}
 #-------------------------------------------------------------------------------------------
 	private function wujudBatchAwal($jadual, $cariBatch = null, $cariID = null) 
@@ -108,9 +110,9 @@ class Batch extends \Aplikasi\Kitab\Kawal
 				$susun = null;
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
 				$dataKes = $this->tanya->
-					cariKhas02($jadual[0], $medan, $carian, $susun);
+					//cariKhas02($jadual[0], $medan, $carian, $susun);
 					//cariSql($jadual[0], $medan, $carian, $susun);
-					//cariSemuaData($jadual[0], $medan, $carian, $susun);
+					cariSemuaData($jadual[0], $medan, $carian, $susun);
 				$paparError = (!isset($dataKes[0]['newss'])) ? 
 					$this->tiadaDalamRangka('newss', $cariID) : # jika jumpa
 					'Ada id: <a target="_blank" href="'. URL . 'kawalan/ubah/' 
@@ -121,6 +123,7 @@ class Batch extends \Aplikasi\Kitab\Kawal
 					. '<br> alamat:' . $dataKes[0]['alamat']
 					. ( empty($dataKes[0]['posdaftar']) ? '' : '| posdaftar:' . $dataKes[0]['posdaftar'] )
 					. ( empty($dataKes[0]['siapapunya']) ? '' : '|<br> siapapunya:' . $dataKes[0]['siapapunya'] )
+					. '';
 			}
 		endif;
 
@@ -129,25 +132,24 @@ class Batch extends \Aplikasi\Kitab\Kawal
 		return $paparError;
 	}
 #-------------------------------------------------------------------------------------------
-	function cariDatabase()
+	function cariDatabase($namaPegawai,$cariBatch,$semakID,$cariID)
 	{
+		$jadual = array('kawalan_aes'); # set senarai jadual yang terlibat
+		$medan = $this->tanya->medanData();
 		if ($semakID != null):
 			$this->papar->error  = 'Data sudah ada, pandai-pandai ambil ya <br>';
-			$this->papar->error .= $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
+			$this->papar->error .= $this->wujudBatchAwal($jadual, $cariBatch, $cariID);
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
-			//$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
+			$this->cariAwal($jadual, $namaPegawai, $cariBatch, $cariID, $medan);
 		elseif ($cariID == null):
 			$this->papar->error = 'Kosong';
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
-			//$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
+			$this->cariAwal($jadual, $namaPegawai, $cariBatch, $cariID, $medan);
 		else:
 			# cari $cariBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
-			//$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
+			$this->cariAwal($jadual, $namaPegawai, $cariBatch, $cariID, $medan);
 		endif;
 	}
 #-------------------------------------------------------------------------------------------
@@ -163,9 +165,9 @@ class Batch extends \Aplikasi\Kitab\Kawal
 				$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp DESC,respon DESC,nama') );
 				# sql guna limit //$this->papar->senarai = array();
 				$this->papar->senarai['aes'] = $this->tanya->
-					cariKhas01($myTable, $medan, $carian, $susun);
+					//cariKhas01($myTable, $medan, $carian, $susun);
 					//cariSql($myTable, $medan, $carian, $susun);
-					//cariSemuaData($myTable, $medan, $carian, $susun);
+					cariSemuaData($myTable, $medan, $carian, $susun);
 			}# tamat ulang table
 	}
 #-------------------------------------------------------------------------------------------
@@ -324,6 +326,25 @@ class Batch extends \Aplikasi\Kitab\Kawal
 		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$cariBatch/?id=$dataID&mesej=data sudah dikosongkan" . '');
 	}
 #-------------------------------------------------------------------------------------------
+	private function tiadaDalamRangka($key = 'newss', $data = null)
+	{
+		# butang 
+		$birutua = 'btn btn-primary btn-mini';
+		$birumuda = 'btn btn-info btn-mini';
+		$merah = 'btn btn-danger btn-mini';
+
+		$k1 = URL . 'rangkabaru/masukdatadarirangka/1/' . $key . '/' . $data;
+		$btn =  $merah;
+		$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Tambah2';
+
+		$pautan = 'Tiada id dalam rangka. '
+			. '<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>'
+			. '<br>Mana kau orang jumpa kes ini daa.' 
+			. '<br>Jumpa amin jika mahu masuk rangka ya'
+			. '';
+
+		return $pautan;
+	}
 #-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
