@@ -276,7 +276,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("<br>",kp,msic2008) as kp,'
 			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
 			. 'concat_ws("",newss) as newss,'
-			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,esurat_a'
+			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,email_a'
 			. ') as nota'
 		);
 
