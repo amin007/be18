@@ -193,7 +193,6 @@ class Tanya
 			 . $this->dimana($carian)
 			 . $this->dibawah($susun);
 
-		//echo htmlentities($sql) . '<br>';
 		$result = $this->db->selectAll($sql);
 		//echo json_encode($result);
 
@@ -207,7 +206,6 @@ class Tanya
 			 . "\r" . $this->dibawah($susun);
 
 		echo htmlentities($sql) . '<br>';
-		//echo '<pre>$sql->' . $sql . '</pre><br>';
 	}
 #-------------------------------------------------------------------------------------------------
 	public function cariArahanSql($myTable, $medan, $carian, $susun)
@@ -216,7 +214,6 @@ class Tanya
 			 . $this->dimana($carian)
 			 . $this->dibawah($susun);
 
-		//echo htmlentities($sql) . '<br>';
 		return $sql;
 	}
 #-------------------------------------------------------------------------------------------------
