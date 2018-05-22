@@ -71,16 +71,7 @@ class Borang03_Batch
 		# set pembolehubah
 		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
 		$noBatch = (!isset($noBatch)) ? null : $noBatch;
-		$cetakF03 = URL . 'laporan/cetakf3/' . $namaPegawai . '/' . $noBatch . '/1000/1';
-		//$cetakF10 = URL . 'laporan/cetakf10/' . $namaPegawai . '/' . $noBatch . '/1000/1';
-		//$cetakAlamat = URL . 'laporan/cetakresponden/' . $namaPegawai . '/' . $noBatch . '/1000/1';
-		$cetakA1 = URL . 'laporan/cetakA1/' . $namaPegawai . '/' . $noBatch . '/1000/1';
-		$cetak = '<h3><a target="_blank" class="' . $merah . '" href="' . $cetakF03 . '">' 
-		. $cetakIcon . 'F3</a>| ' . "\r" .
-		//'<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat . '">' 
-		//. $cetakIcon . 'Alamat</a>| ' . "\r" .
-		'<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">' 
-		. $cetakIcon . 'A1</a></h3>' . "\r";
+		$cetak = $this->cetakSemua($namaPegawai, $noBatch);
 		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
 		$notaTambahan = 'Daftar kes masing-masing<br>' 
 		. 'Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $noBatch 
@@ -98,18 +89,7 @@ class Borang03_Batch
 		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
 		$noBatch = (!isset($noBatch)) ? null : $noBatch;
 		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
-		$cetakF03 = URL . 'laporan/cetakf3/' . $namaPegawai . '/' . $noBatch . '/1000/1';
-		//$cetakF10 = URL . 'laporan/cetakf10/' . $namaPegawai . '/' . $noBatch . '/1000/1';
-		$cetakAlamat = URL . 'laporan/cetakresponden/' . $namaPegawai . '/' 
-		. $noBatch . '/1000/1';
-		$cetakA1 = URL . 'laporan/cetakA1/' . $namaPegawai . '/' 
-		. $noBatch . '/1000/1';
-		$cetak = '<h3><a target="_blank" class="' . $merah . '" href="' . $cetakF03 . '">' 
-		. $cetakIcon . 'F3</a>| ' . "\r" .
-		'<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat . '">' 
-		. $cetakIcon . 'Alamat</a>| ' . "\r" .
-		'<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">' 
-		. $cetakIcon . 'A1</a></h3>' . "\r";
+		$cetak = $this->cetakSemua($namaPegawai, $noBatch);
 		$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai 
 		. ' | BatchOperasi : ' . $noBatch
 		. "\r" . '<br><small>Nota: ' . $error . '</small>';
@@ -132,6 +112,25 @@ class Borang03_Batch
 		return array($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf);
 	}
 #------------------------------------------------------------------------------------------
+	public function cetakSemua($n1, $n2)
+	{
+		$akhir = $n1 . '/' . $n2 . '/1000/1'
+		$cetakF03 = URL . 'laporan/cetakf3/' . $akhir;
+		//$cetakF10 = URL . 'laporan/cetakf10/' . $akhir;
+		$cetakAlamat = URL . 'laporan/cetakresponden/' . $akhir;
+		$cetakData = URL . 'laporan/cdatalama/' . $akhir;
+		$cetakA1 = URL . 'laporan/cetakA1/' . $akhir;
+		$cetak = '<h3><a target="_blank" class="' . $merah . '" href="' . $cetakF03 . '">'
+		. $cetakIcon . 'F3</a>| ' . "\r"
+		. '<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat . '">'
+		. $cetakIcon . 'Alamat</a>| ' . "\r"
+		. '<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat2 . '">'
+		. $cetakIcon . 'Data lama</a>| ' . "\r"
+		. '<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">'
+		. $cetakIcon . 'A1</a></h3>' . "\r";
+
+		return $cetak;
+	}
 #------------------------------------------------------------------------------------------
 ###########################################################################################
 #==========================================================================================
