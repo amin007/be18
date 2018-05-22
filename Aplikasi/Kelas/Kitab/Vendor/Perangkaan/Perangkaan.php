@@ -16,7 +16,7 @@ class Perangkaan
 			case 'SERVIS':	$SV = 'PENYIASATAN PERKHDIMATAN TAHUNAN'; break;
 			case 'PPPMAS':	$SV = 'PENYIASATAN PERBELANJAAN UNTUK PELINDUNGAN ALAM SEKITAR'; break;
 			case 'BE':		$SV = 'BANCI EKONOMI'; break;
-			default:		$SV = null;
+			default:		$SV = 'AES';
 		endswitch;
 
 		#pulangkan nilai
