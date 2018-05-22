@@ -218,6 +218,15 @@ class Tanya
 		//echo htmlentities($sql) . '<br>';
 		return $sql;
 	}
+
+	public function paparSql($myTable, $medan, $carian, $susun)
+	{
+		$sql = ' SELECT ' . $medan . "\r" . ' FROM ' . $myTable
+			 . "\r" . $this->dimana($carian)
+			 . "\r" . $this->dibawah($susun);
+
+		echo '<pre>$sql->' . htmlentities($sql) . '</pre><br>';
+	}
 #--- mula - contoh cari dan simpan ---#
 	public function cariArahanSimpanFailSql($backupFile, $myTable)
 	{
