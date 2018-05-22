@@ -380,8 +380,6 @@ class Tanya
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		list($senarai, $where) = $this->ulangData($medan, $medanID);
 		$senaraiData = implode(",\r",$senarai);
-
-		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->update($sql);
@@ -392,8 +390,6 @@ class Tanya
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		list($senarai, $where) = $this->ulangData($medan, $medanID);
 		$senaraiData = implode(",\r",$senarai);
-
-		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
 	}
@@ -403,8 +399,6 @@ class Tanya
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		list($senarai, $where) = $this->ulangData($medan, $medanID);
 		$senaraiData = implode(",\r",$senarai);
-
-		# set sql
 		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
 	}
