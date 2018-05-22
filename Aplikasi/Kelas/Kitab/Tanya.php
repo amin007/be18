@@ -9,72 +9,72 @@ class Tanya
 		//$this->db = new \Aplikasi\Kitab\DB_Mysqli(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 	}
 
-	private function jika($fix,$atau,$medan,$cariApa,$akhir)
+	private function jika($fix,$di,$medan,$cariApa,$akhir)
 	{
-		$dimana = null; //echo "\r($fix) +> $atau $medan -> '$cariApa' |";
+		$dimana = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
 		if($fix==null) $dimana .= null;
 		elseif($cariApa==null)
-			$dimana .= ($fix=='x!=') ? " $atau`$medan` != '' $akhir\r"
-					: " $atau`$medan` is null $akhir\r";
+			$dimana .= ($fix=='x!=') ? " $di`$medan` != '' $akhir\r"
+					: " $di`$medan` is null $akhir\r";
 		elseif($fix=='xnull')
-			$dimana .= " $atau`$medan` is not null  $akhir\r";
+			$dimana .= " $di`$medan` is not null  $akhir\r";
 		elseif($fix=='x=')
-			$dimana .= " $atau`$medan` = '$cariApa' $akhir\r";
+			$dimana .= " $di`$medan` = '$cariApa' $akhir\r";
 		elseif($fix=='x!=')
-			$dimana .= " $atau`$medan` != '$cariApa' $akhir\r";
+			$dimana .= " $di`$medan` != '$cariApa' $akhir\r";
 		elseif($fix=='x<=')
-			$dimana .= " $atau`$medan` <= '$cariApa' $akhir\r";
+			$dimana .= " $di`$medan` <= '$cariApa' $akhir\r";
 		elseif($fix=='x>=')
-			$dimana .= " $atau`$medan` >= '$cariApa' $akhir\r";
+			$dimana .= " $di`$medan` >= '$cariApa' $akhir\r";
 		elseif($fix=='like')
-			$dimana .= " $atau`$medan` like '$cariApa' $akhir\r";
+			$dimana .= " $di`$medan` like '$cariApa' $akhir\r";
 		elseif($fix=='xlike')
-			$dimana .= " $atau`$medan` not like '$cariApa' $akhir\r";
+			$dimana .= " $di`$medan` not like '$cariApa' $akhir\r";
 		elseif($fix=='%like%')
-			$dimana .= " $atau`$medan` like '%$cariApa%' $akhir\r";	
+			$dimana .= " $di`$medan` like '%$cariApa%' $akhir\r";
 		elseif($fix=='x%like%')
-			$dimana .= " $atau`$medan` not like '%$cariApa%' $akhir\r";
+			$dimana .= " $di`$medan` not like '%$cariApa%' $akhir\r";
 		elseif($fix=='like%')
-			$dimana .= " $atau`$medan` like '$cariApa%' $akhir\r";
+			$dimana .= " $di`$medan` like '$cariApa%' $akhir\r";
 		elseif($fix=='xlike%')
-			$dimana .= " $atau`$medan` not like '$cariApa%' $akhir\r";
+			$dimana .= " $di`$medan` not like '$cariApa%' $akhir\r";
 		elseif($fix=='%like')
-			$dimana .= " $atau`$medan` like '%$cariApa' $akhir\r";
+			$dimana .= " $di`$medan` like '%$cariApa' $akhir\r";
 		elseif($fix=='x%like')
-			$dimana .= " $atau`$medan` not like '%$cariApa' $akhir\r";
+			$dimana .= " $di`$medan` not like '%$cariApa' $akhir\r";
 		elseif($fix=='in')
-			$dimana .= " $atau`$medan` in $cariApa $akhir\r";
+			$dimana .= " $di`$medan` in $cariApa $akhir\r";
 		elseif($fix=='xin')
-			$dimana .= " $atau`$medan` not in $cariApa $akhir\r";
+			$dimana .= " $di`$medan` not in $cariApa $akhir\r";
 		elseif($fix=='khas2')
-			$dimana .= " $atau`$medan` REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
+			$dimana .= " $di`$medan` REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
 		elseif($fix=='xkhas2')
-			$dimana .= " $atau`$medan` NOT REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
+			$dimana .= " $di`$medan` NOT REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
 		elseif($fix=='khas3')
-			$dimana .= " $atau`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
+			$dimana .= " $di`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
 		elseif($fix=='xkhas4')
-			$dimana .= " $atau`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
+			$dimana .= " $di`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
 		elseif($fix=='z%like%')
-			$dimana .= " $atau$medan like '%$cariApa%' $akhir\r";
+			$dimana .= " $di$medan like '%$cariApa%' $akhir\r";
 		elseif($fix=='z1')
-			$dimana .= " $atau$medan = $cariApa $akhir\r";
+			$dimana .= " $di$medan = $cariApa $akhir\r";
 		elseif($fix=='z2')
-			$dimana .= " $atau$medan like '$cariApa' $akhir\r";
+			$dimana .= " $di$medan like '$cariApa' $akhir\r";
 		elseif($fix=='z2x')
-			$dimana .= " $atau$medan not like '$cariApa' $akhir\r";
+			$dimana .= " $di$medan not like '$cariApa' $akhir\r";
 		elseif($fix=='z3x')
-			$dimana .= " $atau$medan IS NOT NULL $akhir\r";
+			$dimana .= " $di$medan IS NOT NULL $akhir\r";
 		elseif($fix=='zin')
-			$dimana .= " $atau$medan in $cariApa $akhir\r";
+			$dimana .= " $di$medan in $cariApa $akhir\r";
 		elseif($fix=='zxin')
-			$dimana .= " $atau$medan not in $cariApa $akhir\r";
-		elseif($fix=='or(x=)') //" $atau (`$cari`='$apa' OR msic2000='$apa')\r" :
+			$dimana .= " $di$medan not in $cariApa $akhir\r";
+		elseif($fix=='or(x=)') //" $di (`$cari`='$apa' OR msic2000='$apa')\r" :
 		{	$pecah = explode('|', $medan);
-			$dimana .= " $atau(`" . $pecah[0] . "` = '$cariApa' "
+			$dimana .= " $di(`" . $pecah[0] . "` = '$cariApa' "
 			. " OR `" . $pecah[1] . "` = '$cariApa')\r";	}
 		elseif($fix=='or(%like%)')
 		{	$pecah = explode('|', $medan);
-			$dimana .= " $atau(`" . $pecah[0] . "` like '%$cariApa%' "
+			$dimana .= " $di(`" . $pecah[0] . "` like '%$cariApa%' "
 			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";	}
 
 		return $dimana; //echo '<br>' . $dimana;
