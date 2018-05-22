@@ -403,10 +403,8 @@ class Tanya
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
 	}
 #-------------------------------------------------------------------------------------------------
-	public function ubahPDOSqlSimpan($data, $myTable, $medanID)
-	{
-		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
-
+	public function ulangDataPDO($data, $medanID)
+	{## foreach $data
 		foreach ($data as $medan => $nilai)
 		{
 			$senarai[] = " `$medan`=:$medan"; 
@@ -416,7 +414,13 @@ class Tanya
 		$senaraiData = implode(",\r",$senarai);
 		$where = "`$medanID`=:$medanID ";
 
-		# set sql
+		return array($senaraiData, $where);
+	}
+#-------------------------------------------------------------------------------------------------
+	public function ubahPDOSqlSimpan($data, $myTable, $medanID)
+	{
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		list($senaraiData, $where) = $this->ulangDataPDO($data, $medanID);
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->updateNew($sql, $data);
