@@ -2,13 +2,14 @@
 namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Tanya
 {
-#==========================================================================================
+#=================================================================================================
+#-------------------------------------------------------------------------------------------------
 	function __construct()
 	{
 		$this->db = new \Aplikasi\Kitab\DB_Pdo(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 		//$this->db = new \Aplikasi\Kitab\DB_Mysqli(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	private function jika($fix,$di,$medan,$cariApa,$akhir)
 	{
 		$dimana = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
@@ -79,7 +80,7 @@ class Tanya
 
 		return $dimana; //echo '<br>' . $dimana;
 	}
-
+#-------------------------------------------------------------------------------------------------
 	private function dimana($carian)
 	{
 		$where = null; //echo '<pre>'; print_r($carian); echo '</pre>';
@@ -100,7 +101,7 @@ class Tanya
 
 		return $where; //echo '<pre>'; print_r($where); echo '</pre>';
 	}
-
+#-------------------------------------------------------------------------------------------------
 	private function dibawah($cari)
 	{
 		$susunan = null; //echo '<pre>'; print_r($cari); echo '</pre>';
@@ -125,7 +126,7 @@ class Tanya
 
 		return $susunan; //echo '<pre>'; print_r($susunan); echo '</pre>';
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function kiraMedan($myTable, $medan, $carian)
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
@@ -136,7 +137,7 @@ class Tanya
 
 		return $result;
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function kiraBaris($myTable, $medan, $carian)
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
@@ -147,14 +148,14 @@ class Tanya
 
 		return $result;
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function paparMedan($myTable)
 	{
 		//return $this->db->select('SHOW COLUMNS FROM ' . $myTable);
 		$sql = 'SHOW COLUMNS FROM ' . $myTable;
 		return $this->db->selectAll($sql);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function pilihMedan($database,$myTable)
 	{
 		/*TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME
@@ -174,7 +175,7 @@ class Tanya
 		echo htmlentities($sql) . '<br>';
 		return $this->db->selectAll($sql);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function ubahMedan($myTable, $medan)
 	{
 		$sql = 'ALTER TABLE `' . $myTable . '` '
@@ -185,7 +186,7 @@ class Tanya
 		echo htmlentities($sql) . '<br>';
 		//return $this->db->selectAll($sql);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function cariSemuaData($myTable, $medan, $carian, $susun)
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable
@@ -198,7 +199,7 @@ class Tanya
 
 		return $result;
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function cariSql($myTable, $medan, $carian, $susun)
 	{
 		$sql = ' SELECT ' . $medan . "\r" . ' FROM ' . $myTable
@@ -208,7 +209,7 @@ class Tanya
 		echo htmlentities($sql) . '<br>';
 		//echo '<pre>$sql->' . $sql . '</pre><br>';
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function cariArahanSql($myTable, $medan, $carian, $susun)
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
@@ -218,7 +219,7 @@ class Tanya
 		//echo htmlentities($sql) . '<br>';
 		return $sql;
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function paparSql($myTable, $medan, $carian, $susun)
 	{
 		$sql = ' SELECT ' . $medan . "\r" . ' FROM ' . $myTable
@@ -227,6 +228,7 @@ class Tanya
 
 		echo '<pre>$sql->' . htmlentities($sql) . '</pre><br>';
 	}
+#-------------------------------------------------------------------------------------------------
 #--- mula - contoh cari dan simpan ---#
 	public function cariArahanSimpanFailSql($backupFile, $myTable)
 	{
@@ -239,6 +241,7 @@ class Tanya
 		return $result;	
 	}
 #--- tamat - contoh cari dan simpan ---#
+#-------------------------------------------------------------------------------------------------
 #--- mula - contoh tambah sql guna set ---#
 	public function tambahSql($myTable, $data)
 	{
