@@ -103,7 +103,7 @@ class Tanya
 
 	private function dibawah($cari)
 	{
-		$susunan = null; //echo '<pre>'; print_r($carian); echo '</pre>';
+		$susunan = null; //echo '<pre>'; print_r($cari); echo '</pre>';
 		if($cari==null || empty($cari) ):
 			$susunan .= null;
 		else:
