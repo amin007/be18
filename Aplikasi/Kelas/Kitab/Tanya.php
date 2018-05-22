@@ -101,20 +101,20 @@ class Tanya
 		return $where; //echo '<pre>'; print_r($where); echo '</pre>';
 	}
 
-	private function dibawah($carian)
+	private function dibawah($cari)
 	{
 		$susunan = null; //echo '<pre>'; print_r($carian); echo '</pre>';
-		if($carian==null || empty($carian) ):
+		if($cari==null || empty($cari) ):
 			$susunan .= null;
 		else:
-			foreach ($carian as $key=>$cari)
+			foreach ($cari as $key=>$val)
 			{
-				$mengira = isset($carian[$key]['mengira'])? $carian[$key]['mengira'] : null;
-				 $kumpul = isset($carian[$key]['kumpul']) ? $carian[$key]['kumpul']  : null;
-				  $order = isset($carian[$key]['susun'])  ? $carian[$key]['susun']   : null;
-				   $dari = isset($carian[$key]['dari'])   ? $carian[$key]['dari']    : null;
-				    $max = isset($carian[$key]['max'])    ? $carian[$key]['max']     : null;
-				//echo "\$cari = $cari, \$key=$key <br>";
+				$mengira = isset($cari[$key]['mengira'])? $cari[$key]['mengira'] : null;
+				 $kumpul = isset($cari[$key]['kumpul']) ? $cari[$key]['kumpul']  : null;
+				  $order = isset($cari[$key]['susun'])  ? $cari[$key]['susun']   : null;
+				   $dari = isset($cari[$key]['dari'])   ? $cari[$key]['dari']    : null;
+				    $max = isset($cari[$key]['max'])    ? $cari[$key]['max']     : null;
+				//echo "\$val = $val, \$key=$key <br>";
 			}
 				if ($kumpul!=null) $susunan .= "\r GROUP BY $kumpul\r";
 				if ($mengira!=null)$susunan .= "\r $mengira\r";
