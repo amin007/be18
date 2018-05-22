@@ -229,9 +229,8 @@ class Tanya
 		echo '<pre>$sql->' . htmlentities($sql) . '</pre><br>';
 	}
 #-------------------------------------------------------------------------------------------------
-#--- mula - contoh cari dan simpan ---#
 	public function cariArahanSimpanFailSql($backupFile, $myTable)
-	{
+	{#--- mula - contoh cari dan simpan ---#
 		$sql = "SELECT * INTO OUTFILE '$backupFile' FROM $myTable";
 
 		echo 'Class Tanya.php |<br>' . htmlentities($sql) . '<br>';
@@ -239,8 +238,7 @@ class Tanya
 		//echo json_encode($result);
 
 		return $result;	
-	}
-#--- tamat - contoh cari dan simpan ---#
+	}#--- tamat - contoh cari dan simpan ---#
 #-------------------------------------------------------------------------------------------------
 #--- mula - contoh tambah sql guna set ---#
 	public function tambahSql($myTable, $data)
