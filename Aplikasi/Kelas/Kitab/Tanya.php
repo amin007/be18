@@ -361,7 +361,7 @@ class Tanya
 		//$this->db->insert($sql); header('location:' . URL . 'test/paparfail');
 	}
 #-------------------------------------------------------------------------------------------------
-	public function ulangData($medan, $medanID)
+	public function ulangData($data, $medanID)
 	{## foreach $data
 		foreach ($data as $medan => $nilai)
 		{
@@ -378,7 +378,7 @@ class Tanya
 	public function ubahSimpan($data, $myTable, $medanID)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($senarai, $where) = $this->ulangData($medan, $medanID);
+		list($senarai, $where) = $this->ulangData($data, $medanID);
 		$senaraiData = implode(",\r",$senarai);
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
@@ -388,7 +388,7 @@ class Tanya
 	public function ubahSqlSimpan($data, $myTable, $medanID)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($senarai, $where) = $this->ulangData($medan, $medanID);
+		list($senarai, $where) = $this->ulangData($data, $medanID);
 		$senaraiData = implode(",\r",$senarai);
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
@@ -397,7 +397,7 @@ class Tanya
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($senarai, $where) = $this->ulangData($medan, $medanID);
+		list($senarai, $where) = $this->ulangData($data, $medanID);
 		$senaraiData = implode(",\r",$senarai);
 		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
