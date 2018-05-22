@@ -347,7 +347,7 @@ class Tanya
 			 . '';
 
 		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
-		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
+		//$this->db->insert($sql); header('location:' . URL . 'test/paparfail');
 	}
 
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
@@ -359,7 +359,7 @@ class Tanya
 		$sql .= implode(",\r", $cantumData);
 
 		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
-		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
+		//$this->db->insert($sql); header('location:' . URL . 'test/paparfail');
 	}
 
 	public function ubahSimpan($data, $myTable, $medanID)
