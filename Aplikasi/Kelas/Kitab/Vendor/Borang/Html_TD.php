@@ -13,10 +13,10 @@ class Html_TD
 
 		if ( in_array($pengguna,array('amin007','azwan')) && $myTable == 'aes'
 			&& $ca != null):
-			$b = URL . "operasi/buangID/$ca/$cb/$data";
+			//$b = URL . "operasi/buangID/$ca/$cb/$data";
 			$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah1';
-			$p = '<a '. $btn . '>' . $a . '</a>'
-			. '<a href="' . $b . '" class="btn btn-danger btn-mini">Kosong</a>';
+			$p = '<a '. $btn . '>' . $a . '</a>';
+			//. '<a href="' . $b . '" class="btn btn-danger btn-mini">Kosong</a>';
 		elseif ($level == 'feprosesan'):
 			$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah2';
 			$p = '<a '. $btn . '>' . $a . '</a>';
@@ -28,6 +28,24 @@ class Html_TD
 		return $p . $data;
 	}
 #==========================================================================================
+	function buangKey($key, $data, $myTable = null, $ca = null, $cb = null)
+	{
+		$k0 = URL . 'kawalan/ubah/' . $data;
+		$k1 = $this->iconFA(1) . '<a target="_blank" href="' . $k0 . '">'
+			. $data . '</a>&nbsp;';
+		list($pengguna,$level,$birutua,$birumuda,$merah) = $this->setPencam();
+		$btn = 'target="_blank" href="' . $k0 . '" class="' . $birumuda . '"';
+
+		if ( in_array($pengguna,array('amin007','azwan')) && $myTable == 'aes'
+			&& $ca != null):
+			$b = URL . "operasi/buangID/$ca/$cb/$data";
+			$p = '<a href="' . $b . '" class="btn btn-danger btn-mini">Kosong</a>';
+		else:
+			$p = '';
+		endif;
+
+		return $p . $data;
+	}
 #==========================================================================================
 	function paparURL($key, $data, $myTable = null, $ca = null, $cb = null)
 	{
@@ -38,7 +56,8 @@ class Html_TD
 		}
 		elseif(in_array($key,array('batchAwal')))
 		{
-			
+			$k1 = $this->buangKey($key,$data,$myTable,$ca,$cb);
+			?><td><?php echo $k1 ?></td><?php
 		}
 		elseif(in_array($key,array('posdaftar')))
 		{
