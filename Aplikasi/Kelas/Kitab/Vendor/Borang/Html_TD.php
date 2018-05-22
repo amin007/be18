@@ -11,7 +11,8 @@ class Html_TD
 		list($pengguna,$level,$birutua,$birumuda,$merah) = $this->setPencam();
 		$btn = 'target="_blank" href="' . $k0 . '" class="' . $birumuda . '"';
 
-		if ( in_array($pengguna,array('amin007','azwan')) && $myTable == 'aes'):
+		if ( in_array($pengguna,array('amin007','azwan')) && $myTable == 'aes'
+			&& $ca != null):
 			$b = URL . "operasi/buangID/$ca/$cb/$data";
 			$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah1';
 			$p = '<a '. $btn . '>' . $a . '</a>'
@@ -27,12 +28,17 @@ class Html_TD
 		return $p . $data;
 	}
 #==========================================================================================
+#==========================================================================================
 	function paparURL($key, $data, $myTable = null, $ca = null, $cb = null)
 	{
 		if ($key=='newss')
 		{# primary key
 			$k1 = $this->primaryKey($key,$data,$myTable,$ca,$cb);
 			?><td><?php echo $k1 ?></td><?php
+		}
+		elseif(in_array($key,array('batchAwal')))
+		{
+			
 		}
 		elseif(in_array($key,array('posdaftar')))
 		{
