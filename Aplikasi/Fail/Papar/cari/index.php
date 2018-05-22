@@ -18,7 +18,7 @@ foreach ($this->senarai as $kunci2 => $nilai2)
 	: $kunci2 . ' = ' . count($nilai2) . "<br>\r";
 echo "Anda mencari = $cari1\r<br>$cari2\r<hr>";//*/
 
-if(!isset($this->cariID))
-	echo '<h1>data kosong daa</h1>';
-else # jenis template
+//if(!isset($this->cariID))
+//	echo '<h1>data kosong daa</h1>';
+//else # jenis template
 	include 'template_' . $this->template . '.php';
