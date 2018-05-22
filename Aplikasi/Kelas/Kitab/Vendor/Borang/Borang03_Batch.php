@@ -32,7 +32,7 @@ class Borang03_Batch
 				= $this->pautan04($error, $namaPegawai, $noBatch, $urlStaf);
 		endif;
 
-		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
+		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
 #------------------------------------------------------------------------------------------
 	public function pautan01($error, $namaPegawai, $noBatch, $urlStaf)

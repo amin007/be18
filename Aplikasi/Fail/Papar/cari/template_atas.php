@@ -1,6 +1,6 @@
 <?php
 $html = new Aplikasi\Kitab\Borang03_Batch;
-list($namaPegawai,$cariBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
+list($cetak,$notaTambahan,$mencari,$butangHantar)
 	= $html->pilihPautan($this->c1, $this->c2, $this->error);
 ?>
 <div class="container"><?php echo (!isset($cetak)) ? null : "\r$cetak" ?>
