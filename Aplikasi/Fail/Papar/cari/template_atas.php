@@ -1,7 +1,7 @@
 <?php
 $html = new Aplikasi\Kitab\Borang03_Batch;
 list($namaPegawai,$cariBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
-	= $html->pilihPautan($this->namaPegawai, $this->noBatch, $this->error);
+	= $html->pilihPautan($this->c1, $this->c2, $this->error);
 ?>
 <div class="container"><?php echo (!isset($cetak)) ? null : "\r$cetak" ?>
 	<h1><?=$notaTambahan?></h1>
