@@ -389,17 +389,8 @@ class Tanya
 #-------------------------------------------------------------------------------------------------
 	public function ubahSqlSimpan($data, $myTable, $medanID)
 	{
-		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
-
-		foreach ($data as $medan => $nilai)
-		{
-			if ($medan == $medanID)
-				$where = " WHERE `$medanID` = '{$data[$medanID]}' ";
-			elseif ($medan != $medanID)
-				$senarai[] = ($nilai==null) ? 
-				" `$medan`=null" : " `$medan`='$nilai'"; 
-		}
-
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		list($senarai, $where) = $this->ulangData($medan, $medanID);
 		$senaraiData = implode(",\r",$senarai);
 
 		# set sql
@@ -428,16 +419,8 @@ class Tanya
 #-------------------------------------------------------------------------------------------------
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
 	{
-		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
-
-		foreach ($data as $medan => $nilai)
-		{
-			if ($medan == $medanID)
-				$where = " WHERE `$medanID` = '{$dimana[$medanID]}' ";
-			$senarai[] = ($nilai==null) ?
-				" `$medan`=null" : " `$medan`='$nilai'";
-		}
-
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		list($senarai, $where) = $this->ulangData($medan, $medanID);
 		$senaraiData = implode(",\r",$senarai);
 
 		# set sql
