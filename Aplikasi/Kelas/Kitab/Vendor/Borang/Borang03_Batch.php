@@ -67,8 +67,8 @@ class Borang03_Batch
 		$cetak = $this->cetakSemua($namaPegawai, $noBatch, $urlStaf);
 		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
 		$notaTambahan = 'Daftar kes masing-masing<br>' 
-		. 'Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $noBatch 
-		. "\r" . '<br><small>Nota: ' . $error . '</small>';
+			. 'Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $noBatch 
+			. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Letak No ID';
 
 		return array($notaTambahan,$mencari,$butangHantar,$cetak);
@@ -80,8 +80,8 @@ class Borang03_Batch
 		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
 		$cetak = $this->cetakSemua($namaPegawai, $noBatch, $urlStaf);
 		$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai 
-		. ' | BatchOperasi : ' . $noBatch
-		. "\r" . '<br><small>Nota: ' . $error . '</small>';
+			. ' | BatchOperasi : ' . $noBatch
+			. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Tambah Lagi No ID';
 
 		return array($notaTambahan,$mencari,$butangHantar,$cetak);
@@ -112,13 +112,13 @@ class Borang03_Batch
 		$cetakData = URL . 'laporan/cdatalama/' . $akhir;
 		$cetakA1 = URL . 'laporan/cetakA1/' . $akhir;
 		$cetak = '<h3><a target="_blank" class="' . $merah . '" href="' . $cetakF03 . '">'
-		. $cetakIcon . 'F3</a>| ' . "\r"
-		. '<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat . '">'
-		. $cetakIcon . 'Alamat</a>| ' . "\r"
-		. '<a target="_blank" class="' . $merah . '" href="' . $cetakData . '">'
-		. $cetakIcon . 'Data lama</a>| ' . "\r"
-		. '<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">'
-		. $cetakIcon . 'A1</a></h3>' . "\r";
+			. $cetakIcon . 'F3</a>| ' . "\r"
+			. '<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat . '">'
+			. $cetakIcon . 'Alamat</a>| ' . "\r"
+			. '<a target="_blank" class="' . $merah . '" href="' . $cetakData . '">'
+			. $cetakIcon . 'Data lama</a>| ' . "\r"
+			. '<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">'
+			. $cetakIcon . 'A1</a></h3>' . "\r";
 
 		return $cetak;
 	}
