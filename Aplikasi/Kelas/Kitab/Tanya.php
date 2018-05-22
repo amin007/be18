@@ -88,13 +88,13 @@ class Tanya
 		else:
 			foreach ($carian as $key=>$value)
 			{
-				 $atau = isset($carian[$key]['atau'])  ? $carian[$key]['atau'] . ' ' : null;
+				   $di = isset($carian[$key]['atau'])  ? $carian[$key]['atau'] . ' ' : null;
 				$medan = isset($carian[$key]['medan']) ? $carian[$key]['medan']      : null;
 				  $fix = isset($carian[$key]['fix'])   ? $carian[$key]['fix']        : null;
 				 $cari = isset($carian[$key]['apa'])   ? $carian[$key]['apa']        : null;
 				$akhir = isset($carian[$key]['akhir']) ? $carian[$key]['akhir']      : null;
-				//echo "\r$key => ($fix) $atau $medan -> '$cari' |";
-				$where .= $this->jika($fix,$atau,$medan,$cari,$akhir);
+				//echo "\r$key => ($fix) $di $medan -> '$cari' |";
+				$where .= $this->jika($fix,$di,$medan,$cari,$akhir);
 			}
 		endif;
 
