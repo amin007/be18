@@ -381,7 +381,6 @@ class Tanya
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		list($medanData, $where) = $this->ulangData($data, $medanID);
 		$sql = " UPDATE `$myTable` SET \r$medanData\r WHERE $where";
-		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->update($sql);
 	}
 #-------------------------------------------------------------------------------------------------
@@ -390,7 +389,7 @@ class Tanya
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		list($medanData, $where) = $this->ulangData($data, $medanID);
 		$sql = " UPDATE `$myTable` SET \r$medanData\r WHERE $where";
-		echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
+		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
@@ -399,7 +398,7 @@ class Tanya
 		list($medanData, $where) = $this->ulangData($data, $medanID);
 		$sql = " UPDATE `$myTable` SET \r$medanData\r WHERE $where";
 		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
+		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ulangDataPDO($data, $medanID)
