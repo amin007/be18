@@ -64,10 +64,8 @@ class Borang03_Batch
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan03($error, $namaPegawai, $noBatch, $urlStaf)
+	public function pautan03($error, $namaPegawai, $noBatch)
 	{# ($namaPegawai != null) && ($noBatch != null) && ($error == 'Kosong')
-		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
-			= $this->icon($namaPegawai, $urlStaf);
 		# set pembolehubah
 		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
 		$noBatch = (!isset($noBatch)) ? null : $noBatch;
@@ -81,10 +79,8 @@ class Borang03_Batch
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan04($error, $namaPegawai, $noBatch, $urlStaf)
+	public function pautan04($error, $namaPegawai, $noBatch)
 	{
-		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
-			= $this->icon($namaPegawai, $urlStaf);
 		# set pembolehubah
 		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
 		$noBatch = (!isset($noBatch)) ? null : $noBatch;
@@ -114,7 +110,7 @@ class Borang03_Batch
 #------------------------------------------------------------------------------------------
 	public function cetakSemua($n1, $n2)
 	{
-		$akhir = $n1 . '/' . $n2 . '/1000/1'
+		$akhir = $n1 . '/' . $n2 . '/1000/1';
 		$cetakF03 = URL . 'laporan/cetakf3/' . $akhir;
 		//$cetakF10 = URL . 'laporan/cetakf10/' . $akhir;
 		$cetakAlamat = URL . 'laporan/cetakresponden/' . $akhir;
