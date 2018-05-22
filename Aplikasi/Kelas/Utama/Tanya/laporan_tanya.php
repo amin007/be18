@@ -354,6 +354,50 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $medan; # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
+	private function medanDatalama()
+	{
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => 'concat_ws("","<input type="checkbox">",`respon`,`nota`) as respon',
+			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon',
+			3 => 'concat_ws("-",nama,operator) as nama,'
+			. 'concat_ws("-",kp,msic2008) as kp,'
+			. ' concat_ws("",' . "\r"
+			. '		if (respon is null, "", concat_ws("="," respon", concat(respon," |") ) ),' . "\r"
+			. '		if (hantar is null, "", concat_ws("="," hantar", concat(hantar," |") ) ),' . "\r"
+			. '		if (orang_a is null, "", concat_ws("="," orang", concat(lower(orang_a)," |") ) ),' . "\r"
+			. '		if (notel_a is null, "", concat_ws("="," tel", concat(notel_a," |") ) ),' . "\r"
+			. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |") ) ),' . "\r"
+			. '		if (responden is null, "", concat_ws("="," responden", concat(lower(responden)," |") ) ),' . "\r"
+			. '		if (notel is null, "", concat_ws("="," notel", concat(notel," |") ) ),' . "\r"
+			. '		if (nofax is null, "", concat_ws("="," nofax", concat(nofax," |") ) )' . "\r"
+ 			. ' ) as utama,'
+			. 'concat_ws("",newss) as newss,'
+			. 'concat_ws(" ",' . "\r"
+			. '		if (amt_hasil is null, "", concat_ws("="," hasil", concat(format(amt_hasil,0)," |") ) ),' . "\r"
+			//. '		if (amt_belanja is null, "", concat_ws("="," belanja", concat(format(amt_belanja,0)," |") ) ),' . "\r"
+			. '		if (amt_gaji is null, "", concat_ws("="," gaji", concat(format(amt_gaji,0)," |") ) ),' . "\r"
+			. '		if (amt_aset is null, "", concat_ws("="," aset", concat(format(amt_aset,0)," |") ) ),' . "\r"
+			//. '		if (amt_staf is null, "", concat_ws("="," staf", concat(format(amt_staf,0)," |") ) ),' . "\r"
+			//. '		if (amt_stok is null, "", concat_ws("="," stok akhir", concat(format(amt_stok,0)," |") ) )' . "\r"
+			. '		if (amt_staf is null, "", concat_ws("="," staf", concat(format(amt_staf,0)," |") ) )' . "\r"
+ 			. ' ) as nota, "" catat'
+		);
+
+		return $senaraiMedan; # pulangkan nilai
+	}
+#---------------------------------------------------------------------------------------------------#
+	public function kumpulDatalama($item, $ms)
+	{
+		# set pembolehubah untuk sql pertama
+		list($medanR, $jadualR, $r, $medan) = $this->medanDatalama();
+		# bentuk medan yang ingin diulang
+		//$medan .= ",\r $r ";
+
+		return $medan; # pulangkan nilai
+	}
+#----------------------------------------------------------------------------------------------------------------------
 	private function medanDaerah()
 	{
 		$senaraiMedan = array(
