@@ -24,7 +24,7 @@ class Html_TD
 			$p = '<a '. $btn . '>' . $a . '</a>';
 		endif;
 
-		return $p;
+		return $p . $data;
 	}
 #==========================================================================================
 	function paparURL($key, $data, $myTable = null, $ca = null, $cb = null)
