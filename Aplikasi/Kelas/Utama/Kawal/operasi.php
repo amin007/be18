@@ -81,8 +81,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$this->semakSemua($namaPegawai,$noBatch);
 
 		# Pergi papar kandungan
-		//$this->papar->template = 'bootstrap';
-		$this->papar->template = 'biasa';
+		$this->papar->template = 'bootstrap';
+		//$this->papar->template = 'biasa';
 		$fail = array('index','b_ubah','b_ubah_batch','batchawal');
 		$this->_folder = 'cari';
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -152,15 +152,18 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			$this->papar->error .= $this->wujudBatchAwal($jadual, $noBatch, $cariID);
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID);
+			//$this->cariGroup($jadual);
 		elseif ($cariID == null):
 			$this->papar->error = 'Kosong';
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID);
+			//$this->cariGroup($jadual);
 		else:
 			# cari $noBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudBatchAwal($jadual, $noBatch, $cariID);
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID);
+			//$this->cariGroup($jadual);
 		endif;
 	}
 #-------------------------------------------------------------------------------------------
@@ -182,22 +185,25 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				//cariSql($myTable, $medan, $carian, $susun);
 				cariSemuaData($myTable, $medan, $carian, $susun);
 		}# tamat ulang table
+		$this->cariGroup($jadual[0]);
 	}
 #-------------------------------------------------------------------------------------------
-	private function cariGroup($senaraiJadual, $cariBatch, $cariID, $medan)
+	private function cariGroup($jadual)
 	{
 		$jum2 = pencamSqlLimit(300, $item=30, $ms=1);
-		$jadual = $senaraiJadual[0];
 		## buat group, $medan set semua
-			# sql 5 - buat group ikut fe
-			$susunFE[] = array_merge($jum2, array('kumpul'=>'fe','susun'=>'fe') );
-			$this->papar->senarai['kiraBatchAwal'] = $this->tanya->
-				cariGroup($jadual, $medan = 'fe as batchAwal, count(*) as kira', $carian = null, $susunFE);
-			# sql 6 - buat group ikut pembuatan / perkhidmatan
-			$cariKP[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
-			$susunKP[] = array_merge($jum2, array('kumpul'=>'kp,sv,nama_kp','susun'=>'kp,sv,nama_kp') );
-			$this->papar->senarai['kiraKP' . $cariBatch] = $this->tanya->
-				cariGroup($jadual, $medan = 'kp,sv,nama_kp, count(*) as kira', $cariKP, $susunKP);
+		# sql 1 - buat group ikut fe
+		$fe = 'pegawai';
+		$susunFE[] = array_merge($jum2, array('kumpul'=>$fe,'susun'=>$fe) );
+		$this->papar->senarai['kiraBatchAwal'] = $this->tanya->
+			cariSemuaData($jadual, $medan = $fe . ',borang, count(*) as kira',
+			null, $susunFE);
+		# sql 2 - buat group ikut pembuatan / perkhidmatan
+		//$cariKP[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>$fe,'apa'=>$fe);
+		$susunKP[] = array_merge($jum2, array('kumpul'=>'kp,survei','susun'=>'kp,survei') );
+		$this->papar->senarai['kiraKP'] = $this->tanya->
+			cariSemuaData($jadual, $medan = 'kp,survei,count(*) as kira',
+			null, $susunKP);
 	}
 #-------------------------------------------------------------------------------------------
 	public function tambahNamaStaf()
