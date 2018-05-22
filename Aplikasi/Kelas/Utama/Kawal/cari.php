@@ -166,7 +166,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		 * untuk jadual msic2000 dan msic2008
 		 */
 		list($mesej, $lokasi, $namajadual) = $this->sayaPilih($bil, $muka);
-		$this->papar->namaPegawai = $this->papar->noBatch = null;
+		$this->papar->c1 = $this->papar->c2 = null;
 		//$this->semakOutput($mesej, $lokasi, $namajadual);
 		$this->papar->template = ($namajadual=='syarikat') ?
 			'biasa' : 'bootstrap';

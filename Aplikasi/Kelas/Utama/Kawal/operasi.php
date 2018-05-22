@@ -92,8 +92,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 	public function semakSemua($namaPegawai,$noBatch)
 	{
 		# Set pemboleubah utama
-		$this->papar->namaPegawai = $namaPegawai;
-		$this->papar->noBatch = $noBatch;
+		$this->papar->c1 = $namaPegawai;
+		$this->papar->c2 = $noBatch;
 		$this->papar->cariID = 'semua';
 		$this->papar->carian[] = 'semua';
 		# Semak data dulu

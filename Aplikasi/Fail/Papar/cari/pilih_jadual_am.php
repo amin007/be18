@@ -20,7 +20,7 @@
 		foreach ( $row[$kira] as $key=>$data )
 		{
 			$html->paparURL($key, $data, $myTable, 
-			$this->namaPegawai, $this->noBatch);
+			$this->c1, $this->c2);
 		} 
 		?></tr>
 	<?php
