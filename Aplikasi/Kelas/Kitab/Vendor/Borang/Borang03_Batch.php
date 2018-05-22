@@ -35,7 +35,7 @@ class Borang03_Batch
 		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan01($error, $namaPegawai, $noBatch, $urlStaf)
+	public function pautan01($error, $c1, $c2, $urlStaf)
 	{# $this->namaPegawai == null
 		$cetak = null;
 		$notaTambahan = 'nama pegawai tidak wujud. klik salah satu pautan staf di bawah ini ' 
@@ -46,14 +46,14 @@ class Borang03_Batch
 		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan02($error, $namaPegawai, $noBatch, $urlStaf, $staff)
+	public function pautan02($error, $c1, $c2, $urlStaf, $staff)
 	{# $namaPegawai != null) && ($noBatch == null)
 		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
-			= $this->icon($namaPegawai, $urlStaf);
+			= $this->icon($c1, $urlStaf);
 		# set pembolehubah 
 		$cetak = null;
-		$mencari = URL . 'operasi/tambahBatchBaru/' . $namaPegawai;
-		$notaTambahan = ( (in_array($namaPegawai,$staff)) ?
+		$mencari = URL . 'operasi/tambahBatchBaru/' . $c1;
+		$notaTambahan = ( (in_array($c1,$staff)) ?
 			$paparStaf : $paparXStaf )
 			. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Letak No Batch';
@@ -61,26 +61,26 @@ class Borang03_Batch
 		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan03($error, $namaPegawai, $noBatch, $urlStaf)
+	public function pautan03($error, $c1, $c2, $urlStaf)
 	{# ($namaPegawai != null) && ($noBatch != null) && ($error == 'Kosong')
 		# set pembolehubah
-		$cetak = $this->cetakSemua($namaPegawai, $noBatch, $urlStaf);
-		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
+		$cetak = $this->cetakSemua($c1, $c2, $urlStaf);
+		$mencari = URL . 'operasi/ubahBatchProses/' . $c1 . '/' . $c2;
 		$notaTambahan = 'Daftar kes masing-masing<br>' 
-			. 'Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $noBatch 
+			. 'Nama Pegawai : ' . $c1 . ' | BatchOperasi : ' . $c2
 			. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Letak No ID';
 
 		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan04($error, $namaPegawai, $noBatch, $urlStaf)
+	public function pautan04($error, $c1, $c2, $urlStaf)
 	{
 		# set pembolehubah
-		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
-		$cetak = $this->cetakSemua($namaPegawai, $noBatch, $urlStaf);
-		$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai 
-			. ' | BatchOperasi : ' . $noBatch
+		$cetak = $this->cetakSemua($c1, $c2, $urlStaf);
+		$mencari = URL . 'operasi/ubahBatchProses/' . $c1 . '/' . $c2;
+		$notaTambahan = 'Ubah | Nama Pegawai : ' . $c1
+			. ' | BatchOperasi : ' . $c2
 			. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Tambah Lagi No ID';
 
