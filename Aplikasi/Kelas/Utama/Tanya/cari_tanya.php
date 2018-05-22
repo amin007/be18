@@ -107,10 +107,11 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 			foreach ($post['pilih'] as $key=>$cari)
 			{	//echo "\r$key => $cari ($myTable)| ";
 				$carian[] = $this->bentukCarian2($myTable, $post, $key, $cari);
+				$cariID = $cari;
 			}
 		endif; //echo '<pre>$carian->'; print_r($carian); echo '</pre>';
 
-		return $carian;//*/
+		return array($carian,$cariID);//*/
 	}
 #---------------------------------------------------------------------------------------------------#
 	function bentukCarian1($myTable, $post, $key, $m0)
@@ -178,13 +179,14 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 			$carian[] = array('fix'=>'z%like%','atau'=>'WHERE',
 				'medan' => 'concat_ws("",newss,nossm,nama)',
 				'apa' => $apa[1]);
+			$cariID = $apa[1];
 		endif;
 
 		//echo '<pre>$jadual->'; print_r($jadual); echo '</pre>';
 		//echo '<pre>$medan->'; print_r($medan); echo '</pre>';
 		//echo '<pre>$carian->'; print_r($carian); echo '</pre>';
 
-		return array($jadual, $medan, $carian);
+		return array($jadual, $medan, $carian, $cariID);
 	}
 #---------------------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------------------#
