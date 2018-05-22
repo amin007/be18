@@ -173,6 +173,36 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//$this->papar->baca($this->_folder . '/f3responden', null, 1);
 	}
 #-------------------------------------------------------------------------------------------
+	public function cdatalama($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
+	{
+		$medan = $this->tanya->kumpulDatalama($item, $ms);# kumpul respon jadi medan sql
+		# set pembolehubah utama untuk sql
+		$jadual = 'kawalan_aes';
+		$carian[] = array('fix'=>'like%','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'like%','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
+		# tentukan bilangan mukasurat & jumlah rekod
+			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
+			($jadual, $medan2 = '*', $carian, NULL);
+			# semak bilangan mukasurat & jumlah rekod
+			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
+			$jum = pencamSqlLimit($bilSemua, $item, $ms);
+		$susun[] = array_merge($jum, array('kumpul'=>null,
+			'susun'=>'nama ASC') );
+		# tanya dalam sql
+		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
+			($jadual, $medan, $carian, $susun);
+		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
+
+		# Set pemboleubah utama
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$namaPegawai,$cariBatch);
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan($this->_folder, 'f3responden', $noInclude=1);
+		//$this->papar->baca($this->_folder . '/f3all', null, 1);
+	}
+#-------------------------------------------------------------------------------------------
 	public function cdaerah($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
 		# set pembolehubah utama untuk sql
