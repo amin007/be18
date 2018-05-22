@@ -371,13 +371,13 @@ class Tanya
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
-				$cariID = $medan;
+				$where = " WHERE `$medanID` = '{$data[$medanID]}' ";
 			elseif ($medan != $medanID)
-				$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
+				$senarai[] = ($nilai==null) ?
+				" `$medan`=null" : " `$medan`='$nilai'";
 		}
 
 		$senaraiData = implode(",\r",$senarai);
-		$where = "`$cariID` = '{$data[$cariID]}' ";
 
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
@@ -431,10 +431,9 @@ class Tanya
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
-				$where = " WHERE `$medanID` = `{$data[$medanID]}` ";
-			elseif ($medan != $medanID)
-				$senarai[] = ($nilai==null) ? 
-				" `$medan` = null" : " `$medan` = `$nilai`"; 
+				$where = " WHERE `$medanID` = '{$dimana[$medanID]}' ";
+			$senarai[] = ($nilai==null) ?
+				" `$medan`=null" : " `$medan`='$nilai'";
 		}
 
 		$senaraiData = implode(",\r",$senarai);
