@@ -398,6 +398,17 @@ class Tanya
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
 	}
 #-------------------------------------------------------------------------------------------------
+	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
+	{
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		list($senarai, $where) = $this->ulangData($medan, $medanID);
+		$senaraiData = implode(",\r",$senarai);
+
+		# set sql
+		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
+	}
+#-------------------------------------------------------------------------------------------------
 	public function ubahPDOSqlSimpan($data, $myTable, $medanID)
 	{
 		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -415,17 +426,6 @@ class Tanya
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->updateNew($sql, $data);
-	}
-#-------------------------------------------------------------------------------------------------
-	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
-	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($senarai, $where) = $this->ulangData($medan, $medanID);
-		$senaraiData = implode(",\r",$senarai);
-
-		# set sql
-		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahSimpanSemua($data, $myTable, $medanID, $dimana)
