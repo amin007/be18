@@ -152,18 +152,15 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			$this->papar->error .= $this->wujudBatchAwal($jadual, $noBatch, $cariID);
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID);
-			//$this->cariGroup($jadual);
 		elseif ($cariID == null):
 			$this->papar->error = 'Kosong';
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID);
-			//$this->cariGroup($jadual);
 		else:
 			# cari $noBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudBatchAwal($jadual, $noBatch, $cariID);
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($jadual, $namaPegawai, $noBatch, $cariID);
-			//$this->cariGroup($jadual);
 		endif;
 	}
 #-------------------------------------------------------------------------------------------
