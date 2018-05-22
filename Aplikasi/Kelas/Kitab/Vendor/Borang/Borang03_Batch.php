@@ -37,11 +37,11 @@ class Borang03_Batch
 #------------------------------------------------------------------------------------------
 	public function pautan01($error, $namaPegawai, $noBatch, $urlStaf)
 	{# $this->namaPegawai == null
+		$cetak = null;
 		$notaTambahan = 'nama pegawai tidak wujud. klik salah satu pautan staf di bawah ini ' 
 		. $urlStaf;// "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$mencari = URL . 'operasi/tambahNamaStaf';
 		$butangHantar = 'Letak Nama Staf';
-		$cetak = null;
 
 		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
@@ -51,12 +51,12 @@ class Borang03_Batch
 		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
 			= $this->icon($namaPegawai, $urlStaf);
 		# set pembolehubah 
+		$cetak = null;
 		$mencari = URL . 'operasi/tambahBatchBaru/' . $namaPegawai;
 		$notaTambahan = ( (in_array($namaPegawai,$staff)) ?
 			$paparStaf : $paparXStaf )
 			. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Letak No Batch';
-		$cetak = null;
 
 		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
