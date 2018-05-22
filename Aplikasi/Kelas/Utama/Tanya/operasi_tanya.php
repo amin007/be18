@@ -33,7 +33,8 @@ class Operasi_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function medanData()
 	{
-		$medan = 'newss,nossm,nama,fe,pegawai,borang,'
+		$medan = 'newss,concat_ws(" | ",pegawai,borang) batchAwal,'
+			. 'nossm,nama,fe,pegawai,borang,'
 			. '"<input type=\"checkbox\">" as tik,' . "\r"
 			//. 'concat_ws("<br>",alamat1,alamat2,poskod,bandar,negeri) as alamat,' 
 			. 'mko,respon R,survei,kp,msic2008,' . "\r"
