@@ -256,7 +256,7 @@ class Tanya
 		echo '<pre>Tambah $sql->'; print_r($sql); echo '</pre>';
 		//$this->db->insert($sql);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function tambahData($myTable, $data)
 	{
 		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -273,13 +273,14 @@ class Tanya
 		$this->db->insert($myTable, $data);
 	}
 #--- tamat - contoh tambah sql guna set ---#
+#-------------------------------------------------------------------------------------------------
 #--- mula - contoh tambah sql guna values ---#
 	public function tambahSimpanBanyak($myTable, $data)
 	{
 		//echo '<pre>$myTable->'; print_r($data); echo '</pre>';
 		$this->db->insert($myTable, $data);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function tambahSqlBanyakNilai($myTable, $medan, $data)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -291,7 +292,7 @@ class Tanya
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		//$this->db->insertAll($sql);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function tambahArahanSqlBanyakNilai($myTable, $medan, $data)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -302,7 +303,7 @@ class Tanya
 
 		return $sql;
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function tambahBanyakNilai($myTable, $medan, $data)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -314,7 +315,7 @@ class Tanya
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		$this->db->insertAll($sql);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function tambahPDOBanyakNilai($myTable, $medan, $dataProksi, $data)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -328,6 +329,7 @@ class Tanya
 	}
 
 #--- tamat - contoh tambah sql guna values ---#
+#-------------------------------------------------------------------------------------------------
 	public function buatJadual($myTable, $medan)
 	{
 		# set sql
@@ -338,7 +340,7 @@ class Tanya
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->selectAll($sql);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function salinJadual($myTableNew, $medan, $myTableOld)
 	{
 		# set sql
@@ -349,7 +351,7 @@ class Tanya
 		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		//$this->db->insert($sql); header('location:' . URL . 'test/paparfail');
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
 	{
 		# set sql
@@ -361,7 +363,7 @@ class Tanya
 		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		//$this->db->insert($sql); header('location:' . URL . 'test/paparfail');
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function ubahSimpan($data, $myTable, $medanID)
 	{
 		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -382,7 +384,7 @@ class Tanya
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->update($sql);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function ubahSqlSimpan($data, $myTable, $medanID)
 	{
 		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -402,7 +404,7 @@ class Tanya
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function ubahPDOSqlSimpan($data, $myTable, $medanID)
 	{
 		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -421,7 +423,7 @@ class Tanya
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->updateNew($sql, $data);
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
 	{
 		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -441,7 +443,7 @@ class Tanya
 		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function ubahSimpanSemua($data, $myTable, $medanID, $dimana)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -464,7 +466,7 @@ class Tanya
 		//$this->db->update($sql);
 		//*/
 	}
-
+#-------------------------------------------------------------------------------------------------
 	public function ubahSqlSimpanSemua($data, $myTable, $medanID, $dimana)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -485,7 +487,7 @@ class Tanya
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';
 	}
-
+#-------------------------------------------------------------------------------------------------
 	/*public function buangTerus($data, $myTable)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
@@ -496,6 +498,5 @@ class Tanya
 		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';
 		$this->db->delete($myTable, "`$cariID` = '{$data[$cariID]}' ");
 	}//*/
-
 #==========================================================================================
 }
