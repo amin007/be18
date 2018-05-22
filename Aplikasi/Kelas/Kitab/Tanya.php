@@ -364,7 +364,7 @@ class Tanya
 
 	public function ubahSimpan($data, $myTable, $medanID)
 	{
-		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
 
 		foreach ($data as $medan => $nilai)
 		{
@@ -385,7 +385,7 @@ class Tanya
 
 	public function ubahSqlSimpan($data, $myTable, $medanID)
 	{
-		$senarai = null; //echo '<pre>$data->', print_r($data, 1); echo '</pre>';
+		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
 
 		foreach ($data as $medan => $nilai)
 		{
@@ -424,7 +424,7 @@ class Tanya
 
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
 	{
-		$senarai = null; //echo '<pre>$data->', print_r($data, 1); echo '</pre>';
+		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
 
 		foreach ($data as $medan => $nilai)
 		{
@@ -444,8 +444,8 @@ class Tanya
 
 	public function ubahSimpanSemua($data, $myTable, $medanID, $dimana)
 	{
-		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
-		//echo '<pre>$dimana->', print_r($dimana, 1); echo '</pre>';
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		//echo '<pre>$dimana->'; print_r($dimana); echo '</pre>';
 		$senarai = null;
 
 		foreach ($data as $medan => $nilai)
@@ -467,8 +467,8 @@ class Tanya
 
 	public function ubahSqlSimpanSemua($data, $myTable, $medanID, $dimana)
 	{
-		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
-		//echo '<pre>$dimana->', print_r($dimana, 1) . '</pre>';
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		//echo '<pre>$dimana->'; print_r($dimana); echo '</pre>';
 		$senarai = null;
 
 		foreach ($data as $medan => $nilai)
@@ -488,7 +488,7 @@ class Tanya
 
 	/*public function buangTerus($data, $myTable)
 	{
-		//echo '<pre>$sql->', print_r($data, 1); echo '</pre>';
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		$cariID = 'newss';
 
 		// set sql
