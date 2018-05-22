@@ -15,7 +15,8 @@ class Borang03_Batch
 			. 'operasi/batch/' . $namaStaf . '">'
 			. $namaStaf . '</a>';
 		endforeach;
-
+		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
+		$noBatch = (!isset($noBatch)) ? null : $noBatch;
 		if (($namaPegawai == null)):
 			list($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak)
 				= $this->pautan01($error, $namaPegawai, $noBatch, $urlStaf);
@@ -36,8 +37,6 @@ class Borang03_Batch
 #------------------------------------------------------------------------------------------
 	public function pautan01($error, $namaPegawai, $noBatch, $urlStaf)
 	{# $this->namaPegawai == null
-		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
-		$noBatch = (!isset($noBatch)) ? null : $noBatch;
 		$notaTambahan = 'nama pegawai tidak wujud. klik salah satu pautan staf di bawah ini ' 
 		. $urlStaf;// "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$mencari = URL . 'operasi/tambahNamaStaf';
@@ -52,8 +51,6 @@ class Borang03_Batch
 		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
 			= $this->icon($namaPegawai, $urlStaf);
 		# set pembolehubah 
-		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
-		$noBatch = (!isset($noBatch)) ? null : $noBatch;
 		$mencari = URL . 'operasi/tambahBatchBaru/' . $namaPegawai;
 		$notaTambahan = ( (in_array($namaPegawai,$staff)) ?
 			$paparStaf : $paparXStaf )
@@ -64,12 +61,10 @@ class Borang03_Batch
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan03($error, $namaPegawai, $noBatch)
+	public function pautan03($error, $namaPegawai, $noBatch, $urlStaf)
 	{# ($namaPegawai != null) && ($noBatch != null) && ($error == 'Kosong')
 		# set pembolehubah
-		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
-		$noBatch = (!isset($noBatch)) ? null : $noBatch;
-		$cetak = $this->cetakSemua($namaPegawai, $noBatch);
+		$cetak = $this->cetakSemua($namaPegawai, $noBatch, $urlStaf);
 		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
 		$notaTambahan = 'Daftar kes masing-masing<br>' 
 		. 'Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $noBatch 
@@ -79,13 +74,11 @@ class Borang03_Batch
 		return array($namaPegawai,$noBatch,$notaTambahan,$mencari,$butangHantar,$cetak);
 	}
 #------------------------------------------------------------------------------------------
-	public function pautan04($error, $namaPegawai, $noBatch)
+	public function pautan04($error, $namaPegawai, $noBatch, $urlStaf)
 	{
 		# set pembolehubah
-		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
-		$noBatch = (!isset($noBatch)) ? null : $noBatch;
 		$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $noBatch;
-		$cetak = $this->cetakSemua($namaPegawai, $noBatch);
+		$cetak = $this->cetakSemua($namaPegawai, $noBatch, $urlStaf);
 		$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai 
 		. ' | BatchOperasi : ' . $noBatch
 		. "\r" . '<br><small>Nota: ' . $error . '</small>';
@@ -108,8 +101,10 @@ class Borang03_Batch
 		return array($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf);
 	}
 #------------------------------------------------------------------------------------------
-	public function cetakSemua($n1, $n2)
+	public function cetakSemua($n1, $n2, $urlStaf)
 	{
+		list($birutua,$birumuda,$merah,$cetakIcon,$paparStaf,$paparXStaf) 
+			= $this->icon($n1, $urlStaf);
 		$akhir = $n1 . '/' . $n2 . '/1000/1';
 		$cetakF03 = URL . 'laporan/cetakf3/' . $akhir;
 		//$cetakF10 = URL . 'laporan/cetakf10/' . $akhir;
@@ -120,7 +115,7 @@ class Borang03_Batch
 		. $cetakIcon . 'F3</a>| ' . "\r"
 		. '<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat . '">'
 		. $cetakIcon . 'Alamat</a>| ' . "\r"
-		. '<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat2 . '">'
+		. '<a target="_blank" class="' . $merah . '" href="' . $cetakData . '">'
 		. $cetakIcon . 'Data lama</a>| ' . "\r"
 		. '<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">'
 		. $cetakIcon . 'A1</a></h3>' . "\r";
