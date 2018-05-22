@@ -18,17 +18,17 @@ class Borang03_Batch
 		$c1 = (!isset($namaPegawai)) ? null : $namaPegawai;
 		$c2 = (!isset($noBatch)) ? null : $noBatch;
 		if (($namaPegawai == null)):
-			list($notaTambahan,$mencari,$butangHantar,$cetak)
+			list($cetak,$notaTambahan,$mencari,$butangHantar)
 				= $this->pautan01($error, $c1, $c2, $urlStaf);
 		elseif (($namaPegawai != null) && ($noBatch == null)):
-			list($notaTambahan,$mencari,$butangHantar,$cetak)
+			list($cetak,$notaTambahan,$mencari,$butangHantar)
 				= $this->pautan02($error, $c1, $c2, $urlStaf, $staff);
 		elseif (($namaPegawai != null) && ($noBatch != null)
 			&& ($error == 'Kosong') ):
-			list($notaTambahan,$mencari,$butangHantar,$cetak)
+			list($cetak,$notaTambahan,$mencari,$butangHantar)
 				= $this->pautan03($error, $c1, $c2, $urlStaf);
 		else:
-			list($notaTambahan,$mencari,$butangHantar,$cetak)
+			list($cetak,$notaTambahan,$mencari,$butangHantar)
 				= $this->pautan04($error, $c1, $c2, $urlStaf);
 		endif;
 
@@ -43,7 +43,7 @@ class Borang03_Batch
 		$butangHantar = 'Letak Nama Staf';
 		$cetak = null;
 
-		return array($notaTambahan,$mencari,$butangHantar,$cetak);
+		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
 #------------------------------------------------------------------------------------------
 	public function pautan02($error, $namaPegawai, $noBatch, $urlStaf, $staff)
@@ -58,7 +58,7 @@ class Borang03_Batch
 		$butangHantar = 'Letak No Batch';
 		$cetak = null;
 
-		return array($notaTambahan,$mencari,$butangHantar,$cetak);
+		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
 #------------------------------------------------------------------------------------------
 	public function pautan03($error, $namaPegawai, $noBatch, $urlStaf)
@@ -71,7 +71,7 @@ class Borang03_Batch
 			. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Letak No ID';
 
-		return array($notaTambahan,$mencari,$butangHantar,$cetak);
+		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
 #------------------------------------------------------------------------------------------
 	public function pautan04($error, $namaPegawai, $noBatch, $urlStaf)
@@ -84,7 +84,7 @@ class Borang03_Batch
 			. "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$butangHantar = 'Tambah Lagi No ID';
 
-		return array($notaTambahan,$mencari,$butangHantar,$cetak);
+		return array($cetak,$notaTambahan,$mencari,$butangHantar);
 	}
 #------------------------------------------------------------------------------------------
 	public function icon($namaPegawai, $urlStaf)
