@@ -361,10 +361,8 @@ class Tanya
 		//$this->db->insert($sql); header('location:' . URL . 'test/paparfail');
 	}
 #-------------------------------------------------------------------------------------------------
-	public function ubahSimpan($data, $myTable, $medanID)
-	{
-		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
-
+	public function ulangData($medan, $medanID)
+	{## foreach $data
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
@@ -374,6 +372,13 @@ class Tanya
 				" `$medan`=null" : " `$medan`='$nilai'";
 		}
 
+		return array($senarai, $where);
+	}
+#-------------------------------------------------------------------------------------------------
+	public function ubahSimpan($data, $myTable, $medanID)
+	{
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		list($senarai, $where) = $this->ulangData($medan, $medanID);
 		$senaraiData = implode(",\r",$senarai);
 
 		# set sql
