@@ -15,21 +15,21 @@ class Borang03_Batch
 			. 'operasi/batch/' . $namaStaf . '">'
 			. $namaStaf . '</a>';
 		endforeach;
-		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
-		$noBatch = (!isset($noBatch)) ? null : $noBatch;
+		$c1 = (!isset($namaPegawai)) ? null : $namaPegawai;
+		$c2 = (!isset($noBatch)) ? null : $noBatch;
 		if (($namaPegawai == null)):
 			list($notaTambahan,$mencari,$butangHantar,$cetak)
-				= $this->pautan01($error, $namaPegawai, $noBatch, $urlStaf);
+				= $this->pautan01($error, $c1, $c2, $urlStaf);
 		elseif (($namaPegawai != null) && ($noBatch == null)):
 			list($notaTambahan,$mencari,$butangHantar,$cetak)
-				= $this->pautan02($error, $namaPegawai, $noBatch, $urlStaf, $staff);
+				= $this->pautan02($error, $c1, $c2, $urlStaf, $staff);
 		elseif (($namaPegawai != null) && ($noBatch != null)
 			&& ($error == 'Kosong') ):
 			list($notaTambahan,$mencari,$butangHantar,$cetak)
-				= $this->pautan03($error, $namaPegawai, $noBatch, $urlStaf);
+				= $this->pautan03($error, $c1, $c2, $urlStaf);
 		else:
 			list($notaTambahan,$mencari,$butangHantar,$cetak)
-				= $this->pautan04($error, $namaPegawai, $noBatch, $urlStaf);
+				= $this->pautan04($error, $c1, $c2, $urlStaf);
 		endif;
 
 		return array($cetak,$notaTambahan,$mencari,$butangHantar);
