@@ -442,9 +442,8 @@ class Tanya
 
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';
-		//$this->db->update($sql);
-		//*/
+		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
+		//$this->db->update($sql);//*/
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahSqlSimpanSemua($data, $myTable, $medanID, $dimana)
@@ -465,7 +464,7 @@ class Tanya
 
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';
+		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------------
 	/*public function buangTerus($data, $myTable)
@@ -475,7 +474,7 @@ class Tanya
 
 		// set sql
 		//$sql = " DELETE `$myTable` WHERE `$cariID` = '{$data[$cariID]}' ";
-		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';
+		//echo '<pre>$sql->', print_r($sql); echo '</pre>';
 		$this->db->delete($myTable, "`$cariID` = '{$data[$cariID]}' ");
 	}//*/
 #==========================================================================================
