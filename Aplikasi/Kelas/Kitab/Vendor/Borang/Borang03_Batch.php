@@ -39,7 +39,7 @@ class Borang03_Batch
 		$namaPegawai = (!isset($namaPegawai)) ? null : $namaPegawai;
 		$noBatch = (!isset($noBatch)) ? null : $noBatch;
 		$notaTambahan = 'nama pegawai tidak wujud. klik salah satu pautan staf di bawah ini ' 
-		. $urlStaf;
+		. $urlStaf;// "\r" . '<br><small>Nota: ' . $error . '</small>';
 		$mencari = URL . 'operasi/tambahNamaStaf';
 		$butangHantar = 'Letak Nama Staf';
 		$cetak = null;
