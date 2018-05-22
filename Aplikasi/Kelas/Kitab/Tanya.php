@@ -411,19 +411,19 @@ class Tanya
 			$data2[$medan] = ($nilai==null) ? 'null' : $nilai; 
 		}
 
-		$senaraiData = implode(",\r",$senarai);
+		$medan = implode(",\r",$senarai);
 		$where = "`$medanID`=:$medanID ";
 
-		return array($senaraiData, $where);
+		return array($medan, $where, $data2);
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahPDOSqlSimpan($data, $myTable, $medanID)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($senaraiData, $where) = $this->ulangDataPDO($data, $medanID);
-		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
+		list($medan, $where, $data2) = $this->ulangDataPDO($data, $medanID);
+		$sql = " UPDATE `$myTable` SET \r$medan\r WHERE $where";
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
-		$this->db->updateNew($sql, $data);
+		$this->db->updateNew($sql, $data2);
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahSimpanSemua($data, $myTable, $medanID, $dimana)
