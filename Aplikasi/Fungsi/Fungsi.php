@@ -130,11 +130,7 @@ function semakDataPOST($semua)
 			foreach ($value as $kekunci => $papar):
 				$ubahMedan = $_POST['medan'][$myTable][$kekunci];
 				if ($kekunci != $ubahMedan)
-				{	/*echo "$myTable - $kekunci = $ubahMedan | berubah :"
-					. '$posmen['.$myTable.']['.$ubahMedan.'] '
-					. '<= $posmen['.$myTable.']['.$kekunci.']='
-					. bersih($papar) . '<br>';*/
-
+				{
 					$posmen[$myTable][$ubahMedan] = bersih($papar);
 					unset($posmen[$myTable][$kekunci]);
 				}
