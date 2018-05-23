@@ -380,15 +380,16 @@ class Tanya
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		list($medanData, $where) = $this->ulangData($data, $medanID);
-		$sql = " UPDATE `$myTable` SET \r$medanData\r WHERE $where";
-		$this->db->update($sql);
+		$sql = "\r UPDATE `$myTable` SET \r$medanData\r $where";
+		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
+		//$this->db->update($sql);
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahSqlSimpan($data, $myTable, $medanID)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		list($medanData, $where) = $this->ulangData($data, $medanID);
-		$sql = " UPDATE `$myTable` SET \r$medanData\r WHERE $where";
+		$sql = "\r UPDATE `$myTable` SET \r$medanData\r $where";
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------------
@@ -396,8 +397,7 @@ class Tanya
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		list($medanData, $where) = $this->ulangData($data, $medanID);
-		$sql = " UPDATE `$myTable` SET \r$medanData\r WHERE $where";
-		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+		return "\r UPDATE `$myTable` SET \r$medanData\r $where";
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------------
