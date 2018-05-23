@@ -6,7 +6,8 @@ list($cetak,$notaTambahan,$mencari,$butangHantar)
 <div class="container"><?php echo (!isset($cetak)) ? null : "\r$cetak" ?>
 	<h1><?=$notaTambahan?></h1>
 
-	<div align="center"><form method="GET" action="<?=$mencari?>" class="form-inline" autocomplete="off">
+	<div align="center"><form method="GET" action="<?=$mencari?>"
+	class="form-inline" autocomplete="off">
 	<?php //echo $mencari . '<br>' . "\r" ?>
 	<div class="form-group"><div class="input-group">
 		<input type="text" name="cari" class="form-control" autofocus
