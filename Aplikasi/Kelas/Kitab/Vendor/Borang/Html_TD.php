@@ -15,14 +15,14 @@ class Html_TD
 			&& $ca != null):
 			//$b = URL . "operasi/buangID/$ca/$cb/$data";
 			$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah1';
-			$p = '<a '. $btn . '>' . $a . '</a>';
+			$p = '<a '. $btn . '>' . $a . '</a><br>';
 			//. '<a href="' . $b . '" class="btn btn-danger btn-mini">Kosong</a>';
 		elseif ($level == 'feprosesan'):
 			$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah2';
-			$p = '<a '. $btn . '>' . $a . '</a>';
+			$p = '<a '. $btn . '>' . $a . '</a><br>';
 		else:
 			$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah1';
-			$p = '<a '. $btn . '>' . $a . '</a>';
+			$p = '<a '. $btn . '>' . $a . '</a><br>';
 		endif;
 
 		return $p . $data;
@@ -39,7 +39,7 @@ class Html_TD
 		if ( in_array($pengguna,array('amin007','azwan')) && $myTable == 'aes'
 			&& $ca != null):
 			$b = URL . "operasi/buangID/$ca/$cb/$data";
-			$p = '<a href="' . $b . '" class="btn btn-danger btn-mini">Kosong</a>';
+			$p = '<a href="' . $b . '" class="' . $merah . '">Kosong</a><br>';
 		else:
 			$p = '';
 		endif;
