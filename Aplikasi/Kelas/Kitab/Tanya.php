@@ -381,8 +381,8 @@ class Tanya
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		list($medanData, $where) = $this->ulangData($data, $medanID);
 		$sql = "\r UPDATE `$myTable` SET \r$medanData\r $where";
-		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
-		//$this->db->update($sql);
+		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
+		$this->db->update($sql);
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahSqlSimpan($data, $myTable, $medanID)
