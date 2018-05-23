@@ -15,7 +15,7 @@ if (isset($this->js))
 ?><?php 
 $dataURL = dpt_url();
 //echo '<pre>'; echo '<br>$dataURL:<br>'; print_r($dataURL); echo '</pre>';
-$classKhas = array('ubah','hadirbulan','awal','senarai');
+$classKhas = array('ubah','hadirbulan','awal','batch','senarai');
 if ( isset($dataURL[1]) && ( in_array($dataURL[1],$classKhas) )) :
 echo "\n\n"; ?>
 <script type="text/javascript">
