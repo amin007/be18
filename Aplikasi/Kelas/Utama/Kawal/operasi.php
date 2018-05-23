@@ -281,7 +281,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$medan = 'newss,nossm,nama,operator,pegawai,borang,'
 			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
 		$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>$medanID,'apa'=>$dataID);
-		# tanya Sql //$semakID[0]['pegawai'] 	$semakID[0]['borang']
+		# tanya Sql //$semakID[0]['pegawai'] $semakID[0]['borang']
 		$semakID = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $cari, $susun = null);
 		//echo '<pre>$semakID->', print_r($semakID); echo '</pre>';
@@ -304,8 +304,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		endif;//*/
 
 		# Pergi papar kandungan
-		echo '<br>location: ' . URL . $this->_folder . "/batch/$kodID" . '';
-		//header('location: ' . URL . $this->_folder . "/batch/$kodID");
+		//echo '<br>location:' . URL . $this->_folder . "/batch/$kodID" . '';
+		header('location:' . URL . $this->_folder . "/batch/$kodID");
 	}
 #-------------------------------------------------------------------------------------------
 	public function buangID($namaPegawai,$cariBatch,$dataID)
