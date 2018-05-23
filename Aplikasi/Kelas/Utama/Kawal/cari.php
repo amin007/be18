@@ -384,7 +384,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		{
 			if(strlen($cari) > 0)
 			{
-				list($paparKes, $bilKes) = $this->syarikatDB();
+				list($paparKes, $bilKes) = $this->syarikatDB($cari);
 				$this->syarikatPapar($paparKes, $bilKes);
 			}# tamat - strlen($cari) > 0
 		}# tamat - isset($cari)//*/
@@ -405,7 +405,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		}# tamat - $bilKes ==0
 	}
 #------------------------------------------------------------------------------------------
-	function syarikatDB()
+	function syarikatDB($cari)
 	{
 		list($myTable, $medan01) = dpt_senarai('jadual_kawalan');
 		$medan = 'newss,nama,nossm,operator,kp';
