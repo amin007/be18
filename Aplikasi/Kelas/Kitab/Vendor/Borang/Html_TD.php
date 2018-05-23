@@ -28,23 +28,25 @@ class Html_TD
 		return $p . $data;
 	}
 #==========================================================================================
-	function buangKey($key, $data, $myTable = null, $ca = null, $cb = null)
+	function buangKey($b, $myTable = null, $ca = null, $cb = null)
 	{
-		$k0 = URL . 'kawalan/ubah/' . $data;
+		$d = explode('|', $b); // pecah data
+		$d1 = $d[2]; $d2 = $d[0] . ':' . $d[1];
+		$k0 = URL . 'kawalan/ubah/' . $d1;
 		$k1 = $this->iconFA(1) . '<a target="_blank" href="' . $k0 . '">'
-			. $data . '</a>&nbsp;';
+			. $d1 . '</a>&nbsp;';
 		list($pengguna,$level,$birutua,$birumuda,$merah) = $this->setPencam();
 		$btn = 'target="_blank" href="' . $k0 . '" class="' . $birumuda . '"';
 
 		if ( in_array($pengguna,array('amin007','azwan')) && $myTable == 'aes'
 			&& $ca != null):
-			$b = URL . "operasi/buangID/$ca/$cb/$data";
+			$b = URL . "operasi/buangID/$ca/$cb/$d1";
 			$p = '<a href="' . $b . '" class="' . $merah . '">Kosong</a><br>';
 		else:
 			$p = '';
 		endif;
 
-		return $p . $data;
+		return $p . $d2;
 	}
 #==========================================================================================
 	function paparURL($key, $data, $myTable = null, $ca = null, $cb = null)
@@ -56,7 +58,7 @@ class Html_TD
 		}
 		elseif(in_array($key,array('batchAwal')))
 		{
-			$k1 = $this->buangKey($key,$data,$myTable,$ca,$cb);
+			$k1 = $this->buangKey($data,$myTable,$ca,$cb);
 			?><td><?php echo $k1 ?></td><?php
 		}
 		elseif(in_array($key,array('posdaftar')))
