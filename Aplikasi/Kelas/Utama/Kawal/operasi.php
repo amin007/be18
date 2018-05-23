@@ -310,35 +310,35 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function buangID($namaPegawai,$cariBatch,$dataID)
 	{
-		# semak session //echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
+		# semak session //echo '<pre>$_GET->'; print_r($_GET); echo '</pre>';
 		$sesi = \Aplikasi\Kitab\Sesi::init();
-		//echo '<pre>$_SESSION->', print_r($_SESSION, 1) . '</pre>';
+		//echo '<pre>$_SESSION->'; print_r($_SESSION); echo '</pre>';
 
-		# masuk dalam database
-			# ubahsuai $posmen
-			$jadual = 'kawalan_aes';
-			$medanID = 'newss';
-			$posmen[$jadual]['pegawai'] = null;
-			$posmen[$jadual]['borang'] = null;
-			$posmen[$jadual][$medanID] = $dataID;
-			//$dimana[$jadual][$medanID] = $asalBatch;
-			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		# ubahsuai $posmen
+		$jadual = 'kawalan_aes';
+		$medanID = 'newss';
+		$posmen[$jadual]['pegawai'] = null;
+		$posmen[$jadual]['borang'] = null;
+		$posmen[$jadual][$medanID] = $dataID;
+		//$dimana[$jadual][$medanID] = $asalBatch;
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
 
-			$this->tanya->ubahSimpan
-			//$this->tanya->ubahSqlSimpan
-				($posmen[$jadual], $jadual, $medanID);
+		$this->tanya->ubahSimpan
+		//$this->tanya->ubahSqlSimpan
+			($posmen[$jadual], $jadual, $medanID);
 
-			# log sql
-			$jadual2 = 'log_sql'; 
-			$pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
-			$log[$medanID] = $dataID;
-			$log['pengguna'] = $pengguna;
-			$log['sql'] = $this->tanya->ubahArahanSqlSimpan($posmen[$jadual], $jadual, $medanID);
-			$log['arahan'] = 'buang medan pegawai(' . $namaPegawai 
-				. ') dan borang(' . $cariBatch . ') oleh ' . $pengguna;
-			$log['tarikhmasa'] = date("Y-m-d H:i:s");
-			$this->tanya->tambahData//tambahSql
-				($jadual2, $log);
+		# log sql
+		$jadual2 = 'log_sql';
+		$pengguna = \Aplikasi\Kitab\Sesi::get('namaPendek');
+		$log[$medanID] = $dataID;
+		$log['pengguna'] = $pengguna;
+		$log['sql'] = $this->tanya->ubahArahanSqlSimpan($posmen[$jadual], $jadual, $medanID);
+		$log['arahan'] = 'buang medan pegawai(' . $namaPegawai
+			. ') dan borang(' . $cariBatch . ') oleh ' . $pengguna;
+		$log['tarikhmasa'] = date("Y-m-d H:i:s");
+		$this->tanya->tambahData
+		//$this->tanya->tambahSql
+			($jadual2, $log);
 
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$cariBatch/?id=$dataID&mesej=data sudah dikosongkan" . '';
