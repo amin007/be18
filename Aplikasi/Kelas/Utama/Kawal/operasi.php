@@ -284,17 +284,17 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# tanya Sql //$semakID[0]['pegawai'] 	$semakID[0]['borang']
 		$semakID = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $cari, $susun = null);
-		echo '<pre>$semakID->', print_r($semakID); echo '</pre>';
-		echo '<pre>$posmen->'; print_r($posmen); echo '</pre>';
+		//echo '<pre>$semakID->', print_r($semakID); echo '</pre>';
+		//echo '<pre>$posmen->'; print_r($posmen); echo '</pre>';
 
 		# masuk dalam database
 		$p1 = "$namaPegawai/$asalBatch/$dataID";
 		$p2 = '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang'];
 		if(is_null($semakID[0]['pegawai'])):
 			if(is_null($semakID[0]['borang'])):
-				$this->tanya->ubahSimpan(
-				//$this->tanya->ubahSqlSimpan(
-					$posmen[$jadual], $jadual, $medanID);
+				$this->tanya->ubahSimpan
+				//$this->tanya->ubahSqlSimpan
+					($posmen[$jadual], $jadual, $medanID);
 				$kodID = $p1;
 			else: //echo 'sudah ada isi';
 				$kodID = $p1 . $p2;
@@ -304,8 +304,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		endif;//*/
 
 		# Pergi papar kandungan
-		//echo '<br>location: ' . URL . $this->_folder . "/batch/$kodID" . '';
-		header('location: ' . URL . $this->_folder . "/batch/$kodID");
+		echo '<br>location: ' . URL . $this->_folder . "/batch/$kodID" . '';
+		//header('location: ' . URL . $this->_folder . "/batch/$kodID");
 	}
 #-------------------------------------------------------------------------------------------
 	public function buangID($namaPegawai,$cariBatch,$dataID)
