@@ -157,7 +157,7 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		/*$jadual = array('`aes`','`kawalan_aes`','`aes_alam_sekitar`',
 		'`aes_kp_205`','`aes_kp_206`','`aes_kp_207`','`aes_kp_800`',
 		'`aes_perkhidmatan`','`aes_pertanian`');//*/
-		$jadual = array('aes','kawalan_aes','aes_alam_sekitar',
+		$jadual = array('aes','kawalan_aes','aes_prosesan','aes_alam_sekitar',
 		'aes_kp_205','aes_kp_206','aes_kp_207','aes_kp_800',
 		'aes_perkhidmatan','aes_pertanian');
 		$medan = '*';
