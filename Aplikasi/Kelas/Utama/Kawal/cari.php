@@ -255,8 +255,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 
 		foreach ($jadual as $key => $namaPanjang)
 		{# mula ulang table
-			//$myTable = substr($namaPanjang, 16);
-			$myTable = $namaPanjang;
+			$myTable = substr($namaPanjang, 16);
+			//$myTable = $namaPanjang;
 			//echo "<br>Msic) $myTable|$namaPanjang";
 			$medan = $this->tanya->medanIndustri($myTable);
 			list($carian,$cariID) = $this->tanya->bentukCarian($_POST['jika'], $myTable);
