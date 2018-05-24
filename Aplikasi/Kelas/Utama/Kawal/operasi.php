@@ -191,9 +191,10 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		## buat group, $medan set semua
 		# sql 1 - buat group ikut fe
 		$fe = 'pegawai';
-		$susunFE[] = array_merge($jum2, array('kumpul'=>$fe,'susun'=>$fe) );
+		$m0 = 'concat_ws("/",pegawai,borang) batchX,' . "$fe,borang,";
+		$susunFE[] = array_merge($jum2, array('kumpul'=>$fe,'susun'=>'borang ASC') );
 		$this->papar->senarai['kiraBatchAwal'] = $this->tanya->
-			cariSemuaData($jadual, $medan = $fe . ',borang, count(*) as kira',
+			cariSemuaData($jadual, $medan = $m0 . 'count(*) as kira',
 			null, $susunFE);
 		# sql 2 - buat group ikut pembuatan / perkhidmatan
 		//$cariKP[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>$fe,'apa'=>$fe);
@@ -232,23 +233,18 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo "\$namaPegawai = $namaPegawai<br>";
 		//echo "\$asalBatch = $asalBatch<br>";
 		$tukarBatch = bersihGET('cari'); # bersihkan data $_POST
+		$jadual = 'kawalan_aes';
+		$medanID = 'nobatch';
+		# ubahsuai $posmen
+		//$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
+		$posmen[$jadual][$medanID] = $tukarBatch;
+		$dimana[$jadual][$medanID] = $asalBatch;
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
 
 		# masuk dalam database
-			# ubahsuai $posmen
-			$jadual = 'kawalan_aes';
-			$medanID = 'nobatch';
-			//$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
-			$posmen[$jadual][$medanID] = $tukarBatch;
-			$dimana[$jadual][$medanID] = $asalBatch;
-			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
-
-			//$this->tanya->ubahSimpanSemua(
-			$this->tanya->ubahSqlSimpanSemua(
-				$posmen[$jadual], $jadual, $medanID, $dimana[$jadual]);
-
-		# Set pemboleubah utama
-		$this->papar->namaPegawai = $namaPegawai;
-		$this->papar->noBatch = $tukarBatch; 
+			//$this->tanya->ubahSimpanSemua
+			$this->tanya->ubahSqlSimpanSemua
+				($posmen[$jadual], $jadual, $medanID, $dimana[$jadual]);
 
 		# pergi papar kandungan
 		echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$tukarBatch" . '';
