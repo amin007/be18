@@ -28,25 +28,22 @@ class Html_TD
 		return $p . $data;
 	}
 #==========================================================================================
-	function buangKey($b, $myTable = null, $ca = null, $cb = null)
+	function buangKey($b, $myTable = null)
 	{
 		$d = explode('|', $b); // pecah data
-		$d1 = $d[2]; $d2 = $d[0] . ':' . $d[1];
-		$k0 = URL . 'kawalan/ubah/' . $d1;
-		$k1 = $this->iconFA(1) . '<a target="_blank" href="' . $k0 . '">'
-			. $d1 . '</a>&nbsp;';
+		$data = $d[2]; $cacb = $d[0] . '/' . $d[1];
 		list($pengguna,$level,$birutua,$birumuda,$merah) = $this->setPencam();
-		$btn = 'target="_blank" href="' . $k0 . '" class="' . $birumuda . '"';
 
-		if ( in_array($pengguna,array('amin007','azwan')) && $myTable == 'aes'
-			&& $ca != null):
-			$b = URL . "operasi/buangID/$ca/$cb/$d1";
-			$p = '<a href="' . $b . '" class="' . $merah . '">Kosong</a><br>';
+		if ( in_array($pengguna,array('amin007','ainzahra')) && $myTable == 'aes'
+			&& $cacb != 'X/X'):
+			$b = URL . "operasi/buangID/$cacb/$data";
+			$p = '<a href="' . $b . '" class="' . $merah
+			. '">Kosong</a><br>' . $cacb;
 		else:
-			$p = '';
+			$p = null;
 		endif;
 
-		return $p . $d2;
+		return $p;
 	}
 #==========================================================================================
 	function paparURL($key, $data, $myTable = null, $ca = null, $cb = null)
@@ -58,15 +55,23 @@ class Html_TD
 		}
 		elseif(in_array($key,array('batchAwal')))
 		{
-			$k1 = $this->buangKey($data,$myTable,$ca,$cb);
+			$k1 = $this->buangKey($data,$myTable);
 			?><td><?php echo $k1 ?></td><?php
+		}
+		elseif(in_array($key,array('batchX')))
+		{
+			$k0 = URL . 'operasi/batch/' . $data;
+			$p1 = ($data==null) ? $data :
+			'<a target="_blank" href="' . $k0 . '" class="' 
+			. $this->butang('success') . '">' . $data . '</a>';
+			?><td><?php echo $p1 ?></td><?php
 		}
 		elseif(in_array($key,array('posdaftar')))
 		{
-				list($k,$btn) = $this->posdaftar($data);
-				$pautan = ($data==null) ? $data :
-				'<a target="_blank" href="' . $k[3] . '" class="' 
-				. $this->butang . '">' . $data . '</a>';
+			list($k,$btn) = $this->posdaftar($data);
+			$pautan = ($data==null) ? $data :
+			'<a target="_blank" href="' . $k[3] . '" class="' 
+			. $this->butang() . '">' . $data . '</a>';
 
 			?><td><?php echo $pautan ?></td><?php
 		}
