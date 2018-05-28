@@ -479,15 +479,15 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	private function jadualKhas04()
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
-		list($myTable, $a1, $a2, $b1, $b2, $c1, $c2,
-		$medan) = dpt_senarai('jadual_biodata4');
+		list($myTable,$medan,$atur,$a1, $a2, $b1, $b2, $c1, $c2)
+		= dpt_senarai('jadual_biodata4');
 
 		# bentuk tatasusunan $carian //$carian = null;
-			$susun = null;
+			$susun[0]['susun'] = $atur;
 			//$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
 			$carian[] = array('fix'=>'xnull','atau'=>'WHERE','medan'=>$a1,'apa'=>1);
 			$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>$b1,'apa'=>$b2);
-			$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>$c1,'apa'=>$c2);
+			//$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>$c1,'apa'=>$c2);
 		# semak database
 			$senarai['kes'] = $this->tanya->
 				cariSemuaData($myTable, $medan, $carian, $susun);
