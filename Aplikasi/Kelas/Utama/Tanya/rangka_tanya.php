@@ -20,27 +20,6 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 		return ($pilih==1) ? $kira : $data; # pulangkan nilai
 	}
 #---------------------------------------------------------------------------------------------------#
-	function alihMedan()
-	{
-		//ALTER TABLE Employees MODIFY COLUMN empName VARCHAR(50) AFTER department;
-	}
-#---------------------------------------------------------------------------------------------------#
-	public function semakPosmen($myTable, $posmen, $pass)
-	{
-		if(isset($posmen[$myTable][$pass])):
-			if($posmen[$myTable][$pass] == null):
-				//echo '<br> buang ' . $pass;
-				unset($posmen[$myTable][$pass]);
-			else:
-				$posmen[$myTable][$pass] = 
-					\Aplikasi\Kitab\RahsiaHash::rahsia('md5', 
-					$posmen[$myTable][$pass]);
-			endif;
-		endif;
-
-		return $posmen;
-	}
-#---------------------------------------------------------------------------------------------------#
 	public function medanKawalan($cariID) 
 	{ 
 		$news1 = 'http://sidapmuar/ekonomi/ckawalan/ubah/' . $cariID;
@@ -68,6 +47,20 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 		return $medanKawalan;
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function jadualRangka()
+	{
+		list($myTable, $medan) = dpt_senarai('jadual_rangka');
+		# bentuk tatasusunan $carian //
+		$carian = null; 
+		/*$carian[] = array('fix'=>'like', # cari x= atau %like%
+			'atau'=>'WHERE', # WHERE / OR / AND
+			'medan' => $medanID, # cari dalam medan apa
+			'apa' => $cariID); # benda yang dicari //*/
+		# bentuk tatasusunan $atur //
+		$atur = null;
+
+		return array($myTable,$medan,$carian,$atur);
+	}
 #---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
 }
