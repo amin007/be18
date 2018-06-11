@@ -176,6 +176,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$posmen2='; print_r($posmen); echo '</pre>';//*/
 
 		//return $posmen; # pulangkan nilai
+	}
 #-------------------------------------------------------------------------------------------
 	function cantumMedan2($jadual, $posmen2)
 	{
