@@ -12,7 +12,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		$this->_namaClass = '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$this->_namaFunction = '<hr>Nama function :' .__FUNCTION__ . '<hr>';
 	}
-
+##------------------------------------------------------------------------------------------
 	public function index()
 	{
 		# Set pembolehubah utama
@@ -25,7 +25,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//$this->_folder = ''; # jika mahu ubah lokasi Papar
 		$this->paparKandungan($this->_folder, 'index', $noInclude=0);
 	}
-
+##------------------------------------------------------------------------------------------
 	public function paparKandungan($folder, $fail, $noInclude)
 	{	# Pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
@@ -35,14 +35,14 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 			//'mobile/mobile',$jenis,0); # $noInclude=0
 		//*/
 	}
-
+##------------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai)
 	{
 		echo '<pre>$senarai:<br>';
 		print_r($senarai);
 		echo '</pre>|';//*/
 	}
-
+##------------------------------------------------------------------------------------------
 	function logout()
 	{
 		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
@@ -50,6 +50,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		header('location: ' . URL);
 		//exit;
 	}
+##------------------------------------------------------------------------------------------
 #===========================================================================================
 #-------------------------------------------------------------------------------------------
 	public function contoh($action = 'hasil')
@@ -63,44 +64,32 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function pembolehubahSesi()
-	{
-		$sesi = \Aplikasi\Kitab\Sesi::init();
-		//echo '<pre>MENU_ATAS - $_SESSION:'; print_r($_SESSION, 1); echo '</pre><br>';
-		# set pembolehubah
-		$pengguna = \Aplikasi\Kitab\Sesi::get('namaPendek');
-		$level = \Aplikasi\Kitab\Sesi::get('levelPengguna');
-
-		return array($pengguna, $level);
-	}
-#-------------------------------------------------------------------------------------------
-	public function ubahCari()
-	{
-		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
-		# Bersihkan data $_POST
-		$input = bersih($_GET['cari']);
-		$dataID = str_pad($input, 12, "0", STR_PAD_LEFT);
-
-		# Pergi papar kandungan
-		//echo '<br>location: ' . URL . 'kawalan/ubah/' . $dataID . '';
-		header('location: ' . URL . 'kawalan/ubah/' . $dataID);
-	}
-#-------------------------------------------------------------------------------------------
-	public function ubah($cariID) 
+	public function tambah() 
 	{		
 		# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
-		list($this->papar->senarai,$this->papar->cariID) 
-			= $this->jadualKawalan($cariID);
+		list($myTable,$medan,$carian,$atur) = $this->tanya->jadualRangka();
+		# mula cari dalam $myJadual
+		$this->papar->senarai['kes'] = 
+			$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $atur);
+		$this->setPembolehUbah();
+		$fail = array('index','b_ubah','b_ubah_kawalan','b_baru');
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->semakPembolehubah($this->papar->cariID); # Semak data dulu
-		//$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
 		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
-		$this->paparKandungan($this->_folder, 'a_syarikat' , $noInclude=0); 
+		$this->paparKandungan($this->_folder, $fail[3], $noInclude=0); 
 		//*/
     }
+#-------------------------------------------------------------------------------------------
+	public function setPembolehUbah()
+	{
+		$this->papar->carian[] = 'semua';
+		$this->papar->c1 = null;
+		$this->papar->c2 = null;
+		$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap';		
+	}
 #-------------------------------------------------------------------------------------------
 	private function jadualKawalan($cariID)
 	{
@@ -128,7 +117,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 			$jum2 = pencamSqlLimit(300, $item, $ms);
 			$susun1[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'bandar') );
 		# mula cari $cariID dalam $myJadual
-			$cariNama['kes'] = 
+			$cariData['kes'] = 
 				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun1);
 				//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
 				//$newss = $this->cariMsic($cariNama['kes']); # mula cari Msic
@@ -138,7 +127,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
 
-		return array($cariNama, $newss = sizeof($cariNama['kes']) );
+		return array($cariData, $newss = sizeof($cariNama['kes']) );
 	}
 #-------------------------------------------------------------------------------------------
 	function cariMsic($cariApa)
