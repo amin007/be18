@@ -118,7 +118,6 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		list($jaduaLama,$senaraiJadual) = dpt_senarai('jadual_rangka2');
 		# ubahsuai $posmen
 		list($medanLama,$medanBaru) = $this->tambahPost($senaraiJadual);
-		$medanLama = $medanBaru = '*';
 		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 		echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 		//$myTableNew,$medanLama,$medanBaru,$myTableOld,
@@ -131,7 +130,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 
 			$this->tanya->//tambahSqlJadualBarukeLama
 			tambahJadualBarukeLama
-			($jadual,$medanBaru,$medanLama,$jaduaLama,$carian);
+			($jadual,$medanBaru[$jadual],$medanLama[$jadual],$jaduaLama,$carian);
 		}# tamat ulang table
 
 		# pergi papar kandungan
