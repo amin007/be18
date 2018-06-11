@@ -164,6 +164,18 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//return $posmen;
 	}
 #-------------------------------------------------------------------------------------------
+	function cantumMedan1($jadual, $posmen1)
+	{
+		# cantumkan tatasusunan
+		foreach($jadual as $my):
+			$pos[] = implode("`,`", $posmen2[$my]);
+		endforeach;
+
+		# debug
+		echo '<pre>$pos='; print_r($pos); echo '</pre>';
+		//echo '<pre>$posmen2='; print_r($posmen); echo '</pre>';//*/
+
+		//return $posmen; # pulangkan nilai
 #-------------------------------------------------------------------------------------------
 	function cantumMedan2($jadual, $posmen2)
 	{
