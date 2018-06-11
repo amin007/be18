@@ -159,9 +159,10 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
-		$posmen1 = $this->cantumMedan1($senaraiJadual, $posmen1);
-		$posmen2 = $this->cantumMedan2($senaraiJadual, $posmen2);
-		//return $posmen;
+		$medanLama = $this->cantumMedan1($senaraiJadual, $posmen1);
+		$MedanBaru = $this->cantumMedan2($senaraiJadual, $posmen2);
+
+		return array($medanLama,$medanBaru); # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
 	function cantumMedan1($jadual, $posmen)
