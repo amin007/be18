@@ -181,9 +181,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 	{
 		# cantumkan tatasusunan
 		foreach($jadual as $my):
-			//for($kira = 0; $kira < count($posmen2[$my]); $kita++):
-				$pos[] = implode("`,`", $posmen2[$my]);
-			//endfor;
+			$pos[] = implode("`,`", $posmen2[$my]);
 		endforeach;
 
 		# debug
