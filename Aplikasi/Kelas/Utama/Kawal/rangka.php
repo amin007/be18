@@ -164,10 +164,10 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//return $posmen;
 	}
 #-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 	function cantumMedan2($jadual, $posmen2)
 	{
 		# cantumkan tatasusunan
-		//$pos = explode(" ", $pecah5P);
 		foreach($jadual as $my):
 			//for($kira = 0; $kira < count($posmen2[$my]); $kita++):
 				$pos[] = implode("`,`", $posmen2[$my]);
