@@ -164,32 +164,32 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//return $posmen;
 	}
 #-------------------------------------------------------------------------------------------
-	function cantumMedan1($jadual, $posmen1)
+	function cantumMedan1($jadual, $posmen)
 	{
 		# cantumkan tatasusunan
 		foreach($jadual as $my):
-			$pos[] = implode("`,`", $posmen2[$my]);
+			$pos[$my] = '`' . implode("`,`", $posmen[$my]) . '`';
 		endforeach;
 
 		# debug
-		echo '<pre>$pos='; print_r($pos); echo '</pre>';
+		//echo '<pre>$pos='; print_r($pos); echo '</pre>';
 		//echo '<pre>$posmen2='; print_r($posmen); echo '</pre>';//*/
 
-		//return $posmen; # pulangkan nilai
+		return $pos; # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
-	function cantumMedan2($jadual, $posmen2)
+	function cantumMedan2($jadual, $posmen)
 	{
 		# cantumkan tatasusunan
 		foreach($jadual as $my):
-			$pos[] = implode("`,`", $posmen2[$my]);
+			$pos[$my] = '`' . implode("`,`", $posmen[$my]) . '`';
 		endforeach;
 
 		# debug
-		echo '<pre>$pos='; print_r($pos); echo '</pre>';
+		//echo '<pre>$pos='; print_r($pos); echo '</pre>';
 		//echo '<pre>$posmen2='; print_r($posmen); echo '</pre>';//*/
 
-		//return $posmen; # pulangkan nilai
+		return $pos; # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
 	public function ubahSimpan($dataID)
