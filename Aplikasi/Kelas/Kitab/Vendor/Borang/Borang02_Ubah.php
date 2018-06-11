@@ -363,7 +363,7 @@ class Borang02_Ubah
 #------------------------------------------------------------------------------------------
 	public function tambahDropInput($paparMedan,$j2,$jadual,$kira,$key,$data)
 	{
-		$name = 'name="' . $jadual . '[' . $key . ']"';
+		$name = 'name="' . $jadual . '[0][' . $key . ']"';
 		$dataType = myGetType($data);
 		# css
 		list($tab2,$tab3,$tab4,$birutua,$birumuda,$merah,
