@@ -127,6 +127,8 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		foreach ($senaraiJadual as $kunci => $jadual)
 		{# mula ulang table
 			$carian = $this->tanya->jadualRangka3($jadual);
+			//$this->tanya->salinJadual($jadual . '_x', $medan = '*', $jadual);
+
 			$this->tanya->//tambahSqlJadualBarukeLama
 			tambahJadualBarukeLama
 			($jadual,$medanBaru,$medanLama,$jaduaLama,$carian);
@@ -140,21 +142,43 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 	function tambahPost($senaraiJadual)
 	{
 		$posmen = array();
-		foreach ($_POST as $myTable => $value):
-			if ( in_array($myTable,$senaraiJadual) ):
-				foreach ($value as $kekunci => $papar)
-				{
-					$posmen[$myTable][$kekunci] = bersih($papar);
-				}//*/
-		endif; endforeach;
+		foreach ($_POST as $myTable => $v): //echo "<br>\$k=$k";
+			if(in_array($myTable,$senaraiJadual)):
+			foreach ($v as $k1):
+			foreach ($k1 as $kekunci => $papar)
+			{
+				//echo "\$kekunci=$kekunci";
+				$posmen1[$myTable][] = bersih($papar);
+				$posmen2[$myTable][] = bersih($kekunci);
+			}//*/
+			endforeach;
+			endif;
+		endforeach;
 
+		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
-		//echo '<pre>$medanID='; print_r($medanID); echo '</pre>';
-		//echo '<pre>$dataID='; print_r($dataID); echo '</pre>';
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
-		//$posmen = $this->pecah5P($senaraiJadual[0], $posmen);
-		return $posmen;
+		$posmen1 = $this->cantumMedan1($senaraiJadual, $posmen1);
+		$posmen2 = $this->cantumMedan2($senaraiJadual, $posmen2);
+		//return $posmen;
+	}
+#-------------------------------------------------------------------------------------------
+	function cantumMedan2($jadual, $posmen2)
+	{
+		# cantumkan tatasusunan
+		//$pos = explode(" ", $pecah5P);
+		foreach($jadual as $my):
+			//for($kira = 0; $kira < count($posmen2[$my]); $kita++):
+				$pos[] = implode("`,`", $posmen2[$my]);
+			//endfor;
+		endforeach;
+
+		# debug
+		echo '<pre>$pos='; print_r($pos); echo '</pre>';
+		//echo '<pre>$posmen2='; print_r($posmen); echo '</pre>';//*/
+
+		//return $posmen; # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
 	public function ubahSimpan($dataID)
