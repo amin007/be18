@@ -117,7 +117,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 	{
 		list($jaduaLama,$senaraiJadual) = dpt_senarai('jadual_rangka2');
 		# ubahsuai $posmen
-		$posmen = $this->tambahPost($senaraiJadual);
+		list($medanLama,$medanBaru) = $this->tambahPost($senaraiJadual);
 		$medanLama = $medanBaru = '*';
 		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 		echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
@@ -160,7 +160,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		$medanLama = $this->cantumMedan1($senaraiJadual, $posmen1);
-		$MedanBaru = $this->cantumMedan2($senaraiJadual, $posmen2);
+		$medanBaru = $this->cantumMedan2($senaraiJadual, $posmen2);
 
 		return array($medanLama,$medanBaru); # pulangkan nilai
 	}
