@@ -138,10 +138,10 @@ class Login extends \Aplikasi\Kitab\Kawal
 				'atau'=>'AND', # WHERE / OR / AND
 				'medan' => $medan02, # cari dalam medan apa
 				'apa' => $password); # benda yang dicari
-			# mula cari $cariID dalam $myJadual
-				$cariNama = 
-					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
-					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
+		# mula cari $cariID dalam $myJadual
+			$cariNama =
+				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
+				//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
 				$kira = sizeof($cariNama);//*/
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
