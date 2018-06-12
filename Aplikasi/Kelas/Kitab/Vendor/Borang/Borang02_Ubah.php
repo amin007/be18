@@ -400,8 +400,8 @@ class Borang02_Ubah
 	{
 		$nombor = array('amt_jualan','amt_hasil','amt_aset','amt_gaji','amt_staf',
 			'amt_nilaikerja','amt_output');
-		$nombor2 = array('Jualan_RM','Hasil','Harta_Tetap_RM','Gaji_RM','Bil_Pekerja',
-		'Nilai_Kerja_Pembinaan_RM','Output');
+		$nombor2 = array('Jualan_RM','Hasil','Harta_Tetap_RM','Gaji','Bil Pekerja',
+		'Nilai Kerja Pembinaan (RM)','Output');
 
 		//$asal = str_replace('amt_','',$asal);
 		foreach($nombor as $k => $v):
