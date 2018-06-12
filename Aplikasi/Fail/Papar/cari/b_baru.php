@@ -1,7 +1,8 @@
 <?php
 # pilih paparan ke bawah atau melintang
-$pilihJadual = 'jadual_am';
-//$pilihJadual = 'ubah_medan01'; # borang biodata berasaskan table
+//$pilihJadual = 'jadual_am';
+$pilihJadual = 'ubah_medan00'; # borang baru berasaskan table
+//$pilihJadual = 'ubah_medan01'; # borang baru berasaskan bootstrap
 //$pilihJadual = 'ubah_medan02'; # borang ubah berasaskan bootstrap
 
 # untuk kod baru
