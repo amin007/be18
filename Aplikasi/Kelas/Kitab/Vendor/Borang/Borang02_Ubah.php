@@ -369,8 +369,10 @@ class Borang02_Ubah
 		list($tab2,$tab3,$tab4,$birutua,$birumuda,$merah,
 			$classInput,$komenInput) = $this->ccs();
 		$alamat = array('alamat1','alamat2','bandar','poskod','daerah','ngdbbp');
-		$nombor = array('amt_hasil','amt_aset','amt_gaji','amt_staf',
+		$nombor = array('amt_jualan','amt_hasil','amt_aset','amt_gaji','amt_staf',
 			'amt_nilaikerja','amt_output');
+		$nombor2 = array('Jualan_RM','Hasil','Bil_Pekerja','Output','Harta_Tetap_RM',
+		'Gaji_RM','Nilai_Kerja_Pembinaan_RM');
 		$papar = null;
 
 		if($jadual!=$j2):
