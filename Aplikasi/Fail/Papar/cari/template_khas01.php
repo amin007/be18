@@ -1,5 +1,16 @@
+<?php
+$html = new Aplikasi\Kitab\Borang02_Ubah;
+$aksi = URL . $this->_method . '/tambahSimpan/' . $this->carian[0];
+$class1 = 'col-sm-7'; # untuk tajuk dan hantar
+$class2 = 'col-sm-6 '; # untuk $data
+$html->medanCarian(
+	array($this->_method, null, null, null, null)
+);?>
 <!-- h1> Ini Template Khas01 </h1 -->
-<table class="table">
+<form method="POST" action="<?php echo $aksi ?>">
+<table class="table"><tr><td colpan="3"><?php
+$html->medanHantar(null, $class1);
+?></td></tr>
 <tr>
 <?php
 foreach ($this->senarai as $myTable => $row)
@@ -19,3 +30,4 @@ foreach ($this->senarai as $myTable => $row)
 ?>
 </tr>
 </table>
+</form>
