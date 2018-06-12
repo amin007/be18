@@ -340,7 +340,7 @@ class Borang02_Ubah
 	{
 		return '<div class="input-group input-group-sm">' . $tab2
 		. '<select ' . $name . ' class="form-control">' . $tab3
-		. '<option value="' . $key . '" selected>'
+		. '<option value="' . $key .'='. $key . '_a" selected>'
 		. $key .'='. $key . '_a</option>' . $tab3
 		. '</select>'
 		. $tab2 . '</div>'
@@ -352,7 +352,7 @@ class Borang02_Ubah
 	{
 		return '<div class="input-group input-group-sm">' . $tab2
 		. '<select ' . $name . ' class="form-control">' . $tab3
-		. '<option value="' . $key . '" selected>'
+		. '<option value="' . ($this->keratNama($key)) . '" selected>'
 		. ($this->keratNama($key)) . '</option>' . $tab3
 		. '</select>'
 		. $tab2 . '</div>'
@@ -370,7 +370,7 @@ class Borang02_Ubah
 			$classInput,$komenInput) = $this->ccs();
 		$alamat = array('alamat1','alamat2','bandar','poskod','daerah','ngdbbp');
 		$nombor = array('amt_jualan','amt_hasil','amt_aset','amt_gaji','amt_staf',
-			'amt_nilaikerja','amt_output');
+			'amt_nilaikerja','amt_output','PO','KP Terkini');
 		$papar = null;
 
 		if($jadual!=$j2):
@@ -399,9 +399,9 @@ class Borang02_Ubah
 	function keratNama($asal)
 	{
 		$nombor = array('amt_jualan','amt_hasil','amt_aset','amt_gaji','amt_staf',
-			'amt_nilaikerja','amt_output');
+			'amt_nilaikerja','amt_output','PO','KP Terkini');
 		$nombor2 = array('Jualan_RM','Hasil','Harta_Tetap_RM','Gaji','Bil Pekerja',
-		'Nilai Kerja Pembinaan (RM)','Output');
+		'Nilai Kerja Pembinaan (RM)','Output','po_a','kp');
 
 		//$asal = str_replace('amt_','',$asal);
 		foreach($nombor as $k => $v):
