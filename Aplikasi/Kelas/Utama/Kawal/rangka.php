@@ -68,18 +68,21 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
-		list($myTable,$medan,$carian,$atur) = $this->tanya->jadualRangka();
+		list($jadual,$medan,$carian,$atur) = $this->tanya->jadualRangka();
 		# mula cari dalam $myJadual
-		$this->papar->senarai['kes'] = 
-			$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $atur);
-			//$this->tanya->cariSql("`$myTable`", $medan, $carian, $atur);
+		foreach($jadual as $myTable):
+			$this->papar->senarai[$myTable] =
+				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $atur);
+				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $atur);
+			$this->papar->paparMedan[$myTable] =
+				$this->tanya->paparMedan02($myTable);
+		endforeach;
 		$this->setPembolehUbah();
 		$fail = array('index','b_ubah','b_ubah_kawalan','b_baru');
 
 		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
-		$this->paparKandungan($this->_folder, $fail[3], $noInclude=0); 
+		//$this->paparKandungan($this->_folder, $fail[3], $noInclude=0);
 		//*/
     }
 #-------------------------------------------------------------------------------------------
@@ -90,8 +93,12 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		$this->papar->_jadual = 'kawalan_aes';
 		$this->papar->_method = huruf('kecil', namaClass($this));
 		$this->papar->_cariIndustri = $this->papar->c1 = $this->papar->c2 = null;
-		$this->papar->template = 'biasa';
+		//$this->papar->template = 'biasa';
 		//$this->papar->template = 'bootstrap';
+		$this->papar->template = 'khas01';
+
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->semakPembolehubah($this->papar->paparMedan); # Semak data dulu
 	}
 #-------------------------------------------------------------------------------------------
 	private function jadualKawalan($cariID)
