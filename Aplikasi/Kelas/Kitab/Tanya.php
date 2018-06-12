@@ -116,7 +116,7 @@ class Tanya
 				   $dari = isset($cari[$key]['dari'])   ? $cari[$key]['dari']    : null;
 				    $max = isset($cari[$key]['max'])    ? $cari[$key]['max']     : null;
 				//echo "\$val = $val, \$key=$key <br>";
-			}
+			}	//$this->semakPembolehUbah($mengira,$kumpul,$order,$dari,$max);
 				if ($kumpul!=null) $susunan .= "\r GROUP BY $kumpul\r";
 				if ($mengira!=null)$susunan .= "\r $mengira\r";
 				if ($order!=null)  $susunan .= "\r ORDER BY $order\r";
@@ -124,7 +124,18 @@ class Tanya
 					"\r LIMIT $max\r" : "\r LIMIT $dari,$max\r";
 		endif;
 
-		return $susunan; //echo '<pre>'; print_r($susunan); echo '</pre>';
+		return $susunan; //echo '<pre>$susunan:'; print_r($susunan); echo '</pre>';
+	}
+#-------------------------------------------------------------------------------------------------
+	private function semakPembolehUbah($mengira,$kumpul,$order,$dari,$max)
+	{
+		echo '<br>$mengira = ' . $mengira;
+		echo '<br>$kumpul = ' . $kumpul;
+		echo '<br>$order = ' . $order;
+		echo '<br>$dari = ' . $dari;
+		echo '<br>$max = ' . $max;
+		echo '<hr>';
+		//*/
 	}
 #-------------------------------------------------------------------------------------------------
 	public function kiraMedan($myTable, $medan, $carian)
