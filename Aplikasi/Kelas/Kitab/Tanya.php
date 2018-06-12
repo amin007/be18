@@ -353,8 +353,8 @@ class Tanya
 		$carian = null)
 	{
 		# set sql
-		$sql  = "INSERT INTO $myTableNew ($medanLama)";
-		$sql .= "\r SELECT  ($medanBaru)";
+		$sql  = "INSERT INTO $myTableNew($medanLama)";
+		$sql .= "\r SELECT $medanBaru";
 		$sql .= "\r FROM $myTableOld\r";
 		$sql .= $this->dimana($carian);
 
