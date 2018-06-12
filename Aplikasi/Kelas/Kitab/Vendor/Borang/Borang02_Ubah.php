@@ -329,7 +329,7 @@ class Borang02_Ubah
 		return '<div class="input-group input-group-sm">' . $tab2
 		. '<select ' . $name . ' class="form-control">' . $tab3
 		. '<option value="' . $key . '" selected>'
-		. $key .'='. $medan . '</option>' . $tab3
+		. $key . '</option>' . $tab3
 		. '</select>'
 		. $tab2 . '</div>'
 		. '';
@@ -340,8 +340,8 @@ class Borang02_Ubah
 	{
 		return '<div class="input-group input-group-sm">' . $tab2
 		. '<select ' . $name . ' class="form-control">' . $tab3
-		. '<option value="' . $key .'='. $key . '_a" selected>'
-		. $key .'='. $key . '_a</option>' . $tab3
+		. '<option value="' . $key . '_a" selected>'
+		. $key . '_a</option>' . $tab3
 		. '</select>'
 		. $tab2 . '</div>'
 		. '';
@@ -375,12 +375,12 @@ class Borang02_Ubah
 
 		if($jadual!=$j2):
 			foreach($paparMedan as $k1 => $medan):
+				/*if($key == 'tr'):
+					$papar = $this->inputSelectOption($tab2, $tab3, $name, $data,
+					$classInput, $komenInput, $key, $medan);//*/
 				if ($key == $medan):
 					$papar = $this->inputSelectOption($tab2, $tab3, $name, $data,
 					$classInput, $komenInput, $key, $medan);
-				elseif($key == 'tr'):
-					$papar = $this->inputTeksBiasa($tab2, $tab3, $name, '2017',
-					$classInput, $komenInput);
 				elseif ( in_array($key,$alamat) ):
 					$papar = $this->inputSelectOption01($tab2, $tab3, $name, $data,
 					$classInput, $komenInput, $key, $medan);
@@ -406,7 +406,8 @@ class Borang02_Ubah
 		//$asal = str_replace('amt_','',$asal);
 		foreach($nombor as $k => $v):
 			if($v == $asal)
-				$kini = $asal .'='. $nombor2[$k];
+				//$kini = $asal .'='. $nombor2[$k];
+				$kini = $nombor2[$k];
 		endforeach;
 
 		return $kini;
