@@ -348,7 +348,21 @@ class Tanya
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		$this->db->insertAllNew($sql,$data);
 	}
+#-------------------------------------------------------------------------------------------------
+	public function tambahJadualBarukeLama($myTableNew,$medanLama,$medanBaru,$myTableOld,
+		$carian = null)
+	{
+		# set sql
+		$sql  = "INSERT INTO $myTableNew ($medanLama)";
+		$sql .= "\r SELECT  ($medanBaru)";
+		$sql .= "\r FROM $myTableOld\r ";
+		$sql .= $this->dimana($carian);
 
+		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
+		//$this->db->insertAllNew($sql,$data);
+	}
+#-------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------
 #--- tamat - contoh tambah sql guna values ---#
 #-------------------------------------------------------------------------------------------------
 	public function buatJadual($myTable, $medan)
