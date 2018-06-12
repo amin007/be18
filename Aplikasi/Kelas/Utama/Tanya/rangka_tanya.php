@@ -56,8 +56,11 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 			'atau'=>'WHERE', # WHERE / OR / AND
 			'medan' => $medanID, # cari dalam medan apa
 			'apa' => $cariID); # benda yang dicari //*/
-		# bentuk tatasusunan $atur //
-		$atur = null;
+		# bentuk tatasusunan $atur //$atur = null;
+		$jum2 = pencamSqlLimit(1, $item = 1, $ms = 1);
+		$atur1['kumpul'] = null;
+		$atur1['susun'] = null;
+		$atur[] = array_merge($jum2,$atur1);
 
 		return array($myTable,$medan,$carian,$atur);
 	}
