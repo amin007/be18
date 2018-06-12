@@ -286,6 +286,28 @@ class DB_Pdo extends \PDO
 		return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
 	}
 #------------------------------------------------------------------------------------------------------------------
+	public function getColumnNames($table)
+	{
+		$sql = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = :table';
+		try {
+			$sth = $this->prepare($sql);
+			$sth->bindValue(':table', $table, \PDO::PARAM_STR);
+			$sth->execute();
+			$output = array();
+			while($row = $sth->fetch(\PDO::FETCH_ASSOC))
+			{
+				$output[] = $row['COLUMN_NAME'];
+			}
+			return $output;
+		}
+		catch(PDOException $pe)
+		{
+			trigger_error('Could not connect to MySQL database. ' . $pe->getMessage() , E_USER_ERROR);
+		}
+	}
+#------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------
 #==================================================================================================================
 }
 
