@@ -53,17 +53,6 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 ##------------------------------------------------------------------------------------------
 #===========================================================================================
 #-------------------------------------------------------------------------------------------
-	public function contoh($action = 'hasil')
-	{
-		# Set pemboleubah utama
-		//echo '<hr>' . $this->_namaClass . '<hr>';
-
-		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->_folder = ''; # jika mahu ubah lokasi Papar
-		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1);
-	}
-#-------------------------------------------------------------------------------------------
 	public function tambah() 
 	{
 		# Set pembolehubah utama
@@ -101,85 +90,6 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		$this->semakPembolehubah($this->papar->paparMedan); # Semak data dulu
 	}
 #-------------------------------------------------------------------------------------------
-	private function jadualKawalan($cariID)
-	{
-		list($myTable, $this->papar->carian) = dpt_senarai('jadual_rangka');
-		$this->papar->_jadual = $myTable; //$carian = null; //echo '<pre>';
-		$medan = $this->tanya->medanKawalan($cariID); 
-
-		# semak database
-		$carian[] = array('fix'=>'like', # cari x= atau %like%
-			'atau'=>'WHERE', # WHERE / OR / AND
-			'medan' => 'po', # cari dalam medan apa
-			'apa' => 'pom'); # benda yang dicari
-		/*$carian[] = array('fix'=>'like', # cari x= atau %like%
-			'atau'=>'AND', # WHERE / OR / AND
-			'medan' => 'bandar', # cari dalam medan apa
-			'apa' => 'MUAR'); # benda yang dicari//*/
-		$carian[] = array('fix'=>'like', # cari x= atau %like%
-			'atau'=>'AND', # WHERE / OR / AND
-			'medan' => 'daerah', # cari dalam medan apa
-			'apa' => null); # benda yang dicari//*/
-		# susun
-		$item = 1000; $ms = 1; ## set pembolehubah utama
-		## tentukan bilangan mukasurat. bilangan jumlah rekod
-		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
-		$jum2 = pencamSqlLimit(300, $item, $ms);
-		$atur[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'bandar') );
-		# mula cari $cariID dalam $myJadual
-		$cariData['kes'] =
-			$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $atur);
-			//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
-			//$newss = $this->cariMsic($cariNama['kes']); # mula cari Msic
-
-		# semak pembolehubah
-		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
-		//echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
-		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
-
-		return array($cariData, $newss = sizeof($cariNama['kes']) );
-	}
-#-------------------------------------------------------------------------------------------
-	function cariMsic($cariApa)
-	{			
-		if(isset($cariApa[0]['newss'])):
-			# 1.1 ambil nilai newss
-			$newss = $cariApa[0]['newss'];
-
-			# 1.2 cari nilai msic & msic08 dalam jadual msic2008
-			$jadualMSIC = dpt_senarai('msicbaru');
-			$this->cariIndustri($jadualMSIC, $cariApa[0]['msic2008']);
-		endif;
-
-		return $newss;
-	}
-#---------------------------------------------------------------------------------------------------
-	private function cariIndustri($jadualMSIC, $msic)
-	{
-		#326-46312  substr("abcdef", 0, -1);  // returns "abcde"
-		$msic08 = substr($msic, 4);  // returns "46312"
-		$cariM6[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'msic','apa'=>$msic08);
-
-		# mula cari $cariID dalam $jadual
-		foreach ($jadualMSIC as $m6 => $msic)
-		{# mula ulang table
-			$jadualPendek = substr($msic, 16); //echo "\$msic=$msic|\$jadualPendek=$jadualPendek<br>";
-
-			# senarai nama medan
-			if($jadualPendek=='msic2008') /*bahagian B,kumpulan K,kelas Kls,*/
-				$medanM6 = 'seksyen S,msic2000,msic,keterangan,notakaki';
-			elseif($jadualPendek=='msic2008_asas') 
-				$medanM6 = 'msic,survey kp,keterangan,keterangan_en';
-			elseif($jadualPendek=='msic_v1') 
-				$medanM6 = 'msic,survey kp,bil_pekerja staf,keterangan,notakaki';
-			else $medanM6 = '*'; 
-			//echo "cariMSIC($msic, $medanM6,<pre>"; print_r($cariM6) . "</pre>)<br>";
-
-			$this->papar->_cariIndustri[$jadualPendek] = $this->tanya->//cariSql
-				cariSemuaData($msic, $medanM6, $cariM6, null);
-		}# tamat ulang table
-	}
-#---------------------------------------------------------------------------------------------------
 	public function ubahSimpan($dataID)
 	{
 		list($medanID,$senaraiJadual,$pass) = dpt_senarai('jadual_kawalan2');
