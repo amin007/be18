@@ -113,6 +113,50 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
+	public function tambahSimpan()
+	{
+		list($jaduaLama,$senaraiJadual) = dpt_senarai('jadual_rangka2');
+		# ubahsuai $posmen
+		$posmen = $this->tambahPost($senaraiJadual);
+		$medanLama = $medanBaru = '*';
+		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+		echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+		//$myTableNew,$medanLama,$medanBaru,$myTableOld,
+
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{# mula ulang table
+			$carian = $this->tanya->jadualRangka3($jadual);
+			$this->tanya->//tambahSqlJadualBarukeLama
+			tambahJadualBarukeLama
+			($jadual,$medanBaru,$medanLama,$jaduaLama,$carian);
+		}# tamat ulang table
+
+		# pergi papar kandungan
+		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
+		//header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
+	}
+#-------------------------------------------------------------------------------------------
+	function tambahPost($senaraiJadual)
+	{
+		$posmen = array();
+		foreach ($_POST as $myTable => $value):
+			if ( in_array($myTable,$senaraiJadual) ):
+				foreach ($value as $kekunci => $papar)
+				{
+					$posmen[$myTable][$kekunci] = bersih($papar);
+				}//*/
+		endif; endforeach;
+
+		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
+		//echo '<pre>$medanID='; print_r($medanID); echo '</pre>';
+		//echo '<pre>$dataID='; print_r($dataID); echo '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+
+		//$posmen = $this->pecah5P($senaraiJadual[0], $posmen);
+		return $posmen;
+	}
+#-------------------------------------------------------------------------------------------
 	public function ubahSimpan($dataID)
 	{
 		list($medanID,$senaraiJadual,$pass) = dpt_senarai('jadual_kawalan2');
