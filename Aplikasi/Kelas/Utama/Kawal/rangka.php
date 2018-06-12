@@ -53,6 +53,18 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 ##------------------------------------------------------------------------------------------
 #===========================================================================================
 #-------------------------------------------------------------------------------------------
+	private function paparHTML()
+	{
+		foreach($this->papar->paparMedan as $jadual):
+			echo '<select>' . "\r";
+			foreach($jadual as $key => $medan):
+				echo '<option>' . $medan . '</option>' . "\r";
+			endforeach;
+			echo '</select>' . "\r";
+		endforeach;
+		//*/
+	}
+#-------------------------------------------------------------------------------------------
 	public function tambah() 
 	{
 		# Set pembolehubah utama
@@ -71,7 +83,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
-		//$this->paparKandungan($this->_folder, $fail[3], $noInclude=0);
+		$this->paparKandungan($this->_folder, $fail[3], $noInclude=0);
 		//*/
     }
 #-------------------------------------------------------------------------------------------
@@ -87,7 +99,8 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		$this->papar->template = 'khas01';
 
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->semakPembolehubah($this->papar->paparMedan); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->paparMedan); # Semak data dulu
+		//$this->paparHTML();
 	}
 #-------------------------------------------------------------------------------------------
 	public function ubahSimpan($dataID)
