@@ -55,7 +55,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	private function paparHTML()
 	{
-		foreach($this->papar->paparMedan as $jadual):
+		foreach($this->papar->_paparMedan as $jadual):
 			echo '<select>' . "\r";
 			foreach($jadual as $key => $medan):
 				echo '<option>' . $medan . '</option>' . "\r";
@@ -69,15 +69,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
-		list($jadual,$medan,$carian,$atur) = $this->tanya->jadualRangka();
-		# mula cari dalam $myJadual
-		foreach($jadual as $myTable):
-			$this->papar->senarai[$myTable] =
-				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $atur);
-				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $atur);
-			$this->papar->paparMedan[$myTable] =
-				$this->tanya->pilihMedan02($myTable);
-		endforeach;
+		$this->ulangJadual();
 		$this->setPembolehUbah();
 		$fail = array('index','b_ubah','b_ubah_kawalan','b_baru');
 
@@ -91,16 +83,32 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 	{
 		$this->papar->medanID = $this->papar->cariID = null;
 		$this->papar->carian[] = 'semua';
-		$this->papar->_jadual = 'kawalan_aes';
 		$this->papar->_method = huruf('kecil', namaClass($this));
-		$this->papar->_cariIndustri = $this->papar->c1 = $this->papar->c2 = null;
+		$this->papar->c1 = $this->papar->c2 = null;
 		//$this->papar->template = 'biasa';
 		//$this->papar->template = 'bootstrap';
 		$this->papar->template = 'khas01';
 
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->semakPembolehubah($this->papar->paparMedan); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->_paparMedan); # Semak data dulu
 		//$this->paparHTML();
+	}
+#-------------------------------------------------------------------------------------------
+	public function ulangJadual()
+	{
+		list($j0,$medan,$carian,$atur,$j1) = $this->tanya->jadualRangka();
+
+		foreach($j0 as $myTable):
+			$this->papar->senarai[$myTable] =
+				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $atur);
+				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $atur);
+		endforeach;
+		$myTable = null;
+		foreach($j1 as $myTable):
+			$this->papar->_paparMedan[$myTable] =
+				$this->tanya->pilihMedan02($myTable);
+		endforeach;
+		//*/
 	}
 #-------------------------------------------------------------------------------------------
 	public function ubahSimpan($dataID)
