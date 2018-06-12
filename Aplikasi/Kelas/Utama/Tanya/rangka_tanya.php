@@ -49,7 +49,7 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function jadualRangka()
 	{
-		list($medan, $myTable) = dpt_senarai('jadual_rangka');
+		list($medan, $myTable, $j1) = dpt_senarai('jadual_rangka');
 		# bentuk tatasusunan $carian //
 		$carian = null; 
 		/*$carian[] = array('fix'=>'like', # cari x= atau %like%
@@ -62,7 +62,7 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 		$atur1['susun'] = null;
 		$atur[] = array_merge($jum2,$atur1);
 
-		return array($myTable,$medan,$carian,$atur);
+		return array($myTable,$medan,$carian,$atur,$j1);
 	}
 #---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
