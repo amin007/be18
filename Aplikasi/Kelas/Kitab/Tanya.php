@@ -167,7 +167,14 @@ class Tanya
 		return $this->db->selectAll($sql);
 	}
 #-------------------------------------------------------------------------------------------------
-	public function pilihMedan($database,$myTable)
+	public function paparMedan02($myTable)
+	{
+		//return $this->db->select('SHOW COLUMNS FROM ' . $myTable);
+		$sql = 'DESCRIBE ' . $myTable;
+		return $this->db->selectAll($sql);
+	}
+#-------------------------------------------------------------------------------------------------
+	public function pilihMedan($myTable, $database = DB_NAME)
 	{
 		/*TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME
 		COLUMN_NAME, ORDINAL_POSITION, COLUMN_DEFAULT, IS_NULLABLE, DATA_TYPE
@@ -180,8 +187,8 @@ class Tanya
 		$medan = huruf('Besar_Depan', $medan);
 		$sql = ' SELECT ' . "\r" . $medan . "\r" 
 			 . ' FROM INFORMATION_SCHEMA.COLUMNS' . "\r"
-			 . ' WHERE table_schema = ' . $database . "\r"
-			 . ' AND table_name = ' . $myTable;
+			 . ' WHERE table_schema = "' . $database . '"' . "\r"
+			 . ' AND table_name = "' . $myTable . '"';
 
 		echo htmlentities($sql) . '<br>';
 		return $this->db->selectAll($sql);
