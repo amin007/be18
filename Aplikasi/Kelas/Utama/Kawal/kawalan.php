@@ -126,20 +126,20 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		list($myTable, $medanID) = dpt_senarai('jadual_kawalan');
 		$medan = $this->tanya->medanKawalan($cariID); //echo '<pre>';
-		
+
 		# bentuk tatasusunan $carian //$carian = null; 
-			$carian[] = array('fix'=>'like', # cari x= atau %like%
-				'atau'=>'WHERE', # WHERE / OR / AND
-				'medan' => $medanID, # cari dalam medan apa
-				'apa' => $cariID); # benda yang dicari
+		$carian[] = array('fix'=>'like', # cari x= atau %like%
+			'atau'=>'WHERE', # WHERE / OR / AND
+			'medan' => $medanID, # cari dalam medan apa
+			'apa' => $cariID); # benda yang dicari
 		# semak database
-			$senarai['kes'] = $this->tanya->
-				cariSemuaData("`$myTable`", $medan, $carian, null);
-				//cariSql("`$myTable`", $medan, $carian, null);
-			$newss = $this->cariMsic($senarai['kes']); # mula cari Msic
+		$senarai['kes'] = $this->tanya->
+			cariSemuaData("`$myTable`", $medan, $carian, null);
+			//cariSql("`$myTable`", $medan, $carian, null);
+		$newss = $this->cariMsic($senarai['kes']); # mula cari Msic
 		# semak semua $pencam di sini
-			$this->umpukNilai(array($senarai, $myTable, $newss,
-				$medanID, $cariID));
+		$this->umpukNilai(array($senarai, $myTable, $newss,
+			$medanID, $cariID));
 
 		return array($senarai, $newss);
 	}
@@ -148,6 +148,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		//echo '<pre>$cariApa::'; print_r($cariApa); echo '</pre>';
+
 		if(isset($cariApa[0]['newss'])):
 			# 1.1 ambil nilai newss
 			$newss = $cariApa[0]['newss'];
@@ -174,8 +175,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# mula cari $msis08 dalam database yang sama
 		foreach ($jadualMSIC as $m6 => $msic)
 		{# mula ulang table
-			$jadual = substr($msic, 16);
-			//echo "\$msic=$msic|\$jadual=$jadual<br>";
+			$jadual = substr($msic, 16); //echo "\$msic=$msic|\$jadual=$jadual<br>";
+
 			# senarai nama medan
 			if($jadual=='msic2008')/*bahagian B,kumpulan K,kelas Kls,*/
 				$medanM6 = 'seksyen S,msic2000,msic,keterangan,notakaki';
@@ -375,18 +376,18 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		$a, $b, $c, $d) = dpt_senarai('jadual_kawalan3');
 
 		# bentuk tatasusunan $carian //$carian = null;
-			$myTable = "$myT1 INNER JOIN $myT2 $on";
-			$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
-			$carian[] = array('fix'=>'z3x','atau'=>'OR','medan'=>$b,'apa'=>1);
-			$carian[] = array('fix'=>'z3x','atau'=>'OR','medan'=>$c,'apa'=>1);
-			$carian[] = array('fix'=>'z3x','atau'=>'OR','medan'=>$d,'apa'=>1);
-			$susun[0]['susun'] = '1 ASC, 4 ASC';
+		$myTable = "$myT1 INNER JOIN $myT2 $on";
+		$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
+		$carian[] = array('fix'=>'z3x','atau'=>'OR','medan'=>$b,'apa'=>1);
+		$carian[] = array('fix'=>'z3x','atau'=>'OR','medan'=>$c,'apa'=>1);
+		$carian[] = array('fix'=>'z3x','atau'=>'OR','medan'=>$d,'apa'=>1);
+		$susun[0]['susun'] = '1 ASC, 4 ASC';
 		# semak database
-			$senarai['kes'] = $this->tanya->
-				cariSemuaData($myTable, $medan, $carian, $susun);
-				//cariSql($myTable, $medan, $carian, $susun);
+		$senarai['kes'] = $this->tanya->
+			cariSemuaData($myTable, $medan, $carian, $susun);
+			//cariSql($myTable, $medan, $carian, $susun);
 		# semak semua $pencam di sini
-			$this->umpukNilai2(array($senarai, $myTable));
+		$this->umpukNilai2(array($senarai, $myTable));
 
 		return array($senarai);
 	}
@@ -412,16 +413,16 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		list($myT1, $myT2, $on, $medan) = dpt_senarai('jadual_kawalan4');
 
 		# bentuk tatasusunan $carian //$carian = null;
-			$myTable = "$myT1 INNER JOIN $myT2 $on";
-			$carian = $susun = null;
-			//$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
-			//$susun[0]['susun'] = '1 ASC, 4 ASC';
+		$myTable = "$myT1 INNER JOIN $myT2 $on";
+		$carian = $susun = null;
+		//$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
+		//$susun[0]['susun'] = '1 ASC, 4 ASC';
 		# semak database
-			$senarai['kes'] = $this->tanya->
-				cariSemuaData($myTable, $medan, $carian, $susun);
-				//cariSql($myTable, $medan, $carian, $susun);
+		$senarai['kes'] = $this->tanya->
+			cariSemuaData($myTable, $medan, $carian, $susun);
+			//cariSql($myTable, $medan, $carian, $susun);
 		# semak semua $pencam di sini
-			$this->umpukNilai2(array($senarai, $myTable));
+		$this->umpukNilai2(array($senarai, $myTable));
 
 		return array($senarai);
 	}
@@ -447,16 +448,16 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		list($myT1, $on, $medan) = dpt_senarai('jadual_kawalan5');
 
 		# bentuk tatasusunan $carian //$carian = null;
-			$myTable = "$myT1 $on";
-			$carian = $susun = null;
-			//$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
-			//$susun[0]['susun'] = '1 ASC, 4 ASC';
+		$myTable = "$myT1 $on";
+		$carian = $susun = null;
+		//$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
+		//$susun[0]['susun'] = '1 ASC, 4 ASC';
 		# semak database
-			$senarai['kes'] = $this->tanya->
-				//cariSemuaData($myTable, $medan, $carian, $susun);
-				cariSql($myTable, $medan, $carian, $susun);
+		$senarai['kes'] = $this->tanya->
+			//cariSemuaData($myTable, $medan, $carian, $susun);
+			cariSql($myTable, $medan, $carian, $susun);
 		# semak semua $pencam di sini
-			$this->umpukNilai2(array($senarai, $myTable));
+		$this->umpukNilai2(array($senarai, $myTable));
 
 		return array($senarai);
 	}
@@ -483,18 +484,18 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		= dpt_senarai('jadual_biodata4');
 
 		# bentuk tatasusunan $carian //$carian = null;
-			$susun[0]['susun'] = $atur;
-			//$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
-			$carian[] = array('fix'=>'xnull','atau'=>'WHERE','medan'=>$a1,'apa'=>1);
-			$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>$b1,'apa'=>$b2);
-			//$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>$c1,'apa'=>$c2);
+		$susun[0]['susun'] = $atur;
+		//$carian[] = array('fix'=>'z3x','atau'=>'WHERE','medan'=>$a,'apa'=>1);
+		$carian[] = array('fix'=>'xnull','atau'=>'WHERE','medan'=>$a1,'apa'=>1);
+		$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>$b1,'apa'=>$b2);
+		//$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>$c1,'apa'=>$c2);
 		# semak database
-			$senarai['kes'] = $this->tanya->
-				cariSemuaData($myTable, $medan, $carian, $susun);
-				//cariSql($myTable, $medan, $carian, $susun);
+		$senarai['kes'] = $this->tanya->
+			cariSemuaData($myTable, $medan, $carian, $susun);
+			//cariSql($myTable, $medan, $carian, $susun);
 		# semak semua $pencam di sini
-			$senarai = $this->tanya->ubahData($myTable,$a1,$a2,$senarai);
-			$this->umpukNilai2(array($senarai, $myTable));
+		$senarai = $this->tanya->ubahData($myTable,$a1,$a2,$senarai);
+		$this->umpukNilai2(array($senarai, $myTable));
 
 		return array($senarai);
 	}
