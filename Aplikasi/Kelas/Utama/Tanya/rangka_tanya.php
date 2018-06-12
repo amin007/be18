@@ -49,7 +49,7 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function jadualRangka()
 	{
-		list($myTable, $medan) = dpt_senarai('jadual_rangka');
+		list($medan, $myTable) = dpt_senarai('jadual_rangka');
 		# bentuk tatasusunan $carian //
 		$carian = null; 
 		/*$carian[] = array('fix'=>'like', # cari x= atau %like%
