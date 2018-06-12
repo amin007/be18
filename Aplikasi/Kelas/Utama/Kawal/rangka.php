@@ -116,11 +116,11 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 	public function tambahSimpan()
 	{
 		list($jaduaLama,$senaraiJadual) = dpt_senarai('jadual_rangka2');
-		# ubahsuai $posmen
+		# ubahsuai $_POST
 		list($medanLama,$medanBaru) = $this->tambahPost($senaraiJadual);
 		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
-		echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
-		//$myTableNew,$medanLama,$medanBaru,$myTableOld,
+		echo '<pre>$medanLama='; print_r($medanLama); echo '</pre>';
+		echo '<pre>$medanBaru='; print_r($medanBaru); echo '</pre>';
 
 		# mula ulang $senaraiJadual
 		foreach ($senaraiJadual as $kunci => $jadual)
