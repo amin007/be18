@@ -65,7 +65,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 	}
 #-------------------------------------------------------------------------------------------
 	public function tambah() 
-	{		
+	{
 		# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
 		list($myTable,$medan,$carian,$atur) = $this->tanya->jadualRangka();
@@ -96,32 +96,32 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		list($myTable, $this->papar->carian) = dpt_senarai('jadual_rangka');
 		$this->papar->_jadual = $myTable; //$carian = null; //echo '<pre>';
 		$medan = $this->tanya->medanKawalan($cariID); 
-		
+
 		# semak database
-			$carian[] = array('fix'=>'like', # cari x= atau %like%
-				'atau'=>'WHERE', # WHERE / OR / AND
-				'medan' => 'po', # cari dalam medan apa
-				'apa' => 'pom'); # benda yang dicari
-			/*$carian[] = array('fix'=>'like', # cari x= atau %like%
-				'atau'=>'AND', # WHERE / OR / AND
-				'medan' => 'bandar', # cari dalam medan apa
-				'apa' => 'MUAR'); # benda yang dicari//*/
-			$carian[] = array('fix'=>'like', # cari x= atau %like%
-				'atau'=>'AND', # WHERE / OR / AND
-				'medan' => 'daerah', # cari dalam medan apa
-				'apa' => null); # benda yang dicari//*/
+		$carian[] = array('fix'=>'like', # cari x= atau %like%
+			'atau'=>'WHERE', # WHERE / OR / AND
+			'medan' => 'po', # cari dalam medan apa
+			'apa' => 'pom'); # benda yang dicari
+		/*$carian[] = array('fix'=>'like', # cari x= atau %like%
+			'atau'=>'AND', # WHERE / OR / AND
+			'medan' => 'bandar', # cari dalam medan apa
+			'apa' => 'MUAR'); # benda yang dicari//*/
+		$carian[] = array('fix'=>'like', # cari x= atau %like%
+			'atau'=>'AND', # WHERE / OR / AND
+			'medan' => 'daerah', # cari dalam medan apa
+			'apa' => null); # benda yang dicari//*/
 		# susun
-			$item = 1000; $ms = 1; ## set pembolehubah utama
-			## tentukan bilangan mukasurat. bilangan jumlah rekod
-			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
-			$jum2 = pencamSqlLimit(300, $item, $ms);
-			$susun1[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'bandar') );
+		$item = 1000; $ms = 1; ## set pembolehubah utama
+		## tentukan bilangan mukasurat. bilangan jumlah rekod
+		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
+		$jum2 = pencamSqlLimit(300, $item, $ms);
+		$susun1[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'bandar') );
 		# mula cari $cariID dalam $myJadual
-			$cariData['kes'] = 
-				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun1);
-				//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
-				//$newss = $this->cariMsic($cariNama['kes']); # mula cari Msic
-				
+		$cariData['kes'] =
+			$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun1);
+			//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
+			//$newss = $this->cariMsic($cariNama['kes']); # mula cari Msic
+
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
 		//echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
@@ -154,6 +154,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		foreach ($jadualMSIC as $m6 => $msic)
 		{# mula ulang table
 			$jadualPendek = substr($msic, 16); //echo "\$msic=$msic|\$jadualPendek=$jadualPendek<br>";
+
 			# senarai nama medan
 			if($jadualPendek=='msic2008') /*bahagian B,kumpulan K,kelas Kls,*/
 				$medanM6 = 'seksyen S,msic2000,msic,keterangan,notakaki';
