@@ -75,7 +75,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $atur);
 				//$this->tanya->cariSql("`$myTable`", $medan, $carian, $atur);
 			$this->papar->paparMedan[$myTable] =
-				$this->tanya->paparMedan02($myTable);
+				$this->tanya->pilihMedan02($myTable);
 		endforeach;
 		$this->setPembolehUbah();
 		$fail = array('index','b_ubah','b_ubah_kawalan','b_baru');
