@@ -96,7 +96,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function ulangJadual()
 	{
-		list($j0,$medan,$carian,$atur,$j1) = $this->tanya->jadualRangka();
+		list($j0,$medan,$carian,$atur,$j1,$j2) = $this->tanya->jadualRangka();
 
 		foreach($j0 as $myTable):
 			$this->papar->senarai[$myTable] =
@@ -105,9 +105,11 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		endforeach;
 		$myTable = null;
 		foreach($j1 as $myTable):
-			$this->papar->_paparMedan[$myTable] =
+			$this->papar->_paparMedan =
 				$this->tanya->pilihMedan02($myTable);
 		endforeach;
+
+		$this->papar->_j2 = $j2;
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
