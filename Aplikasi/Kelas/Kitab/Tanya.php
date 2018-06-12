@@ -194,6 +194,12 @@ class Tanya
 		return $this->db->selectAll($sql);
 	}
 #-------------------------------------------------------------------------------------------------
+	public function pilihMedan02($myTable)
+	{
+		//echo '<br>return $this->db->getColumnNames('.$myTable.');';
+		return $this->db->getColumnNames($myTable);
+	}
+#-------------------------------------------------------------------------------------------------
 	public function ubahMedan($myTable, $medan)
 	{
 		$sql = 'ALTER TABLE `' . $myTable . '` '
