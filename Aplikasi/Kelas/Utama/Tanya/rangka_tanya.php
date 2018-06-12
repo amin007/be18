@@ -8,6 +8,13 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 		parent::__construct();
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function semakData($senarai)
+	{
+		echo '<pre>$senarai:<br>';
+		print_r($senarai);
+		echo '</pre>||';//*/
+	}
+#---------------------------------------------------------------------------------------------------#
 	function data_contoh($pilih)
 	{
 		$data = array(
@@ -63,6 +70,23 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 		$atur[] = array_merge($jum2,$atur1);
 
 		return array($myTable,$medan,$carian,$atur,$j1,$j2);
+	}
+#---------------------------------------------------------------------------------------------------#
+	public function jadualRangka3($jadual)
+	{
+		list($j1,$j2,$medanID,$cariID) = dpt_senarai('jadual_rangka3');
+		# bentuk tatasusunan $carian //
+		if($jadual == $j2):
+			$carian = null;
+		else:
+			$carian[] = array('fix'=>'like', # cari x= atau %like%
+				'atau'=>'WHERE', # WHERE / OR / AND
+				'medan' => $medanID, # cari dalam medan apa
+				'apa' => $cariID); # benda yang dicari //*/
+		endif;
+		//$this->semakData($carian);
+
+		return $carian;
 	}
 #---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
