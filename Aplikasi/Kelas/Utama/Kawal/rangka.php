@@ -119,8 +119,8 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		# ubahsuai $_POST
 		list($medanLama,$medanBaru) = $this->tambahPost($senaraiJadual);
 		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
-		echo '<pre>$medanLama='; print_r($medanLama); echo '</pre>';
-		echo '<pre>$medanBaru='; print_r($medanBaru); echo '</pre>';
+		//echo '<pre>$medanLama='; print_r($medanLama); echo '</pre>';
+		//echo '<pre>$medanBaru='; print_r($medanBaru); echo '</pre>';
 
 		# mula ulang $senaraiJadual
 		foreach ($senaraiJadual as $kunci => $jadual)
