@@ -288,6 +288,7 @@ class DB_Pdo extends \PDO
 #------------------------------------------------------------------------------------------------------------------
 	public function getColumnNames($table)
 	{
+		# https://stackoverflow.com/questions/1526688/get-table-column-names-in-mysql
 		$sql = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = :table';
 		try {
 			$sth = $this->prepare($sql);
