@@ -353,7 +353,7 @@ class Borang02_Ubah
 		return '<div class="input-group input-group-sm">' . $tab2
 		. '<select ' . $name . ' class="form-control">' . $tab3
 		. '<option value="' . $key . '" selected>'
-		. ($this->keratNama($key)) . '_X</option>' . $tab3
+		. ($this->keratNama($key)) . '</option>' . $tab3
 		. '</select>'
 		. $tab2 . '</div>'
 		. '';
@@ -371,8 +371,6 @@ class Borang02_Ubah
 		$alamat = array('alamat1','alamat2','bandar','poskod','daerah','ngdbbp');
 		$nombor = array('amt_jualan','amt_hasil','amt_aset','amt_gaji','amt_staf',
 			'amt_nilaikerja','amt_output');
-		$nombor2 = array('Jualan_RM','Hasil','Bil_Pekerja','Output','Harta_Tetap_RM',
-		'Gaji_RM','Nilai_Kerja_Pembinaan_RM');
 		$papar = null;
 
 		if($jadual!=$j2):
@@ -400,9 +398,18 @@ class Borang02_Ubah
 #------------------------------------------------------------------------------------------
 	function keratNama($asal)
 	{
-		$asal = str_replace('amt_','',$asal);
+		$nombor = array('amt_jualan','amt_hasil','amt_aset','amt_gaji','amt_staf',
+			'amt_nilaikerja','amt_output');
+		$nombor2 = array('Jualan_RM','Hasil','Harta_Tetap_RM','Gaji_RM','Bil_Pekerja',
+		'Nilai_Kerja_Pembinaan_RM','Output');
 
-		return $asal;
+		//$asal = str_replace('amt_','',$asal);
+		foreach($nombor as $k => $v):
+			if($v == $asal)
+				$kini = $asal .'='. $nombor2[$k];
+		endforeach;
+
+		return $kini;
 	}
 #------------------------------------------------------------------------------------------
 #==========================================================================================
