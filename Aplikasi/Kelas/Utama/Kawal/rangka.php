@@ -72,6 +72,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		# mula cari dalam $myJadual
 		$this->papar->senarai['kes'] = 
 			$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $atur);
+			//$this->tanya->cariSql("`$myTable`", $medan, $carian, $atur);
 		$this->setPembolehUbah();
 		$fail = array('index','b_ubah','b_ubah_kawalan','b_baru');
 
@@ -84,9 +85,11 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function setPembolehUbah()
 	{
+		$this->papar->medanID = $this->papar->cariID = null;
 		$this->papar->carian[] = 'semua';
-		$this->papar->c1 = null;
-		$this->papar->c2 = null;
+		$this->papar->_jadual = 'kawalan_aes';
+		$this->papar->_method = huruf('kecil', namaClass($this));
+		$this->papar->_cariIndustri = $this->papar->c1 = $this->papar->c2 = null;
 		$this->papar->template = 'biasa';
 		//$this->papar->template = 'bootstrap';
 	}
@@ -115,10 +118,10 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		## tentukan bilangan mukasurat. bilangan jumlah rekod
 		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 		$jum2 = pencamSqlLimit(300, $item, $ms);
-		$susun1[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'bandar') );
+		$atur[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'bandar') );
 		# mula cari $cariID dalam $myJadual
 		$cariData['kes'] =
-			$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $susun1);
+			$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, $atur);
 			//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
 			//$newss = $this->cariMsic($cariNama['kes']); # mula cari Msic
 
