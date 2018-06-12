@@ -353,7 +353,7 @@ class Borang02_Ubah
 		return '<div class="input-group input-group-sm">' . $tab2
 		. '<select ' . $name . ' class="form-control">' . $tab3
 		. '<option value="' . $key . '" selected>'
-		. $medan . '_X</option>' . $tab3
+		. ($this->keratNama($key)) . '_X</option>' . $tab3
 		. '</select>'
 		. $tab2 . '</div>'
 		. '';
@@ -396,6 +396,12 @@ class Borang02_Ubah
 		return $papar;//*/
 	}
 #------------------------------------------------------------------------------------------
+	function keratNama($asal)
+	{
+		$asal = str_replace('amt_','',$asal);
+
+		return $asal;
+	}
 #------------------------------------------------------------------------------------------
 #==========================================================================================
 }
