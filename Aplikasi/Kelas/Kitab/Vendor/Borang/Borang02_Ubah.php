@@ -313,16 +313,57 @@ class Borang02_Ubah
 		return '';
 	}
 #------------------------------------------------------------------------------------------
+	function inputTeksBiasa($tab2, $tab3, $name, $data, $classInput, $komenInput)
+	{
+		return '<div class="input-group input-group-sm">' . $tab2
+		. '<input type="text" ' . $name
+		. ' value="' . $data . '"'
+		. ' class="form-control">'
+		. $tab2 . '</div>'
+		. '';
+	}
+#------------------------------------------------------------------------------------------
+	function inputSelectOption($tab2, $tab3, $name, $data, $classInput, $komenInput,
+		$key, $medan)
+	{
+		return '<div class="input-group input-group-sm">' . $tab2
+		. '<select ' . $name . ' class="form-control">' . $tab3
+		. '<option value="' . $key . '" selected>'
+		. $key .'='. $medan . '</option>' . $tab3
+		. '</select>'
+		. $tab2 . '</div>'
+		. '';
+	}
+#------------------------------------------------------------------------------------------
 ###########################################################################################
 #------------------------------------------------------------------------------------------
-	public function tambahDropInput($paparMedan,$jadual,$kira,$key,$data)
+	public function tambahDropInput($paparMedan,$j2,$jadual,$kira,$key,$data)
 	{
+		$name = 'name="' . $jadual . '[' . $key . ']"';
+		$dataType = myGetType($data);
+		# css
+		list($tab2,$tab3,$tab4,$birutua,$birumuda,$merah,
+			$classInput,$komenInput) = $this->ccs();
+		$alamat = array('alamat1','alamat2','bandar','poskod','daerah','ngdbbp');
+		$nombor = array('amt_hasil');
 		$papar = null;
-		$papar .= '<select>' . "\r";
-		foreach($paparMedan[$jadual] as $key => $medan):
-			$papar .= '<option>' . $medan . '</option>' . "\r";
-		endforeach;
-		$papar .= '</select>' . "\r";
+
+		if($jadual!=$j2):
+			foreach($paparMedan as $k1 => $medan):
+				if ($key == $medan):
+					$papar = $this->inputSelectOption($tab2, $tab3, $name, $data,
+					$classInput, $komenInput, $key, $medan);
+				elseif($key == 'tr'):
+					$papar = $this->inputTeksBiasa($tab2, $tab3, $name, '2017',
+					$classInput, $komenInput);
+				elseif ( in_array($key,$alamat) ):
+					$papar = $this->inputSelectOption($tab2, $tab3, $name, $data,
+					$classInput, $komenInput, $key, $medan);
+				endif;
+			endforeach;
+		else:
+			$papar = null;
+		endif;
 
 		return $papar;//*/
 	}
