@@ -88,7 +88,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		$this->papar->c1 = null;
 		$this->papar->c2 = null;
 		$this->papar->template = 'biasa';
-		//$this->papar->template = 'bootstrap';		
+		//$this->papar->template = 'bootstrap';
 	}
 #-------------------------------------------------------------------------------------------
 	private function jadualKawalan($cariID)
