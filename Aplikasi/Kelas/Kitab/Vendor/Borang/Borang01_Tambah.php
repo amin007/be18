@@ -7,8 +7,10 @@ class Borang01_Tambah
 	public function medanCarian($pindah, $class = 'col-sm-7')
 	{
 		list($method, $myTable, $senarai, $cariID, $_jadual) = $pindah;
+
 		if($method == 'biodata'):
 			$this->medanTajuk($myTable, $class);
+		elseif($method == 'rangka'):
 		else:
 			$this->atasLabelSyarikat();
 			list($mencari, $carian, $mesej) =
