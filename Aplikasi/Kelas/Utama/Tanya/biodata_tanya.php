@@ -20,11 +20,6 @@ class Biodata_Tanya extends \Aplikasi\Kitab\Tanya
 		return ($pilih==1) ? $kira : $data; # pulangkan nilai
 	}
 #---------------------------------------------------------------------------------------------------#
-	function alihMedan()
-	{
-		//ALTER TABLE Employees MODIFY COLUMN empName VARCHAR(50) AFTER department;
-	}
-#---------------------------------------------------------------------------------------------------#
 	public function semakPosmen($myTable, $posmen, $pass)
 	{
 		if(isset($posmen[$myTable][$pass])):
@@ -32,15 +27,34 @@ class Biodata_Tanya extends \Aplikasi\Kitab\Tanya
 				//echo '<br> buang ' . $pass;
 				unset($posmen[$myTable][$pass]);
 			else:
-				$posmen[$myTable][$pass] = 
+				$data = $this->cincangPassword($myTable, $posmen, $pass);
+				$data = $this->semakPassword($data);
+				/*$posmen[$myTable][$pass] =
 					\Aplikasi\Kitab\RahsiaHash::rahsia('md5', 
-					$posmen[$myTable][$pass]);
+					$posmen[$myTable][$pass]);//*/
 			endif;
 		endif;
 
 		return $posmen;
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function cincangPassword($myTable, $posmen, $pass)
+	{
+		$data00 = $posmen[$myTable][$pass]; echo "<br>\$data00=$data00";
+		$data01 = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $data00);
+		echo '<br>\Aplikasi\Kitab\RahsiaHash::rahsia(\'md5\', $data00):' . $data01;
+		//$data02 = \Aplikasi\Kitab\RahsiaHash::cincang($data00);
+		//echo '<br>\Aplikasi\Kitab\RahsiaHash::cincang($data00):' . $data02;
+
+		return $data00;
+	}
 #---------------------------------------------------------------------------------------------------#
+	function semakPassword($data)
+	{
+		$cincang01 = '082905ee4b03a4d8415436d4b3dcc376';
+		$cincang02 = '$2y$18$VQVcUc6bUaaPNZGVmu8aDeG8nT70QxG.In0edZmbBEaCJZWB2b7rq';
+		echo '<br>\Aplikasi\Kitab\RahsiaHash::sahkan($data, $cincang):'
+		. \Aplikasi\Kitab\RahsiaHash::sahkan($data, $cincang02);
+	}
 #=====================================================================================================
 }
