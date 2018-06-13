@@ -156,9 +156,9 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function ubahSimpan($dataID)
 	{
-		list($medanID,$senaraiJadual,$pass) = dpt_senarai('jadual_biodata3');
+		list($medanID,$senaraiJadual,$pass,$pass2) = dpt_senarai('jadual_biodata3');
 		# ubahsuai $posmen
-		$posmen = $this->ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass);
+		$posmen = $this->ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass, $pass2);
 		//echo '<br>$dataID=' . $dataID . '<br>';
 		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
@@ -176,7 +176,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		header('location: ' . URL . 'biodata/ubah/' . $dataID); //*/
 	}
 #-------------------------------------------------------------------------------------------
-	function ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass)
+	function ubahsuaiPost($medanID, $dataID, $senaraiJadual, $pass, $pass2)
 	{
 		$posmen = array();
 		foreach ($_POST as $myTable => $value): 
@@ -194,7 +194,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		$posmen = $this->kataLaluanX($senaraiJadual[0], $posmen);
-		$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen, $pass);
+		$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen, $pass, $pass2);
 
 		return $posmen; # pulangkan nilai
 	}
