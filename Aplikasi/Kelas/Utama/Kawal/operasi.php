@@ -174,7 +174,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$medan = $this->tanya->medanData();
 		$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'x=','atau'=>'AND','medan'=>'borang','apa'=>$noBatch);
-		$susun[] = array_merge($jum, $kumpul);
+		$susun[] = array_merge($jum, $kumpul); //echo '<pre>';
 		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
 			$this->papar->senarai['aes'] = $this->tanya->
@@ -182,26 +182,28 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				//cariSql($myTable, $medan, $carian, $susun);
 				cariSemuaData($myTable, $medan, $carian, $susun);
 		}# tamat ulang table
-		$this->cariGroup($jadual[0]);
+		$this->cariGroup($jadual[0], $namaPegawai, $noBatch); //echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------
-	private function cariGroup($jadual)
+	private function cariGroup($jadual, $namaPegawai, $noBatch)
 	{
 		$jum2 = pencamSqlLimit(300, $item=30, $ms=1);
 		## buat group, $medan set semua
 		# sql 1 - buat group ikut fe
 		$fe = 'pegawai';
 		$m0 = 'concat_ws("/",pegawai,borang) batchX,' . "$fe,borang,";
-		$susunFE[] = array_merge($jum2, array('kumpul'=>$fe,'susun'=>'borang ASC') );
+		$mFE = $m0 . 'count(*) as kira';
+		$susunFE[] = array_merge($jum2, array('kumpul'=>$fe . ',borang','susun'=>'borang ASC') );
 		$this->papar->senarai['kiraBatchAwal'] = $this->tanya->
-			cariSemuaData($jadual, $medan = $m0 . 'count(*) as kira',
-			null, $susunFE);
+			//cariSql($jadual, $mFE, null, $susunFE);
+			cariSemuaData($jadual, $mFE, null, $susunFE);
 		# sql 2 - buat group ikut pembuatan / perkhidmatan
-		//$cariKP[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>$fe,'apa'=>$fe);
+		$mKP = 'kp,survei,count(*) as kira';
+		$cariKP[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
 		$susunKP[] = array_merge($jum2, array('kumpul'=>'kp,survei','susun'=>'kp,survei') );
 		$this->papar->senarai['kiraKP'] = $this->tanya->
-			cariSemuaData($jadual, $medan = 'kp,survei,count(*) as kira',
-			null, $susunKP);
+			//cariSql($jadual, $mKP, $cariKP, $susunKP);
+			cariSemuaData($jadual, $mKP, $cariKP, $susunKP);
 	}
 #-------------------------------------------------------------------------------------------
 	public function tambahNamaStaf()
