@@ -36,7 +36,7 @@ class RahsiaHash
 			$garam = mcrypt_create_iv(22, MCRYPT_DEV_URANDOM);
 			$garam = base64_encode($garam);
 			$garam = str_replace('+', '.', $garam);
-			$cincang = crypt($data, '$2y$10$' . $garam . '$');
+			$cincang = crypt($data, '$2y$18$' . $garam . '$');
 		}
 
 		return $cincang;
