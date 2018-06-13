@@ -7,7 +7,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 	{
 		parent::__construct();
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
-		//\Aplikasi\Kitab\Kebenaran::kawalKeluar();
+		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = huruf('kecil', namaClass($this));
 		$this->_namaClass = '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$this->_namaFunction = '<hr>Nama function :' .__FUNCTION__ . '<hr>';
@@ -17,8 +17,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pembolehubah utama
 		$this->papar->tajuk = namaClass($this);
-		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
-		//echo $this->namaClass; //echo $this->namaFunction;
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -195,9 +194,9 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
 
 		$posmen = $this->kataLaluanX($senaraiJadual[0], $posmen);
+		$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen, $pass);
 
-		return $posmen = $this->tanya->semakPosmen(
-			$senaraiJadual[0], $posmen, $pass);
+		return $posmen; # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
 	public function kataLaluanX($myTable, $posmen)
