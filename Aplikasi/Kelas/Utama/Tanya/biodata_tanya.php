@@ -20,16 +20,17 @@ class Biodata_Tanya extends \Aplikasi\Kitab\Tanya
 		return ($pilih==1) ? $kira : $data; # pulangkan nilai
 	}
 #---------------------------------------------------------------------------------------------------#
-	public function semakPosmen($myTable, $posmen, $pass)
+	public function semakPosmen($myTable, $posmen, $pass, $pass2)
 	{
 		if(isset($posmen[$myTable][$pass])):
 			if($posmen[$myTable][$pass] == null):
 				//echo '<br> buang ' . $pass;
 				unset($posmen[$myTable][$pass]);
 			else:
-				$data = $this->cincangPassword($myTable, $posmen, $pass);
-				$data = $this->semakPassword($data);
-				/*$posmen[$myTable][$pass] =
+				$data = $this->cincangPassword($myTable, $posmen, $pass, $pass2);
+				//$data = $this->semakPassword($data);
+				$posmen[$myTable][$pass2] = $data;
+				$posmen[$myTable][$pass] =
 					\Aplikasi\Kitab\RahsiaHash::rahsia('md5', 
 					$posmen[$myTable][$pass]);//*/
 			endif;
@@ -38,15 +39,15 @@ class Biodata_Tanya extends \Aplikasi\Kitab\Tanya
 		return $posmen;
 	}
 #---------------------------------------------------------------------------------------------------#
-	public function cincangPassword($myTable, $posmen, $pass)
+	public function cincangPassword($myTable, $posmen, $pass, $pass2)
 	{
-		$data00 = $posmen[$myTable][$pass]; echo "<br>\$data00=$data00";
-		$data01 = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $data00);
-		echo '<br>\Aplikasi\Kitab\RahsiaHash::rahsia(\'md5\', $data00):' . $data01;
-		//$data02 = \Aplikasi\Kitab\RahsiaHash::cincang($data00);
+		//$data00 = $posmen[$myTable][$pass]; //echo "<br>\$data00=$data00";
+		//$data01 = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $data00);
+		//echo '<br>\Aplikasi\Kitab\RahsiaHash::rahsia(\'md5\', $data00):' . $data01;
+		$data[2] = \Aplikasi\Kitab\RahsiaHash::cincang($posmen[$myTable][$pass]);
 		//echo '<br>\Aplikasi\Kitab\RahsiaHash::cincang($data00):' . $data02;
 
-		return $data00;
+		return $data[2];
 	}
 #---------------------------------------------------------------------------------------------------#
 	function semakPassword($data)
