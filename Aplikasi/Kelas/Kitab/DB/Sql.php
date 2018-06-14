@@ -15,6 +15,7 @@ class Sql
 				: " $di`$medan` is null $akhir\r";
 		elseif($fix=='xnull')
 			$jika .= " $di`$medan` is not null  $akhir\r";
+
 		return $jika; //echo '<br>' . $jika;
 	}
 #-------------------------------------------------------------------------------------------------
@@ -30,6 +31,7 @@ class Sql
 			$jika .= " $di`$medan` <= '$cariApa' $akhir\r";
 		elseif($fix=='x>=')
 			$jika .= " $di`$medan` >= '$cariApa' $akhir\r";
+
 		return $jika; //echo '<br>' . $jika;
 	}
 #-------------------------------------------------------------------------------------------------
@@ -54,6 +56,7 @@ class Sql
 			$jika .= " $di`$medan` like '%$cariApa' $akhir\r";
 		elseif($fix=='x%like')
 			$jika .= " $di`$medan` not like '%$cariApa' $akhir\r";
+
 		return $jika; //echo '<br>' . $jika;
 	}
 #-------------------------------------------------------------------------------------------------
@@ -65,6 +68,7 @@ class Sql
 			$jika .= " $di`$medan` in $cariApa $akhir\r";
 		elseif($fix=='xin')
 			$jika .= " $di`$medan` not in $cariApa $akhir\r";
+
 		return $jika; //echo '<br>' . $jika;
 	}
 #-------------------------------------------------------------------------------------------------
@@ -80,6 +84,7 @@ class Sql
 		{	$pecah = explode('|', $medan);
 			$jika .= " $di(`" . $pecah[0] . "` like '%$cariApa%' "
 			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";	}
+
 		return $jika; //echo '<br>' . $jika;
 	}
 #-------------------------------------------------------------------------------------------------
@@ -95,6 +100,7 @@ class Sql
 			$jika .= " $di`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
 		elseif($fix=='xkhas4')
 			$jika .= " $di`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
+
 		return $jika; //echo '<br>' . $jika;
 	}
 #-------------------------------------------------------------------------------------------------
@@ -116,6 +122,7 @@ class Sql
 			$jika .= " $di$medan in $cariApa $akhir\r";
 		elseif($fix=='zxin')
 			$jika .= " $di$medan not in $cariApa $akhir\r";
+
 		return $jika; //echo '<br>' . $jika;
 	}
 #-------------------------------------------------------------------------------------------------
