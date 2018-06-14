@@ -26,22 +26,6 @@ class Sql
 		elseif( in_array($fix,array('like','xlike','%like%','x%like%',
 			'like%','xlike%','%like','x%like')) )
 			$dimana .= $this->jikaLike($fix,$di,$medan,$cariApa,$akhir);
-		elseif($fix=='like')
-			$dimana .= " $di`$medan` like '$cariApa' $akhir\r";
-		elseif($fix=='xlike')
-			$dimana .= " $di`$medan` not like '$cariApa' $akhir\r";
-		elseif($fix=='%like%')
-			$dimana .= " $di`$medan` like '%$cariApa%' $akhir\r";
-		elseif($fix=='x%like%')
-			$dimana .= " $di`$medan` not like '%$cariApa%' $akhir\r";
-		elseif($fix=='like%')
-			$dimana .= " $di`$medan` like '$cariApa%' $akhir\r";
-		elseif($fix=='xlike%')
-			$dimana .= " $di`$medan` not like '$cariApa%' $akhir\r";
-		elseif($fix=='%like')
-			$dimana .= " $di`$medan` like '%$cariApa' $akhir\r";
-		elseif($fix=='x%like')
-			$dimana .= " $di`$medan` not like '%$cariApa' $akhir\r";
 		elseif($fix=='in')
 			$dimana .= " $di`$medan` in $cariApa $akhir\r";
 		elseif($fix=='xin')
@@ -95,6 +79,30 @@ class Sql
 			$dimana .= " $di$medan in $cariApa $akhir\r";
 		elseif($fix=='zxin')
 			$jika .= " $di$medan not in $cariApa $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaLike($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('like','xlike','%like%','x%like%',
+		//	'like%','xlike%','%like','x%like')
+		elseif($fix=='like')
+			$jika .= " $di`$medan` like '$cariApa' $akhir\r";
+		elseif($fix=='xlike')
+			$jika .= " $di`$medan` not like '$cariApa' $akhir\r";
+		elseif($fix=='%like%')
+			$jika .= " $di`$medan` like '%$cariApa%' $akhir\r";
+		elseif($fix=='x%like%')
+			$jika .= " $di`$medan` not like '%$cariApa%' $akhir\r";
+		elseif($fix=='like%')
+			$jika .= " $di`$medan` like '$cariApa%' $akhir\r";
+		elseif($fix=='xlike%')
+			$jika .= " $di`$medan` not like '$cariApa%' $akhir\r";
+		elseif($fix=='%like')
+			$jika .= " $di`$medan` like '%$cariApa' $akhir\r";
+		elseif($fix=='x%like')
+			$jika .= " $di`$medan` not like '%$cariApa' $akhir\r";
 		return $jika; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
