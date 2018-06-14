@@ -17,14 +17,6 @@ class Sql
 			$dimana .= " $di`$medan` is not null  $akhir\r";
 		elseif( in_array($fix,array('x=','x!=','x<=','x>=')) )
 			$dimana .= $this->jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir);
-		elseif($fix=='x=')
-			$dimana .= " $di`$medan` = '$cariApa' $akhir\r";
-		elseif($fix=='x!=')
-			$dimana .= " $di`$medan` != '$cariApa' $akhir\r";
-		elseif($fix=='x<=')
-			$dimana .= " $di`$medan` <= '$cariApa' $akhir\r";
-		elseif($fix=='x>=')
-			$dimana .= " $di`$medan` >= '$cariApa' $akhir\r";
 		elseif( in_array($fix,array('like','xlike','%like%','x%like%',
 			'like%','xlike%','%like','x%like')) )
 			$dimana .= $this->jikaLike($fix,$di,$medan,$cariApa,$akhir);
@@ -105,6 +97,21 @@ class Sql
 			$jika .= " $di`$medan` like '%$cariApa' $akhir\r";
 		elseif($fix=='x%like')
 			$jika .= " $di`$medan` not like '%$cariApa' $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('x=','x!=','x<=','x>=')
+		if($fix=='x=')
+			$jika .= " $di`$medan` = '$cariApa' $akhir\r";
+		elseif($fix=='x!=')
+			$jika .= " $di`$medan` != '$cariApa' $akhir\r";
+		elseif($fix=='x<=')
+			$jika .= " $di`$medan` <= '$cariApa' $akhir\r";
+		elseif($fix=='x>=')
+			$jika .= " $di`$medan` >= '$cariApa' $akhir\r";
 		return $jika; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
