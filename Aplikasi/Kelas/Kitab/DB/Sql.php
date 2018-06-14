@@ -20,10 +20,8 @@ class Sql
 		elseif( in_array($fix,array('like','xlike','%like%','x%like%',
 			'like%','xlike%','%like','x%like')) )
 			$dimana .= $this->jikaLike($fix,$di,$medan,$cariApa,$akhir);
-		elseif($fix=='in')
-			$dimana .= " $di`$medan` in $cariApa $akhir\r";
-		elseif($fix=='xin')
-			$dimana .= " $di`$medan` not in $cariApa $akhir\r";
+		elseif( in_array($fix,array('in','xin')) )
+			$dimana .= $this->jikaDalamKurungan($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('khas2','xkhas2','khas3','xkhas4')) )
 			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('z%like%','z1','z2','z2x','z3x','zin','zxin')) )
@@ -106,6 +104,17 @@ class Sql
 			$jika .= " $di`$medan` <= '$cariApa' $akhir\r";
 		elseif($fix=='x>=')
 			$jika .= " $di`$medan` >= '$cariApa' $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaDalamKurungan($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('in','xin')
+		elseif($fix=='in')
+			$dimana .= " $di`$medan` in $cariApa $akhir\r";
+		elseif($fix=='xin')
+			$dimana .= " $di`$medan` not in $cariApa $akhir\r";
 		return $jika; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
