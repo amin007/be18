@@ -87,7 +87,7 @@ class Sql
 		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
 		//array('like','xlike','%like%','x%like%',
 		//	'like%','xlike%','%like','x%like')
-		elseif($fix=='like')
+		if($fix=='like')
 			$jika .= " $di`$medan` like '$cariApa' $akhir\r";
 		elseif($fix=='xlike')
 			$jika .= " $di`$medan` not like '$cariApa' $akhir\r";
