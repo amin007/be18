@@ -43,6 +43,8 @@ class Sql
 			$dimana .= " $di`$medan` in $cariApa $akhir\r";
 		elseif($fix=='xin')
 			$dimana .= " $di`$medan` not in $cariApa $akhir\r";
+		elseif( in_array($fix,array()) )
+			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
 		elseif($fix=='khas2')
 			$dimana .= " $di`$medan` REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
 		elseif($fix=='xkhas2')
