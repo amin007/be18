@@ -6,7 +6,7 @@ class Sql
 #-------------------------------------------------------------------------------------------------
 	function __construct() { }
 #-------------------------------------------------------------------------------------------------
-	private function jika($fix,$di,$medan,$cariApa,$akhir)
+	private function jika($fix,$di,$medan,$cariApa,$akhir=null)
 	{
 		$dimana = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
 		if($fix==null) $dimana .= null;
@@ -150,6 +150,74 @@ class Sql
 
 		return $sql;
 	}
+#-------------------------------------------------------------------------------------------------
+	public function bentukSqlUpdate($data, $myTable, $medanID)
+	{
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		list($medanData, $where) = $this->ulangData($data, $medanID);
+		$sql = "\r UPDATE `$myTable` SET \r$medanData\r $where";
+
+		return $sql;
+	}
+#-------------------------------------------------------------------------------------------------
+	public function ulangData($data, $medanID)
+	{## foreach $data
+		foreach ($data as $medan => $nilai)
+		{
+			if ($medan == $medanID)
+				//$where = " WHERE `$medanID` = '{$data[$medanID]}' ";
+				$where = $this->dimanaUpdate($data,$medanID);
+			elseif ($medan != $medanID)
+				$senarai[] = ($nilai==null) ?
+				" `$medan`=null" : " `$medan`='$nilai'";
+		}
+		$medanData = implode(",\r",$senarai);
+
+		return array($medanData, $where);
+	}
+#-------------------------------------------------------------------------------------------------
+	private function dimanaUpdate($data,$medanID)
+	{
+		# bentuk tatasusunan 1 $carian //$carian = null;
+		/*$where = $this->dimana( array( 0=>
+			array('fix'=>'x=', # cari x= atau %like%
+			'atau'=>'WHERE', # WHERE / OR / AND
+			'medan' => $medanID, # cari dalam medan apa
+			'apa' => "{$data[$medanID]}") # benda yang dicari
+			));//*/
+		# bentuk tatasusunan 2
+		$fix = 'x='; # cari x= atau %like%
+		$di = 'WHERE'; # WHERE / OR / AND
+		$medan = $medanID; # cari dalam medan apa
+		$apa = "{$data[$medanID]}"; # benda yang dicari
+		$where = $this->jika($fix,$di,$medan,$apa,null);
+
+		return $where;
+	}
+#-------------------------------------------------------------------------------------------------
+	public function bentukSqlUpdateDPO($data, $myTable, $medanID)
+	{
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		list($medan, $where, $data2) = $this->ulangData($data, $medanID);
+		$sql = "\r UPDATE `$myTable` SET \r$medanData\r $where";
+
+		return array($sql,$data2);
+	}
+#-------------------------------------------------------------------------------------------------
+	public function ulangDataPDO($data, $medanID)
+	{## foreach $data
+		foreach ($data as $medan => $nilai)
+		{
+			$senarai[] = " `$medan`=:$medan";
+			$data2[$medan] = ($nilai==null) ? 'null' : $nilai;
+		}
+
+		$medan = implode(",\r",$senarai);
+		$where = "`$medanID`=:$medanID ";
+
+		return array($medan, $where, $data2);
+	}
+#-------------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------
 #=================================================================================================
 }
