@@ -32,6 +32,71 @@ class Sql
 		return $dimana; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
+	private function jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('x=','x!=','x<=','x>=')
+		if($fix=='x=')
+			$jika .= " $di`$medan` = '$cariApa' $akhir\r";
+		elseif($fix=='x!=')
+			$jika .= " $di`$medan` != '$cariApa' $akhir\r";
+		elseif($fix=='x<=')
+			$jika .= " $di`$medan` <= '$cariApa' $akhir\r";
+		elseif($fix=='x>=')
+			$jika .= " $di`$medan` >= '$cariApa' $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaLike($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('like','xlike','%like%','x%like%',
+		//	'like%','xlike%','%like','x%like')
+		if($fix=='like')
+			$jika .= " $di`$medan` like '$cariApa' $akhir\r";
+		elseif($fix=='xlike')
+			$jika .= " $di`$medan` not like '$cariApa' $akhir\r";
+		elseif($fix=='%like%')
+			$jika .= " $di`$medan` like '%$cariApa%' $akhir\r";
+		elseif($fix=='x%like%')
+			$jika .= " $di`$medan` not like '%$cariApa%' $akhir\r";
+		elseif($fix=='like%')
+			$jika .= " $di`$medan` like '$cariApa%' $akhir\r";
+		elseif($fix=='xlike%')
+			$jika .= " $di`$medan` not like '$cariApa%' $akhir\r";
+		elseif($fix=='%like')
+			$jika .= " $di`$medan` like '%$cariApa' $akhir\r";
+		elseif($fix=='x%like')
+			$jika .= " $di`$medan` not like '%$cariApa' $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaDalamKurungan($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('in','xin')
+		elseif($fix=='in')
+			$dimana .= " $di`$medan` in $cariApa $akhir\r";
+		elseif($fix=='xin')
+			$dimana .= " $di`$medan` not in $cariApa $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('or(x=)','or(%like%)')
+		if($fix=='or(x=)') //" $di (`$cari`='$apa' OR msic2000='$apa')\r" :
+		{	$pecah = explode('|', $medan);
+			$jika .= " $di(`" . $pecah[0] . "` = '$cariApa' "
+			. " OR `" . $pecah[1] . "` = '$cariApa')\r";	}
+		elseif($fix=='or(%like%)')
+		{	$pecah = explode('|', $medan);
+			$jika .= " $di(`" . $pecah[0] . "` like '%$cariApa%' "
+			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";	}
+		return $jika; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
 	private function jikaRegexp($fix,$di,$medan,$cariApa,$akhir)
 	{
 		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
@@ -65,71 +130,6 @@ class Sql
 			$dimana .= " $di$medan in $cariApa $akhir\r";
 		elseif($fix=='zxin')
 			$jika .= " $di$medan not in $cariApa $akhir\r";
-		return $jika; //echo '<br>' . $dimana;
-	}
-#-------------------------------------------------------------------------------------------------
-	private function jikaLike($fix,$di,$medan,$cariApa,$akhir)
-	{
-		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
-		//array('like','xlike','%like%','x%like%',
-		//	'like%','xlike%','%like','x%like')
-		if($fix=='like')
-			$jika .= " $di`$medan` like '$cariApa' $akhir\r";
-		elseif($fix=='xlike')
-			$jika .= " $di`$medan` not like '$cariApa' $akhir\r";
-		elseif($fix=='%like%')
-			$jika .= " $di`$medan` like '%$cariApa%' $akhir\r";
-		elseif($fix=='x%like%')
-			$jika .= " $di`$medan` not like '%$cariApa%' $akhir\r";
-		elseif($fix=='like%')
-			$jika .= " $di`$medan` like '$cariApa%' $akhir\r";
-		elseif($fix=='xlike%')
-			$jika .= " $di`$medan` not like '$cariApa%' $akhir\r";
-		elseif($fix=='%like')
-			$jika .= " $di`$medan` like '%$cariApa' $akhir\r";
-		elseif($fix=='x%like')
-			$jika .= " $di`$medan` not like '%$cariApa' $akhir\r";
-		return $jika; //echo '<br>' . $dimana;
-	}
-#-------------------------------------------------------------------------------------------------
-	private function jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir)
-	{
-		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
-		//array('x=','x!=','x<=','x>=')
-		if($fix=='x=')
-			$jika .= " $di`$medan` = '$cariApa' $akhir\r";
-		elseif($fix=='x!=')
-			$jika .= " $di`$medan` != '$cariApa' $akhir\r";
-		elseif($fix=='x<=')
-			$jika .= " $di`$medan` <= '$cariApa' $akhir\r";
-		elseif($fix=='x>=')
-			$jika .= " $di`$medan` >= '$cariApa' $akhir\r";
-		return $jika; //echo '<br>' . $dimana;
-	}
-#-------------------------------------------------------------------------------------------------
-	private function jikaDalamKurungan($fix,$di,$medan,$cariApa,$akhir)
-	{
-		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
-		//array('in','xin')
-		elseif($fix=='in')
-			$dimana .= " $di`$medan` in $cariApa $akhir\r";
-		elseif($fix=='xin')
-			$dimana .= " $di`$medan` not in $cariApa $akhir\r";
-		return $jika; //echo '<br>' . $dimana;
-	}
-#-------------------------------------------------------------------------------------------------
-	private function jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir)
-	{
-		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
-		//array('or(x=)','or(%like%)')
-		if($fix=='or(x=)') //" $di (`$cari`='$apa' OR msic2000='$apa')\r" :
-		{	$pecah = explode('|', $medan);
-			$jika .= " $di(`" . $pecah[0] . "` = '$cariApa' "
-			. " OR `" . $pecah[1] . "` = '$cariApa')\r";	}
-		elseif($fix=='or(%like%)')
-		{	$pecah = explode('|', $medan);
-			$jika .= " $di(`" . $pecah[0] . "` like '%$cariApa%' "
-			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";	}
 		return $jika; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
