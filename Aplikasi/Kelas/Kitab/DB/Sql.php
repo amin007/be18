@@ -15,6 +15,8 @@ class Sql
 					: " $di`$medan` is null $akhir\r";
 		elseif($fix=='xnull')
 			$dimana .= " $di`$medan` is not null  $akhir\r";
+		elseif( in_array($fix,array('x=','x!=','x<=','x>=')) )
+			$dimana .= $this->jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir);
 		elseif($fix=='x=')
 			$dimana .= " $di`$medan` = '$cariApa' $akhir\r";
 		elseif($fix=='x!=')
