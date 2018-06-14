@@ -141,8 +141,7 @@ class Tanya
 #-------------------------------------------------------------------------------------------------
 	public function kiraMedan($myTable, $medan, $carian)
 	{
-		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
-			 . $this->dimana($carian);
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian);
 
 		//echo htmlentities($sql) . '<br>';
 		$result = $this->db->columnCount($sql);
@@ -152,9 +151,7 @@ class Tanya
 #-------------------------------------------------------------------------------------------------
 	public function kiraBaris($myTable, $medan, $carian)
 	{
-		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
-			 . $this->dimana($carian);
-
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian);
 		//echo htmlentities($sql) . '<br>';
 		$result = $this->db->rowCount($sql);
 
@@ -214,10 +211,7 @@ class Tanya
 #-------------------------------------------------------------------------------------------------
 	public function cariSemuaData($myTable, $medan, $carian, $susun)
 	{
-		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable
-			 . $this->dimana($carian)
-			 . $this->dibawah($susun);
-
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
 		$result = $this->db->selectAll($sql);
 		//echo json_encode($result);
 
@@ -226,27 +220,21 @@ class Tanya
 #-------------------------------------------------------------------------------------------------
 	public function cariSql($myTable, $medan, $carian, $susun)
 	{
-		$sql = ' SELECT ' . $medan . "\r" . ' FROM ' . $myTable
-			 . "\r" . $this->sql->dimana($carian)
-			 . $this->sql->dibawah($susun);
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
 
 		echo '<pre>' . htmlentities($sql) . '</pre><br>';
 	}
 #-------------------------------------------------------------------------------------------------
 	public function cariArahanSql($myTable, $medan, $carian, $susun)
 	{
-		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
-			 . $this->dimana($carian)
-			 . $this->dibawah($susun);
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
 
 		return $sql;
 	}
 #-------------------------------------------------------------------------------------------------
 	public function paparSql($myTable, $medan, $carian, $susun)
 	{
-		$sql = ' SELECT ' . $medan . "\r" . ' FROM ' . $myTable
-			 . "\r" . $this->dimana($carian)
-			 . "\r" . $this->dibawah($susun);
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
 
 		echo '<pre>$sql->' . htmlentities($sql) . '</pre><br>';
 	}
