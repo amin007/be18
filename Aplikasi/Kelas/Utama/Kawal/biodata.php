@@ -216,8 +216,7 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 	public function semakRahsia($data)
 	{
 		$this->rahsiaBiodata();
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$cincang = $this->papar->senarai[$this->papar->_jadual][0][$this->papar->_cariApa];
+		$cincang = $this->papar->_cincang;
 		$semak = \Aplikasi\Kitab\RahsiaHash::sahkan($data, $cincang);
 
 		if($semak == '1'):
@@ -243,8 +242,8 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 				'apa' => $level); # benda yang dicari
 		# semak database
 			$senarai[$myTable] = $this->tanya->
-				cariSemuaData("`$myTable`", $medan, $carian, null);
-				//cariSql("`$myTable`", $medan, $carian, null);
+				//cariSemuaData("`$myTable`", $medan, $carian, null);
+				cariSql("`$myTable`", $medan, $carian, null);
 		# semak pembolehubah
 			$this->umpukNilai2(array($senarai,$pengguna,$medan01,$medan03,
 				$pengguna,$myTable));
@@ -260,8 +259,9 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		$this->papar->carian[] = $pengguna;
 		$this->papar->_jadual = $myTable;
 		$this->papar->senarai = $senarai;
-		$this->papar->_cariApa = $medan03;
+		$this->papar->_cincang = $senarai[$myTable][0][$medan03];
 		$this->papar->_method = huruf('kecil', namaClass($this));
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
