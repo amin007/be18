@@ -8,6 +8,7 @@ class Tanya
 	{
 		$this->db = new \Aplikasi\Kitab\DB_Pdo(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 		//$this->db = new \Aplikasi\Kitab\DB_Mysqli(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
+		$this->sql = new \Aplikasi\Kitab\Sql();
 	}
 #-------------------------------------------------------------------------------------------------
 	private function jika($fix,$di,$medan,$cariApa,$akhir)
@@ -226,10 +227,10 @@ class Tanya
 	public function cariSql($myTable, $medan, $carian, $susun)
 	{
 		$sql = ' SELECT ' . $medan . "\r" . ' FROM ' . $myTable
-			 . "\r" . $this->dimana($carian)
-			 . "\r" . $this->dibawah($susun);
+			 . "\r" . $this->sql->dimana($carian)
+			 . $this->sql->dibawah($susun);
 
-		echo htmlentities($sql) . '<br>';
+		echo '<pre>' . htmlentities($sql) . '</pre><br>';
 	}
 #-------------------------------------------------------------------------------------------------
 	public function cariArahanSql($myTable, $medan, $carian, $susun)
