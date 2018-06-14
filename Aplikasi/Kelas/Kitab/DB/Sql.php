@@ -28,6 +28,8 @@ class Sql
 			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('z%like%','z1','z2','z2x','z3x','zin','zxin')) )
 			$dimana .= $this->jikaZ($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array('or(x=)','or(%like%)')) )
+			$dimana .= $this->jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir);
 		elseif($fix=='or(x=)') //" $di (`$cari`='$apa' OR msic2000='$apa')\r" :
 		{	$pecah = explode('|', $medan);
 			$dimana .= " $di(`" . $pecah[0] . "` = '$cariApa' "
