@@ -234,8 +234,10 @@ class Sql
 
 		$senaraiData = implode(",\r",$senarai);
 
-		# set sql dan pulangkan
-		return = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+		# sql update jika $data[$medanID] berbeza dengan $dimana[$medanID]
+		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+
+		return $sql;
 	}
 #-------------------------------------------------------------------------------------------------
 #=================================================================================================
