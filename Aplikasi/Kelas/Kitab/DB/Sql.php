@@ -10,11 +10,8 @@ class Sql
 	{
 		$dimana = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
 		if($fix==null) $dimana .= null;
-		elseif($cariApa==null)
-			$dimana .= ($fix=='x!=') ? " $di`$medan` != '' $akhir\r"
-					: " $di`$medan` is null $akhir\r";
-		elseif($fix=='xnull')
-			$dimana .= " $di`$medan` is not null  $akhir\r";
+		elseif($cariApa==null OR $fix=='xnull')
+			$dimana .= $this->jikaKosong($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('x=','x!=','x<=','x>=')) )
 			$dimana .= $this->jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('like','xlike','%like%','x%like%',
@@ -30,6 +27,18 @@ class Sql
 			$dimana .= $this->jikaZ($fix,$di,$medan,$cariApa,$akhir);
 
 		return $dimana; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaKosong($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//$cariApa==null OR $fix=='xnull'
+		if($cariApa==null)
+			$jika .= ($fix=='x!=') ? " $di`$medan` != '' $akhir\r"
+				: " $di`$medan` is null $akhir\r";
+		elseif($fix=='xnull')
+			$jika .= " $di`$medan` is not null  $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
 	private function jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir)
