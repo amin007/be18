@@ -137,35 +137,20 @@ class Tanya
 	#---------------------------------------------------------------------------------------------
 	public function tambahSqlBanyakNilai($myTable, $medan, $data)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-
-		# set sql
-		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
-		$sql .= implode(",\r", $data) . ";";
-
+		$sql = $this->insertSql->arahanValues($myTable, $medan, $data);
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		//$this->db->insertAll($sql);
 	}
 	#---------------------------------------------------------------------------------------------
 	public function tambahArahanSqlBanyakNilai($myTable, $medan, $data)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-
-		# set sql
-		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
-		$sql .= implode(",\r", $data) . ";";
-
+		$sql = $this->insertSql->arahanValues($myTable, $medan, $data);
 		return $sql;
 	}
 	#---------------------------------------------------------------------------------------------
 	public function tambahBanyakNilai($myTable, $medan, $data)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-
-		# set sql
-		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
-		$sql .= implode(",\r", $data) . ";";
-
+		$sql = $this->insertSql->arahanValues($myTable, $medan, $data);
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		$this->db->insertAll($sql);
 	}
