@@ -6,29 +6,6 @@ class Sql
 #-------------------------------------------------------------------------------------------------
 	function __construct() { }
 #-------------------------------------------------------------------------------------------------
-	private function jika($fix,$di,$medan,$cariApa,$akhir=null)
-	{
-		$dimana = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
-		if($fix==null) $dimana .= null;
-		elseif($cariApa==null OR $fix=='xnull')
-			$dimana .= $this->jikaKosong($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array('x=','x!=','x<=','x>=')) )
-			$dimana .= $this->jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array('like','xlike','%like%','x%like%',
-			'like%','xlike%','%like','x%like')) )
-			$dimana .= $this->jikaLike($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array('in','xin')) )
-			$dimana .= $this->jikaDalamKurungan($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array('or(x=)','or(%like%)')) )
-			$dimana .= $this->jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array('khas2','xkhas2','khas3','xkhas4')) )
-			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array('z%like%','z1','z2','z2x','z3x','zin','zxin')) )
-			$dimana .= $this->jikaZ($fix,$di,$medan,$cariApa,$akhir);
-
-		return $dimana; //echo '<br>' . $dimana;
-	}
-#-------------------------------------------------------------------------------------------------
 	private function jikaKosong($fix,$di,$medan,$cariApa,$akhir)
 	{
 		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
@@ -140,6 +117,29 @@ class Sql
 		elseif($fix=='zxin')
 			$jika .= " $di$medan not in $cariApa $akhir\r";
 		return $jika; //echo '<br>' . $jika;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jika($fix,$di,$medan,$cariApa,$akhir=null)
+	{
+		$dimana = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		if($fix==null) $dimana .= null;
+		elseif($cariApa==null OR $fix=='xnull')
+			$dimana .= $this->jikaKosong($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array('x=','x!=','x<=','x>=')) )
+			$dimana .= $this->jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array('like','xlike','%like%','x%like%',
+			'like%','xlike%','%like','x%like')) )
+			$dimana .= $this->jikaLike($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array('in','xin')) )
+			$dimana .= $this->jikaDalamKurungan($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array('or(x=)','or(%like%)')) )
+			$dimana .= $this->jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array('khas2','xkhas2','khas3','xkhas4')) )
+			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array('z%like%','z1','z2','z2x','z3x','zin','zxin')) )
+			$dimana .= $this->jikaZ($fix,$di,$medan,$cariApa,$akhir);
+
+		return $dimana; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
 	public function dimana($carian)
