@@ -73,17 +73,17 @@ class Sql
 #-------------------------------------------------------------------------------------------------
 	private function jikaRegexp($fix,$di,$medan,$cariApa,$akhir)
 	{
-		$dimana = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
 		//array('khas2','xkhas2','khas3','xkhas4')
 		if($fix=='khas2')
-			$dimana .= " $di`$medan` REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
+			$jika .= " $di`$medan` REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
 		elseif($fix=='xkhas2')
-			$dimana .= " $di`$medan` NOT REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
+			$jika .= " $di`$medan` NOT REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
 		elseif($fix=='khas3')
-			$dimana .= " $di`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
+			$jika .= " $di`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
 		elseif($fix=='xkhas4')
-			$dimana .= " $di`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
-		return $dimana; //echo '<br>' . $dimana;
+			$jika .= " $di`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
 	public function dimana($carian)
