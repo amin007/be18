@@ -11,25 +11,6 @@ class Tanya
 		$this->sql = new \Aplikasi\Kitab\Sql();
 	}
 #-------------------------------------------------------------------------------------------------
-	public function kiraMedan($myTable, $medan, $carian)
-	{
-		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian);
-
-		//echo htmlentities($sql) . '<br>';
-		$result = $this->db->columnCount($sql);
-
-		return $result;
-	}
-#-------------------------------------------------------------------------------------------------
-	public function kiraBaris($myTable, $medan, $carian)
-	{
-		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian);
-		//echo htmlentities($sql) . '<br>';
-		$result = $this->db->rowCount($sql);
-
-		return $result;
-	}
-#-------------------------------------------------------------------------------------------------
 	public function paparMedan($myTable)
 	{
 		//return $this->db->select('SHOW COLUMNS FROM ' . $myTable);
@@ -79,36 +60,6 @@ class Tanya
 
 		echo htmlentities($sql) . '<br>';
 		//return $this->db->selectAll($sql);
-	}
-#-------------------------------------------------------------------------------------------------
-	public function cariSemuaData($myTable, $medan, $carian, $susun)
-	{
-		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
-		$result = $this->db->selectAll($sql);
-		//echo json_encode($result);
-
-		return $result;
-	}
-#-------------------------------------------------------------------------------------------------
-	public function cariArahanSql($myTable, $medan, $carian, $susun)
-	{
-		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
-
-		return $sql;
-	}
-#-------------------------------------------------------------------------------------------------
-	public function cariSql($myTable, $medan, $carian, $susun)
-	{
-		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
-
-		echo '<pre>' . htmlentities($sql) . '</pre><br>';
-	}
-#-------------------------------------------------------------------------------------------------
-	public function paparSql($myTable, $medan, $carian, $susun)
-	{
-		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
-
-		echo '<pre>$sql->' . htmlentities($sql) . '</pre><br>';
 	}
 #-------------------------------------------------------------------------------------------------
 	public function cariArahanSimpanFailSql($backupFile, $myTable)
@@ -223,7 +174,6 @@ class Tanya
 		//$this->db->insertAllNew($sql,$data);
 	}
 #-------------------------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------------------------
 #--- tamat - contoh tambah sql guna values ---#
 #-------------------------------------------------------------------------------------------------
 	public function buatJadual($myTable, $medan)
@@ -262,6 +212,56 @@ class Tanya
 #-------------------------------------------------------------------------------------------------
 ##################################################################################################
 ## mula - untul select sql
+	#---------------------------------------------------------------------------------------------
+	public function kiraMedan($myTable, $medan, $carian)
+	{
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian);
+
+		//echo htmlentities($sql) . '<br>';
+		$result = $this->db->columnCount($sql);
+
+		return $result;
+	}
+	#---------------------------------------------------------------------------------------------
+	public function kiraBaris($myTable, $medan, $carian)
+	{
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian);
+		//echo htmlentities($sql) . '<br>';
+		$result = $this->db->rowCount($sql);
+
+		return $result;
+	}
+	#---------------------------------------------------------------------------------------------
+	public function cariSemuaData($myTable, $medan, $carian, $susun)
+	{
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
+		$result = $this->db->selectAll($sql);
+		//echo json_encode($result);
+
+		return $result;
+	}
+	#---------------------------------------------------------------------------------------------
+	public function cariArahanSql($myTable, $medan, $carian, $susun)
+	{
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
+
+		return $sql;
+	}
+	#---------------------------------------------------------------------------------------------
+	public function cariSql($myTable, $medan, $carian, $susun)
+	{
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
+
+		echo '<pre>' . htmlentities($sql) . '</pre><br>';
+	}
+	#---------------------------------------------------------------------------------------------
+	public function paparSql($myTable, $medan, $carian, $susun)
+	{
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
+
+		echo '<pre>$sql->' . htmlentities($sql) . '</pre><br>';
+	}
+	#---------------------------------------------------------------------------------------------
 ## tamat - untul select sql
 ##################################################################################################
 ## mula - untuk update sql
