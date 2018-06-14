@@ -388,65 +388,28 @@ class Tanya
 		//$this->db->insert($sql); header('location:' . URL . 'test/paparfail');
 	}
 #-------------------------------------------------------------------------------------------------
-	public function ulangData($data, $medanID)
-	{## foreach $data
-		foreach ($data as $medan => $nilai)
-		{
-			if ($medan == $medanID)
-				$where = " WHERE `$medanID` = '{$data[$medanID]}' ";
-			elseif ($medan != $medanID)
-				$senarai[] = ($nilai==null) ?
-				" `$medan`=null" : " `$medan`='$nilai'";
-		}
-		$medanData = implode(",\r",$senarai);
-
-		return array($medanData, $where);
-	}
-#-------------------------------------------------------------------------------------------------
 	public function ubahSimpan($data, $myTable, $medanID)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($medanData, $where) = $this->ulangData($data, $medanID);
-		$sql = "\r UPDATE `$myTable` SET \r$medanData\r $where";
+		$sql = $this->sql->bentukSqlUpdate($data, $myTable, $medanID);
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		$this->db->update($sql);
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahSqlSimpan($data, $myTable, $medanID)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($medanData, $where) = $this->ulangData($data, $medanID);
-		$sql = "\r UPDATE `$myTable` SET \r$medanData\r $where";
+		$sql = $this->sql->bentukSqlUpdate($data, $myTable, $medanID);
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($medanData, $where) = $this->ulangData($data, $medanID);
-		return "\r UPDATE `$myTable` SET \r$medanData\r $where";
+		return $this->sql->bentukSqlUpdate($data, $myTable, $medanID);
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
-	}
-#-------------------------------------------------------------------------------------------------
-	public function ulangDataPDO($data, $medanID)
-	{## foreach $data
-		foreach ($data as $medan => $nilai)
-		{
-			$senarai[] = " `$medan`=:$medan"; 
-			$data2[$medan] = ($nilai==null) ? 'null' : $nilai; 
-		}
-
-		$medan = implode(",\r",$senarai);
-		$where = "`$medanID`=:$medanID ";
-
-		return array($medan, $where, $data2);
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahPDOSqlSimpan($data, $myTable, $medanID)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($medan, $where, $data2) = $this->ulangDataPDO($data, $medanID);
-		$sql = " UPDATE `$myTable` SET \r$medan\r WHERE $where";
+		list($sql, $data2) = bentukSqlUpdateDPO($data, $myTable, $medanID)
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->updateNew($sql, $data2);
 	}
