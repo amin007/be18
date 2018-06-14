@@ -22,12 +22,12 @@ class Sql
 			$dimana .= $this->jikaLike($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('in','xin')) )
 			$dimana .= $this->jikaDalamKurungan($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array('or(x=)','or(%like%)')) )
+			$dimana .= $this->jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('khas2','xkhas2','khas3','xkhas4')) )
 			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('z%like%','z1','z2','z2x','z3x','zin','zxin')) )
 			$dimana .= $this->jikaZ($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array('or(x=)','or(%like%)')) )
-			$dimana .= $this->jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir);
 
 		return $dimana; //echo '<br>' . $dimana;
 	}
