@@ -157,12 +157,7 @@ class Tanya
 	#---------------------------------------------------------------------------------------------
 	public function tambahPDOBanyakNilai($myTable, $medan, $dataProksi, $data)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-
-		# set sql
-		$sql  = "INSERT INTO `$myTable`\r($medan) VALUES \r";
-		$sql .= implode(",\r", $dataProksi) . ";";
-
+		$sql = $this->insertSql->arahanValues($myTable, $medan, $dataProksi);
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		$this->db->insertAllNew($sql,$data);
 	}
