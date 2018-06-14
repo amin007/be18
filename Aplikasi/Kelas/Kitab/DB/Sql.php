@@ -43,16 +43,8 @@ class Sql
 			$dimana .= " $di`$medan` in $cariApa $akhir\r";
 		elseif($fix=='xin')
 			$dimana .= " $di`$medan` not in $cariApa $akhir\r";
-		elseif( in_array($fix,array()) )
+		elseif( in_array($fix,array('khas2','xkhas2','khas3','xkhas4')) )
 			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
-		elseif($fix=='khas2')
-			$dimana .= " $di`$medan` REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
-		elseif($fix=='xkhas2')
-			$dimana .= " $di`$medan` NOT REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
-		elseif($fix=='khas3')
-			$dimana .= " $di`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
-		elseif($fix=='xkhas4')
-			$dimana .= " $di`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
 		elseif($fix=='z%like%')
 			$dimana .= " $di$medan like '%$cariApa%' $akhir\r";
 		elseif($fix=='z1')
@@ -76,6 +68,21 @@ class Sql
 			$dimana .= " $di(`" . $pecah[0] . "` like '%$cariApa%' "
 			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";	}
 
+		return $dimana; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaRegexp($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$dimana = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('khas2','xkhas2','khas3','xkhas4')
+		if($fix=='khas2')
+			$dimana .= " $di`$medan` REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
+		elseif($fix=='xkhas2')
+			$dimana .= " $di`$medan` NOT REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";
+		elseif($fix=='khas3')
+			$dimana .= " $di`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
+		elseif($fix=='xkhas4')
+			$dimana .= " $di`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
 		return $dimana; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
