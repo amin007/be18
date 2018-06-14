@@ -218,18 +218,18 @@ class Tanya
 		return $result;
 	}
 #-------------------------------------------------------------------------------------------------
-	public function cariSql($myTable, $medan, $carian, $susun)
-	{
-		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
-
-		echo '<pre>' . htmlentities($sql) . '</pre><br>';
-	}
-#-------------------------------------------------------------------------------------------------
 	public function cariArahanSql($myTable, $medan, $carian, $susun)
 	{
 		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
 
 		return $sql;
+	}
+#-------------------------------------------------------------------------------------------------
+	public function cariSql($myTable, $medan, $carian, $susun)
+	{
+		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
+
+		echo '<pre>' . htmlentities($sql) . '</pre><br>';
 	}
 #-------------------------------------------------------------------------------------------------
 	public function paparSql($myTable, $medan, $carian, $susun)
