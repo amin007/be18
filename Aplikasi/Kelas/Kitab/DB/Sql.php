@@ -23,6 +23,9 @@ class Sql
 			$dimana .= " $di`$medan` <= '$cariApa' $akhir\r";
 		elseif($fix=='x>=')
 			$dimana .= " $di`$medan` >= '$cariApa' $akhir\r";
+		elseif( in_array($fix,array('like','xlike','%like%','x%like%',
+			'like%','xlike%','%like','x%like')) )
+			$dimana .= $this->jikaLike($fix,$di,$medan,$cariApa,$akhir);
 		elseif($fix=='like')
 			$dimana .= " $di`$medan` like '$cariApa' $akhir\r";
 		elseif($fix=='xlike')
