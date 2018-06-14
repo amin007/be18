@@ -34,10 +34,10 @@ class Operasi_Tanya extends \Aplikasi\Kitab\Tanya
 	public function medanData()
 	{
 		$medan = 'newss,concat_ws("|",IFNULL(pegawai,"X"),IFNULL(borang,"X"),newss) batchAwal,'
-			. 'nossm,nama,fe,pegawai,borang,'
+			. "\r" . ' nossm,nama,fe,pegawai,borang,'
 			. '"<input type=\"checkbox\">" as tik,' . "\r"
 			//. 'concat_ws("<br>",alamat1,alamat2,poskod,bandar,negeri) as alamat,' 
-			. 'mko,respon R,survei,kp,msic2008,' . "\r"
+			. ' mko,respon R,survei,kp,msic2008,' . "\r"
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
 			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
@@ -46,7 +46,7 @@ class Operasi_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
 			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
  			. ' ) as data5P,nota'
-			. "\r";
+			. '';
 
 		return $medan;
 	}
