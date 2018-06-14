@@ -30,14 +30,6 @@ class Sql
 			$dimana .= $this->jikaZ($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('or(x=)','or(%like%)')) )
 			$dimana .= $this->jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir);
-		elseif($fix=='or(x=)') //" $di (`$cari`='$apa' OR msic2000='$apa')\r" :
-		{	$pecah = explode('|', $medan);
-			$dimana .= " $di(`" . $pecah[0] . "` = '$cariApa' "
-			. " OR `" . $pecah[1] . "` = '$cariApa')\r";	}
-		elseif($fix=='or(%like%)')
-		{	$pecah = explode('|', $medan);
-			$dimana .= " $di(`" . $pecah[0] . "` like '%$cariApa%' "
-			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";	}
 
 		return $dimana; //echo '<br>' . $dimana;
 	}
@@ -114,6 +106,21 @@ class Sql
 			$jika .= " $di`$medan` <= '$cariApa' $akhir\r";
 		elseif($fix=='x>=')
 			$jika .= " $di`$medan` >= '$cariApa' $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('or(x=)','or(%like%)')
+		if($fix=='or(x=)') //" $di (`$cari`='$apa' OR msic2000='$apa')\r" :
+		{	$pecah = explode('|', $medan);
+			$jika .= " $di(`" . $pecah[0] . "` = '$cariApa' "
+			. " OR `" . $pecah[1] . "` = '$cariApa')\r";	}
+		elseif($fix=='or(%like%)')
+		{	$pecah = explode('|', $medan);
+			$jika .= " $di(`" . $pecah[0] . "` like '%$cariApa%' "
+			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";	}
 		return $jika; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
