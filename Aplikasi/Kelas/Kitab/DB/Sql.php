@@ -218,6 +218,25 @@ class Sql
 		return array($medan, $where, $data2);
 	}
 #-------------------------------------------------------------------------------------------------
+	public function bentukSqlSimpanSemua($data, $myTable, $medanID, $dimana)
+	{
+		//echo '<pre>$data->'; print_r($data); echo '</pre>';
+		//echo '<pre>$dimana->'; print_r($dimana); echo '</pre>';
+		$senarai = null;
+
+		foreach ($data as $medan => $nilai)
+		{
+			if ($medan == $medanID)
+				$where = " WHERE `$medanID` = '{$dimana[$medanID]}' ";
+			$senarai[] = ($nilai==null) ?
+				" `$medan`=null" : " `$medan`='$nilai'";
+		}
+
+		$senaraiData = implode(",\r",$senarai);
+
+		# set sql dan pulangkan
+		return = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+	}
 #-------------------------------------------------------------------------------------------------
 #=================================================================================================
 }
