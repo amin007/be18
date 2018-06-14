@@ -47,20 +47,6 @@ class Sql
 			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('z%like%','z1','z2','z2x','z3x','zin','zxin')) )
 			$dimana .= $this->jikaZ($fix,$di,$medan,$cariApa,$akhir);
-		elseif($fix=='z%like%')
-			$dimana .= " $di$medan like '%$cariApa%' $akhir\r";
-		elseif($fix=='z1')
-			$dimana .= " $di$medan = $cariApa $akhir\r";
-		elseif($fix=='z2')
-			$dimana .= " $di$medan like '$cariApa' $akhir\r";
-		elseif($fix=='z2x')
-			$dimana .= " $di$medan not like '$cariApa' $akhir\r";
-		elseif($fix=='z3x')
-			$dimana .= " $di$medan IS NOT NULL $akhir\r";
-		elseif($fix=='zin')
-			$dimana .= " $di$medan in $cariApa $akhir\r";
-		elseif($fix=='zxin')
-			$dimana .= " $di$medan not in $cariApa $akhir\r";
 		elseif($fix=='or(x=)') //" $di (`$cari`='$apa' OR msic2000='$apa')\r" :
 		{	$pecah = explode('|', $medan);
 			$dimana .= " $di(`" . $pecah[0] . "` = '$cariApa' "
@@ -85,6 +71,27 @@ class Sql
 			$jika .= " $di`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
 		elseif($fix=='xkhas4')
 			$jika .= " $di`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
+		return $jika; //echo '<br>' . $dimana;
+	}
+#-------------------------------------------------------------------------------------------------
+	private function jikaZ($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array('z%like%','z1','z2','z2x','z3x','zin','zxin')
+		if($fix=='z%like%')
+			$jika .= " $di$medan like '%$cariApa%' $akhir\r";
+		elseif($fix=='z1')
+			$jika .= " $di$medan = $cariApa $akhir\r";
+		elseif($fix=='z2')
+			$jika .= " $di$medan like '$cariApa' $akhir\r";
+		elseif($fix=='z2x')
+			$jika .= " $di$medan not like '$cariApa' $akhir\r";
+		elseif($fix=='z3x')
+			$jika .= " $di$medan IS NOT NULL $akhir\r";
+		elseif($fix=='zin')
+			$dimana .= " $di$medan in $cariApa $akhir\r";
+		elseif($fix=='zxin')
+			$jika .= " $di$medan not in $cariApa $akhir\r";
 		return $jika; //echo '<br>' . $dimana;
 	}
 #-------------------------------------------------------------------------------------------------
