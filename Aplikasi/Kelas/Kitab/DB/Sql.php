@@ -45,6 +45,8 @@ class Sql
 			$dimana .= " $di`$medan` not in $cariApa $akhir\r";
 		elseif( in_array($fix,array('khas2','xkhas2','khas3','xkhas4')) )
 			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array('z%like%','z1','z2','z2x','z3x','zin','zxin')) )
+			$dimana .= $this->jikaZ($fix,$di,$medan,$cariApa,$akhir);
 		elseif($fix=='z%like%')
 			$dimana .= " $di$medan like '%$cariApa%' $akhir\r";
 		elseif($fix=='z1')
