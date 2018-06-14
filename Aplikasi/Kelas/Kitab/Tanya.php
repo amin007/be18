@@ -388,74 +388,48 @@ class Tanya
 		//$this->db->insert($sql); header('location:' . URL . 'test/paparfail');
 	}
 #-------------------------------------------------------------------------------------------------
+##################################################################################################
+	#---------------------------------------------------------------------------------------------
 	public function ubahSimpan($data, $myTable, $medanID)
 	{
 		$sql = $this->sql->bentukSqlUpdate($data, $myTable, $medanID);
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		$this->db->update($sql);
 	}
-#-------------------------------------------------------------------------------------------------
+	#---------------------------------------------------------------------------------------------
 	public function ubahSqlSimpan($data, $myTable, $medanID)
 	{
 		$sql = $this->sql->bentukSqlUpdate($data, $myTable, $medanID);
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 	}
-#-------------------------------------------------------------------------------------------------
+	#---------------------------------------------------------------------------------------------
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
 	{
 		return $this->sql->bentukSqlUpdate($data, $myTable, $medanID);
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 	}
-#-------------------------------------------------------------------------------------------------
+	#---------------------------------------------------------------------------------------------
 	public function ubahPDOSqlSimpan($data, $myTable, $medanID)
 	{
 		list($sql, $data2) = bentukSqlUpdateDPO($data, $myTable, $medanID)
 		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->updateNew($sql, $data2);
 	}
-#-------------------------------------------------------------------------------------------------
+	#---------------------------------------------------------------------------------------------
 	public function ubahSimpanSemua($data, $myTable, $medanID, $dimana)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		//echo '<pre>$dimana->'; print_r($dimana); echo '</pre>';
-		$senarai = null;
-
-		foreach ($data as $medan => $nilai)
-		{
-			if ($medan == $medanID)
-				$where = " WHERE `$medanID` = '{$dimana[$medanID]}' ";
-			$senarai[] = ($nilai==null) ? 
-				" `$medan`=null" : " `$medan`='$nilai'";
-		}
-
-		$senaraiData = implode(",\r",$senarai);
-
-		# set sql
-		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+		$sql = bentukSqlSimpanSemua($data, $myTable, $medanID, $dimana);
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		//$this->db->update($sql);//*/
 	}
-#-------------------------------------------------------------------------------------------------
+	#---------------------------------------------------------------------------------------------
 	public function ubahSqlSimpanSemua($data, $myTable, $medanID, $dimana)
 	{
-		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		//echo '<pre>$dimana->'; print_r($dimana); echo '</pre>';
-		$senarai = null;
-
-		foreach ($data as $medan => $nilai)
-		{
-			if ($medan == $medanID)
-				$where = " WHERE `$medanID` = '{$dimana[$medanID]}' ";
-			$senarai[] = ($nilai==null) ? 
-				" `$medan`=null" : " `$medan`='$nilai'";
-		}
-
-		$senaraiData = implode(",\r",$senarai);
-
-		# set sql
-		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+		$sql = bentukSqlSimpanSemua($data, $myTable, $medanID, $dimana);
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 	}
+	#---------------------------------------------------------------------------------------------
+##################################################################################################
 #-------------------------------------------------------------------------------------------------
 	/*public function buangTerus($data, $myTable)
 	{
