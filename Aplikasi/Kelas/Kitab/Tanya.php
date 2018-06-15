@@ -95,7 +95,8 @@ class Tanya
 			 . ' SELECT ' . $medan . ' FROM ' . $myTableOld
 			 . '';
 
-		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
+		print_r($sql); echo ";\r";
+		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		//$this->db->insert($sql); header('location:' . URL . 'test/paparfail');
 	}
 	#---------------------------------------------------------------------------------------------
