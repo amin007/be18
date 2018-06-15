@@ -226,14 +226,6 @@ class Sql
 	public function bentukSqlUpdate($data, $myTable, $medanID)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		list($medanData, $where) = $this->ulangData($data, $medanID);
-		$sql = "\r UPDATE `$myTable` SET \r$medanData\r $where";
-
-		return $sql;
-	}
-#-------------------------------------------------------------------------------------------------
-	public function ulangData($data, $medanID)
-	{## foreach $data
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
@@ -243,9 +235,11 @@ class Sql
 				$senarai[] = ($nilai==null) ?
 				" `$medan`=null" : " `$medan`='$nilai'";
 		}
-		$medanData = implode(",\r",$senarai);
 
-		return array($medanData, $where);
+		$medanData = implode(",\r",$senarai);
+		$sql = "\r UPDATE `$myTable` SET \r$medanData\r $where";
+
+		return $sql;
 	}
 #-------------------------------------------------------------------------------------------------
 	private function dimanaUpdate($data,$medanID)
