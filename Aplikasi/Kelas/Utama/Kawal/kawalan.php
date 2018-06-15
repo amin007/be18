@@ -500,5 +500,21 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		return array($senarai);
 	}
 #-------------------------------------------------------------------------------------------
+	public function salin01()
+	{# Set pembolehubah utama
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		list($db,$jadual,$medan) = dpt_senarai('jadual_salin01');
+
+		echo '$sql-><pre>';
+		# semak database
+		foreach($jadual as $myTable):
+			$senarai['kes'] = $this->tanya->
+				salinJadual($db.$myTable, $medan, $myTable);
+		endforeach;
+		# semak semua $pencam di sini
+		echo '</pre>';
+		//*/
+    }
+#-------------------------------------------------------------------------------------------
 #===========================================================================================
 }
