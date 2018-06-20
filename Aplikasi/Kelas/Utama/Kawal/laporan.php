@@ -114,11 +114,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function cetakresponden($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
-		$medan = $this->tanya->kumpulResponden($item, $ms);# kumpul respon jadi medan sql
-		# set pembolehubah utama untuk sql
-		$jadual = 'kawalan_aes';
-		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
-		$carian[] = array('fix'=>'like%','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
+		list($medan,$jadual,$carian) = $this->tanya->
+			kumpulResponden($namaPegawai,$cariBatch,$item,$ms);# kumpul respon jadi medan sql
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
 			($jadual, $medan2 = '*', $carian, NULL);
@@ -139,7 +136,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan($this->_folder, 'f3responden', $noInclude=1);
 		//$this->papar->baca($this->_folder . '/f3all', null, 1);
-		//$this->papar->baca($this->_folder . '/f3responden', null, 1);
 	}
 #-------------------------------------------------------------------------------------------
 	public function calamat($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
