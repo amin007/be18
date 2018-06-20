@@ -274,7 +274,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon';
 			3 => 'concat_ws("-",nama,operator) as nama,'
 			. 'concat_ws("<br>",kp,msic2008) as kp,'
-			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
+			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2,bandar) as utama,'
 			. 'concat_ws("",newss) as newss,'
 			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,email_a'
 			. ') as nota'
@@ -283,14 +283,18 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiMedan; # pulangkan nilai
 	}
 #---------------------------------------------------------------------------------------------------#
-	public function kumpulResponden($item, $ms)
+	public function kumpulResponden($namaPegawai,$cariBatch,$item,$ms)
 	{
 		# set pembolehubah untuk sql pertama
 		list($medanR, $jadualR, $r, $medan) = $this->medanResponden();
 		# bentuk medan yang ingin diulang
 		$medan .= ",\r $r ";
+		# set pembolehubah utama untuk sql
+		$jadual = 'kawalan_aes';
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'like%','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 
-		return $medan; # pulangkan nilai
+		return array($medan,$jadual,$carian); # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
 	private function medanAlamat()
