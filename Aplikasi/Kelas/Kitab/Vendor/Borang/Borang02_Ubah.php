@@ -129,7 +129,7 @@ class Borang02_Ubah
 			$input = $this->inputAlamatBaru($tab2, $tab3, $name, $data, 
 				$classInput, $komenInput);
 		elseif(in_array($key,array('namax','emailx','responden','fe',
-			'mko','respon')))
+			'mko','respon','notel','nofax')))
 			$input = $this->inputTeksBesar($tab2, $tab3, $name, $data, 
 				$classInput, $komenInput);
 		elseif(in_array($key,array('pecah5P')))
