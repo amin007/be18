@@ -155,14 +155,14 @@ function semakDataPOST($semua)
 }
 
 # sql limit
-function pencamSqlLimit($bilSemua, $item, $ms)
+function pencamSqlLimit($bilSemua, $item, $ms, $max = 30)
 {
     # Tentukan bilangan jumlah dalam DB:
     $jum['bil_semua'] = $bilSemua;
     # ambil halaman semasa, jika tiada, cipta satu! 
     $jum['page'] = ( !isset($ms) ) ? 1 : $ms; # mukasurat
     # berapa item dalam satu halaman
-    $jum['max'] = ( !isset($item) ) ? 30 : $item; # item
+    $jum['max'] = ( !isset($item) ) ? $max : $item; # item
     # Tentukan had query berasaskan nombor halaman semasa.
     $dari = (($jum['page'] * $jum['max']) - $jum['max']); 
     $jum['dari'] = ( !isset($dari) ) ? 0 : $dari; # dari
