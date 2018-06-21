@@ -341,6 +341,36 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		return $posmen; # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
+	public function masuk($cariID)
+	{# Set pembolehubah utama
+		//echo '<hr>' . $this->_namaClass . '<hr>';
+		$this->bentukSql($cariID);
+		$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap';
+		$fail = array('index','b_ubah','b_ubah_kawalan');
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->_cariIndustri); # Semak data dulu
+		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
+		$this->paparKandungan($this->_folder, $fail[1] , $noInclude=0); //*/
+    }
+#-------------------------------------------------------------------------------------------
+	public function bentukSql($cariID)
+	{
+		list($myTable,$medan,$medanID,$carian,$atur) = $this->tanya->jadualKawalan02();
+
+		# semak database
+		$senarai['kes'] = $this->tanya->
+			cariSemuaData("`$myTable`", $medan, $carian, $atur);
+			//cariSql("`$myTable`", $medan, $carian, $atur);
+		# semak semua $pencam di sini
+		//$this->semakPembolehubah($senarai);
+		$this->papar->_cariIndustri = null;
+		$this->umpukNilai(array($senarai, $myTable, $cariID,
+			$medanID, $cariID));
+	}
+#-------------------------------------------------------------------------------------------
 	function umpukNilai2($umpuk)
 	{
 		list($senarai, $myTable) = $umpuk;
