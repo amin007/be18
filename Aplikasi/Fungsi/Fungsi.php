@@ -121,6 +121,8 @@ function dpt_senarai($pilih)
 		$jadual = unserialize(JADUAL_SALIN01);
 	elseif ($pilih == 'jadual_salin02') :
 		$jadual = unserialize(JADUAL_SALIN02);
+	elseif ($pilih == 'jadual_salin03') :
+		$jadual = unserialize(JADUAL_SALIN03);
 	else : $jadual = array(); //unserialize()
 	endif;
 
