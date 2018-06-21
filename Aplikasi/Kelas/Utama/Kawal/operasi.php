@@ -339,9 +339,10 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//$this->tanya->tambahSql
 			($jadual2, $log);
 
-		# pergi papar kandungan
-		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$cariBatch/?id=$dataID&mesej=data sudah dikosongkan" . '';
-		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$cariBatch/?id=$dataID&mesej=data sudah dikosongkan" . '');
+		# Pergi papar kandungan
+		$link = "$namaPegawai/$cariBatch/?id=$dataID&mesej=data sudah dikosongkan";
+		//echo '<br>location: ' . URL . $this->_folder . '/batch/' . $link;
+		header('location: ' . URL . $this->_folder . '/batch/' . $link);
 	}
 #-------------------------------------------------------------------------------------------
 	private function tiadaDalamRangka($key = 'newss', $data = null)
