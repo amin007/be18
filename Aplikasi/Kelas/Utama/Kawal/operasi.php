@@ -187,7 +187,6 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	private function cariGroup($jadual, $namaPegawai, $noBatch)
 	{
-		//$jum2 = pencamSqlLimit(300, $item=50, $ms=1, $max=50);
 		$jum2 = pencamSqlLimit(300, $item=50, $ms=1);
 		//echo '<pre>$jum2->'; print_r($jum2); echo '</pre>'; # debug $jum2
 		## buat group, $medan set semua
@@ -196,7 +195,6 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$m0 = 'concat_ws("/",pegawai,borang) batchX,' . "$fe,borang,";
 		$mFE = $m0 . 'count(*) as kira';
 		$susunFE[] = array_merge($jum2, array('kumpul'=>$fe . ',borang','susun'=>'borang ASC') );
-		//echo '<pre>$susunFE->'; print_r($susunFE); echo '</pre>'; # debug $jum2
 		$this->papar->senarai['kiraBatchAwal'] = $this->tanya->
 			//cariSql($jadual, $mFE, null, $susunFE);
 			cariSemuaData($jadual, $mFE, null, $susunFE);
