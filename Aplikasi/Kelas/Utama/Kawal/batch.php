@@ -176,11 +176,13 @@ class Batch extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	private function cariGroup($senaraiJadual, $cariBatch, $cariID, $medan)
 	{
-		$jum2 = pencamSqlLimit(300, $item=30, $ms=1);
+		$jum2 = pencamSqlLimit(300, $item=50, $ms=1, 50);
+		//echo '<pre>$jum2->'; print_r($jum2); echo '</pre>'; # debug $jum2
 		$jadual = $senaraiJadual[0];
 		## buat group, $medan set semua
 			# sql 5 - buat group ikut fe
 			$susunFE[] = array_merge($jum2, array('kumpul'=>'fe','susun'=>'fe') );
+			echo '<pre>$susunFE->'; print_r($susunFE); echo '</pre>'; # debug $jum2
 			$this->papar->senarai['kiraBatchAwal'] = $this->tanya->
 				cariGroup($jadual, $medan = 'fe as batchAwal, count(*) as kira', $carian = null, $susunFE);
 			# sql 6 - buat group ikut pembuatan / perkhidmatan
