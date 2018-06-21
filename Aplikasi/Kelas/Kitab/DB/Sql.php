@@ -122,6 +122,8 @@ class Sql
 			$jika .= " $di$medan in $cariApa $akhir\r";
 		elseif($fix=='zxin')
 			$jika .= " $di$medan not in $cariApa $akhir\r";
+		elseif($fix=='1=1')
+			$jika .= " $di 1=1 $akhir\r";
 
 		return $jika; //echo '<br>' . $jika;
 	}
@@ -143,7 +145,7 @@ class Sql
 			$dimana .= $this->jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('khas2','xkhas2','khas3','xkhas4')) )
 			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array('z%like%','z1','z2','z2x','z3x','zin','zxin')) )
+		elseif( in_array($fix,array('z%like%','z1','z2','z2x','z3x','zin','zxin','1=1')) )
 			$dimana .= $this->jikaZ($fix,$di,$medan,$cariApa,$akhir);
 
 		return $dimana; //echo '<br>' . $dimana;
