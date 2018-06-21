@@ -49,7 +49,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 		$url1 = '" <a target=_blank href=' . $news1 . '>SEMAK 1</a>"';
 		$url2 = '" <a target=_blank href=' . $news2 . '>SEMAK 2</a>"';
 		$url3 = 'concat("<a target=_blank href=' . $news3 . '>SEMAK 3</a>")';
-        $medanKawalan = 'newss,'
+		$medanKawalan = 'newss,'
 			//. '( if (hasil is null, "", '
 			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url3 .') nama,'
 			/*. ' concat_ws("|",' . "\r"
@@ -87,6 +87,44 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'null as notapendek';
 		return $medanKawalan;
 	}
+#---------------------------------------------------------------------------------------------------#
+	public function medanKawalan02($cariID)
+	{
+		$news1 = 'http://sidapmuar/ekonomi/ckawalan/ubah/' . $cariID;
+		$news2 = 'http://sidapmuar/ekonomi/cprosesan/ubah/000/' . $cariID .'/2010/2015/';
+		$news3 = 'http://sidapmuar/ekonomi/semakan/ubah/",kp,"/' . $cariID .'/2010/2015/';
+		$u1 = '" <a target=_blank href=' . $news1 . '>SEMAK 1</a>"'. ",\r";
+		$u2 = '" <a target=_blank href=' . $news2 . '>SEMAK 2</a>"' . ",\r";
+		$u3 = 'concat("<a target=_blank href=' . $news3 . '>SEMAK 3</a>")' . "\r";
+		$medanKawalan = 'newss,'
+			. 'concat_ws("|",nama,operator,' . $u1 . $u3 . ') nama,' . "\r"
+			. 'nossm,nocidb,nama,operator,' . "\r"
+			. 'kp,msic2008,msic2018_3digit,' . "\r"
+			. 'alamat1_a,alamat2_a,bandar_a,poskod_a,' . "\r"
+			. 'negeri_a,daerah_a,po_a,ngdbbp_a,' . "\r"
+			. 'orang_a,email_a,notel_a,nofax_a,' . "\r"
+			. 'Jualan_RM,Hasil,`Bil Pekerja`,Output,' . "\r"
+			. 'Harta_Tetap_RM,Gaji,`Nilai Kerja Pembinaan (RM)`,Belanja,' . "\r"
+			. 'null as notapendek';
+		return $medanKawalan;
+	}
+#---------------------------------------------------------------------------------------------------#
+	public function jadualKawalan02()
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		list($myTable, $medanID,$cariID) = dpt_senarai('jadual_salin03');
+		$medan = $this->medanKawalan02($cariID); //echo '<pre>';
+
+		# bentuk tatasusunan $carian // $carian = null;
+		$carian[] = array('fix'=>'x=', # cari x= atau %like%
+			'atau'=>'WHERE', # WHERE / OR / AND
+			'medan' => $medanID, # cari dalam medan apa
+			'apa' => $cariID); # benda yang dicari //*/
+		$atur[0]['max'] = 1;
+
+		return array($myTable,$medan,$medanID,$carian,$atur);
+	}
+
 #---------------------------------------------------------------------------------------------------#
 	public function ubahData($myTable, $a1, $a2, $senarai)
 	{
