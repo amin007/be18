@@ -344,6 +344,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	function umpukNilai2($umpuk)
 	{
 		list($senarai, $myTable) = $umpuk;
+		$this->papar->c1 = $this->papar->c2 = null;
 		$this->papar->medanID = 'semua';
 		$this->papar->cariID = 'semua';
 		$this->papar->carian[] = 'semua';
@@ -514,6 +515,33 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# semak semua $pencam di sini
 		echo '</pre>';
 		//*/
+    }
+#-------------------------------------------------------------------------------------------
+	public function salin02()
+	{# Set pembolehubah utama
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		list($jadual,$id,$dataS) = dpt_senarai('jadual_salin02');
+		# cantum $data
+		foreach($dataS as $did): $dataID[] = kira3($did, 12); endforeach;
+		$data = '(' . implode(",",$dataID) . ')';
+		# semak database
+		$medan = '*,\'<input type="checkbox">\' as tik ';
+		$carian[] = array('fix'=>'in','atau'=>'WHERE','medan'=>$id,'apa'=>$data);
+		foreach($jadual as $myTable):
+			$senarai[$myTable] = $this->tanya->
+				cariSemuaData($myTable, $medan, $carian, null);
+				//cariSql($myTable, $medan, $carian, null);
+		endforeach;
+		# semak semua $pencam di sini
+		$this->umpukNilai2(array($senarai, $myTable));
+		$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap';
+		$fail = array('index','b_ubah','b_ubah_kawalan');
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->_folder = 'cari'; # jika mahu ubah lokasi Papar
+		$this->paparKandungan($this->_folder, $fail[0] , $noInclude=0); //*/
     }
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
