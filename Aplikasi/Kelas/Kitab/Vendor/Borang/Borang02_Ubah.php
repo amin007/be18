@@ -64,7 +64,7 @@ class Borang02_Ubah
 			$mencari = URL . 'kawalan/ubahCari/';
 			$carian = $cariID;
 			$mesej = ''; //$carian .' ada dalam ' . $this->_jadual;
-			list($namaSyarikat, $semak1, $semak3) = explode("|", $senarai['kes'][0]['nama']);
+			@list($namaSyarikat, $semak1, $semak3) = explode("|", $senarai['kes'][0]['nama']);
 			?><nav class="floating-menu">
 			<p class="bg-primary"><?php
 			echo "\n&nbsp;" . $namaSyarikat
