@@ -76,14 +76,14 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		list($j1,$j2,$medanID,$cariID) = dpt_senarai('jadual_rangka3');
 		# bentuk tatasusunan $carian //
-		if($jadual == $j2):
+		/*if($jadual == $j2):
 			$carian = null;
-		else:
+		else://*/
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => $medanID, # cari dalam medan apa
 				'apa' => $cariID); # benda yang dicari //*/
-		endif;
+		//endif;
 		//$this->semakData($carian);
 
 		return $carian;
