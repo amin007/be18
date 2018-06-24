@@ -174,7 +174,7 @@ class Tanya
 		$sql  = "INSERT INTO $myTableNew($medanLama)";
 		$sql .= "\r SELECT $medanBaru";
 		$sql .= "\r FROM $myTableOld\r";
-		$sql .= $this->dimana($carian);
+		$sql .= $this->sql->dimana($carian);
 
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		//$this->db->insertAllNew($sql,$data);
