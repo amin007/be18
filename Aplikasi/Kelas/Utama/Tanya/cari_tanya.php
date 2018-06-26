@@ -159,7 +159,11 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		'`aes_perkhidmatan`','`aes_pertanian`');//*/
 		$jadual = array('aes','kawalan_aes','aes_prosesan','aes_prosesan_x',
 		'aes_alam_sekitar','aes_kp_205','aes_kp_206','aes_kp_207','aes_kp_800',
-		'aes_perkhidmatan','aes_pertanian','sample_kp411','sdsk_kp411');
+		'aes_perkhidmatan','aes_pertanian',
+		'kp_bst_q1_2017','kp_bst_q1_2018','kp_bst_q4_2017','kp_ejob_2018',
+		'kp_mdt_2017','kp_mm17','kp_mm18','kp_mm_2017','kp_pan17',
+		'kp_qss_2017','kp_qss_2018','kp_qss_2018_data',
+		'sample_kp411','sdsk_kp411');
 		$medan = '*';
 		# cari id berasaskan newss/ssm/sidap/nama
 		//$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
