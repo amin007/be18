@@ -361,7 +361,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 
 		foreach ($jadual as $key => $myTable)
 		{# mula ulang table
-			$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			list($carian,$cariID) = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
 				cariSql($myTable, $medan, $carian, $susun);
 				//cariSemuaData($myTable, $medan, $carian, $susun);
@@ -393,7 +393,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	function sayaTidakWujud($cari, $susun)
 	{
 		$medan = $myTable = 'jadual-tidak-wujud';
-		$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+		list($carian,$cariID) = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 		$this->papar->senarai[$myTable] = $this->tanya->
 			//cariSql($myTable, $medan, $carian, $susun);
 			cariSemuaData($myTable, $medan, $carian, $susun);
