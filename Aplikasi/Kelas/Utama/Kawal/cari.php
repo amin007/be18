@@ -240,6 +240,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->sayaPilihSyarikat($cari, $susun);
 		elseif($jadual=='data_mm_prosesan')
 			$this->sayaPilihDataMM($cari, $susun);
+		else
+			$this->sayaTidakWujud($cari, $susun);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilihMsic($cari, $susun)
@@ -365,6 +367,18 @@ class Cari extends \Aplikasi\Kitab\Kawal
 
 		$this->papar->carian = $cari;
 		$this->papar->cariID = $cariID;
+	}
+#------------------------------------------------------------------------------------------
+	function sayaTidakWujud($cari, $susun)
+	{
+		$medan = $myTable = 'jadual-tidak-wujud';
+		$carian = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+		$this->papar->senarai[$myTable] = $this->tanya->
+			//cariSql($myTable, $medan, $carian, $susun);
+			cariSemuaData($myTable, $medan, $carian, $susun);
+
+		$this->papar->carian = $cari;
+		$this->papar->cariID = null;
 	}
 #------------------------------------------------------------------------------------------
 ###########################################################################################
