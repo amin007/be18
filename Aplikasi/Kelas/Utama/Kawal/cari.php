@@ -126,8 +126,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//if ($apa=='msic') $jadual = 'pom_dataekonomi.msic2000';
 		if ($apa=='msic') $jadual = 'msic2000';
 		elseif ($apa=='produk') $jadual = 'pom_dataekonomi.kodproduk_mei2011';
-		elseif ($apa=='johor') $jadual = 'pom_lokaliti.johor'; # negeri johor/malaysia
-		elseif ($apa=='malaysia') $jadual = 'pom_lokaliti.malaysia'; # negeri johor/malaysia
+		elseif ($apa=='johor') $jadual = 'pom_lokaliti.a_johor'; # negeri johor/malaysia
+		elseif ($apa=='malaysia') $jadual = 'pom_lokaliti.a_malaysia'; # negeri johor/malaysia
 		elseif ($apa=='prosesan') $jadual = 'pom_dataekonomi.data_mm_prosesan';
 		elseif ($apa=='operasi') $jadual = 'kawalan_aes';
 
@@ -324,7 +324,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	{
 		list($namaPanjang,$ngbesar,$medan) = dpt_senarai('jadual_peta2');
 		/*echo 'jadual:' . $this->semakPembolehubah($namaPanjang); *///echo '<pre>';
-		$medan = '*';
 
 		foreach ($namaPanjang as $key => $jadual)
 		{# mula ulang table
