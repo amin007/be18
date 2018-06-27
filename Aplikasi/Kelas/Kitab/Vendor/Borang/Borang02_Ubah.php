@@ -126,11 +126,14 @@ class Borang02_Ubah
 			$input = $this->inputTarikh($tab2, $tab2, $name, $data,
 				$classInput, $komenInput, $jadual, $key);
 		elseif(in_array($key,array('no','batu','jalan','tmn_kg','daerah')))
-			$input = $this->inputAlamatBaru($tab2, $tab3, $name, $data, 
+			$input = $this->inputAlamatBaru($tab2, $tab3, $name, $data,
 				$classInput, $komenInput);
 		elseif(in_array($key,array('namax','emailx','responden','fe',
 			'mko','respon','notel','nofax')))
-			$input = $this->inputTeksBesar($tab2, $tab3, $name, $data, 
+			$input = $this->inputTeksBesar($tab2, $tab3, $name, $data,
+				$classInput, $komenInput);
+		elseif(in_array($key,array('orang_a','notel_a','nofax_a')))
+			$input = $this->inputTeksBesar($tab2, $tab3, $name, $data,
 				$classInput, $komenInput);
 		elseif(in_array($key,array('pecah5P')))
 			$input = $this->inputTeksTakData($tab2, $tab3, $name);
