@@ -129,6 +129,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		elseif ($apa=='johor') $jadual = 'pom_lokaliti.johor'; # negeri johor/malaysia
 		elseif ($apa=='malaysia') $jadual = 'pom_lokaliti.malaysia'; # negeri johor/malaysia
 		elseif ($apa=='prosesan') $jadual = 'pom_dataekonomi.data_mm_prosesan';
+		elseif ($apa=='operasi') $jadual = 'kawalan_aes';
 
 		# Set pemboleubah utama
 		$this->papar->senarai = $this->tanya->paparMedan($jadual);
