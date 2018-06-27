@@ -296,7 +296,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	{
 		$huruf['kecil'] = array('fe','email');
 		$huruf['BESAR'] = array('respon');
-		$huruf['Depan'] = array('responden','no','batu','jalan','tmn_kg','daerah');
+		$huruf['Depan'] = array('responden','orang_a','no','batu','jalan','tmn_kg','daerah');
 
 		foreach ($huruf as $jenis=>$key): foreach ($key as $v=>$kekunci):
 		if (isset($posmen[$myTable][$kekunci])):
