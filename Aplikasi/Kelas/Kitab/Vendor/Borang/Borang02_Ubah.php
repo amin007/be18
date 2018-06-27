@@ -122,6 +122,10 @@ class Borang02_Ubah
 			'hartatetap','stokakhir','staf','aset','stok')))
 			$input = $this->inputNumber($tab2, $tab2, $name, $data,
 				$classInput, $komenInput);
+		elseif(in_array($key,array('amt_staf','amt_output','amt_input','amt_aset','amt_gaji',
+			'amt_jualan','amt_hasil','amt_belanja')))
+			$input = $this->inputNumber($tab2, $tab2, $name, $data,
+				$classInput, $komenInput);
 		elseif ( in_array($key,array('lawat','terima','hantar','hantar_prosesan')) )
 			$input = $this->inputTarikh($tab2, $tab2, $name, $data,
 				$classInput, $komenInput, $jadual, $key);
@@ -132,7 +136,7 @@ class Borang02_Ubah
 			'mko','respon','notel','nofax')))
 			$input = $this->inputTeksBesar($tab2, $tab3, $name, $data,
 				$classInput, $komenInput);
-		elseif(in_array($key,array('orang_a','notel_a','nofax_a')))
+		elseif(in_array($key,array('orang_a','notel_a','nofax_a','email_a')))
 			$input = $this->inputTeksBesar($tab2, $tab3, $name, $data,
 				$classInput, $komenInput);
 		elseif(in_array($key,array('pecah5P')))
