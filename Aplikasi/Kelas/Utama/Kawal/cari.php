@@ -240,6 +240,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->sayaPilihSyarikat($cari, $susun);
 		elseif($jadual=='data_mm_prosesan')
 			$this->sayaPilihDataMM($cari, $susun);
+		elseif($jadual=='operasi')
+			$this->sayaPilihOperasi($cari, $susun);
 		else
 			$this->sayaTidakWujud($cari, $susun);
 	}
@@ -363,6 +365,25 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->papar->senarai[$myTable] = $this->tanya->
 				cariSql($myTable, $medan, $carian, $susun);
 				//cariSemuaData($myTable, $medan, $carian, $susun);
+		}# tamat ulang table//*/
+
+		$this->papar->carian = $cari;
+		$this->papar->cariID = $cariID;
+	}
+#------------------------------------------------------------------------------------------
+	function sayaPilihOperasi($cari, $susun)
+	{
+		$jadual = array('kawalan_aes');
+		$medan = '*'; //echo '<pre>$susun->'; print_r($susun); echo '</pre>';
+		$susun[0]['max'] = 500;
+		//echo '<pre>$susun->'; print_r($susun); echo '</pre>';
+
+		foreach ($jadual as $key => $myTable)
+		{# mula ulang table
+			list($carian,$cariID)= $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			$this->papar->senarai[$myTable] = $this->tanya->
+				//cariSql($myTable, $medan, $carian, $susun);
+				cariSemuaData($myTable, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
