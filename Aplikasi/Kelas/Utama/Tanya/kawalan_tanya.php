@@ -68,8 +68,16 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," notel_a",notel_a),' . "\r"
 			. ' 	concat_ws("="," nofax_a",nofax_a)' . "\r"
  			. ' ) as dataHubungi,' . "\r"
-			. 'orang_a,notel_a,nofax_a,' . "\r"
+			. 'orang_a,notel_a,nofax_a,email_a,' . "\r"
 			. 'responden,notel,nofax,' . "\r"
+			. ' concat_ws("|",' . "\r"
+			. ' 	concat_ws("="," hasil",format(amt_hasil,0)),' . "\r"
+			. ' 	concat_ws("="," belanja",format(amt_belanja,0)),' . "\r"
+			. ' 	concat_ws("="," gaji",format(amt_gaji,0)),' . "\r"
+			. ' 	concat_ws("="," aset",format(amt_aset,0)),' . "\r"
+			. ' 	concat_ws("="," staf",format(amt_staf,0)),' . "\r"
+			. ' 	concat_ws("="," jualan",format(amt_jualan,0))' . "\r"
+			. ' ) as dataAsal,' . "\r"//*/
 			. 'amt_staf,amt_output,amt_input,amt_aset,amt_gaji,'
 			. 'amt_jualan,amt_hasil,amt_belanja,' . "\r"
 			. 'concat_ws(" | ",nossm,kp) as nossm,' . "\r"
