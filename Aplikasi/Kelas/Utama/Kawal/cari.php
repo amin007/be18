@@ -179,6 +179,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 #------------------------------------------------------------------------------------------
 	function susunPembolehubah($bil, $muka)
 	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//echo '$post:' . $this->semakPembolehubah($_POST);
 		# ini adalah bukan tatasusunan
 		$jadual = isset($_POST['namajadual']) ? bersih($_POST['namajadual']) : null;
 		$susunX = isset($_POST['susun']) ? bersih($_POST['susun']) : 1;
@@ -189,21 +190,22 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$cari = isset($_POST['jika']['cari']) ? $_POST['jika']['cari'] : null;
 		$atau = isset($_POST['jika']['atau']) ? $_POST['jika']['atau'] : null;
 		# susun limit ikut $bil
+		$limit = isset($_POST['max']) ? bersih($_POST['max']) : $bil;
 		$kumpulSusun = array('kumpul'=>null,'susun'=>$susunX);
-		$susun = $this->menyusun($kumpulSusun, '0', $bil);
+		$susun = $this->menyusun($kumpulSusun, '0', $limit);
 		//echo 'susun:' . $this->semakPembolehubah($susun);
 		//$this->semakPembolehubah($_POST);
-		//echo '$bil=' . $bil. '<br>$muka=' . $muka . '<br>';
+		//echo '$bil=' . $bil. '<br>$limit=' . $limit. '<br>$muka=' . $muka . '<br>';
 		//echo '$susunX =' . $susunX . '<br>';//echo '$pilih=' . $pilih . '<br>';
 		//echo '$semak =' . $semak1 . '<br>$semak2=' . $semak2 . '<br>';
 
-		return array($jadual,$susun,$pilih,$semak,$semak2,$cari,$atau);
+		return array($jadual,$susun,$pilih,$semak,$semak2,$cari,$atau,$limit);
 	}
 #------------------------------------------------------------------------------------------
 	function sayaPilih($bil, $muka)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		list($jadual,$susun,$pilih,$semak,$semak2,$cari,$atau)
+		list($jadual,$susun,$pilih,$semak,$semak2,$cari,$atau,$limit)
 			= $this->susunPembolehubah($bil,$muka);
 
 		if (!isset($_POST['atau']) && isset($_POST['pilih'][2]))
@@ -218,35 +220,35 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		}
 		elseif (!empty($jadual) )
 		{
-			$this->pilihYangWujud($jadual, $cari, $susun);
+			$this->pilihYangWujud($jadual, $cari, $susun, $limit);
 			$mesej = $lokasi = null;
 		}//*/
 
 		return array($mesej,$lokasi,$jadual);
 	}
 #------------------------------------------------------------------------------------------
-	function pilihYangWujud($jadual, $cari, $susun)
+	function pilihYangWujud($jadual, $cari, $susun, $limit)
 	{
 		//echo '<br>jadual:' . $jadual . '<br>';
 		if($jadual=='msic')
-			$this->sayaPilihMsic($cari, $susun);
+			$this->sayaPilihMsic($cari, $susun, $limit);
 		elseif($jadual=='produk')
-			$this->sayaPilihProduk($cari, $susun);
+			$this->sayaPilihProduk($cari, $susun, $limit);
 		elseif($jadual=='johor')
-			$this->sayaPilihJohor($cari, $susun);
+			$this->sayaPilihJohor($cari, $susun, $limit);
 		elseif($jadual=='malaysia')
-			$this->sayaPilihMalaysia($cari, $susun);
+			$this->sayaPilihMalaysia($cari, $susun, $limit);
 		elseif($jadual=='syarikat')
-			$this->sayaPilihSyarikat($cari, $susun);
+			$this->sayaPilihSyarikat($cari, $susun, $limit);
 		elseif($jadual=='data_mm_prosesan')
-			$this->sayaPilihDataMM($cari, $susun);
+			$this->sayaPilihDataMM($cari, $susun, $limit);
 		elseif($jadual=='operasi')
-			$this->sayaPilihOperasi($cari, $susun);
+			$this->sayaPilihOperasi($cari, $susun, $limit);
 		else
-			$this->sayaTidakWujud($cari, $susun);
+			$this->sayaTidakWujud($cari, $susun, $limit);
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihMsic($cari, $susun)
+	function sayaPilihMsic($cari, $susun, $limit)
 	{	//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
 		$jadual = dpt_senarai('msicbaru'); //echo '<pre>';
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
@@ -267,7 +269,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->cariID = $cariID;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihProduk($cari, $susun)
+	function sayaPilihProduk($cari, $susun, $limit)
 	{
 		$jadual = dpt_senarai('produk');
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
@@ -297,7 +299,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->cariID = $cariID;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihJohor($cari, $susun)
+	function sayaPilihJohor($cari, $susun, $limit)
 	{
 		list($namaPanjang,$semak,$medanAsal,$medanBaru) = dpt_senarai('jadual_peta');
 		/*echo 'jadual:' . $this->semakPembolehubah($namaPanjang); *///echo '<pre>';
@@ -318,7 +320,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->cariID = $cariID;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihMalaysia($cari, $susun)
+	function sayaPilihMalaysia($cari, $susun, $limit)
 	{
 		list($namaPanjang,$ngbesar,$medan) = dpt_senarai('jadual_peta2');
 		/*echo 'jadual:' . $this->semakPembolehubah($namaPanjang); *///echo '<pre>';
@@ -337,7 +339,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->cariID = $cariID;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihSyarikat($cari, $susun)
+	function sayaPilihSyarikat($cari, $susun, $limit)
 	{
 		//echo '<hr>Nama class : ' . __METHOD__ . '()<hr>';
 		list($jadual, $medan, $carian, $cariID) = $this->tanya->dataCorp($cari);
@@ -353,7 +355,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->cariID = $cariID;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihDataMM($cari, $susun)
+	function sayaPilihDataMM($cari, $susun, $limit)
 	{
 		$jadual = dpt_senarai('***');
 		//echo 'jadual:' . $this->semakPembolehubah($jadual);
@@ -371,11 +373,11 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->cariID = $cariID;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaPilihOperasi($cari, $susun)
+	function sayaPilihOperasi($cari, $susun, $limit)
 	{
 		$jadual = array('kawalan_aes');
 		$medan = '*'; //echo '<pre>$susun->'; print_r($susun); echo '</pre>';
-		$susun[0]['max'] = 500;
+		$susun[0]['max'] = $limit;
 		//echo '<pre>$susun->'; print_r($susun); echo '</pre>';
 
 		foreach ($jadual as $key => $myTable)
@@ -390,7 +392,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->cariID = $cariID;
 	}
 #------------------------------------------------------------------------------------------
-	function sayaTidakWujud($cari, $susun)
+	function sayaTidakWujud($cari, $susun, $limit)
 	{
 		$medan = $myTable = 'jadual-tidak-wujud';
 		list($carian,$cariID) = $this->tanya->bentukCarian($_POST['jika'], $myTable);
