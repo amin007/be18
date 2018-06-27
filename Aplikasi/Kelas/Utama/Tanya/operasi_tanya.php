@@ -47,6 +47,14 @@ class Operasi_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
 			. ' ) as data5P,'//*/
 			. ' concat_ws("|",' . "\r"
+			. ' 	concat_ws("="," hasil",format(amt_hasil,0)),' . "\r"
+			. ' 	concat_ws("="," belanja",format(amt_belanja,0)),' . "\r"
+			. ' 	concat_ws("="," gaji",format(amt_gaji,0)),' . "\r"
+			. ' 	concat_ws("="," aset",format(amt_aset,0)),' . "\r"
+			. ' 	concat_ws("="," staf",format(amt_staf,0)),' . "\r"
+			. ' 	concat_ws("="," jualan",format(amt_jualan,0))' . "\r"
+			. ' ) as dataAsal,' . "\r"//*/
+			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," orang",orang_a),' . "\r"
 			. ' 	concat_ws("="," tel",notel_a),' . "\r"
 			. ' 	concat_ws("="," fax",nofax_a),' . "\r"
