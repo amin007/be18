@@ -98,7 +98,8 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 	}
 #---------------------------------------------------------------------------------------------------#
 	function bentukCarian($post, $myTable)
-	{	//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//echo '<pre>$post->'; print_r($post); echo '</pre>';
 		$carian = null; //' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
 		if($_POST==null || empty($_POST) ):
