@@ -187,7 +187,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	private function cariGroup($jadual, $namaPegawai, $noBatch)
 	{
-		$jum2 = pencamSqlLimit(300, $item=50, $ms=1);
+		$jum2 = pencamSqlLimit(300, $item=60, $ms=1);
 		//echo '<pre>$jum2->'; print_r($jum2); echo '</pre>'; # debug $jum2
 		## buat group, $medan set semua
 		# sql 1 - buat group ikut fe
@@ -206,6 +206,15 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$this->papar->senarai['kiraKP'] = $this->tanya->
 			//cariSql($jadual, $mKP, $cariKP, $susunKP);
 			cariSemuaData($jadual, $mKP, $cariKP, $susunKP);
+		# sql 3 - buat kp 309
+		$mKP = 'newss,nossm,nama,operator,kp,msic2008,borang,pegawai,po,'
+			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
+		$cariKP309[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'kp','apa'=>'309');
+		$cariKP309[] = array('fix'=>'x=','atau'=>'AND','medan'=>'PO','apa'=>'POM');
+		$susunKP309[] = array_merge($jum2, array('kumpul'=>NULL,'susun'=>NULL) );
+		$this->papar->senarai['kp309'] = $this->tanya->
+			//cariSql($jadual, $mKP, $cariKP, $susunKP);
+			cariSemuaData($jadual, $mKP, $cariKP309, $susunKP309);
 	}
 #-------------------------------------------------------------------------------------------
 	public function tambahNamaStaf()
