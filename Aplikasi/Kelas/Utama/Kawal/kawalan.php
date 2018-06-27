@@ -256,7 +256,10 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		}
 		else
 		{
-			$data5P = array('hasil','belanja','gaji','aset','staf','stok');
+			//$data5P = array('hasil','belanja','gaji','aset','staf','stok');
+			$data5P = array('hasil','belanja','gaji','aset','staf','stok',
+				. 'amt_staf','amt_output','amt_input','amt_aset','amt_gaji',
+				. 'amt_jualan','amt_hasil','amt_belanja');
 			foreach ($posmen as $jadual => $value)
 			foreach ($value as $kekunci => $papar)
 				$posmen[$myTable][$kekunci] =
