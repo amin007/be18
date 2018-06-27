@@ -200,7 +200,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			cariSemuaData($jadual, $mFE, null, $susunFE);
 		# sql 2 - buat group ikut pembuatan / perkhidmatan
 		$mKP = 'kp,survei,count(*) as kira';
-		$cariKP[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
+		//$cariKP[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
+		$cariKP[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'PO','apa'=>'POM');
 		$susunKP[] = array_merge($jum2, array('kumpul'=>'kp,survei','susun'=>'kp,survei') );
 		$this->papar->senarai['kiraKP'] = $this->tanya->
 			//cariSql($jadual, $mKP, $cariKP, $susunKP);
