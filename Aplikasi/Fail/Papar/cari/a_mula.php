@@ -42,9 +42,7 @@ $saizInput = 5;
 	</div>
 	<div class="col-sm-<?php echo $saizInput?>">
 		<div class="input-group">
-			<label class="form-control">
-			Carian/Fix/(AntaraKurungan)
-			</label>
+			<label class="form-control">Carian/Fix/(AntaraKurungan)</label>
 		</div>
 	</div>
 </div>
@@ -139,12 +137,13 @@ for ( $u = 2 ; $u <= $ulang ; $u++ )
 			<span class="input-group-addon">
 				<input type="radio" name="ikut">ASC
 				<input type="radio" name="ikut" value="DESC">DESC
+				<br><br>LIMIT
 			</span>
 			<select class="form-control">
 			<!-- select name="susun" class="form-control" -->
 			<?php echo $pilihMedan; ?></select>
-			<span class="input-group-addon">
-			</span>
+			<input type="text" name="max" value="300" class="form-control">
+			<span class="input-group-addon"></span>
 		</div><!-- class="input-group" -->
 	</div>
 	<div class="col-sm-<?php echo $saizInput?>">
