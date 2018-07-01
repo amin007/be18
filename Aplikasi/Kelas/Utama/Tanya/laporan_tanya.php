@@ -380,7 +380,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("",newss) as newss,'
 			. 'concat_ws(" ",' . "\r"
 			. '		if (amt_hasil is null, "", concat_ws("="," hasil", concat(format(amt_hasil,0)," |") ) ),' . "\r"
-			//. '		if (amt_belanja is null, "", concat_ws("="," belanja", concat(format(amt_belanja,0)," |") ) ),' . "\r"
+			. '		if (amt_belanja is null, "", concat_ws("="," belanja", concat(format(amt_belanja,0)," |") ) ),' . "\r"
 			. '		if (amt_gaji is null, "", concat_ws("="," gaji", concat(format(amt_gaji,0)," |") ) ),' . "\r"
 			. '		if (amt_aset is null, "", concat_ws("="," aset", concat(format(amt_aset,0)," |") ) ),' . "\r"
 			//. '		if (amt_staf is null, "", concat_ws("="," staf", concat(format(amt_staf,0)," |") ) ),' . "\r"
