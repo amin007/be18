@@ -15,7 +15,7 @@ else
 	$paras = null; # untuk pelawat sahaja
 
 $iconFA['home2'] = '<i class="fa fa-home fa-2x" aria-hidden="true"></i>';
-$iconFA['video'] = '<i class="fa fa-video-camera" aria-hidden="true"></i>';
+$iconFA['video'] = '<i class="fas fa-video"></i>';
 
 echo "\n\n"; 
 //if ($paras == null): else: ?>
@@ -30,9 +30,9 @@ echo "\n\n";
 		<span class="navbar-toggler-icon"></span>
 	</button>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<!-- form class="form-inline w-90" -->
-	<input class="form-control w-70" type="text" placeholder="Search" aria-label="Search">
-<!-- /form></ class="form-inline" -->
+<form class="form-inline">
+	<input class="form-control" type="text" placeholder="Search" aria-label="Search">
+</form><!-- / class="form-inline" -->
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 <?php require 'menubar_atas.php'; ?>
 </nav>
