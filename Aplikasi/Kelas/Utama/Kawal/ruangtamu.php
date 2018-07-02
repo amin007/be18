@@ -49,6 +49,16 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		//exit;
 	}
 #==========================================================================================
+#-------------------------------------------------------------------------------------------
+	function keluar()
+	{
+		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
+		\Aplikasi\Kitab\Sesi::init();
+		\Aplikasi\Kitab\Sesi::destroy();
+		header('location: ' . URL);
+		//exit;
+	}
+#-------------------------------------------------------------------------------------------
 	public function pelawat()
 	{
 		# Set pemboleubah utama
@@ -60,14 +70,7 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, 'pelawat', $noInclude=0);
 	}
 #-------------------------------------------------------------------------------------------
-	function keluar()
-	{
-		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
-		\Aplikasi\Kitab\Sesi::init();
-		\Aplikasi\Kitab\Sesi::destroy();
-		header('location: ' . URL);
-		//exit;
-	}
+	function {}
 #-------------------------------------------------------------------------------------------
 	function semaknama($nama)
 	{
