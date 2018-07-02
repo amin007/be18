@@ -9,8 +9,8 @@ $iconFA['Stats'] = '<i class="fas fa-chart-bar"></i>';
 $iconFA['Ask'] = '<i class="fas fa-question-circle"></i>';
 $iconFA['Power'] = '<i class="fas fa-power-off"></i>';
 
-//$pilihMenu = 1;
-$pilihMenu = '4.1.1';
+$pilihMenu = 1;
+//$pilihMenu = '4.1.1';
 
 if($pilihMenu == '4.1.1'): echo "\n";?>
 <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
@@ -22,14 +22,16 @@ if($pilihMenu == '4.1.1'): echo "\n";?>
 				<?=$iconFA['User']?>Staf
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item"  href="<?php echo URL ?>biodata/ubah">
+					<?=$iconFA['User']?>Profile <?=$pengguna?>
+				</a>
+				<hr>
 				<a class="dropdown-item" href="<?php echo URL ?>rangkabaru/masukdata/1"><?=$iconFA['Barcode']?>Tambah Kes</a>
 				<a class="dropdown-item" href="<?php echo URL ?>operasi/batch"><?=$iconFA['Barcode']?>Semak Barcode</a>
 				<a class="dropdown-item" href="<?php echo URL ?>operasi/hantar"><?=$iconFA['Barcode']?>Hantar Kes</a>
 				<a class="dropdown-item" href="<?php echo URL ?>prosesan/batch"><?=$iconFA['Barcode']?>Terima Di Prosesan</a>
 				<hr>
-				<a class="dropdown-item" href="<?php echo URL ?>ruangtamu/logout">
-					<?=$iconFA['User']?>Keluar
-				</a>
+				<a class="dropdown-item" href="<?php echo URL ?>ruangtamu/logout"><?=$iconFA['User']?>Keluar</a>
 			</div>
 		</li>
 		<li class="nav-item dropdown">
