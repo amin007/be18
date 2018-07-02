@@ -16,7 +16,7 @@ $dpt_url = dpt_url();
 echo (empty($dpt_url[2])) ? null : '[' . $_GET['url'] . ']';
 ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="<?=FONTAWESOME?>" rel="stylesheet" type="text/css">
+<link href="<?=FONTAWESOME510?>" rel="stylesheet" type="text/css">
 <link href="<?=BOOTSTRAPCSS411?>" rel="stylesheet" type="text/css">
 <?php
 if (isset($this->css)) 
