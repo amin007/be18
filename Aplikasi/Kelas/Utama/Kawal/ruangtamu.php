@@ -34,6 +34,17 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 ##-----------------------------------------------------------------------------------------
+	public function paparKandungan2($folder, $fail, $template=0)
+	{
+		$jenis = $this->papar->pilihTemplate($template);
+		//echo '<br>$jenis: ' . $jenis;
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/' . $fail, $jenis, $noInclude=0); # $noInclude=0
+			//'mobile/mobile',$jenis,0); # $noInclude=0
+		//*/
+	}
+##-----------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai)
 	{
 		echo '<pre>$senarai:<br>';
@@ -77,7 +88,7 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		//$this->paparKandungan($this->_folder, 'index', $noInclude=0);
-		$this->paparKandungan2($this->_folder, 'index', '4.1.1');
+		$this->paparKandungan2($this->_folder, 'index', '6'); # 6=>4.1.1
 	}
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
