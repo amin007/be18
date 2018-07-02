@@ -70,7 +70,15 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, 'pelawat', $noInclude=0);
 	}
 #-------------------------------------------------------------------------------------------
-	function {}
+	function jalan()
+	{
+		# Set pemboleubah utama
+		//echo '<hr>Nama function :' .__FUNCTION__ . '<hr>';
+
+		# Pergi papar kandungan
+		//$this->paparKandungan($this->_folder, 'index', $noInclude=0);
+		$this->paparKandungan2($this->_folder, 'index', '4.1.1');
+	}
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
 }
