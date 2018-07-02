@@ -2,10 +2,12 @@
 $nav = 'class="dropdown-toggle" data-toggle="dropdown"';
 //<ul class="nav navbar-nav navbar-right">
 $classUL = 'nav navbar-nav navbar-right';
-$icon['User'] = '<span class="glyphicon glyphicon-user"></span>';
-$icon['Barcode'] = '<span class="glyphicon glyphicon-barcode"></span>';
-$icon['Filter'] = '<span class="glyphicon glyphicon-filter"></span>';
-$icon['Stats'] = '<span class="glyphicon glyphicon-stats"></span>';
+$icon['User'] = '<i class="fas fa-user"></i>';
+$icon['Barcode'] = '<i class="fas fa-barcode"></i>';
+$icon['Filter'] = '<i class="fas fa-filter"></i>';
+$icon['Stats'] = '<i class="fas fa-chart-bar"></i>';
+$icon['Ask'] = '<i class="fas fa-question-circle"></i>';
+$icon['Power'] = '<i class="fas fa-power-off"></i>';
 
 //$pilihMenu = 1;
 $pilihMenu = '4.1.1';
@@ -17,19 +19,23 @@ if($pilihMenu == '4.1.1'): echo "\n";?>
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Profile
+				<?=$icon['User']?>Staf
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="<?php echo URL ?>rangkabaru/masukdata/1"><?=$icon['Barcode']?>Tambah Kes</a>
 				<a class="dropdown-item" href="<?php echo URL ?>operasi/batch"><?=$icon['Barcode']?>Semak Barcode</a>
 				<a class="dropdown-item" href="<?php echo URL ?>operasi/hantar"><?=$icon['Barcode']?>Hantar Kes</a>
 				<a class="dropdown-item" href="<?php echo URL ?>prosesan/batch"><?=$icon['Barcode']?>Terima Di Prosesan</a>
+				<hr>
+				<a class="dropdown-item" href="<?php echo URL ?>ruangtamu/logout">
+					<?=$icon['User']?>Keluar
+				</a>
 			</div>
 		</li>
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Cari
+				<?=$icon['Filter']?>Cari
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="#">Action1</a>
@@ -39,7 +45,7 @@ if($pilihMenu == '4.1.1'): echo "\n";?>
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Laporan
+				<?=$icon['Stats']?>Laporan
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="#">Action1</a>
@@ -49,7 +55,7 @@ if($pilihMenu == '4.1.1'): echo "\n";?>
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Bantuan
+				<?=$icon['Ask']?>Bantuan
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="#">Action1</a>
