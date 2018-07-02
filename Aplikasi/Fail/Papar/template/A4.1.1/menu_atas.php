@@ -16,6 +16,7 @@ else
 
 $iconFA['home2'] = '<i class="fa fa-home fa-2x" aria-hidden="true"></i>';
 $iconFA['video'] = '<i class="fas fa-video"></i>';
+$iconFA['search'] = '<i class="fas fa-search"></i>';
 
 echo "\n\n"; 
 //if ($paras == null): else: ?>
@@ -30,8 +31,15 @@ echo "\n\n";
 		<span class="navbar-toggler-icon"></span>
 	</button>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<form class="form-inline">
-	<input class="form-control" type="text" placeholder="Search" aria-label="Search">
+<form class="mx-2 my-auto d-inline w-50" action="<?php echo URL ?>cari/pada/400/1" method="POST">
+<div class="input-group">
+	<div class="input-group-btn">
+		<a class="btn btn-info"><?php echo $iconFA['search'] ?></a>
+	</div>
+	<input type="hidden" name="namajadual" value="syarikat">
+	<input type="text" name="jika[cari][1]" placeholder="Cari Newss / Nama" class="form-control" />
+	<input type="hidden" name="susun" value="nama ASC">
+</div>
 </form><!-- / class="form-inline" -->
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 <?php require 'menubar_atas.php'; ?>
