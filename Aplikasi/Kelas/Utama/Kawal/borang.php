@@ -61,6 +61,20 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
+	public function soalan4()
+	{
+		# Set pemboleubah utama
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		//$this->_folder = 'borang/kp205/';
+		$this->_folder = 'borang';
+		$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
+
+		# Pergi papar kandungan
+		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
+		//echo '<br>$fail = ' . $fail[3] . '<hr>';
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan($this->_folder, $fail[3], $noInclude=1);
+	}
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
 }
