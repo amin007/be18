@@ -69,6 +69,18 @@ class Qss extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
+	public function suku2($action = 'hasil')
+	{
+		# Set pemboleubah utama
+		$this->papar->tajuk = namaClass($this);
+		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
+		$pilihFail = $this->pilihFail($action);
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1);
+	}
+#-------------------------------------------------------------------------------------------
 	function pilihFail($action = 'hasil')
 	{
 		if($action == 'rangka'):
@@ -84,8 +96,6 @@ class Qss extends \Aplikasi\Kitab\Kawal
 
 		return $pilihFail;
 	}
-#-------------------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
