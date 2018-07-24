@@ -61,7 +61,8 @@
 </tr>
 <tr>
 	<td align="left" class="textdescrp2" >&nbsp;&nbsp;&nbsp;1.1 Hasil kendalian / Perolehan / Jualan&nbsp;<a href="nota/nota-1.php?a=315&b=01&c=49" 
-	onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )"><img src="graphics/I ICON.jpg" width="10" height="10"/></a></td> 
+	onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
+	<i class="fas fa-info-circle"></i></a></td>
 <?php $ulang = array('F0007a','F0007b','F0007c','F0007d','F0008a','F0008b','F0008c','F0008d');
 foreach ($ulang as $papar):?>
 	<td align="left" ><div align="left"><?php echo $papar ?>
@@ -73,7 +74,8 @@ foreach ($ulang as $papar):?>
 </tr>
 <tr>
 	<td align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;1.2 Pendapatan lain&nbsp;<a href="nota/nota-1-3.php" 
-	onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )"><img src="graphics/I ICON.jpg" width="10" height="10"/></a></td>
+	onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
+	<i class="fas fa-info-circle"></i></a></td>
 <?php $ulang = array('F0009a','F0009b','F0009c','F0009d','F0010a','F0010b','F0010c','F0010d');
 foreach ($ulang as $papar):?>
 	<td align="left" ><div align="left"><?php echo $papar ?>
@@ -121,7 +123,7 @@ foreach ($ulang as $papar):?>
 <tr>
 	<td align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;2.1 Perbelanjaan kendalian / Kos Jualan &nbsp;
 		<a href="nota/nota-2-1.php?b=01" onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
-		<img src="graphics/I ICON.jpg" width="10" height="10"/></a>
+		<i class="fas fa-info-circle"></i></a>
 	</td>
 <?php $ulang = array('F0013a','F0013b','F0013c','F0013d','F0014a','F0014b','F0014c','F0014d');
 foreach ($ulang as $papar):?>
@@ -135,7 +137,7 @@ foreach ($ulang as $papar):?>
 <tr>
 	<td align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;2.2 Perbelanjaan lain&nbsp;
 		<a href="nota/nota-2-3.php" onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
-		<img src="graphics/I ICON.jpg" width="10" height="10"/></a>
+		<i class="fas fa-info-circle"></i></a>
 	</td>
 <?php $ulang = array('F0015a','F0015b','F0015c','F0015d','F0016a','F0016b','F0016c','F0016d');
 foreach ($ulang as $papar):?>
@@ -149,7 +151,7 @@ foreach ($ulang as $papar):?>
 <tr>
 	<td align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;2.3 Jumlah Gaji & Upah &nbsp;
 		<a href="nota/nota-2-4.php" onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
-		<img src="graphics/I ICON.jpg" width="10" height="10"/></a>
+		<i class="fas fa-info-circle"></i></a>
 	</td>
 <?php $ulang = array('F0017a','F0017b','F0017c','F0017d','F0018a','F0018b','F0018c','F0018d');
 foreach ($ulang as $papar):?>
@@ -198,7 +200,7 @@ foreach ($ulang as $papar):?>
 <tr>
 	<td height="27" align="left" class="textdescrp1"><strong>3. JUMLAH PEKERJA</strong> &nbsp;
 		<a href="nota/nota-3.php" onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
-		<img src="graphics/I ICON.jpg" width="10" height="10" class="textdescrp1"/></a>
+		<i class="fas fa-info-circle"></i></a>
 	</td>
 <?php for ($i = 1; $i <=3; $i++):?>
 	<td align="left" ><div align="left">RM
