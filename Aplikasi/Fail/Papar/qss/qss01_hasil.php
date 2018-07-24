@@ -2,7 +2,8 @@
 $pautan = URL . 'sumber/rangka-dawai/qss/';
 \Aplikasi\Kitab\Sesi::init();
 //echo '<pre>'; print_r($_SESSION); echo '</pre>';
-//include 'diatas.php'; 
+//include 'diatas.php';
+include 'diatas-am.php';
 //include 'menu_atas.php';
 /*
 <div class="container_12">
