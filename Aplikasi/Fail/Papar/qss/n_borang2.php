@@ -48,7 +48,7 @@
 <!-- ************************************************************************************************************************************ -->
 <table width="99%" border="0" align="center" id="tbl2">
 <tr>
-	<td height="27" colspan="3" bgcolor="#FFFF99"><div align="center"><b>BAHAGIAN A: HASIL (Tidak termasuk CBP)</b></div></td>
+	<td height="27" colspan="9" bgcolor="#FFFF99"><div align="center"><b>BAHAGIAN A: HASIL (Tidak termasuk CBP)</b></div></td>
 </tr>
 <tr>
 	<td height="39" align="left" bgcolor="#FFFF99" class="textdescrp1"><strong>1. HASIL</strong></td>
@@ -60,74 +60,71 @@
 	<td bgcolor="#FFFF99"><div align="center">&nbsp;1S 2018</div></td>
 </tr>
 <tr>
-	<td align="left" class="textdescrp2" >&nbsp;&nbsp;&nbsp;1.1 Hasil kendalian / Perolehan / Jualan&nbsp;<a href="nota/nota-1.php?a=315&b=01&c=49" 
-	onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
+	<td align="left" class="textdescrp2" >1.1 Hasil kendalian / Perolehan / Jualan
+	<a href="nota/nota-1.php?a=315&b=01&c=49" onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
 	<i class="fas fa-info-circle"></i></a></td>
 <?php $ulang = array('F0007a','F0007b','F0007c','F0007d','F0008a','F0008b','F0008c','F0008d');
 foreach ($ulang as $papar):?>
-	<td align="left" ><div align="left"><?php echo $papar ?>
+	<td align="left"><?php echo $papar ?><br>
 		<input type="text" id="<?php echo $papar ?>" style="width:120px;text-align:right;" value="" 
 		class="auto" data-v-max="999999999999" data-v-min="-9999999999999"/>
-     </div>
 	</td>
 <?php endforeach; ?>
 </tr>
 <tr>
-	<td align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;1.2 Pendapatan lain&nbsp;<a href="nota/nota-1-3.php" 
-	onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
+	<td align="left" class="textdescrp2">1.2 Pendapatan lain
+	<a href="nota/nota-1-3.php" onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
 	<i class="fas fa-info-circle"></i></a></td>
 <?php $ulang = array('F0009a','F0009b','F0009c','F0009d','F0010a','F0010b','F0010c','F0010d');
 foreach ($ulang as $papar):?>
-	<td align="left" ><div align="left"><?php echo $papar ?>
+	<td align="left"><?php echo $papar ?><br>
 		<input type="text" id="<?php echo $papar ?>" style="width:120px;text-align:right;" value="" 
 		class="auto" data-v-max="999999999999" data-v-min="-9999999999999"/>
-     </div>
 	</td>
 <?php endforeach; ?>
 </tr>
 <tr>
-	<td height="28" align="left" class="textdescrp1">&nbsp;&nbsp;&nbsp;1.3 JUMLAH HASIL</td>
+	<td height="28" align="left" class="textdescrp1">1.3 JUMLAH HASIL</td>
 <?php $ulang = array('F0011a','F0011b','F0011c','F0011d','F0012a','F0012b','F0012c','F0012d');
 foreach ($ulang as $papar):?>
-	<td align="left" ><div align="left"><?php echo $papar ?>
+	<td align="left"><?php echo $papar ?><br>
 		<input type="text" id="<?php echo $papar ?>" 
 		style="width:120px;text-align:right;background-color:#e1e4e2;" 
 		value="" class="auto" data-v-max="999999999999" data-v-min="-9999999999999" readonly/>
-     </div>
 	</td>
 <?php endforeach; ?>
 </tr>
 <tr>
-	<td colspan="4" height="53" align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;
-	1.4 Jika jumlah hasil yang dilaporkan untuk suku tahun ini meningkat atau menurun 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	sekurang-kurangnya 30% berbanding suku tahun sebelumnya, sila nyatakan sebab 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;berlakunya perbezaan tersebut.
+	<td colspan="1" height="53" align="left" class="textdescrp2">
+	1.4 Jika jumlah hasil yang dilaporkan untuk suku tahun ini meningkat<br>
+	atau menurun sekurang-kurangnya 30% berbanding suku tahun<br>
+	sebelumnya,	sila nyatakan sebab berlakunya perbezaan tersebut.
 	</td>
-	<td colspan="4" align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
-	<textarea name="hasil_a" id="hasil_a" cols="50" rows="3" style="resize:none;" tabindex="9">KERETA SEDANG DI BAIK PULIH SEPANJANG BULAN MAC</textarea>
+	<td colspan="6" align="left">
+		<textarea name="hasil_a" id="hasil_a" cols="100" rows="3"
+		style="resize:none;" tabindex="9">KERETA SEDANG DI BAIK PULIH SEPANJANG BULAN MAC</textarea>
 	</td>
 </tr>
 <tr>
-	<td height="27" colspan="3" bgcolor="#FFFF99"><div align="center"><b>BAHAGIAN B: PERBELANJAAN (Tidak termasuk CBP)</b></div></td>
+	<td height="27" colspan="9" bgcolor="#FFFF99"><div align="center"><b>BAHAGIAN B: PERBELANJAAN (Tidak termasuk CBP)</b></div></td>
 </tr>
 <tr>
-	<td width="516" height="39" align="left" bgcolor="#FFFF99" class="textdescrp1"><strong>2. PERBELANJAAN</strong></td>
+	<td height="39" align="left" bgcolor="#FFFF99" class="textdescrp1"><strong>2. PERBELANJAAN</strong></td>
 	<td bgcolor="#FFFF99">Okt 2017</td><td bgcolor="#FFFF99">Nov 2017</td><td bgcolor="#FFFF99">Dis 2017</td>
 	<!-- td width="202" bgcolor="#FFFF99"  ><div align="center">Suku Tahun (4S 2017)<br />1 Oktober - 31 Disember 2017</div></td -->
-	<td width="202" bgcolor="#FFFF99"  ><div align="center">(4S 2017)</div></td>
+	<td bgcolor="#FFFF99"  ><div align="center">(4S 2017)</div></td>
 	<td bgcolor="#FFFF99">Jan 2018</td><td bgcolor="#FFFF99">Feb 2018</td><td bgcolor="#FFFF99">Mac 2018</td>
 	<!-- td width="196" bgcolor="#FFFF99"  ><div align="center">Suku Tahun (1S 2018)<br />1 Januari - 31 Mac 2018</div></td -->
-	<td width="196" bgcolor="#FFFF99"  ><div align="center">(1S 2018)</div></td>
+	<td bgcolor="#FFFF99"  ><div align="center">(1S 2018)</div></td>
 </tr>
 <tr>
-	<td align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;2.1 Perbelanjaan kendalian / Kos Jualan &nbsp;
+	<td align="left" class="textdescrp2">2.1 Perbelanjaan kendalian / Kos Jualan
 		<a href="nota/nota-2-1.php?b=01" onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
 		<i class="fas fa-info-circle"></i></a>
 	</td>
 <?php $ulang = array('F0013a','F0013b','F0013c','F0013d','F0014a','F0014b','F0014c','F0014d');
 foreach ($ulang as $papar):?>
-	<td align="left" ><div align="left"><?php echo $papar ?>
+	<td align="left" ><div align="left"><?php echo $papar ?><br>
 		<input type="text" id="<?php echo $papar ?>" style="width:120px;text-align:right;" value="" 
 		class="auto" data-v-max="999999999999" data-v-min="-9999999999999"/>
      </div>
@@ -135,13 +132,13 @@ foreach ($ulang as $papar):?>
 <?php endforeach; ?>
 </tr>
 <tr>
-	<td align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;2.2 Perbelanjaan lain&nbsp;
+	<td align="left" class="textdescrp2">2.2 Perbelanjaan lain
 		<a href="nota/nota-2-3.php" onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
 		<i class="fas fa-info-circle"></i></a>
 	</td>
 <?php $ulang = array('F0015a','F0015b','F0015c','F0015d','F0016a','F0016b','F0016c','F0016d');
 foreach ($ulang as $papar):?>
-	<td align="left" ><div align="left"><?php echo $papar ?>
+	<td align="left" ><div align="left"><?php echo $papar ?><br>
 		<input type="text" id="<?php echo $papar ?>" style="width:120px;text-align:right;" value="" 
 		class="auto" data-v-max="999999999999" data-v-min="-9999999999999"/>
      </div>
@@ -149,13 +146,13 @@ foreach ($ulang as $papar):?>
 <?php endforeach; ?>
 </tr>
 <tr>
-	<td align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;2.3 Jumlah Gaji & Upah &nbsp;
+	<td align="left" class="textdescrp2">2.3 Jumlah Gaji & Upah
 		<a href="nota/nota-2-4.php" onClick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
 		<i class="fas fa-info-circle"></i></a>
 	</td>
 <?php $ulang = array('F0017a','F0017b','F0017c','F0017d','F0018a','F0018b','F0018c','F0018d');
 foreach ($ulang as $papar):?>
-	<td align="left" ><div align="left"><?php echo $papar ?>
+	<td align="left" ><div align="left"><?php echo $papar ?><br>
 		<input type="text" id="<?php echo $papar ?>" style="width:120px;text-align:right;" value="" 
 		class="auto" data-v-max="999999999999" data-v-min="-9999999999999"/>
      </div>
@@ -163,10 +160,10 @@ foreach ($ulang as $papar):?>
 <?php endforeach; ?>
 </tr>
 <tr>
-	<td height="31" align="left" class="textdescrp1">&nbsp;&nbsp;&nbsp;<span class="textdescrp2">2.4 JUMLAH PERBELANJAAN</span></td>
+	<td height="31" align="left" class="textdescrp1"><span class="textdescrp2">2.4 JUMLAH PERBELANJAAN</span></td>
 <?php $ulang = array('F0019a','F0019b','F0019c','F0019d','F0020a','F0020b','F0020c','F0020d');
 foreach ($ulang as $papar):?>
-	<td align="left" ><div align="left"><?php echo $papar ?>
+	<td align="left" ><div align="left"><?php echo $papar ?><br>
 		<input type="text" id="<?php echo $papar ?>" 
 		style="width:120px;text-align:right;background-color:#e1e4e2;" value="" 
 		class="auto" data-v-max="999999999999" data-v-min="-9999999999999"/>
@@ -175,27 +172,27 @@ foreach ($ulang as $papar):?>
 <?php endforeach; ?>
 </tr>
 <tr>
-	<td colspan="4" height="60" align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;
-	2.5 Jika jumlah perbelanjaan yang dilaporkan untuk suku tahun ini meningkat atau 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	menurun sekurang-kurangnya 30% berbanding suku tahun sebelumnya, sila 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nyatakan sebab berlakunya perbezaan tersebut.</td>
-	<td colspan="4" align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<textarea name="perbelanjaan_b" id="perbelanjaan_b" cols="50" rows="3" 
-	style="resize:none;" tabindex="20">KERETA SEDANG DI BAIK PULIH SEPANJANG BULAN MAC</textarea>
+	<td colspan="1" height="60" align="left" class="textdescrp2">
+	2.5 Jika jumlah perbelanjaan yang dilaporkan untuk suku tahun ini meningkat<br>
+	atau menurun sekurang-kurangnya 30% berbanding suku tahun<br>
+	sebelumnya,	sila nyatakan sebab berlakunya perbezaan tersebut.
+	</td>
+	<td colspan="6" align="left">
+		<textarea name="perbelanjaan_b" id="perbelanjaan_b" cols="100" rows="3" 
+		style="resize:none;" tabindex="20">KERETA SEDANG DI BAIK PULIH SEPANJANG BULAN MAC</textarea>
 	</td>
 </tr>
 <tr>
-	<td height="27" colspan="3" bgcolor="#FFFF99"><div align="center"><b>BAHAGIAN C: BILANGAN PEKERJA (Pada akhir suku tahun)</b></div></td>
+	<td height="27" colspan="9" bgcolor="#FFFF99"><div align="center"><b>BAHAGIAN C: BILANGAN PEKERJA (Pada akhir suku tahun)</b></div></td>
 </tr>
 <tr>
-	<td width="516" height="39" align="left" bgcolor="#FFFF99" class="textdescrp1">&nbsp;</td>
+	<td height="39" align="left" bgcolor="#FFFF99" class="textdescrp1">&nbsp;</td>
 	<td bgcolor="#FFFF99">Okt 2017</td><td bgcolor="#FFFF99">Nov 2017</td><td bgcolor="#FFFF99">Dis 2017</td>
 	<!-- td width="202" bgcolor="#FFFF99"  ><div align="center">Suku Tahun (4S 2017)<br />1 Oktober - 31 Disember 2017</div></td -->
-	<td width="202" bgcolor="#FFFF99"  ><div align="center">(4S 2017)</div></td>
+	<td bgcolor="#FFFF99"  ><div align="center">(4S 2017)</div></td>
 	<td bgcolor="#FFFF99">Jan 2018</td><td bgcolor="#FFFF99">Feb 2018</td><td bgcolor="#FFFF99">Mac 2018</td>
 	<!-- td width="196" bgcolor="#FFFF99"  ><div align="center">Suku Tahun (1S 2018)<br />1 Januari - 31 Mac 2018</div></td -->
-	<td width="196" bgcolor="#FFFF99"  ><div align="center">(1S 2018)</div></td>
+	<td bgcolor="#FFFF99"  ><div align="center">(1S 2018)</div></td>
 </tr>
 <tr>
 	<td height="27" align="left" class="textdescrp1"><strong>3. JUMLAH PEKERJA</strong> &nbsp;
@@ -209,7 +206,7 @@ foreach ($ulang as $papar):?>
 		</div>
 	</td>
 <?php endfor; ?>
-	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<td>
 		<input  name="f2122c_p" type="text" id="f2122c_p" 
 		style="width:120px;text-align:right;" value="1" 
 		tabindex="21" class="auto" data-v-max="999999999999" data-v-min="-9999999999999"/>
@@ -221,7 +218,7 @@ foreach ($ulang as $papar):?>
 		</div>
 	</td>
 <?php endfor; ?>
-	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<td>
 		<input  name="f2122c_c" type="text" id="f2122c_c" 
 		style="width:120px;text-align:right;" value="1" tabindex="22"
 		onblur="this.value=addCommas(this.value);info_pekerja_A();" 
@@ -229,13 +226,14 @@ foreach ($ulang as $papar):?>
 		F0022</td>
 </tr>
 <tr>
-	<td colspan="4" height="60" align="left" class="textdescrp2">&nbsp;&nbsp;&nbsp;
-	3.1 Jika jumlah pekerja yang dilaporkan untuk suku tahun ini meningkat atau 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	menurun sekurang-kurangnya 30% berbanding suku tahun sebelumnya, sila 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nyatakan sebab berlakunya perbezaan tersebut.</td>
-	<td colspan="4" align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<textarea name="pekerja_c" id="pekerja_c" cols="50" rows="3" tabindex="23" style="resize:none;"></textarea >
+	<td colspan="1" height="60" align="left" class="textdescrp2">
+	3.1 Jika jumlah pekerja yang dilaporkan untuk suku tahun ini meningkat<br>
+	atau menurun sekurang-kurangnya 30% berbanding suku tahun<br>
+	sebelumnya,	sila nyatakan sebab berlakunya perbezaan tersebut.
+	</td>
+	<td colspan="6" align="left">
+		<textarea name="pekerja_c" id="pekerja_c" cols="90" rows="3" 
+		style="resize:none;" tabindex="23"></textarea >
 	</td>
 </tr>
 </table>
