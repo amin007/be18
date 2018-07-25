@@ -22,7 +22,14 @@ include 'diatas-am.php';
 	<style> .readonlyTAB{ background:#999;} </style>
 	<script  language='JavaScript' type='text/javascript' src='<?php echo $pautan?>js_file/js/validasi/a_internaluser.js'></SCRIPT>	
 </div>
-*/?>
+*/
+$link[0]= 'https://qss.stats.gov.my/qssv2/pdf/pdf3.php?no_siri='
+. $this->medanID . '&sukutahun=1&tahun=2018';
+$link[1] = 'https://qss.stats.gov.my/qssv2/pagemenu.php?pref='
+. $this->suku .'&getSerial=' . $this->medanID . '';
+?>
+<br>Suku 1 : <a target="_blank" href="<?php echo $link[0] ?>"><?php echo $link[0] ?></a>
+<br>Suku 2 : <a target="_blank" href="<?php echo $link[1] ?>"><?php echo $link[1] ?></a>
 <!-- isi borang mula ########################################################################################################## -->
 <?php include 'n_borang2.php'; ?>
 <!-- isi borang tamat ########################################################################################################## -->
