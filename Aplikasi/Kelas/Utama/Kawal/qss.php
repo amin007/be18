@@ -69,11 +69,13 @@ class Qss extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $pilihFail, $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function suku2($action = 'hasil')
+	public function suku2($medanID = null, $suku = 2,$action = 'hasil')
 	{
 		# Set pemboleubah utama
 		$this->papar->tajuk = namaClass($this);
 		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
+		$this->papar->suku = $suku;
+		$this->papar->medanID = $medanID;
 		$pilihFail = $this->pilihFail($action);
 
 		# Pergi papar kandungan
