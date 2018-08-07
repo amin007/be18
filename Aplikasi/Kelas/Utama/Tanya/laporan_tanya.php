@@ -267,6 +267,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'concat_ws("|",ATTENTION_NAME_A,TEL_NO_A,FAX_NO_A,EMAIL_A,'
 			//. 'ATTENTION_NAME_B,TEL_NO_B,FAX_NO_B,EMAIL_B,'
 			//. 'ATTENTION_NAME_C,TEL_NO_C,FAX_NO_C,EMAIL_C'
+			//CONCAT(UCASE(LEFT(,1)),LCASE(SUBSTRING(,2)))
 		$senaraiMedan = array(
 			0 => 'kod',
 			1 => 'f2',
