@@ -76,23 +76,24 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->carian[] = 'semua';
 		$this->papar->c1 = $this->papar->c2 = null;
 		$this->papar->_pilih = $pilih;
-		//$this->papar->template = 'biasa';
-		$this->papar->template = 'bootstrap_table';
+		$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap_table';
 		//$this->papar->template = 'bootstrap';
 		//$this->papar->template = 'khas01';
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
-	function panggilDB($pilih,$idBorang)
+	function panggilDB($pilih,$myJadual,$idBorang)
 	{
 		# Set pembolehubah utama
 		list($myTable, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
-		$this->papar->senarai[$myTable] = $this->tanya->//cariSql
+		//$myJadual = explode('.', $myTable);
+		$this->papar->senarai[$myJadual] = $this->tanya->//cariSql
 			cariSemuaData
 			($myTable, $medan, $carian, $susun);
-		if( count($this->papar->senarai[$myTable]) == 0 ):
+		if( count($this->papar->senarai[$myJadual]) == 0 ):
 			//echo 'jumlah $senarai kosong';
-			$this->papar->senarai[$myTable] = null;
+			$this->papar->senarai[$myJadual] = null;
 		endif;//*/
 		# Set pembolehubah untuk Papar
 		$this->kandunganPaparan($pilih, $myTable);
@@ -203,19 +204,20 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[3], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function soalanhasil($idBorang)
+	public function soalanhasil($myJadual,$idBorang)
 	{
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$this->panggilDB('infoIctHasil',$idBorang);
+		$this->panggilDB('infoIctHasil',$myJadual,$idBorang);
+		//$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
 
 		# Pergi papar kandungan
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
-		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
-		//$this->paparKandungan($this->_folder, $fail[3], $noInclude=1);
+		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
