@@ -109,7 +109,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 	public function susunPembolehubah($pilih,$idBorang)
 	{
 		//$pilih = null;
-		if($pilih == 'infoIctHasil'): echo "\$pilih = $pilih<br>";
+		if($pilih == 'infoIctHasil'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualInfoIctHasil($idBorang);
 		elseif($pilih == 'product'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualProduct();
@@ -124,7 +124,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		elseif($pilih == 'payment'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualPayment();
 		else: //echo "\$pilih = $pilih <br>";
-			$myTable = $medan = $carian= $susun = null;
+			$myTable = $medan = $carian = $susun = null;
 		endif;
 
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
@@ -133,7 +133,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 	function jadualInfoIctHasil($idBorang)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		list($idUser,$namaPendek) = $this->tanyaDataSesi();
+		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
 		$myTable = 'data_malaysiabaru.mk_tr2010_hasil';
 		$medan = '*';
 		$carian = $susun = null;
