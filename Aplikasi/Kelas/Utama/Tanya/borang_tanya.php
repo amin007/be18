@@ -106,11 +106,11 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($idUser,$namaPendek);
 	}
 #---------------------------------------------------------------------------------------------------#
-	public function susunPembolehubah($pilih)
+	public function susunPembolehubah($pilih,$idBorang)
 	{
 		//$pilih = null;
-		if($pilih == 'infoIctHasil'): //echo "\$pilih = $pilih <br>";
-			list($myTable, $medan, $carian, $susun) = $this->jadualInfoIctHasil();
+		if($pilih == 'infoIctHasil'): echo "\$pilih = $pilih<br>";
+			list($myTable, $medan, $carian, $susun) = $this->jadualInfoIctHasil($idBorang);
 		elseif($pilih == 'product'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualProduct();
 		elseif($pilih == 'report'): //echo "\$pilih = $pilih <br>";
@@ -130,17 +130,18 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
 #---------------------------------------------------------------------------------------------------#
-	function jadualInfoIctHasil()
+	function jadualInfoIctHasil($idBorang)
 	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		list($idUser,$namaPendek) = $this->tanyaDataSesi();
-		$myTable = 'mk_tr2010_hasil';
+		$myTable = 'data_malaysiabaru.mk_tr2010_hasil';
 		$medan = '*';
 		$carian = $susun = null;
 		# semak database
-			/*$carian[] = array('fix'=>'x=', # cari x= / %like% / xlike
+			$carian[] = array('fix'=>'x=', # cari x= / %like% / xlike
 				'atau'=>'WHERE', # WHERE / OR / AND
-				'medan' => 'username', # cari dalam medan apa
-				'apa' => $namaPendek); # benda yang dicari//*/
+				'medan' => 'newss', # cari dalam medan apa
+				'apa' => $idBorang); # benda yang dicari//*/
 
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
