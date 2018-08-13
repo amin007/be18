@@ -50,6 +50,133 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	}
 #==========================================================================================
 #-------------------------------------------------------------------------------------------
+	function debugKandunganPaparan()
+	{
+		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		echo '<pre>';
+		echo '<br>$this->papar->senarai : '; print_r($this->papar->senarai);
+		echo '<br>$this->papar->myTable : '; print_r($this->papar->myTable);
+		echo '<br>$this->papar->_jadual : '; print_r($this->papar->_jadual);
+		echo '<br>$this->papar->carian : '; print_r($this->papar->carian);
+		echo '<br>$this->papar->c1 : '; print_r($this->papar->c1);
+		echo '<br>$this->papar->c2 : '; print_r($this->papar->c2);
+		if(isset($this->papar->medan)):
+			echo '<br>$this->papar->medan : '; print_r($this->papar->medan);
+		endif;
+		echo '<br>$this->papar->_pilih : '; print_r($this->papar->_pilih);
+		echo '<br>$this->papar->template : '; print_r($this->papar->template);
+		echo '</pre>';
+	}
+#-------------------------------------------------------------------------------------------
+	function kandunganPaparan($pilih, $myTable)
+	{
+		//$this->papar->senarai[$myTable] = null;
+		$this->papar->myTable = $myTable;
+		$this->papar->_jadual = $myTable;
+		$this->papar->carian[] = 'semua';
+		$this->papar->c1 = $this->papar->c2 = null;
+		$this->papar->_pilih = $pilih;
+		//$this->papar->template = 'biasa';
+		$this->papar->template = 'bootstrap_table';
+		//$this->papar->template = 'bootstrap';
+		//$this->papar->template = 'khas01';
+		//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function panggilDB($pilih)
+	{
+		# Set pembolehubah utama
+		list($myTable, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih);
+		$this->papar->senarai[$myTable] = $this->tanya->//cariSql
+			cariSemuaData
+			($myTable, $medan, $carian, $susun);
+		if( count($this->papar->senarai[$myTable]) == 0 ):
+			//echo 'jumlah $senarai kosong';
+			$this->papar->senarai[$myTable] = null;
+		endif;//*/
+		# Set pembolehubah untuk Papar
+		$this->kandunganPaparan($pilih, $myTable);
+		//$this->debugKandunganPaparan($pilih, $myTable);
+	}
+#-------------------------------------------------------------------------------------------
+	function tambahMedanDB($pilih)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		list($myTable) = $this->tanya->tambahPembolehubah($pilih);
+		$this->papar->medan = $this->tanya->//paparMedan
+			//paparMedan02 //pilihMedan //pilihMedan02
+			pilihMedan02($myTable);//*/
+
+		# Set pembolehubah untuk Papar
+		$this->papar->_jadual = $myTable;
+	}
+#-------------------------------------------------------------------------------------------
+	public function updateID($pilih)
+	{
+		# ubahsuai $posmen
+		list($posmen,$senaraiJadual,$myTable,$medanID) = $this->ubahsuaiPost($pilih);
+		//echo '<br>$dataID=' . $dataID . '<br>';
+		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{# mula ulang table
+			$this->tanya->//ubahSqlSimpan
+			ubahSimpan
+			($posmen[$jadual], $jadual, $medanID);
+		}# tamat ulang table
+
+		# pergi papar kandungan
+		$lokasi = 'vendor/profile';
+		//echo '<br>location: ' . URL . $lokasi;
+		header('location: ' . URL . $lokasi); //*/
+	}
+#-------------------------------------------------------------------------------------------
+	function ubahsuaiPost($pilih)
+	{
+		list($senaraiJadual,$medanID) = $this->tanya->pilihJadual($pilih);
+
+		$posmen = array();
+		foreach ($_POST as $myTable => $value):
+			if ( in_array($myTable,$senaraiJadual) ):
+				foreach ($value as $kekunci => $papar)
+				{
+					$posmen[$myTable][$kekunci] = bersih($papar);
+					//$posmen[$myTable][$medanID] = $dataID;
+				}
+		endif; endforeach;//*/
+
+		//echo '<pre>$pilih='; print_r($pilih); echo '</pre>';
+		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
+		//echo '<pre>$medanID='; print_r($medanID); echo '</pre>';
+		//echo '<pre>$dataID='; print_r($dataID); echo '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+		return array($posmen,$senaraiJadual,$senaraiJadual[0],$medanID); # pulangkan nilai
+	}
+#-------------------------------------------------------------------------------------------
+	public function insertID($pilih)
+	{
+		# ubahsuai $posmen
+		list($posmen,$senaraiJadual,$myTable) = $this->ubahsuaiPost2($pilih);
+		//echo '<hr><pre>$_POST='; print_r($_POST); echo '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{# mula ulang table
+			//$this->tanya->tambahSql($jadual, $posmen[$jadual]);
+			$this->tanya->tambahData($jadual, $posmen[$jadual]);
+		}# tamat ulang table
+
+		# pergi papar kandungan
+		$lokasi = '' . $myTable;;
+		//echo '<br>location: ' . URL . $lokasi;
+		header('location: ' . URL . $lokasi); //*/
+	}
+#-------------------------------------------------------------------------------------------
+#==========================================================================================
+#-------------------------------------------------------------------------------------------
 	public function contoh()
 	{
 		# Set pemboleubah utama
@@ -74,6 +201,21 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[3], $noInclude=1);
+	}
+#-------------------------------------------------------------------------------------------
+	public function soalanhasil($idborang)
+	{
+		# Set pemboleubah utama
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		$this->panggilDB('infoIctHasil');
+		$this->_folder = 'borang';
+
+		# Pergi papar kandungan
+		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
+		//echo '<br>$fail = ' . $fail[3] . '<hr>';
+		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
+		//$this->paparKandungan($this->_folder, $fail[3], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
