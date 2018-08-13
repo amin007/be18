@@ -83,10 +83,10 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
-	function panggilDB($pilih)
+	function panggilDB($pilih,$idBorang)
 	{
 		# Set pembolehubah utama
-		list($myTable, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih);
+		list($myTable, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
 		$this->papar->senarai[$myTable] = $this->tanya->//cariSql
 			cariSemuaData
 			($myTable, $medan, $carian, $susun);
@@ -203,11 +203,11 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[3], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function soalanhasil($idborang)
+	public function soalanhasil($idBorang)
 	{
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$this->panggilDB('infoIctHasil');
+		$this->panggilDB('infoIctHasil',$idBorang);
 		$this->_folder = 'borang';
 
 		# Pergi papar kandungan
