@@ -204,7 +204,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[3], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function soalanhasil($myJadual,$idBorang)
+	public function soalanhasil($myJadual = null,$idBorang = null)
 	{
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
