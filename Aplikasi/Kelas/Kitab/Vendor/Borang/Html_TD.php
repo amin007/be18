@@ -79,9 +79,13 @@ class Html_TD
 		{
 			?><td><?php echo nl2br($data) ?></td><?php
 		}
+		elseif(in_array($key,array('kp')))
+		{
+			?><td><?php echo nl2br($data) ?></td><?php
+		}
 		else
 		{
-			?><td><?php echo $data ?></td><?php
+			?><td align="center"><?php echo $data ?></td><?php
 		}//*/
 	}
 #==========================================================================================
