@@ -358,7 +358,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 	{
 		# kiraKes dulu
 		$this->papar->jadual = $jadual = 'kawalan_aes';
-		$carian = null;
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'po','apa'=>'pom');
 		$jum = pencamSqlLimit($bilSemua = 300, $item = 300, $ms = 1);
 		$susun[] = array_merge($jum, array('kumpul'=>'1 WITH ROLLUP','susun'=> NULL) );
 		# kumpul respon
