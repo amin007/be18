@@ -637,7 +637,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			0 => 'kod',
 			1 => 'f2',
 			2 => 'respon',
-			3 => 'concat_ws("-",kp,survei) as kp'
+			3 => 'concat_ws("-",kp,survei) as kp,count(*) as POM'
 		);
 
 		return $senaraiMedan; # pulangkan nilai
