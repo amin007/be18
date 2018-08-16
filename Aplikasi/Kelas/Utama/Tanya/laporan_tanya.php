@@ -618,6 +618,52 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 		return $medan . $rangka . $mko . $terima . $baki;
 	}
+#---------------------------------------------------------------------------------------------------#
+	private function bentukSqlResponSemasa()
+	{
+		# ada nilai
+		$hasil = array ('11','12','31','40','50','60',
+			'13','14','21','22','23','32','15',
+			'71','72','73','74','75','76','77');
+
+		$hasil2 = array(); # tiada nilai
+
+		return $hasil; # pulangkan nilai
+	}
+#----------------------------------------------------------------------------------------------------------------------
+	private function medanResponSemasa()
+	{
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => 'respon',
+			3 => 'concat_ws("-",kp,survei) as kp'
+		);
+
+		return $senaraiMedan; # pulangkan nilai
+	}
+#---------------------------------------------------------------------------------------------------#
+	public function laporanSemasa()
+	{
+		# set pembolehubah untuk sql pertama
+		list($medanR, $jadualR, $r, $medan) = //$this->medanRespon(); # untuk BUTAM
+			$this->medanResponSemasa(); # untuk AES2018 Tr 2017
+		# panggil sql pertama
+		$hasilRespon = $this->bentukSqlResponSemasa($medanR, $jadualR);
+		# loop over the object directly
+		foreach($hasilRespon as $key=>$p)
+		{
+			//foreach($val as $key2=>$p)
+			//{
+				//echo ",\r '' as '" . $ . "'";
+				//$medan .= ",\r if($r='" . $p . "','X','&nbsp;') as '" . $p . "'";
+				$medan .= ",\r count(if($r='" . $p . "',1,null)) as '&nbsp;" . $p . "&nbsp;'";
+				//$jumlah_kumpul.="+count(if($r='".$papar[0]."' and b.terima is not null,$r,null))\r";
+			//}
+		}//echo '<pre>$medan:'; print_r($medan) . '</pre>';
+
+		return $medan; # pulangkan nilai
+	}
 #----------------------------------------------------------------------------------------------------------------------
 #==========================================================================================
 }
