@@ -354,9 +354,27 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//$this->papar->baca($this->_folder . '/terimaProsesan', null, 1);//*/
 	}
 #-------------------------------------------------------------------------------------------
-	public function laporanSemasa($item = 30, $ms = 1, $baris = 30)
+	public function laporanSemasa()
 	{
-		
+		# kiraKes dulu
+		$this->papar->jadual = $jadual = 'kawalan_aes';
+		$carian = null;
+		$jum = pencamSqlLimit($bilSemua = 300, $item = 300, $ms = 1);
+		$susun[] = array_merge($jum, array('kumpul'=>'1 WITH ROLLUP','susun'=> NULL) );
+		# kumpul respon
+		$medan = $this->tanya->laporanSemasa();
+		$this->papar->senarai['laporanSemasa'] = $this->tanya->cariSemuaData//cariSql
+			($jadual, $medan, $carian, $susun);
+		//echo '<pre>$senarai:'; print_r($this->papar->senarai) . '</pre>'; # semak data
+
+		# Set pemboleubah utama
+		$this->papar->tajukjadual = 'Laporan AES Semasa';
+		$this->papar->c1 = $this->papar->c2 = null;
+		//$this->papar->tarikh = ($tarikh==null) ? date("Y-m-d h:i:s") : $tarikh;
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan($this->_folder, 'jadual', $noInclude=0);
 	}
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
