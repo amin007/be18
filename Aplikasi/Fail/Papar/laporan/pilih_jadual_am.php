@@ -20,7 +20,7 @@
 		foreach ( $row[$kira] as $key=>$data )
 		{
 			$data = ($data == '0') ? '&nbsp;':$data;
-			$data = ($data == null) ? '<span align="right">Jumlah:</span>':$data;
+			$data = ($data == null) ? 'Jumlah:':$data;
 			$html->paparURL($key, $data, $myTable, 
 			$this->c1, $this->c2);
 		} 
