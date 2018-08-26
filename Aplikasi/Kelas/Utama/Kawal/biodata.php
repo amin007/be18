@@ -264,5 +264,12 @@ class Biodata extends \Aplikasi\Kitab\Kawal
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 	}
 #-------------------------------------------------------------------------------------------
+	public function email($id)
+	{
+		$posmen = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $id);
+		echo '$posmen = ' . $posmen;
+		//*/
+	}
+#-------------------------------------------------------------------------------------------
 #===========================================================================================
 }
