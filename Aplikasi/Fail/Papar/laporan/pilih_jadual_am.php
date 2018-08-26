@@ -19,8 +19,7 @@
 		$html = new \Aplikasi\Kitab\Html_TD;
 		foreach ( $row[$kira] as $key=>$data )
 		{
-			$data = ($data == '0') ? '&nbsp;':$data;
-			$data = ($data == null) ? 'Jumlah:':$data;
+			$data = $html->dataBernombor($data);
 			$html->paparURL($key, $data, $myTable, 
 			$this->c1, $this->c2);
 		} 
