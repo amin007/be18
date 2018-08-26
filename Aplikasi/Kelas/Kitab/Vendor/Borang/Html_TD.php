@@ -89,6 +89,14 @@ class Html_TD
 		}//*/
 	}
 #==========================================================================================
+	public function dataBernombor($data)
+	{
+		$data = ($data == '0') ? '&nbsp;':$data;
+		$data = ($data == null) ? 'Jumlah:':$data;
+
+		return $data;
+	}
+#==========================================================================================
 	public function setPencam()
 	{
 		# set pembolehubah Sesi
