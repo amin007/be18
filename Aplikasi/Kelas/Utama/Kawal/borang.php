@@ -15,9 +15,9 @@ class Borang extends \Aplikasi\Kitab\Kawal
 ##-----------------------------------------------------------------------------------------
 	public function index()
 	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		# Set pemboleubah utama
 		$this->papar->tajuk = namaClass($this);
-		//echo '<hr> Nama class : ' . namaClass($this) . '<hr>';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -36,9 +36,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 ##-----------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai)
 	{
-		echo '<pre>';
-		print_r($senarai);
-		echo '</pre>';//*/
+		echo '<pre>'; print_r($senarai); echo '</pre>';//*/
 	}
 ##-----------------------------------------------------------------------------------------
 	function logout()
