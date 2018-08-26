@@ -178,17 +178,6 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
 #-------------------------------------------------------------------------------------------
-	public function contoh()
-	{
-		# Set pemboleubah utama
-		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$fail = array('index','b_ubah','b_ubah_kawalan');
-
-		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
-	}
-#-------------------------------------------------------------------------------------------
 	public function soalan4()
 	{
 		# Set pemboleubah utama
