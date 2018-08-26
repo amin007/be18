@@ -646,8 +646,8 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	public function laporanSemasa()
 	{
 		# set pembolehubah untuk sql pertama
-		list($medanR, $jadualR, $r, $medan) = //$this->medanRespon(); # untuk BUTAM
-			$this->medanResponSemasa(); # untuk AES2018 Tr 2017
+		list($medanR, $jadualR, $r, $medan) = $this->medanResponSemasa(); # untuk AES2018 Tr 2017
+		$jumlah_kumpul = null;
 		# panggil sql pertama
 		$hasilRespon = $this->bentukSqlResponSemasa($medanR, $jadualR);
 		# loop over the object directly
@@ -658,9 +658,11 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 				//echo ",\r '' as '" . $ . "'";
 				//$medan .= ",\r if($r='" . $p . "','X','&nbsp;') as '" . $p . "'";
 				$medan .= ",\r count(if($r='" . $p . "',1,null)) as '&nbsp;" . $p . "&nbsp;'";
+				$jumlah_kumpul.="+count(if($r='" . $p . "',1,null))\r";
 				//$jumlah_kumpul.="+count(if($r='".$papar[0]."' and b.terima is not null,$r,null))\r";
 			//}
 		}//echo '<pre>$medan:'; print_r($medan) . '</pre>';
+		$medan .= ',' . $jumlah_kumpul . 'as Jum';
 
 		return $medan; # pulangkan nilai
 	}
