@@ -5,12 +5,12 @@ foreach ($this->senarai as $myTable => $row)
 	else
 	{
 		$tajukjadual = $this->tajukjadual; ?>
-<div class="container">
+<!-- div class="container" -->
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
-<?php //include 'pilih_jadual_am.php'; ?>
-<?php include 'pilih_jadual_am2.php'; ?>
+<?php include 'pilih_jadual_am.php'; ?>
+<?php //include 'pilih_jadual_am2.php'; ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
-</div><!-- / class="container-fluid" -->
+<!-- / class="container-fluid" -->
 <?php
 	} // if ( count($row)==0 )
 }
