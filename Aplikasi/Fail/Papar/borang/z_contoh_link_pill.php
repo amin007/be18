@@ -64,8 +64,7 @@
 <div class="col-3">
 	<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 <?php foreach($this->soalan as $key => $tanya): ?>
-		<a class="nav-link" data-toggle="pill" role="tab" 
-		href="#<?php echo $tanya ?>"  id="<?php echo $tanya ?>"><?php echo $tanya ?></a>
+		<a class="nav-link" data-toggle="pill" role="tab" href="#<?php echo $tanya ?>"  id="link-<?php echo $tanya ?>"><?php echo $tanya ?></a>
 <?php endforeach; ?>
 	</div>
 </div><!-- div class="col-3" -->
@@ -76,7 +75,7 @@
 		<!-- --------------------------------------------------------------------------------------------------------- -->
 		<p>Banyak soalan daa : <?php echo $tanya ?></p>
 		<!-- --------------------------------------------------------------------------------------------------------- -->
-		</div>
+		</div><!-- / class="tab-pane fade" -->
 <?php endforeach; ?>
 	</div><!-- / class="tab-content" id="v-pills-tabContent" -->
 </div><!-- / class="col-9" -->
