@@ -111,9 +111,8 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		//$pilih = null;
 		if($pilih == 'infoIctHasil'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualInfoIctHasil($idBorang);
-		if($pilih == 'semuaBE'): //echo "\$pilih = $pilih <br>";
+		elseif($pilih == 'semuaBE'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualSemuaBE($idBorang);
-		elseif($pilih == 'product'): //echo "\$pilih = $pilih <br>";
 		elseif($pilih == 'product'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualProduct();
 		elseif($pilih == 'report'): //echo "\$pilih = $pilih <br>";
@@ -307,7 +306,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function dataBE()
 	{
-		$data['BE'] = array('be2016_a','be2016_b','be2016_kp202a','be2016_kp202a_null','be2016_kp202b','be2016_kp202b_null','be2016_kp202_5p','be2016_kp202_5p_null',
+		$data = array('be2016_a','be2016_b','be2016_kp202a','be2016_kp202a_null','be2016_kp202b','be2016_kp202b_null','be2016_kp202_5p','be2016_kp202_5p_null',
 			'be2016_kp301a','be2016_kp301b','be2016_kp302a','be2016_kp302b','be2016_kp303a','be2016_kp303b','be2016_kp304a','be2016_kp304b','be2016_kp305a','be2016_kp305b',
 			'be2016_kp306a','be2016_kp306b','be2016_kp308a','be2016_kp308b','be2016_kp309a','be2016_kp309b','be2016_kp310a','be2016_kp310b','be2016_kp311a','be2016_kp311b',
 			'be2016_kp312a','be2016_kp312b','be2016_kp313a','be2016_kp313b','be2016_kp314a','be2016_kp314b','be2016_kp315a','be2016_kp315b','be2016_kp316a','be2016_kp316b',
@@ -324,7 +323,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			'pbe2015_kp325a','pbe2015_kp325b','pbe2015_kpall_a','pbe2015_kpall_b',
 			'pertubuhan','pertubuhan_copy1','pertubuhan_copy2','pertubuhan_copy3'
 			);
-		$data['SSM'] = array('ssm_fail9','ssm_file5');
+		//$data['SSM'] = array('ssm_fail9','ssm_file5');
 
 		return $data;
 	}
