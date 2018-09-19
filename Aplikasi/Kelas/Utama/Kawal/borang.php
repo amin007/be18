@@ -106,7 +106,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->senarai[$myJadual] = $this->tanya->//cariSql
 			cariSemuaData
 			($myJadual, $medan, $carian, $susun);
-		if( count($this->papar->senarai[$myJadual]) == 0 ):
+		/*if( count($this->papar->senarai[$myJadual]) == 0 ):
 			//echo 'jumlah $senarai kosong';
 			$this->papar->senarai[$myJadual] = null;
 		endif;//*/
