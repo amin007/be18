@@ -111,6 +111,9 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		//$pilih = null;
 		if($pilih == 'infoIctHasil'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualInfoIctHasil($idBorang);
+		if($pilih == 'semuaBE'): //echo "\$pilih = $pilih <br>";
+			list($myTable, $medan, $carian, $susun) = $this->jadualSemuaBE($idBorang);
+		elseif($pilih == 'product'): //echo "\$pilih = $pilih <br>";
 		elseif($pilih == 'product'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualProduct();
 		elseif($pilih == 'report'): //echo "\$pilih = $pilih <br>";
@@ -141,6 +144,22 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			$carian[] = array('fix'=>'x=', # cari x= / %like% / xlike
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => 'newss', # cari dalam medan apa
+				'apa' => $idBorang); # benda yang dicari//*/
+
+		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
+	}
+#---------------------------------------------------------------------------------------------------#
+	function jadualSemuaBE($idBorang)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
+		$myTable = null;
+		$medan = '*';
+		$carian = $susun = null;
+		# semak database
+			$carian[] = array('fix'=>'%like%', # cari x= / %like% / xlike
+				'atau'=>'WHERE', # WHERE / OR / AND
+				'medan' => 'NoSiri', # cari dalam medan apa
 				'apa' => $idBorang); # benda yang dicari//*/
 
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
