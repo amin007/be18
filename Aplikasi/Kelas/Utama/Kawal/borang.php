@@ -250,15 +250,15 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			$this->panggilDB2('hasilBE',$db.$jadual,$idBorang);
 			$this->panggilDB2('belanjaBE',$db.$jadual,$idBorang);
 		endforeach;
-		$this->debugKandunganPaparan();
+		//$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
 
 		# Pergi papar kandungan
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
-		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
+		$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
+		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
