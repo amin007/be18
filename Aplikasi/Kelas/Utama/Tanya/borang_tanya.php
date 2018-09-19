@@ -338,12 +338,14 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 	public function ubahSuaiMedan($papar,$jadual)
 	{
 		$data = array();
+		$hasil = $belanja = 0;
 		foreach($this->soalanHasil() as $hasil):
 			//echo '<br>' . $hasil . '|' . $papar[$jadual][0][$hasil];
-			@$data['Hasil'][0][$hasil] = $papar[$jadual][0][$hasil];
+			$data['Hasil'][0][$hasil] = $papar[$jadual][0][$hasil];
 		endforeach;//*/
 		foreach($this->soalanBelanja() as $belanja):
-			@$data['Belanja'][0][$belanja] = $papar[$jadual][0][$belanja];
+			echo '<br>' . $belanja . '|' . $papar[$jadual][0][$belanja];
+			$data['Belanja'][0][$belanja] = $papar[$jadual][0][$belanja];
 		endforeach;//*/
 		//$this->semakPembolehubah($papar[$jadual], $jadual);
 		//$this->semakPembolehubah($data, $jadual);
@@ -367,9 +369,10 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function soalanBelanja()
 	{
-		$data = array('F2101','F2102','F2103','F2104','F2105','F2106','F2107','F2108','F2109','F2110',
+		$data = array(/*'F2101','F2102','F2103','F2104','F2105','F2106','F2107','F2108','F2109','F2110',
 			'F2111','F2112','F2113','F2114','F2115','F2116','F2117','F2118','F2119','F2120',
-			'F2121','F2122','F2123','F2101','F2102','F2103','F2104','F2105','F2106','F2107','F2108','F2109','F2110',
+			'F2121','F2122','F2123',*/
+			'F2101','F2102','F2103','F2104','F2105','F2106','F2107','F2108','F2109','F2110',
 			'F2111','F2112','F2113','F2114','F2115','F2116','F2117','F2118','F2119','F2120',
 			'F2121','F2122','F2123','F2124','F2125','F2126','F2127','F2128','F2129','F2130',
 			'F2131','F2132','F2133','F2134','F2135','F2136','F2137','F2138','F2139','F2140',
