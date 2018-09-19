@@ -316,7 +316,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			'be2016_kp336a','be2016_kp336b','be2016_kp392a','be2016_kp392b','be2016_kp393a','be2016_kp393b','be2016_kp840a','be2016_kp840b','be2016_kp850a','be2016_kp850b',
 			'be2016_kp890a','be2016_kp890b',
 			'pbe2010rev','pbe2010_q1','pbe2010_q2','pbe2010_q3','pbe2010_q4','pbe2010_q5a','pbe2010_q5b','pbe2010_q6','pbe2010_q7','pbe2010_q8','pbe2010_q9',
-			'pbe2010_q10','pbe2010_q11','pbe2010_q11_kp323kp325_q14_kp318','pbe2010_q12','pbe2010_q13a','pbe2010_q13b	InnoDB','pbe2010_q13c',	'pbe2010_q14',
+			'pbe2010_q10','pbe2010_q11','pbe2010_q11_kp323kp325_q14_kp318','pbe2010_q12','pbe2010_q13a','pbe2010_q13b','pbe2010_q13c','pbe2010_q14',
 			'pbe2015_a','pbe2015_b',
 			'pbe2015_kp313a','pbe2015_kp313b','pbe2015_kp314a','pbe2015_kp314b','pbe2015_kp315a','pbe2015_kp315b','pbe2015_kp317a','pbe2015_kp317b',
 			'pbe2015_kp318a','pbe2015_kp318b','pbe2015_kp322a','pbe2015_kp322b','pbe2015_kp323a','pbe2015_kp323b','pbe2015_kp324a','pbe2015_kp324b',
