@@ -121,8 +121,8 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			list($myTable, $medan, $carian, $susun) = $this->jadualSemuaBE($idBorang);
 		elseif($pilih == 'hasilBE'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualHasilBE($idBorang);
-		elseif($pilih == 'report'): //echo "\$pilih = $pilih <br>";
-			list($myTable, $medan, $carian, $susun) = $this->jadualReport();
+		elseif($pilih == 'belanjaBE'): //echo "\$pilih = $pilih <br>";
+			list($myTable, $medan, $carian, $susun) = $this->jadualBelanjaBE($idBorang);
 		elseif($pilih == 'status'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualStatus();
 		elseif($pilih == 'booking'): //echo "\$pilih = $pilih <br>";
@@ -194,15 +194,24 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
 #---------------------------------------------------------------------------------------------------#
-	function jadualProduct()
+	function jadualBelanjaBE($idBorang)
 	{
-		$myTable = 'test_product'; $medan = 'id as Action,*';
+		$myTable = null;
+		$medan = '`F2101`,`F2102`,`F2103`,`F2104`,`F2105`,`F2106`,`F2107`,`F2108`,`F2109`,`F2110`,
+			`F2111`,`F2112`,`F2113`,`F2114`,`F2115`,`F2116`,`F2117`,`F2118`,`F2119`,`F2120`,
+			`F2121`,`F2122`,`F2123`,`F2124`,`F2125`,`F2126`,`F2127`,`F2128`,`F2129`,`F2130`,
+			`F2131`,`F2132`,`F2133`,`F2134`,`F2135`,`F2136`,`F2137`,`F2138`,`F2139`,`F2140`,
+			`F2141`,`F2142`,`F2143`,`F2144`,`F2145`,`F2146`,`F2147`,`F2148`,`F2149`,`F2150`,
+			`F2151`,`F2152`,`F2153`,`F2154`,`F2155`,`F2156`,`F2157`,`F2158`,`F2159`,`F2160`,
+			`F2161`,`F2163`,`F2164`,`F2165`,`F2166`,`F2167`,`F2168`,`F2169`,`F2170`,
+			`F2171`,`F2172`,`F2173`,`F2174`,`F2175`,`F2176`,`F2177`,`F2178`,`F2179`,`F2180`,
+			`F2181`,`F2182`,`F2183`,`F2184`,`F2185`,`F2186`,`F2187`,`F2188`,`F2190`,
+			`F2191`,`F2197`,`F2198`,`F2189`,`F2193`,`F2194`,`F2195`,`F2196`,`F2199`';
 		$carian = $susun = null;
-		/*# semak database
-			$carian[] = array('fix'=>'xlike', # cari x= atau %like%
+			$carian[] = array('fix'=>'%like%', # cari x= / %like% / xlike
 				'atau'=>'WHERE', # WHERE / OR / AND
-				'medan' => 'username', # cari dalam medan apa
-				'apa' => 'admin'); # benda yang dicari//*/
+				'medan' => 'NoSiri', # cari dalam medan apa
+				'apa' => $idBorang); # benda yang dicari//*/
 
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
