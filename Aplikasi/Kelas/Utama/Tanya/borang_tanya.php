@@ -8,6 +8,12 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		parent::__construct();
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function semakPembolehubah($senarai,$jadual)
+	{
+		echo '<pre>$jadual = ' . $jadual . '|<br>';
+		print_r($senarai); echo '</pre>';//*/
+	}
+#---------------------------------------------------------------------------------------------------#
 	function data_contoh($pilih)
 	{
 		$data = array(
@@ -306,7 +312,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function dataBE()
 	{
-		$data = array('be2016_a','be2016_b',/*'be2016_kp202a','be2016_kp202a_null','be2016_kp202b','be2016_kp202b_null','be2016_kp202_5p','be2016_kp202_5p_null',
+		$data = array('be2016_a','be2016_b',/*'be2016_kp202a','be2016_kp202b','be2016_kp202_5p',
 			'be2016_kp301a','be2016_kp301b','be2016_kp302a','be2016_kp302b','be2016_kp303a','be2016_kp303b','be2016_kp304a','be2016_kp304b','be2016_kp305a','be2016_kp305b',
 			'be2016_kp306a','be2016_kp306b','be2016_kp308a','be2016_kp308b','be2016_kp309a','be2016_kp309b','be2016_kp310a','be2016_kp310b','be2016_kp311a','be2016_kp311b',
 			'be2016_kp312a','be2016_kp312b','be2016_kp313a','be2016_kp313b','be2016_kp314a','be2016_kp314b','be2016_kp315a','be2016_kp315b','be2016_kp316a','be2016_kp316b',
@@ -326,6 +332,34 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			);
 		//$data['SSM'] = array('ssm_fail9','ssm_file5');
 
+		return $data;
+	}
+#---------------------------------------------------------------------------------------------------#
+	public function ubahSuaiMedan($papar,$jadual)
+	{
+		$data = array();
+		$kiraHasil = $this->soalanHasil();
+		foreach($kiraHasil as $hasil):
+			//echo '<br>' . $hasil . '|' . $papar[$jadual][0][$hasil];
+			@$data['Hasil'][0][$hasil] = $papar[$jadual][0][$hasil];
+		endforeach;//*/
+		////$this->semakPembolehubah($papar[$jadual], $jadual);
+		//$this->semakPembolehubah($data, $jadual);
+
+		return $data;
+	}
+#---------------------------------------------------------------------------------------------------#
+	public function soalanHasil()
+	{
+		$data = array('F2001','F2002','F2003','F2004','F2005','F2006','F2007','F2008','F2009','F2010',
+			'F2011','F2012','F2013','F2014','F2015','F2016','F2017','F2018','F2019','F2020',
+			'F2021','F2022','F2023','F2024','F2025','F2026','F2027','F2028','F2029','F2030',
+			'F2031','F2032','F2033','F2034','F2035','F2036','F2037','F2038','F2040','F2042',
+			'F2043','F2044','F2045','F2046','F2047','F2048','F2049','F2050','F2051','F2052',
+			'F2053','F2054','F2055','F2056','F2057','F2058','F2059','F2060','F2061','F2062',
+			'F2063','F2064','F2065','F2069','F2070','F2072','F2073','F2074','F2075','F2076',
+			'F2077','F2078','F2079','F2080','F2081','F2082','F2083','F2084','F2085','F2086',
+			'F2087','F2088','F2097','F2098','F2089','F2094','F2095','F2096','F2099');
 		return $data;
 	}
 #---------------------------------------------------------------------------------------------------#
