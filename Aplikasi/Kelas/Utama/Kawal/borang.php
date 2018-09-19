@@ -223,6 +223,21 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
+	public function be($idBorang = null)
+	{
+		# Set pemboleubah utama
+		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		$this->panggilDB('semua','',$idBorang);
+		$this->debugKandunganPaparan();
+		$this->_folder = 'borang';
+
+		# Pergi papar kandungan
+		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
+		//echo '<br>$fail = ' . $fail[3] . '<hr>';
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
+		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
+	}
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
 }
