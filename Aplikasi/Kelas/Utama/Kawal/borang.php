@@ -244,7 +244,10 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$this->panggilDB('semua','',$idBorang);
+		$ulangjadual = $this->tanya->dataBE();
+		foreach($ulangjadual as $jadual):
+			$this->panggilDB('semuaBE',$jadual,$idBorang);
+		endforeach;
 		$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
 
