@@ -338,9 +338,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 	public function ubahSuaiMedan($papar,$jadual)
 	{
 		$data = array();
-		$kiraHasil = $this->soalanHasil();
-		$kiraBelanja = $this->soalanBelanja();
-		foreach($kiraHasil as $hasil):
+		foreach($this->soalanHasil() as $hasil):
 			//echo '<br>' . $hasil . '|' . $papar[$jadual][0][$hasil];
 			@$data['Hasil'][0][$hasil] = $papar[$jadual][0][$hasil];
 		endforeach;//*/
