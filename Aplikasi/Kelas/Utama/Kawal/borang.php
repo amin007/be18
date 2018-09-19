@@ -98,6 +98,23 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//$this->debugKandunganPaparan($pilih, $myTable);
 	}
 #-------------------------------------------------------------------------------------------
+	function panggilDB2($pilih,$myJadual,$idBorang)
+	{
+		# Set pembolehubah utama
+		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
+		//$myJadual = explode('.', $myJadual);
+		$this->papar->senarai[$myJadual] = $this->tanya->//cariSql
+			cariSemuaData
+			($myJadual, $medan, $carian, $susun);
+		if( count($this->papar->senarai[$myJadual]) == 0 ):
+			//echo 'jumlah $senarai kosong';
+			$this->papar->senarai[$myJadual] = null;
+		endif;//*/
+		# Set pembolehubah untuk Papar
+		$this->kandunganPaparan($pilih, $myJadual);
+		//$this->debugKandunganPaparan($pilih, $myTable);
+	}
+#-------------------------------------------------------------------------------------------
 	function tambahMedanDB($pilih)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
