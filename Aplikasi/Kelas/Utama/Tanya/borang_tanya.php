@@ -342,7 +342,10 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			//echo '<br>' . $hasil . '|' . $papar[$jadual][0][$hasil];
 			@$data['Hasil'][0][$hasil] = $papar[$jadual][0][$hasil];
 		endforeach;//*/
-		////$this->semakPembolehubah($papar[$jadual], $jadual);
+		foreach($this->soalanBelanja() as $belanja):
+			@$data['Belanja'][0][$belanja] = $papar[$jadual][0][$belanja];
+		endforeach;//*/
+		//$this->semakPembolehubah($papar[$jadual], $jadual);
 		//$this->semakPembolehubah($data, $jadual);
 
 		return $data;
