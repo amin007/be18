@@ -106,10 +106,11 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pembolehubah utama
 		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
 		//$myJadual = explode('.', $myJadual);
-		$this->papar->senarai[$myJadual] = $this->tanya->//cariSql
-			cariSemuaData
+		$this->papar->senarai[$myJadual] = $this->tanya->//
+		cariSql
+			//cariSemuaData
 			($myJadual, $medan, $carian, $susun);
-		if( count($this->papar->senarai[$myJadual]) != 0 ):
+		/*if( count($this->papar->senarai[$myJadual]) != 0 ):
 			$this->papar->senaraiMedan = $this->tanya->ubahSuaiMedan($this->papar->senarai, $myJadual);
 		endif;//*/
 		# Set pembolehubah untuk Papar
@@ -249,7 +250,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$ulangjadual = $this->tanya->dataBE();
 		$db = 'pom_malaysiabaru.';
 		foreach($ulangjadual as $jadual):
-			$this->panggilDB2('semuaBE',$db.$jadual,$idBorang);
+			//$this->panggilDB2('semuaBE',$db.$jadual,$idBorang);
+			$this->panggilDB2('hasilBE',$db.$jadual,$idBorang);
 		endforeach;
 		$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
