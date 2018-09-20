@@ -316,44 +316,93 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 	private function soalanAmBe2016()
 	{
 		$sql = ' CREATE TABLE be2016_v2 AS
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp202" as kp FROM be2016_kp202a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp205" as kp FROM be2016_kp205a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp301" as kp FROM be2016_kp301a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp302" as kp FROM be2016_kp302a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp303" as kp FROM be2016_kp303a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp304" as kp FROM be2016_kp304a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp305" as kp FROM be2016_kp305a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp306" as kp FROM be2016_kp306a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp308" as kp FROM be2016_kp308a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp309" as kp FROM be2016_kp309a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp310" as kp FROM be2016_kp310a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp311" as kp FROM be2016_kp311a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp312" as kp FROM be2016_kp312a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp313" as kp FROM be2016_kp313a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp314" as kp FROM be2016_kp314a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp315" as kp FROM be2016_kp315a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp316" as kp FROM be2016_kp316a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp317" as kp FROM be2016_kp317a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp318" as kp FROM be2016_kp318a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp319" as kp FROM be2016_kp319a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp320" as kp FROM be2016_kp320a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp322" as kp FROM be2016_kp322a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp323" as kp FROM be2016_kp323a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp324" as kp FROM be2016_kp324a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp325" as kp FROM be2016_kp325a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp328" as kp FROM be2016_kp328a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp330" as kp FROM be2016_kp330a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp331" as kp FROM be2016_kp331a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp332" as kp FROM be2016_kp332a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp333" as kp FROM be2016_kp333a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp334" as kp FROM be2016_kp334a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp335" as kp FROM be2016_kp335a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp336" as kp FROM be2016_kp336a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp392" as kp FROM be2016_kp392a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp393" as kp FROM be2016_kp393a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp840" as kp FROM be2016_kp840a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp850" as kp FROM be2016_kp850a UNION
-		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp890" as kp FROM be2016_kp890a
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp202a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp205a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp301a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp302a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp303a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp304a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp305a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp306a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp308a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp309a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp310a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp311a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp312a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp313a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp314a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp315a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp316a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp317a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp318a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp319a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp320a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp322a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp323a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp324a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp325a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp328a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp330a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp331a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp332a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp333a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp334a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp335a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp336a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp392a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp393a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp840a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp850a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015` FROM be2016_kp890a
+		';
+		return $sql;
+	}
+#---------------------------------------------------------------------------------------------------#
+	private function soalanGaji()
+	{
+		$sql = 'SELECT "01-PEMILIK-01" L,`F4901` MSIA,`F5001` XMSIA,`F1401` JUM,"" GAJI, "" SUB FROM $myTable UNION
+		SELECT "02-KELUARGA-02" L,`F4902` MSIA,`F5002` XMSIA,`F1402` JUM,"" GAJI, "" SUB FROM $myTable UNION
+		SELECT "03-PENGURUS-12" L,`F4912` MSIA,`F5012` XMSIA,`F1412` JUM,`F1812` GAJI,`F5112` SUB FROM $myTable UNION
+		SELECT "04-PRO-13" L,`F4913` MSIA,`F5013` XMSIA,`F1413` JUM,`F1813` GAJI,`F5113` SUB FROM $myTable UNION
+		SELECT "05-PENYELIDIK-04" L,`F4904` MSIA,`F5004` XMSIA,`F1404` JUM,`F1804` GAJI,`F5104` SUB FROM $myTable UNION
+		SELECT "06-JURUTEKNIK-05" L,`F4905` MSIA,`F5005` XMSIA,`F1405` JUM,`F1805` GAJI,`F5105` SUB FROM $myTable UNION
+		SELECT "07-KERANI-14" L,`F4914` MSIA,`F5014` XMSIA,`F1414` JUM,`F1814` GAJI,`F5114` SUB FROM $myTable UNION
+		SELECT "08-JUALAN-15" L,`F4915` MSIA,`F5015` XMSIA,`F1415` JUM,`F1815` GAJI,`F5115` SUB FROM $myTable UNION
+		SELECT "09-KEMAHIRAN-16" L,`F4916` MSIA,`F5016` XMSIA,`F1416` JUM,`F1816` GAJI,`F5116` SUB FROM $myTable UNION
+		SELECT "10-MESIN-06" L,`F4906` MSIA,`F5006` XMSIA,`F1406` JUM,`F1806` GAJI,`F5106` SUB FROM $myTable UNION
+		SELECT "11-ASAS-06" L,`F4906` MSIA,`F5006` XMSIA,`F1406` JUM,`F1806` GAJI,`F5106` SUB FROM $myTable UNION
+		SELECT "12-JUM-TETAP-17" L,`F4917` MSIA,`F5017` XMSIA,`F1417` JUM,`F1817` GAJI,`F5117` SUB FROM $myTable UNION
+		SELECT "13-JUM-SAM-11" L,`F4911` MSIA,`F5011` XMSIA,`F1411` JUM,`F1811` GAJI,`F5111` SUB FROM $myTable UNION
+		SELECT "14-JUMLAH-19" L,`F4919` MSIA,`F5019` XMSIA,`F1419` JUM,`F1819` GAJI,`F5119` SUB FROM $myTable UNION
+
+		SELECT "01-PEMILIK-21" P,`F4921` MSIA,`F5021` XMSIA,`F1421` JUM,"" GAJI, "" SUB FROM $myTable UNION
+		SELECT "02-KELUARGA-22" P,`F4922` MSIA,`F5022` XMSIA,`F1422` JUM,"" GAJI, "" SUB FROM $myTable UNION
+		SELECT "03-PENGURUS-32" P,`F4932` MSIA,`F5032` XMSIA,`F1432` JUM,`F1832` GAJI,`F5132` SUB FROM $myTable UNION
+		SELECT "04-PRO-23" P,`F4923` MSIA,`F5023` XMSIA,`F1423` JUM,`F1823` GAJI,`F5123` SUB FROM $myTable UNION
+		SELECT "05-PENYELIDIK-33" P,`F4933` MSIA,`F5033` XMSIA,`F1433` JUM,`F1833` GAJI,`F5133` SUB FROM $myTable UNION
+		SELECT "06-JURUTEKNIK-24" P,`F4924` MSIA,`F5024` XMSIA,`F1424` JUM,`F1824` GAJI,`F5124` SUB FROM $myTable UNION
+		SELECT "07-KERANI-25" P,`F4925` MSIA,`F5025` XMSIA,`F1425` JUM,`F1825` GAJI,`F5125` SUB FROM $myTable UNION
+		SELECT "08-JUALAN-34" P,`F4934` MSIA,`F5034` XMSIA,`F1434` JUM,`F1834` GAJI,`F5134` SUB FROM $myTable UNION
+		SELECT "09-KEMAHIRAN-35" P,`F4935` MSIA,`F5035` XMSIA,`F1435` JUM,`F1835` GAJI,`F5135` SUB FROM $myTable UNION
+		SELECT "11-ASAS-36" P,`F4936` MSIA,`F5036` XMSIA,`F1436` JUM,`F1836` GAJI,`F5136` SUB FROM $myTable UNION
+		SELECT "12-JUM-TETAP-26" P,`F4926` MSIA,`F5026` XMSIA,`F1426` JUM,`F1826` GAJI,`F5126` SUB FROM $myTable UNION
+		SELECT "13-JUM-SAM-31" P,`F4931` MSIA,`F5031` XMSIA,`F1431` JUM,`F1831` GAJI,`F5131` SUB FROM $myTable UNION
+		SELECT "14-JUMLAH-39" P,`F4939` MSIA,`F5039` XMSIA,`F1439` JUM,`F1839` GAJI,`F5139` SUB FROM $myTable';
+		return $sql;
+	}
+#---------------------------------------------------------------------------------------------------#
+	private function soalanSijil()
+	{
+		$sql = '"Pascasiswazah" SIJIL, "06" K,`F1506` L, `F1606` P
+		"Bacelor Akademik", "41",`F1541` L, `F1641` P
+		"Bacelor Teknikal", "42",`F1542` L, `F1642` P
+		"Diploma Akademik", "43",`F1543` L, `F1643` P
+		"Diploma Teknikal TVET", "44",`F1544` L, `F1644` P
+		"STPM", "03",`F1503` L, `F1603` P
+		"SPM", "04",`F1504` L, `F1604` P
+		"Bawah SPM", "05",`F1505` L, `F1605` P
+		"JUMLAH", "09",`F1509` L, `F1609` P
+		"","","",""
 		';
 		return $sql;
 	}
