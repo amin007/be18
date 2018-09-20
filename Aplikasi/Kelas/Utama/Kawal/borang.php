@@ -276,8 +276,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
-		$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
-		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
+		$fail = array('index','index2','b_ubah','b_ubah_kawalan');
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 	public function banci($idBorang = null)
