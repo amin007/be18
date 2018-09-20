@@ -119,13 +119,15 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//$this->debugKandunganPaparan($pilih, $myJadual);
 	}
 #-------------------------------------------------------------------------------------------
-	function panggilDBKhas01($pilih,$myJadual,$idBorang)
+	function panggilDBKhas01($pilih,$myTable,$idBorang)
 	{
 		# Set pembolehubah utama
+		$pecah = explode('.', $myTable);
+		$myJadual = $pecah[1];
 		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
-		$this->papar->bentukJadual01[$pilih] = $this->tanya->//cariSql
+		$this->papar->bentukJadual01[$myJadual] = $this->tanya->//cariSql
 			cariSemuaData
-			($myJadual, $medan, $carian, $susun);
+			($myTable, $medan, $carian, $susun);
 		# Set pembolehubah untuk Papar
 		$this->kandunganPaparan($pilih, $myJadual);
 		//$this->debugKandunganPaparan($pilih, $myJadual);
@@ -134,6 +136,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function panggilDBKhas02($pilih,$myJadual,$idBorang)
 	{
 		# Set pembolehubah utama
+		//$myJadual = explode('.', $myJadual);
 		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
 		$this->papar->bentukJadual02[$pilih] = $this->tanya->//cariSql
 			cariSemuaData
