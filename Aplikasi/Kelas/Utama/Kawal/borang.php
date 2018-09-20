@@ -113,6 +113,30 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//$this->debugKandunganPaparan($pilih, $myJadual);
 	}
 #-------------------------------------------------------------------------------------------
+	function panggilDBKhas01($pilih,$myJadual,$idBorang)
+	{
+		# Set pembolehubah utama
+		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
+		$this->papar->bentukJadual01[$pilih] = $this->tanya->//cariSql
+			cariSemuaData
+			($myJadual, $medan, $carian, $susun);
+		# Set pembolehubah untuk Papar
+		$this->kandunganPaparan($pilih, $myJadual);
+		//$this->debugKandunganPaparan($pilih, $myJadual);
+	}
+#-------------------------------------------------------------------------------------------
+	function panggilDBKhas02($pilih,$myJadual,$idBorang)
+	{
+		# Set pembolehubah utama
+		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
+		$this->papar->bentukJadual02[$pilih] = $this->tanya->//cariSql
+			cariSemuaData
+			($myJadual, $medan, $carian, $susun);
+		# Set pembolehubah untuk Papar
+		$this->kandunganPaparan($pilih, $myJadual);
+		//$this->debugKandunganPaparan($pilih, $myJadual);
+	}
+#-------------------------------------------------------------------------------------------
 	function tambahMedanDB($pilih)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
