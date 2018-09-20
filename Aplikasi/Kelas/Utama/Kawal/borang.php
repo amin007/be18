@@ -87,18 +87,17 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function panggilDB($pilih,$myJadual,$idBorang)
 	{
 		# Set pembolehubah utama
-		list($myTable, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
-		//$myJadual = explode('.', $myTable);
-		$this->papar->senarai[$myJadual] = $this->tanya->//cariSql
+		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
+		$this->papar->senarai[$pilih] = $this->tanya->//cariSql
 			cariSemuaData
-			($myTable, $medan, $carian, $susun);
-		if( count($this->papar->senarai[$myJadual]) == 0 ):
+			($myJadual, $medan, $carian, $susun);
+		/*if( count($this->papar->senarai[$pilih]) == 0 ):
 			//echo 'jumlah $senarai kosong';
 			$this->papar->senarai[$myJadual] = null;
 		endif;//*/
 		# Set pembolehubah untuk Papar
-		$this->kandunganPaparan($pilih, $myTable);
-		//$this->debugKandunganPaparan($pilih, $myTable);
+		$this->kandunganPaparan($pilih, $myJadual);
+		//$this->debugKandunganPaparan($pilih, $myJadual);
 	}
 #-------------------------------------------------------------------------------------------
 	function panggilDB2($pilih,$myJadual,$idBorang)
@@ -111,7 +110,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			($myJadual, $medan, $carian, $susun);
 		# Set pembolehubah untuk Papar
 		$this->kandunganPaparan($pilih, $myJadual);
-		//$this->debugKandunganPaparan($pilih, $myTable);
+		//$this->debugKandunganPaparan($pilih, $myJadual);
 	}
 #-------------------------------------------------------------------------------------------
 	function tambahMedanDB($pilih)
@@ -243,14 +242,15 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		$this->panggilDB('semuaBE','be2016_v2',$idBorang);
 		//$ulangjadual = $this->tanya->dataBE();
-		$ulangjadual = $this->tanya->dataBanci2016();
-		$db = 'pom_malaysiabaru.be2016_kp';
-		foreach($ulangjadual as $jadual):
+		//$ulangjadual = $this->tanya->dataBanci2016();
+		//$db = 'pom_malaysiabaru.be2016_kp';
+		/*foreach($ulangjadual as $jadual):
 			$this->panggilDB2('semuaBE',$db.$jadual . 'a',$idBorang);
 			//$this->panggilDB2('hasilBE',$db.$jadual . 'a',$idBorang);
 			//$this->panggilDB2('belanjaBE',$db.$jadual . 'a',$idBorang);
-		endforeach;
+		endforeach;//*/
 		$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
 
