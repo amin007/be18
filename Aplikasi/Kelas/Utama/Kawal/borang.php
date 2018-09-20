@@ -243,12 +243,13 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$ulangjadual = $this->tanya->dataBE();
-		$db = 'pom_malaysiabaru.';
+		//$ulangjadual = $this->tanya->dataBE();
+		$ulangjadual = $this->tanya->dataBanci2016();
+		$db = 'pom_malaysiabaru.be2016_kp';
 		foreach($ulangjadual as $jadual):
-			$this->panggilDB2('semuaBE',$db.$jadual,$idBorang);
-			$this->panggilDB2('hasilBE',$db.$jadual,$idBorang);
-			$this->panggilDB2('belanjaBE',$db.$jadual,$idBorang);
+			$this->panggilDB2('semuaBE',$db.$jadual . 'a',$idBorang);
+			$this->panggilDB2('hasilBE',$db.$jadual . 'a',$idBorang);
+			$this->panggilDB2('belanjaBE',$db.$jadual . 'a',$idBorang);
 		endforeach;
 		//$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
