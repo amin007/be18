@@ -213,6 +213,14 @@ class Tanya
 		return $result;
 	}
 	#---------------------------------------------------------------------------------------------
+	public function cariKhasSql($sql)
+	{
+		$result = $this->db->selectAll($sql);
+		//echo json_encode($result);
+
+		return $result;
+	}
+	#---------------------------------------------------------------------------------------------
 	public function cariArahanSql($myTable, $medan, $carian, $susun)
 	{
 		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
