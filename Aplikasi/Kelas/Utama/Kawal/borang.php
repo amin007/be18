@@ -294,8 +294,10 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$db = 'pom_malaysiabaru.be2016_kp';
+		$md = 'kodbanci,nosiri,f0002,f0014,f0015,';
+		$sql = null;
 		foreach($this->tanya->dataBanci2016() as $jadual):
-			echo $db.$jadual . 'a<br>';
+			$sql .= $this->tanya->soalanGajiSijil($md,$db.$jadual . 'a');
 			//$this->panggilDB2('semuaBE',$db.$jadual . 'a',$idBorang);
 		endforeach;//*/
 		//$this->debugKandunganPaparan();
@@ -304,6 +306,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
+		$this->semakPembolehubah($sql); # Semak data dulu
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
 		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
