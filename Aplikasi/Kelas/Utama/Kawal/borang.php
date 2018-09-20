@@ -82,10 +82,11 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->_pilih = $pilih;
 		$this->papar->template = 'template_biasa';
 		$this->papar->pilihJadual = 'pilih_jadual_am';
-		$this->papar->template2 = 'template_bootstrap';
+		$this->papar->template2 = 'template_khas02';
 		$this->papar->pilihJadual2 = 'pilih_jadual_am2';
+		//$this->papar->template2 = 'template_bootstrap';
 		//$this->papar->template3 = 'template_bootstrap_table';
-		//$this->papar->template4 = 'template_khas01';
+		//$this->papar->template1 = 'template_khas01';
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
