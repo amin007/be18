@@ -9,7 +9,7 @@ foreach ($this->senarai as $myTable => $row)
 		. "\r" . '<span class="badge">' . count($row) . '</span>';
 		echo $tajukjadual . "\n"; ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
-<?php include 'pilih_' . $pilihJadual . '.php'; ?>
+<?php include $this->pilihJadual . '.php'; ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
 <?php
 	} // if ( count($row)==0 )
