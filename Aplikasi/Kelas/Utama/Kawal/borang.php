@@ -80,9 +80,9 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->carian[] = 'semua';
 		$this->papar->c1 = $this->papar->c2 = null;
 		$this->papar->_pilih = $pilih;
-		//$this->papar->template = 'biasa';
-		$this->papar->template = 'bootstrap_table';
-		//$this->papar->template = 'bootstrap';
+		$this->papar->template = 'biasa';
+		//$this->papar->template = 'bootstrap_table';
+		$this->papar->template2 = 'bootstrap';
 		//$this->papar->template = 'khas01';
 		//*/
 	}
