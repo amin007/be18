@@ -243,6 +243,21 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$this->panggilDB('semuaBE','be2016_v2',$idBorang);
+		$this->debugKandunganPaparan();
+		$this->_folder = 'borang';
+
+		# Pergi papar kandungan
+		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
+		//echo '<br>$fail = ' . $fail[3] . '<hr>';
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
+		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
+	}
+#-------------------------------------------------------------------------------------------
+	public function banci($idBorang = null)
+	{
+		# Set pemboleubah utama
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		//$ulangjadual = $this->tanya->dataBE();
 		//$ulangjadual = $this->tanya->dataBanci2016();
 		//$db = 'pom_malaysiabaru.be2016_kp';
