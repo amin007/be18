@@ -391,7 +391,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return $sql;
 	}
 #---------------------------------------------------------------------------------------------------#
-	private function soalanGajiSijil($m,$myTable)
+	function soalanGajiSijil($m,$myTable)
 	{
 		$sql = '
 		SELECT ' . $m . ' "01-PEMILIK" STAF, "L01" `JANTINA`,`F4901` MSIA,`F5001` XMSIA,`F1401` JUM,"" GAJI, "" SUB,"Pascasiswazah" SIJIL, "06" K,`F1506` L, `F1606` P FROM ' . $myTable . ' UNION
@@ -408,7 +408,6 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		SELECT ' . $m . ' "12-JUM-TETAP" STAF, "L17", `F4917` MSIA,`F5017` XMSIA,`F1417` JUM,`F1817` GAJI,`F5117` SUB,"Bawah SPM", "05",`F1505` L, `F1605` P FROM ' . $myTable . ' UNION
 		SELECT ' . $m . ' "13-JUM-SAM" STAF, "L11", `F4911` MSIA,`F5011` XMSIA,`F1411` JUM,`F1811` GAJI,`F5111` SUB,"JUMLAH", "09",`F1509` L, `F1609` P FROM ' . $myTable . ' UNION
 		SELECT ' . $m . ' "14-JUMLAH" STAF, "L19", `F4919` MSIA,`F5019` XMSIA,`F1419` JUM,`F1819` GAJI,`F5119` SUB,"","","","" FROM ' . $myTable . ' UNION
-
 		SELECT ' . $m . ' "01-PEMILIK" STAF, "P21", `F4921` MSIA,`F5021` XMSIA,`F1421` JUM,"" GAJI, "" SUB,"","","","" FROM ' . $myTable . ' UNION
 		SELECT ' . $m . ' "02-KELUARGA" STAF, "P22", `F4922` MSIA,`F5022` XMSIA,`F1422` JUM,"" GAJI, "" SUB,"","","","" FROM ' . $myTable . ' UNION
 		SELECT ' . $m . ' "03-PENGURUS" STAF, "P32", `F4932` MSIA,`F5032` XMSIA,`F1432` JUM,`F1832` GAJI,`F5132` SUB,"","","","" FROM ' . $myTable . ' UNION
@@ -421,7 +420,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		SELECT ' . $m . ' "11-ASAS" STAF, "P36", `F4936` MSIA,`F5036` XMSIA,`F1436` JUM,`F1836` GAJI,`F5136` SUB,"","","","" FROM ' . $myTable . ' UNION
 		SELECT ' . $m . ' "12-JUM-TETAP" STAF, "P26", `F4926` MSIA,`F5026` XMSIA,`F1426` JUM,`F1826` GAJI,`F5126` SUB,"","","","" FROM ' . $myTable . ' UNION
 		SELECT ' . $m . ' "13-JUM-SAM" STAF, "P31", `F4931` MSIA,`F5031` XMSIA,`F1431` JUM,`F1831` GAJI,`F5131` SUB,"","","","" FROM ' . $myTable . ' UNION
-		SELECT ' . $m . ' "14-JUMLAH" STAF, "P39", `F4939` MSIA,`F5039` XMSIA,`F1439` JUM,`F1839` GAJI,`F5139` SUB,"","","","" FROM ' . $myTable . "\r";
+		SELECT ' . $m . ' "14-JUMLAH" STAF, "P39", `F4939` MSIA,`F5039` XMSIA,`F1439` JUM,`F1839` GAJI,`F5139` SUB,"","","","" FROM ' . $myTable . " UNION\r";
 		return $sql;
 	}
 #---------------------------------------------------------------------------------------------------#
