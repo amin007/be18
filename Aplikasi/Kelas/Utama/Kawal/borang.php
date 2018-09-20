@@ -61,8 +61,11 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		if(isset($this->papar->medan)):
 			echo '<br>$this->papar->medan : '; print_r($this->papar->medan);
 		endif;
-		if(isset($this->papar->senaraiMedan)):
-			echo '<br>$this->papar->senaraiMedan : '; print_r($this->papar->senaraiMedan);
+		if(isset($this->papar->bentukJadual01)):
+			echo '<br>$this->papar->bentukJadual01 : '; print_r($this->papar->bentukJadual01);
+		endif;
+		if(isset($this->papar->bentukJadual02)):
+			echo '<br>$this->papar->bentukJadual02 : '; print_r($this->papar->bentukJadual02);
 		endif;
 		echo '<br>$this->papar->_pilih : '; print_r($this->papar->_pilih);
 		echo '<br>$this->papar->template : '; print_r($this->papar->template);
