@@ -26,7 +26,6 @@ foreach ($this->bentukJadual01 as $myTable => $row)
 		$tajukjadual = '<span class="badge badge-success">' . $myTable . '</span>'
 		. "\r" . '<span class="badge">' . count($row) . '</span>'; ?>
 	<div class="tab-pane<?php echo $mula2?>" id="<?php echo $myTable ?>">
-	<?php echo $tajukjadual . "\n"; ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
 <?php include $this->pilihJadual2 . '.php'; ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
