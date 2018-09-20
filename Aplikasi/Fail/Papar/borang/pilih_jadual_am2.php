@@ -1,4 +1,5 @@
 	<table class="excel">
+	<h3><?php echo $tajukjadual ?></h3>
 	<thead><tr>
 		<th>nama medan</th>
 		<th>data</th>
