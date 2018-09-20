@@ -6,20 +6,15 @@ $class1 = 'col-sm-6'; # untuk tajuk dan hantar
 $class2 = 'col-sm-6'; # untuk $data
 $aksi = null;
 
-# pilih paparan ke bawah atau melintang
-$pilihJadual = 'jadual_am';
-$pilihJadual2 = 'jadual_am2'; # ubah suai data
-//$pilihJadual = 'ubah_medan01'; # borang biodata berasaskan table
-//$pilihJadual = 'ubah_medan02'; # borang ubah berasaskan bootstrap
-
-# untuk kod baru
+# untuk debug
 //echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
 
-include 'template_' . $this->template . '.php';
-include 'template_' . $this->template2 . '.php';
+include $this->template . '.php';
+include $this->template2 . '.php';
 include 'atas/dibawah.php';
 
+#--------------------------------------------------------------------------------------------
 function formula01($key,$data)
 {
 	$buang01 = array('newss','nama','batch','form','kp','msic2008');
@@ -35,3 +30,4 @@ function formula01($key,$data)
 
 	return $papar;
 }
+#--------------------------------------------------------------------------------------------
