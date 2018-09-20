@@ -154,8 +154,8 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		$medan = '*';
 		$carian = $susun = null;
 		# semak database
-			$carian[] = array('fix'=>'%like%', # cari x= / %like% / xlike
-				'atau'=>'WHERE', # WHERE / OR / AND
+			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
+				'atau' => 'WHERE', # WHERE / OR / AND
 				'medan' => 'NoSiri', # cari dalam medan apa
 				'apa' => $idBorang); # benda yang dicari//*/
 
@@ -178,8 +178,8 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		`F2087`,`F2088`,`F2097`,`F2098`,`F2089`,`F2094`,`F2095`,`F2096`,`F2099`';
 		$carian = $susun = null;
 		# semak database
-			$carian[] = array('fix'=>'%like%', # cari x= / %like% / xlike
-				'atau'=>'WHERE', # WHERE / OR / AND
+			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
+				'atau' => 'WHERE', # WHERE / OR / AND
 				'medan' => 'NoSiri', # cari dalam medan apa
 				'apa' => $idBorang); # benda yang dicari//*/
 
@@ -200,8 +200,9 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			`F2181`,`F2182`,`F2183`,`F2184`,`F2185`,`F2186`,`F2187`,`F2188`,`F2190`,
 			`F2191`,`F2197`,`F2198`,`F2189`,`F2193`,`F2194`,`F2195`,`F2196`,`F2199`';
 		$carian = $susun = null;
-			$carian[] = array('fix'=>'%like%', # cari x= / %like% / xlike
-				'atau'=>'WHERE', # WHERE / OR / AND
+		# semak database
+			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
+				'atau' => 'WHERE', # WHERE / OR / AND
 				'medan' => 'NoSiri', # cari dalam medan apa
 				'apa' => $idBorang); # benda yang dicari//*/
 
