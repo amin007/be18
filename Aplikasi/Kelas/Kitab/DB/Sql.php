@@ -218,7 +218,7 @@ class Sql
 #-------------------------------------------------------------------------------------------------
 	public function bentukSqlSelect($myTable, $medan, $carian, $susun = null)
 	{
-		$sql = ' SELECT ' . $medan . "\r" . ' FROM ' . $myTable
+		$sql = "\r" . ' SELECT ' . $medan . "\r" . ' FROM ' . $myTable
 			 . "\r" . $this->dimana($carian)
 			 . $this->dibawah($susun);
 
