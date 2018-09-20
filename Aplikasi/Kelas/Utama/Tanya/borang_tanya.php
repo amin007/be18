@@ -398,6 +398,10 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		"Bacelor Teknikal", "42",`F1542` L, `F1642` P
 		"Diploma Akademik", "43",`F1543` L, `F1643` P
 		"Diploma Teknikal TVET", "44",`F1544` L, `F1644` P
+		"Sijil Akademik", "45",`F1545` L, `F1645` P
+		"Sijil SKM 3", "46",`F1546` L, `F1646` P
+		"Sijil SKM 1&2", "47",`F1547` L, `F1647` P
+		"Sijil Kemahiran lain", "48",`F1548` L, `F1648` P
 		"STPM", "03",`F1503` L, `F1603` P
 		"SPM", "04",`F1504` L, `F1604` P
 		"Bawah SPM", "05",`F1505` L, `F1605` P
