@@ -12,7 +12,7 @@
 	?><tbody><?php
 		foreach ( $row[$kira] as $key=>$data )
 		{
-			echo "\n\t";
+			echo ($data == '0') ? '' : "\n\t";
 			?><tr><td align="right"><?php echo $key ?></td><?php
 			//$paparData = $html->tambahDropInput($this->_paparMedan, $this->_j2,
 			//$myTable, $kira, $key, $data);
