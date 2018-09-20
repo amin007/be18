@@ -313,5 +313,50 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return $data;
 	}
 #---------------------------------------------------------------------------------------------------#
+	private function soalanAmBe2016()
+	{
+		$sql = ' CREATE TABLE be2016_v2 AS
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp202" as kp FROM be2016_kp202a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp205" as kp FROM be2016_kp205a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp301" as kp FROM be2016_kp301a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp302" as kp FROM be2016_kp302a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp303" as kp FROM be2016_kp303a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp304" as kp FROM be2016_kp304a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp305" as kp FROM be2016_kp305a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp306" as kp FROM be2016_kp306a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp308" as kp FROM be2016_kp308a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp309" as kp FROM be2016_kp309a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp310" as kp FROM be2016_kp310a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp311" as kp FROM be2016_kp311a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp312" as kp FROM be2016_kp312a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp313" as kp FROM be2016_kp313a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp314" as kp FROM be2016_kp314a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp315" as kp FROM be2016_kp315a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp316" as kp FROM be2016_kp316a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp317" as kp FROM be2016_kp317a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp318" as kp FROM be2016_kp318a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp319" as kp FROM be2016_kp319a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp320" as kp FROM be2016_kp320a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp322" as kp FROM be2016_kp322a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp323" as kp FROM be2016_kp323a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp324" as kp FROM be2016_kp324a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp325" as kp FROM be2016_kp325a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp328" as kp FROM be2016_kp328a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp330" as kp FROM be2016_kp330a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp331" as kp FROM be2016_kp331a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp332" as kp FROM be2016_kp332a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp333" as kp FROM be2016_kp333a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp334" as kp FROM be2016_kp334a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp335" as kp FROM be2016_kp335a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp336" as kp FROM be2016_kp336a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp392" as kp FROM be2016_kp392a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp393" as kp FROM be2016_kp393a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp840" as kp FROM be2016_kp840a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp850" as kp FROM be2016_kp850a UNION
+		SELECT `kodbanci`,`nosiri`,`f0002`,`f0014`,`f0015`,"kp890" as kp FROM be2016_kp890a
+		';
+		return $sql;
+	}
+#---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
 }
