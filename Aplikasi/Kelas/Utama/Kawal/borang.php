@@ -106,8 +106,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pembolehubah utama
 		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
 		//$myJadual = explode('.', $myJadual);
-		$this->papar->senarai[$pilih] = $this->tanya->cariSql
-			//cariSemuaData
+		$this->papar->senarai[$pilih] = $this->tanya->//cariSql
+			cariSemuaData
 			($myJadual, $medan, $carian, $susun);
 		# Set pembolehubah untuk Papar
 		$this->kandunganPaparan($pilih, $myJadual);
@@ -251,7 +251,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			//$this->panggilDB2('hasilBE',$db.$jadual . 'a',$idBorang);
 			//$this->panggilDB2('belanjaBE',$db.$jadual . 'a',$idBorang);
 		endforeach;
-		//$this->debugKandunganPaparan();
+		$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
 
 		# Pergi papar kandungan
@@ -259,7 +259,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
-		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
+		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 #==========================================================================================
