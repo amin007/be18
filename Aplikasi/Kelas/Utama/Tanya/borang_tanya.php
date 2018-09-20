@@ -151,7 +151,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
 		$myTable = null;
-		$medan = '*';
+		$medan = '`NoSiri`,`KodBanci`';
 		$carian = $susun = null;
 		# semak database
 			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
