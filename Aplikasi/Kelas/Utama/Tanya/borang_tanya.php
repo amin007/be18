@@ -409,7 +409,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return $sql;
 	}
 #---------------------------------------------------------------------------------------------------#
-	private function soalanGaji02($m,$myTable)
+	function soalanGaji02($m,$myTable)
 	{
 		$sql = 'SELECT ' . $m . '
 		"L01-PEMILIK","L01",`F4901`,`F5001`,`F1401`,`F1801,`F5101`,
