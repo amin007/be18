@@ -296,7 +296,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$db = 'pom_malaysiabaru.be2016_kp';
 		$md = 'kodbanci,nosiri,f0002,f0014,f0015,';
-		$sql = null;
+		$sql[] = "CREATE TABLE be2016_staf_servis02 AS ";
 		foreach($this->tanya->dataBanci2016() as $jadual):
 			//$sql .= $this->tanya->soalanGajiSijil($md,$db.$jadual . 'a');
 			$sql[] = $this->tanya->soalanGaji02($md,$db.$jadual . 'a');
