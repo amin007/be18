@@ -303,7 +303,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			//$sql .= "UNION \r";
 			//$this->panggilDB2('semuaBE',$db.$jadual . 'a',$idBorang);
 		endforeach;//*/
-		$sqlAll = implode("UNION \r",$sql);
+		$sqlAll = implode(" UNION \r",$sql);
 		//$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
 
