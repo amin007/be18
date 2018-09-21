@@ -299,18 +299,20 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$sql = null;
 		foreach($this->tanya->dataBanci2016() as $jadual):
 			//$sql .= $this->tanya->soalanGajiSijil($md,$db.$jadual . 'a');
-			$sql .= $this->tanya->soalanGaji02($md,$db.$jadual . 'a');
+			$sql[] = $this->tanya->soalanGaji02($md,$db.$jadual . 'a');
+			//$sql .= "UNION \r";
 			//$this->panggilDB2('semuaBE',$db.$jadual . 'a',$idBorang);
 		endforeach;//*/
+		$sqlAll = implode("UNION \r",$sql);
 		//$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
 
 		# Pergi papar kandungan
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
-		$this->semakPembolehubah($sql); # Semak data dulu
+		$this->semakPembolehubah($sqlAll); # Semak data dulu
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
+		//$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
 		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
