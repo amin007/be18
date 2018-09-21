@@ -276,18 +276,18 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$db = 'pom_malaysiabaru.';
-		$this->panggilDB('semuaBE',$db . 'be2016_v2',$idBorang);
+		/*$this->panggilDB('semuaBE',$db . 'be2016_v2',$idBorang);
 		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
-		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
-		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis',$idBorang);
-		//$this->debugKandunganPaparan();
+		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);*/
+		$this->panggilDB('stafBE',$db . 'be2016_staf_servis',$idBorang);
+		$this->debugKandunganPaparan();
 		$this->_folder = 'borang';
 
 		# Pergi papar kandungan
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		$fail = array('index','index2','b_ubah','b_ubah_kawalan');
-		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);
+		//$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 	public function be2($idBorang = null)
