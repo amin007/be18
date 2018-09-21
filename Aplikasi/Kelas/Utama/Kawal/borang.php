@@ -280,14 +280,14 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);*/
 		$this->panggilDB('stafBE',$db . 'be2016_staf_servis',$idBorang);
-		$this->debugKandunganPaparan();
-		$this->_folder = 'borang';
+		//$this->debugKandunganPaparan();
 
 		# Pergi papar kandungan
+		$this->_folder = 'borang';
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
-		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		$fail = array('index','index2','b_ubah','b_ubah_kawalan');
-		//$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);
+		//echo '<br>$fail = ' . $fail[3] . '<hr>';
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
 	}
 #-------------------------------------------------------------------------------------------
 	public function be2($idBorang = null)
