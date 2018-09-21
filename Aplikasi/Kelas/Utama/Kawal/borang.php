@@ -298,7 +298,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$md = 'kodbanci,nosiri,f0002,f0014,f0015,';
 		$sql = null;
 		foreach($this->tanya->dataBanci2016() as $jadual):
-			$sql .= $this->tanya->soalanGajiSijil($md,$db.$jadual . 'a');
+			//$sql .= $this->tanya->soalanGajiSijil($md,$db.$jadual . 'a');
+			$sql .= $this->tanya->soalanGaji02($md,$db.$jadual . 'a');
 			//$this->panggilDB2('semuaBE',$db.$jadual . 'a',$idBorang);
 		endforeach;//*/
 		//$this->debugKandunganPaparan();
