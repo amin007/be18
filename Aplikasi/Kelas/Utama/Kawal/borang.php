@@ -355,22 +355,25 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$myTable = 'pom_malaysiabaru.be2016_staf_servis02';
-		$where = " WHERE nosiri = '$idBorang' ";
+		$myDB = 'pom_malaysiabaru';
+		$myTable = 'be2016_kp890a';//'be2016_staf_servis02';
+		//$this->papar->senarai = $this->tanya->pilihMedan($myTable, $myDB);
+		$this->papar->senarai = $this->tanya->pilihMedan02($myTable, $myDB);
+		/*$where = " WHERE nosiri = '$idBorang' ";
 		$sql = null;
 		foreach($this->tanya->jawatanStaf() as $key):
 			$sql[] = "SELECT `L$key`,`F49$key`,`F50$key`,`F14$key`,`F18$key`,`F51$key` "
 				. "FROM $myTable$where";
 		endforeach;//*/
-		return $sqlAll = implode(" UNION \r",$sql);
+		//return $sqlAll = implode(" UNION \r",$sql);
 		//$this->debugKandunganPaparan();
-		//$this->_folder = 'borang';
+
 
 		# Pergi papar kandungan
+		//$this->_folder = 'borang';
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
-		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		//$this->semakPembolehubah($sqlAll); # Semak data dulu
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		//$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
 		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
