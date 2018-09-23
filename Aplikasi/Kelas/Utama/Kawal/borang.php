@@ -350,14 +350,14 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			$sql[] = "SELECT `L$key`,`F49$key`,`F50$key`,`F14$key`,`F18$key`,`F51$key` "
 				. "FROM $myTable$where";
 		endforeach;//*/
-		$sqlAll = implode(" UNION \r",$sql);
+		return $sqlAll = implode(" UNION \r",$sql);
 		//$this->debugKandunganPaparan();
-		$this->_folder = 'borang';
+		//$this->_folder = 'borang';
 
 		# Pergi papar kandungan
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
-		$this->semakPembolehubah($sqlAll); # Semak data dulu
+		//$this->semakPembolehubah($sqlAll); # Semak data dulu
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		//$fail = array('index','b_ubah','b_ubah_kawalan','soalan4');
 		//$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
