@@ -17,8 +17,8 @@ class Kebenaran
 	{
 		@session_start();
 
-		$kunci = \Aplikasi\Kitab\Sesi::get('loggedIn');
-		$level = \Aplikasi\Kitab\Sesi::get('levelPengguna');
+		$kunci = \Aplikasi\Kitab\Sesi::get('be18_loggedIn');
+		$level = \Aplikasi\Kitab\Sesi::get('be18_levelPengguna');
 		$senaraiLevel = \Aplikasi\Kitab\Kebenaran::senaraiLevel();
 		
 		//echo '<pre>kawalMasuk() :: $_SESSION->', print_r($_SESSION, 1);
@@ -42,8 +42,8 @@ class Kebenaran
 	{
 		@session_start();
 
-		$kunci = \Aplikasi\Kitab\Sesi::get('loggedIn');
-		$level = \Aplikasi\Kitab\Sesi::get('levelPengguna');
+		$kunci = \Aplikasi\Kitab\Sesi::get('be18_loggedIn');
+		$level = \Aplikasi\Kitab\Sesi::get('be18_levelPengguna');
 		$senaraiLevel = \Aplikasi\Kitab\Kebenaran::senaraiLevel();
 
 		//echo '<pre>kawalKeluar() :: $_SESSION->', print_r($_SESSION, 1);
@@ -64,13 +64,13 @@ class Kebenaran
 		# pergi papar kandungan fungsi papar() dalam KAWAL
 		$senaraiPengguna = array('fe','kup','pegawai');
 		$senaraiPentadbir = array('kawal');
-		if (in_array(Sesi::get('levelPengguna'), $senaraiPentadbir)) 
+		if (in_array(Sesi::get('be18_levelPengguna'), $senaraiPentadbir))
 		{
 			$paras = 'Paras Pentadbir:' . Sesi::get('levelPengguna');
 			return $_folder . 'index';
 			//echo $paras . '<br>$this->lihat->baca(' . $_folder . 'index)';
 		}
-		elseif (in_array(Sesi::get('levelPengguna'), $senaraiPengguna)) 
+		elseif (in_array(Sesi::get('be18_levelPengguna'), $senaraiPengguna))
 		{
 			$paras = 'Paras Pengguna:' . Sesi::get('levelPengguna');
 			return $_folder . 'papar';
@@ -89,15 +89,15 @@ class Kebenaran
 		# pergi papar kandungan tambahSimpan() dalam KAWAL
 		$senaraiPengguna = array('fe','kup','pegawai');
 		$senaraiPentadbir = array('kawal');
-		if (in_array(Sesi::get('levelPengguna'), $senaraiPentadbir)) 
+		if (in_array(Sesi::get('be18_levelPengguna'), $senaraiPentadbir))
 		{
-			$paras = 'Paras Pentadbir:' . Sesi::get('levelPengguna');
+			$paras = 'Paras Pentadbir:' . Sesi::get('be18_levelPengguna');
 			header('location: ' . URL . $_folder . '');
 			//echo $paras . '<br>location: ' . URL . $_folder . '';
 		}
-		elseif (in_array(Sesi::get('levelPengguna'), $senaraiPengguna)) 
+		elseif (in_array(Sesi::get('be18_levelPengguna'), $senaraiPengguna))
 		{
-			$paras = 'Paras Pengguna:' . Sesi::get('levelPengguna');
+			$paras = 'Paras Pengguna:' . Sesi::get('be18_levelPengguna');
 			header('location: ' . URL . $_folder . 'papar');
 			//echo $paras . '<br>location: ' . URL . $_folder . 'papar';
 		}
@@ -114,15 +114,15 @@ class Kebenaran
 		# pergi papar kandungan ubahSimpan($medanID, $cariID) dalam KAWAL
 		$senaraiPengguna = array('fe','kup','pegawai');
 		$senaraiPentadbir = array('kawal');
-		if (in_array(Sesi::get('levelPengguna'), $senaraiPentadbir)) 
+		if (in_array(Sesi::get('be18_levelPengguna'), $senaraiPentadbir))
 		{
-			$paras = 'Paras Pentadbir:' . Sesi::get('levelPengguna');
+			$paras = 'Paras Pentadbir:' . Sesi::get('be18_levelPengguna');
 			header('location: ' . URL . $_folder . $ID);
 			//echo $paras . '<br>location: ' . URL . $_folder . $ID;
 		}
-		elseif (in_array(Sesi::get('levelPengguna'), $senaraiPengguna))
+		elseif (in_array(Sesi::get('be18_levelPengguna'), $senaraiPengguna))
 		{
-			$paras = 'Paras Pengguna:' . Sesi::get('levelPengguna');
+			$paras = 'Paras Pengguna:' . Sesi::get('be18_levelPengguna');
 			header('location: ' . URL . $_folder . 'papar');
 			//echo $paras . '<br>location: ' . URL . $_folder . 'papar';
 		}
