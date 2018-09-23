@@ -46,10 +46,10 @@ class Tanya
 		return $this->db->selectAll($sql);
 	}
 #-------------------------------------------------------------------------------------------------
-	public function pilihMedan02($myTable)
+	public function pilihMedan02($myTable, $database = DB_NAME)
 	{
 		//echo '<br>return $this->db->getColumnNames('.$myTable.');';
-		return $this->db->getColumnNames($myTable);
+		return $this->db->getColumnNames($myTable, $database);
 	}
 #-------------------------------------------------------------------------------------------------
 	public function ubahMedan($myTable, $medan)
