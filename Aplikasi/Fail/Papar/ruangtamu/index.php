@@ -5,9 +5,9 @@
 $Sesi = new \Aplikasi\Kitab\Sesi();
 $Sesi->init();
 //echo '<pre>'; print_r($_SESSION) . '</pre>';
-echo 'namaPendek=' . $Sesi->get('namaPendek') . '<br>';
-echo 'namaPenuh=' . $Sesi->get('namaPenuh') . '<br>';
-echo 'levelPengguna=' . $Sesi->get('levelPengguna') . '';//*/
+echo 'namaPendek=' . $Sesi->get('be18_namaPendek') . '<br>';
+echo 'namaPenuh=' . $Sesi->get('be18_namaPenuh') . '<br>';
+echo 'levelPengguna=' . $Sesi->get('be18_levelPengguna') . '';//*/
 ?></p>
 
 	<a class="btn btn-primary btn-large" href="<?php echo URL ?>ruangtamu/logout">Pergi Lebih Jauh<i class="fa fa-binoculars fa-2x"></i></a>
