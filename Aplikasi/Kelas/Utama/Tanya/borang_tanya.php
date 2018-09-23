@@ -245,6 +245,16 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
 #---------------------------------------------------------------------------------------------------#
+	function jawatanStaf()
+	{
+		$sql = array(
+			'01','02','12','03','13','04','05','14','15','16','06','17','11','19',
+			'21','22','32','23','33','24','25','34','35','36','26','37','31','39'
+		);
+		return $sql;
+	}
+#---------------------------------------------------------------------------------------------------#
+
 	public function soalan()
 	{
 		$data = array('soalan-01','soalan-02','soalan-03','soalan-04','soalan-05',
@@ -492,15 +502,6 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		SELECT ' . $m . ' "12-JUM-TETAP" STAF, "P26", `F4926` MSIA,`F5026` XMSIA,`F1426` JUM,`F1826` GAJI,`F5126` SUB,"","","","" FROM ' . $myTable . ' UNION
 		SELECT ' . $m . ' "13-JUM-SAM" STAF, "P31", `F4931` MSIA,`F5031` XMSIA,`F1431` JUM,`F1831` GAJI,`F5131` SUB,"","","","" FROM ' . $myTable . ' UNION
 		SELECT ' . $m . ' "14-JUMLAH" STAF, "P39", `F4939` MSIA,`F5039` XMSIA,`F1439` JUM,`F1839` GAJI,`F5139` SUB,"","","","" FROM ' . $myTable . " UNION\r";
-		return $sql;
-	}
-#---------------------------------------------------------------------------------------------------#
-	function jawatanStaf()
-	{
-		$sql = array(
-			'01','02','12','03','13','04','05','14','15','16','06','17','11','19',
-			'21','22','32','23','33','24','25','34','35','36','26','37','31','39'
-		);
 		return $sql;
 	}
 #---------------------------------------------------------------------------------------------------#
