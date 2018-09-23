@@ -158,6 +158,18 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->_jadual = $myTable;
 	}
 #-------------------------------------------------------------------------------------------
+	function panggilSQL($pilih)
+	{
+		# Set pembolehubah utama
+		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
+		$this->papar->bentukJadual02[$pilih] = $this->tanya->//cariSql
+			cariSemuaData
+			($myJadual, $medan, $carian, $susun);
+		# Set pembolehubah untuk Papar
+		$this->kandunganPaparan($pilih, $myJadual);
+		//$this->debugKandunganPaparan($pilih, $myJadual);
+	}
+#-------------------------------------------------------------------------------------------
 	public function updateID($pilih)
 	{
 		# ubahsuai $posmen
