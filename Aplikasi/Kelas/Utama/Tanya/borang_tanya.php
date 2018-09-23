@@ -125,6 +125,8 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			list($myTable, $medan, $carian, $susun) = $this->jadualBelanjaBE($idBorang);
 		elseif($pilih == 'stafBE'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualStafBE($idBorang);
+		elseif($pilih == 'staf02BE'): //echo "\$pilih = $pilih <br>";
+			list($myTable, $medan, $carian, $susun) = $this->jadualStafBE($idBorang);
 		else: //echo "\$pilih = $pilih <br>";
 			$myTable = $medan = $carian = $susun = null;
 		endif;
@@ -212,6 +214,22 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 	}
 #---------------------------------------------------------------------------------------------------#
 	function jadualStafBE($idBorang)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
+		$myTable = null;
+		$medan = '*';
+		$carian = $susun = null;
+		# semak database
+			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
+				'atau' => 'WHERE', # WHERE / OR / AND
+				'medan' => 'nosiri', # cari dalam medan apa
+				'apa' => $idBorang); # benda yang dicari//*/
+
+		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
+	}
+#---------------------------------------------------------------------------------------------------#
+	function jadualSta02fBE($idBorang)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
