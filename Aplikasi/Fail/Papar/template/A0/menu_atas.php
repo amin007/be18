@@ -2,8 +2,8 @@
 $sesi = \Aplikasi\Kitab\Sesi::init();
 //echo '<pre>MENU_ATAS - $_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
 # set pembolehubah
-$pengguna = \Aplikasi\Kitab\Sesi::get('namaPendek');
-$level = \Aplikasi\Kitab\Sesi::get('levelPengguna');
+$pengguna = \Aplikasi\Kitab\Sesi::get('be18_namaPendek');
+$level = \Aplikasi\Kitab\Sesi::get('be18_levelPengguna');
 
 $senaraiPengguna = array('pentadbir','biasa');
 $senaraiPentadbir = array('pentadbir','biasa');
