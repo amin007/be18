@@ -14,7 +14,7 @@
 	?><tbody><?php
 		foreach ( $row[$kira] as $key=>$data )
 		{
-			if($data == '0'):
+			if($data == '0' or $data == NULL):
 				echo '';
 			else:
 				paparInput01($key,$data,$this->medan);
