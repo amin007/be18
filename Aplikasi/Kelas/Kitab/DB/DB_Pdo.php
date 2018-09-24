@@ -294,6 +294,8 @@ class DB_Pdo extends \PDO
 		$sql .= ' WHERE table_schema = :database';
 		$sql .= ' AND table_name = :table';
 
+		//echo htmlentities($sql) . '<br>';
+
 		try {
 			$sth = $this->prepare($sql);
 			$sth->bindValue(':database', $database, \PDO::PARAM_STR);
