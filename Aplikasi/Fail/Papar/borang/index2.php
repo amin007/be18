@@ -9,6 +9,7 @@ $aksi = null;
 # untuk debug
 //echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
+echo '<pre>$medan='; print_r($this->medan); echo '</pre>';
 
 include $this->template . '.php';
 include $this->template2 . '.php';
@@ -34,7 +35,7 @@ function formula01($key,$data)
 function paparInput01($key,$data)
 {
 	?><tr><td align="right"><?php echo $key ?></td><?php
-	?><tr><td align="right"><?php echo $key ?></td><?php
+	?><td align="right"><?php echo $key ?></td><?php
 	//$paparData = $html->tambahDropInput($this->_paparMedan, $this->_j2,
 	//$myTable, $kira, $key, $data);
 	/*?><td><?php echo $paparData . "\n\t" ?></td><?php*/
