@@ -14,7 +14,8 @@ $aksi = null;
 include $this->template . '.php';
 include $this->template2 . '.php';
 
-/*$ulang = array('kodbanci','nosiri','F0002','F0014','F0015','F2099');
+/*$ulang = array('kodbanci','nosiri','F0002','F0014','F0015',
+	'F2001','F2089','F2099');
 foreach ($ulang as $key):
 	echo "\n<h4>" . keteranganMedan($key,$this->medan) . '</h4>';
 endforeach;//*/
