@@ -164,10 +164,10 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 				'atau' => 'WHERE', # WHERE / OR / AND
 				'medan' => 'kp', # cari dalam medan apa
 				'apa' => $idBorang); # benda yang dicari//*/
-			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
+			$carian[] = array('fix' => 'xnull', # cari x= / %like% / xlike / xnull
 				'atau' => 'AND', # WHERE / OR / AND
 				'medan' => 'keterangan', # cari dalam medan apa
-				'apa' => NULL); # benda yang dicari//*/
+				'apa' => '-'); # benda yang dicari//*/
 
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
