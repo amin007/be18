@@ -9,7 +9,7 @@ $aksi = null;
 # untuk debug
 //echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
-echo '<pre>$medan='; print_r($this->medan); echo '</pre>';
+//echo '<pre>$medan='; print_r($this->medan); echo '</pre>';
 
 include $this->template . '.php';
 include $this->template2 . '.php';
@@ -45,4 +45,22 @@ function paparInput01($key,$data)
 	?><td><?php echo $data ?></td><?php
 	?></tr><?php
 }
+#--------------------------------------------------------------------------------------------
+/*
+$medan=Array
+(
+    [0] => Array
+        (
+            [medan] => F0030
+            [keterangan] => Taraf Sah Organisasi
+        )
+
+    [1] => Array
+        (
+            [medan] => F0031
+            [keterangan] => Modal Berbayar
+        )
+)
+*/
+#--------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------
