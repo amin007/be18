@@ -50,9 +50,10 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function debugKandunganPaparan()
 	{
-		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		echo '<pre>';
-		echo '<br>$this->papar->senarai : '; print_r($this->papar->senarai);
+		echo '<hr>Nama class :' . __METHOD__ . '()<hr><pre>';
+		if(isset($this->papar->senarai)):
+			echo '<br>$this->papar->senarai : '; print_r($this->papar->senarai);
+		endif;
 		echo '<br>$this->papar->myTable : '; print_r($this->papar->myTable);
 		echo '<br>$this->papar->_jadual : '; print_r($this->papar->_jadual);
 		echo '<br>$this->papar->carian : '; print_r($this->papar->carian);
