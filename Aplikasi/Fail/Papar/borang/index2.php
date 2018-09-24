@@ -41,7 +41,7 @@ function formula01($key,$data)
 function paparInput01($key,$data,$banyakMedan)
 {
 	?><tr><td align="right"><?php echo $key ?></td><?php
-	?><td align="right"><?php //echo keteranganMedan($key,$banyakMedan) ?></td><?php
+	?><td align="right"><?php echo keteranganMedan($key,$banyakMedan) ?></td><?php
 	//$paparData = $html->tambahDropInput($this->_paparMedan, $this->_j2,
 	//$myTable, $kira, $key, $data);
 	/*?><td><?php echo $paparData . "\n\t" ?></td><?php*/
