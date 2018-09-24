@@ -157,13 +157,17 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
 		$myTable = null;
-		$medan = '*';
+		$medan = 'medan,keterangan';
 		$carian = $susun = null;
 		# semak database
 			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
 				'atau' => 'WHERE', # WHERE / OR / AND
 				'medan' => 'kp', # cari dalam medan apa
 				'apa' => $idBorang); # benda yang dicari//*/
+			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
+				'atau' => 'AND', # WHERE / OR / AND
+				'medan' => 'keterangan', # cari dalam medan apa
+				'apa' => NULL); # benda yang dicari//*/
 
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
