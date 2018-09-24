@@ -1,7 +1,7 @@
 <?php
 include 'atas/diatas.php';
 //include 'atas/menu_atas.php';
-include 'z_tatasusunan.php';
+//include 'z_tatasusunan.php';
 $class1 = 'col-sm-6'; # untuk tajuk dan hantar
 $class2 = 'col-sm-6'; # untuk $data
 $aksi = null;
@@ -14,10 +14,10 @@ $aksi = null;
 include $this->template . '.php';
 include $this->template2 . '.php';
 
-$ulang = array('kodbanci','nosiri','f002','f0014','f0015','F2099');
+$ulang = array('kodbanci','nosiri','F0002','F0014','F0015','F2099');
 foreach ($ulang as $key):
 	echo "\n<h4>" . keteranganMedan($key,$this->medan) . '</h4>';
-endforeach;
+endforeach;//*/
 
 include 'atas/dibawah.php';
 
