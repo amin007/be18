@@ -119,6 +119,19 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//$this->debugKandunganPaparan($pilih, $myJadual);
 	}
 #-------------------------------------------------------------------------------------------
+	function panggilMedan($pilih,$myJadual,$idBorang)
+	{
+		# Set pembolehubah utama
+		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
+		//$myJadual = explode('.', $myJadual);
+		$this->papar->medan[$pilih] = $this->tanya->//cariSql
+			cariSemuaData
+			($myJadual, $medan, $carian, $susun);
+		# Set pembolehubah untuk Papar
+		$this->kandunganPaparan($pilih, $myJadual);
+		//$this->debugKandunganPaparan($pilih, $myJadual);
+	}
+#-------------------------------------------------------------------------------------------
 	function panggilDBKhas01($pilih,$myTable,$idBorang)
 	{
 		# Set pembolehubah utama
@@ -283,18 +296,19 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function be($idBorang = null)
+	public function be($kp = null,$idBorang = null)
 	{
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$db = 'pom_malaysiabaru.';
+		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp);
 		$this->panggilDB('semuaBE',$db . 'be2016_v2',$idBorang);
 		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);
-		//$this->debugKandunganPaparan();
+		$this->debugKandunganPaparan();
 
-		# Pergi papar kandungan
+		/*# Pergi papar kandungan
 		$this->_folder = 'borang';
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		$fail = array('index','index2','b_ubah','b_ubah_kawalan');
