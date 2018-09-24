@@ -32,7 +32,7 @@ function formula01($key,$data)
 	return $papar;
 }
 #--------------------------------------------------------------------------------------------
-function paparInput01($key,$data)
+function paparInput01($key,$data,$this->medan)
 {
 	?><tr><td align="right"><?php echo $key ?></td><?php
 	?><td align="right"><?php echo $key ?></td><?php
