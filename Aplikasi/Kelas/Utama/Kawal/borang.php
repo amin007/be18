@@ -91,6 +91,22 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
+	function setPembolehubah($kp, $idBorang)
+	{
+		$this->papar->kp = $kp;
+		$this->papar->peratus = null;
+		$this->papar->perangkaan['idBorang'] = $idBorang;
+		$this->papar->perangkaan['nama'] = $idBorang;
+		$data = 12345;
+		$this->papar->perangkaan['hasil'] = $data;
+		$this->papar->perangkaan['belanja'] = $data;
+		$this->papar->perangkaan['gaji'] = $data;
+		$this->papar->perangkaan['susut'] = $data;
+		$this->papar->perangkaan['aset'] = $data;
+		$this->papar->perangkaan['asetsewa'] = $data;
+		//*/
+	}
+#-------------------------------------------------------------------------------------------
 	function panggilDB($pilih,$myJadual,$idBorang)
 	{
 		# Set pembolehubah utama
@@ -265,6 +281,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
+	public function cari(){}
+#-------------------------------------------------------------------------------------------
 	public function soalan4()
 	{
 		# Set pemboleubah utama
@@ -307,6 +325,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
+		$this->setPembolehubah($kp,$idBorang);
 		//$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
