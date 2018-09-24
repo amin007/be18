@@ -52,23 +52,7 @@ function paparInput01($key,$data,$banyakMedan)
 	?></tr><?php
 }
 #--------------------------------------------------------------------------------------------
-/*
-$medan=Array
-(
-    [0] => Array
-        (
-            [medan] => F0030
-            [keterangan] => Taraf Sah Organisasi
-        )
 
-    [1] => Array
-        (
-            [medan] => F0031
-            [keterangan] => Modal Berbayar
-        )
-)
-*/
-#--------------------------------------------------------------------------------------------
 function keteranganMedan($key,$banyakMedan)
 {
 	# cari keterangan medan yang lain
