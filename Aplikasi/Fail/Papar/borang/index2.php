@@ -20,6 +20,7 @@ foreach ($ulang as $key):
 	echo "\n<h4>" . keteranganMedan($key,$this->medan) . '</h4>';
 endforeach;//*/
 
+include 'soalan_anggaran.php';
 include 'atas/dibawah.php';
 
 #--------------------------------------------------------------------------------------------
