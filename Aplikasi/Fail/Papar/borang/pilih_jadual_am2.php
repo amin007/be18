@@ -15,9 +15,9 @@
 		foreach ( $row[$kira] as $key=>$data )
 		{
 			if($data == '0'):
-				echo '<tr></tr>';
+				echo '';
 			else:
-				paparInput01($key,$data);
+				paparInput01($key,$data,$this->medan);
 			endif;
 		}
 		?></tbody>
