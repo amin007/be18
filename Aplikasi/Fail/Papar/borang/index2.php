@@ -6,14 +6,14 @@ $class1 = 'col-sm-6'; # untuk tajuk dan hantar
 $class2 = 'col-sm-6'; # untuk $data
 $aksi = null;
 
+# include fail
+include $this->template . '.php';
+include $this->template2 . '.php';
+
 # untuk debug
 //echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
 //echo '<pre>$medan='; print_r($this->medan); echo '</pre>';
-
-include $this->template . '.php';
-include $this->template2 . '.php';
-
 /*$ulang = array('kodbanci','nosiri','F0002','F0014','F0015',
 	'F2001','F2089','F2099');
 foreach ($ulang as $key):
