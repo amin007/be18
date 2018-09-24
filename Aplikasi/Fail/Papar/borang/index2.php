@@ -13,6 +13,12 @@ $aksi = null;
 
 include $this->template . '.php';
 include $this->template2 . '.php';
+
+$ulang = array('kodbanci','nosiri','f002','f0014','f0015','F2099');
+foreach ($ulang as $key):
+	echo "\n<h4>" . keteranganMedan($key,$this->medan) . '</h4>';
+endforeach;
+
 include 'atas/dibawah.php';
 
 #--------------------------------------------------------------------------------------------
@@ -32,10 +38,10 @@ function formula01($key,$data)
 	return $papar;
 }
 #--------------------------------------------------------------------------------------------
-function paparInput01($key,$data,$this->medan)
+function paparInput01($key,$data,$banyakMedan)
 {
 	?><tr><td align="right"><?php echo $key ?></td><?php
-	?><td align="right"><?php echo $key ?></td><?php
+	?><td align="right"><?php //echo keteranganMedan($key,$banyakMedan) ?></td><?php
 	//$paparData = $html->tambahDropInput($this->_paparMedan, $this->_j2,
 	//$myTable, $kira, $key, $data);
 	/*?><td><?php echo $paparData . "\n\t" ?></td><?php*/
@@ -63,4 +69,16 @@ $medan=Array
 )
 */
 #--------------------------------------------------------------------------------------------
+function keteranganMedan($key,$banyakMedan)
+{
+	# cari keterangan medan yang lain
+	$namaMedan = null;
+	foreach ($banyakMedan as $p0 => $p1):
+	foreach ($p1 as $n0 => $data):
+		if($key == $data)
+			$namaMedan = $banyakMedan[$p0]['keterangan'];
+	endforeach;endforeach;
+
+	return $namaMedan;
+}
 #--------------------------------------------------------------------------------------------
