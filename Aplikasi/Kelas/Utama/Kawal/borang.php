@@ -185,15 +185,16 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->_jadual = $myTable;
 	}
 #-------------------------------------------------------------------------------------------
-	function panggilTable($jadual,$medanID,$dataID);
+	function panggilTable($myJadual,$medanID,$dataID)
 	{
 		# Set pembolehubah utama
-		list($entah, $medan, $carian, $susun) = $this->tanya->jadualAES($medanID,$dataID)
-		$this->papar->bentukJadual02[$pilih] = $this->tanya->//cariSql
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		list($entah, $medan, $carian, $susun) = $this->tanya->jadualAES($medanID,$dataID);
+		$this->papar->bentukJadual02[$myJadual] = $this->tanya->//cariSql
 			cariSemuaData
 			($myJadual, $medan, $carian, $susun);
 		# Set pembolehubah untuk Papar
-		$this->kandunganPaparan($pilih, $myJadual);
+		$this->kandunganPaparan($myJadual, $myJadual);
 		//$this->debugKandunganPaparan($pilih, $myJadual);
 	}
 #-------------------------------------------------------------------------------------------
@@ -309,7 +310,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	public function temui()
 	{
 		# Set pemboleubah utama
-		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		list($senaraiJadual,$medanID,$dataID) = $this->ubahsuaiKhas();
 		$this->ulangCariJadual($senaraiJadual,$medanID,$dataID);
 		$this->debugKandunganPaparan();
@@ -341,6 +342,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function ulangCariJadual($senaraiJadual,$medanID,$dataID)
 	{
+		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
 		foreach($senaraiJadual as $key => $jadual):
 			//echo '<br>$jadual = ' . $jadual;
