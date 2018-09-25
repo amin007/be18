@@ -14,7 +14,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		print_r($senarai); echo '</pre>';//*/
 	}
 #---------------------------------------------------------------------------------------------------#
-	function data_contoh($pilih)
+	function contoh_data01($pilih)
 	{
 		$data = array(
 			'namaPendek' => 'james007',
@@ -24,6 +24,47 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		$kira = 1; # kira jumlah data
 
 		return ($pilih==1) ? $kira : $data; # pulangkan nilai
+	}
+#---------------------------------------------------------------------------------------------------#
+	public function contoh_cariKhas01($a,$b,$c,$d)
+	{
+		$medan[0] = array(
+			'newss' => '000000123456',
+			'nossm' => 'JR0001234',
+			'nama' => 'Biar Rahsia',
+			'fe' => '','hantar' => '',
+			'tik' => '<input type="checkbox">',
+			'mko' => '','R' => '',
+			'nama_kp' => 'pembuatan',
+			'kp' => '205',
+			'msic2008' => '10101'
+		);
+		$medan[1] = array(
+			'newss' => '000000123457',
+			'nossm' => 'JR0001235',
+			'nama' => 'Biar Rahsia2',
+			'fe' => '','hantar' => '',
+			'tik' => '<input type="checkbox">',
+			'mko' => '','R' => '',
+			'nama_kp' => 'pembuatan',
+			'kp' => '205',
+			'msic2008' => '10101'
+		);
+
+		return $medan;
+	}
+#---------------------------------------------------------------------------------------------------#
+	public function contoh_cariKhas02($a,$b,$c,$d)
+	{
+		$medan[0] = array(
+			'newss' => '000000123456',
+			'nossm' => 'JR0001234',
+			'nama' => 'Biar Rahsia',
+			'operator' => '',
+			'alamat' => 'NO 1, JALAN 2, TAMAN 3 48000 MUAR',
+		);
+
+		return $medan;
 	}
 #---------------------------------------------------------------------------------------------------#
 	public function medanRangka()
@@ -51,47 +92,6 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
 			. ' ) as data5P,nota'
 			. "\r";
-
-		return $medan;
-	}
-#---------------------------------------------------------------------------------------------------#
-	public function cariKhas02($a,$b,$c,$d)
-	{
-		$medan[0] = array(
-			'newss' => '000000123456',
-			'nossm' => 'JR0001234',
-			'nama' => 'Biar Rahsia',
-			'operator' => '',
-			'alamat' => 'NO 1, JALAN 2, TAMAN 3 48000 MUAR',
-		);
-
-		return $medan;
-	}
-#---------------------------------------------------------------------------------------------------#
-	public function cariKhas01($a,$b,$c,$d)
-	{
-		$medan[0] = array(
-			'newss' => '000000123456',
-			'nossm' => 'JR0001234',
-			'nama' => 'Biar Rahsia',
-			'fe' => '','hantar' => '',
-			'tik' => '<input type="checkbox">',
-			'mko' => '','R' => '',
-			'nama_kp' => 'pembuatan',
-			'kp' => '205',
-			'msic2008' => '10101'
-		);
-		$medan[1] = array(
-			'newss' => '000000123457',
-			'nossm' => 'JR0001235',
-			'nama' => 'Biar Rahsia2',
-			'fe' => '','hantar' => '',
-			'tik' => '<input type="checkbox">',
-			'mko' => '','R' => '',
-			'nama_kp' => 'pembuatan',
-			'kp' => '205',
-			'msic2008' => '10101'
-		);
 
 		return $medan;
 	}
