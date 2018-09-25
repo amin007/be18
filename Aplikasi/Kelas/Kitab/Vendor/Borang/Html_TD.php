@@ -91,7 +91,7 @@ class Html_TD
 #==========================================================================================
 	function primaryKey02($key, $data, $myTable = null, $ca = null, $cb = null)
 	{# primary key
-		$k0 = URL . 'borang/be/kp/' . $data;
+		$k0 = URL . 'borang/be/' . $ca . '/' . $data;
 		$k1 = $this->iconFA(1) . '<a target="_blank" href="' . $k0 . '">'
 			. $data . '</a>&nbsp;';
 		list($pengguna,$level,$birutua,$birumuda,$merah) = $this->setPencam();
