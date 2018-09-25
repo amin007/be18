@@ -89,6 +89,44 @@ class Html_TD
 		}//*/
 	}
 #==========================================================================================
+	function primaryKey02($key, $data, $myTable = null, $ca = null, $cb = null)
+	{# primary key
+		$k0 = URL . 'borang/be/kp/' . $data;
+		$k1 = $this->iconFA(1) . '<a target="_blank" href="' . $k0 . '">'
+			. $data . '</a>&nbsp;';
+		list($pengguna,$level,$birutua,$birumuda,$merah) = $this->setPencam();
+		$btn = 'target="_blank" href="' . $k0 . '" class="' . $birumuda . '"';
+
+		if ( in_array($pengguna,array('amin007','azwan')) && $myTable == 'aes'
+			&& $ca != null):
+			//$b = URL . "operasi/buangID/$ca/$cb/$data";
+			$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah3';
+			$p = '<a '. $btn . '>' . $a . '</a><br>';
+			//. '<a href="' . $b . '" class="btn btn-danger btn-mini">Kosong</a>';
+		elseif ($level == 'feprosesan'):
+			$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah2';
+			$p = '<a '. $btn . '>' . $a . '</a><br>';
+		else:
+			$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah3';
+			$p = '<a '. $btn . '>' . $a . '</a><br>';
+		endif;
+
+		return $p . $data;
+	}
+#==========================================================================================
+	function paparURL02($key, $data, $myTable = null, $ca = null, $cb = null)
+	{
+		if ($key=='newss')
+		{# primary key
+			$k1 = $this->primaryKey02($key,$data,$myTable,$ca,$cb);
+			?><td><?php echo $k1 ?></td><?php
+		}
+		else
+		{
+			?><td align="center"><?php echo $data ?></td><?php
+		}//*/
+	}
+#==========================================================================================
 	public function dataBernombor($data)
 	{
 		$data = ($data == '0') ? '&nbsp;':$data;
