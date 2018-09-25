@@ -82,7 +82,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		'kp_qss_2017','kp_qss_2018','kp_qss_2018_data',
 		'sample_kp411','sdsk_kp411');
 
-		return array($jadual);
+		return $jadual;
 	}
 #---------------------------------------------------------------------------------------------------#
 	function jadualDataCorp($cariApa)
