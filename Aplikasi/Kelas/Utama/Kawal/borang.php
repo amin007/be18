@@ -73,6 +73,22 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------
+	function debugKandunganPaparan01()
+	{
+		echo '<hr>Nama class :' . __METHOD__ . '()<hr><pre>';
+		$semak = array('idBorang','myTable','_jadual','carian','c1','c2',
+			'medan','bentukJadual01','bentukJadual02','_pilih','template');
+
+		foreach($semak as $apa):
+			if(isset($this->papar->$apa)):
+				echo '<br>$this->papar->' . $apa . ' : ';
+				print_r($this->papar->$apa);
+			else:
+				echo '<br><font color="red">tidak wujud $this->papar->' . $apa . '</font>';
+			endif;
+		endforeach;
+	}
+#-------------------------------------------------------------------------------------------
 	function kandunganPaparan($pilih, $myTable)
 	{
 		//$this->papar->senarai[$myTable] = null;
@@ -300,7 +316,9 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	public function temui()
 	{
 		# Set pemboleubah utama
-		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		$this->papar->idBorang = $idBorang = 'ini semua adalah cubaan';
+		$this->debugKandunganPaparan01();
 
 		/*# Pergi papar kandungan
 		$this->_folder = 'borang';
