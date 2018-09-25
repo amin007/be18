@@ -6,7 +6,7 @@ $mesej = '';
 $carian = $this->idBorang;
 ?>
 <div class="container">
-<form method="GET" action="<?=$mencari;?>" class="form-inline" autocomplete="off">
+<form method="POST" action="<?=$mencari;?>" class="form-inline" autocomplete="off">
 <div class="form-group">
 	<label for="carian"><h1>Mahu cari apa? <?=$mesej?></h1></label>
 	<div class="input-group">
