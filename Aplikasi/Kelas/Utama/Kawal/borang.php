@@ -185,6 +185,18 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->_jadual = $myTable;
 	}
 #-------------------------------------------------------------------------------------------
+	function panggilTable($jadual,$medanID,$dataID);
+	{
+		# Set pembolehubah utama
+		list($entah, $medan, $carian, $susun) = $this->tanya->jadualAES($medanID,$dataID)
+		$this->papar->bentukJadual02[$pilih] = $this->tanya->//cariSql
+			cariSemuaData
+			($myJadual, $medan, $carian, $susun);
+		# Set pembolehubah untuk Papar
+		$this->kandunganPaparan($pilih, $myJadual);
+		//$this->debugKandunganPaparan($pilih, $myJadual);
+	}
+#-------------------------------------------------------------------------------------------
 	function panggilSQL($pilih)
 	{
 		# Set pembolehubah utama
@@ -331,7 +343,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
 		foreach($senaraiJadual as $key => $jadual):
-			echo '<br>$jadual = ' . $jadual;
+			//echo '<br>$jadual = ' . $jadual;
+			$this->panggilTable($jadual,$medanID,$dataID);
 		endforeach;
 	}
 #-------------------------------------------------------------------------------------------
