@@ -342,7 +342,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function ulangCariJadual($senaraiJadual,$medanID,$dataID)
 	{
-		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
 		foreach($senaraiJadual as $key => $jadual):
 			//echo '<br>$jadual = ' . $jadual;
