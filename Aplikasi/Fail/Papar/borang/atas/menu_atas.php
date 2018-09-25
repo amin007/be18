@@ -31,7 +31,7 @@ echo "\n\n";
 		<span class="navbar-toggler-icon"></span>
 	</button>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<form class="mx-2 my-auto d-inline w-50" action="<?php echo URL ?>cari/pada/400/1" method="POST">
+<form class="mx-2 my-auto d-inline w-50" action="<?php echo URL . $this->pautan ?>" method="POST">
 <div class="input-group">
 	<div class="input-group-btn">
 		<a class="btn btn-info"><?php echo $iconFA['search'] ?></a>
