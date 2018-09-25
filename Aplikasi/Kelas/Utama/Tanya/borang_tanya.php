@@ -69,7 +69,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
 #---------------------------------------------------------------------------------------------------#
-	function jadualDataCorp($cariApa)
+	function pilihJadual()
 	{
 		/*$jadual = array('`aes`','`kawalan_aes`','`aes_alam_sekitar`',
 		'`aes_kp_205`','`aes_kp_206`','`aes_kp_207`','`aes_kp_800`',
@@ -81,6 +81,13 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		'kp_mdt_2017','kp_mdt_2018','kp_mm17','kp_mm18','kp_mm_2017','kp_pan17',
 		'kp_qss_2017','kp_qss_2018','kp_qss_2018_data',
 		'sample_kp411','sdsk_kp411');
+
+		return $jadual;
+	}
+#---------------------------------------------------------------------------------------------------#
+	function jadualDataCorp($cariApa)
+	{
+		$jadual = $this->pilihJadual();
 		$medan = '*';
 		# cari id berasaskan newss/ssm/sidap/nama
 		//$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
