@@ -51,43 +51,22 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function debugKandunganPaparan()
 	{
 		echo '<hr>Nama class :' . __METHOD__ . '()<hr><pre>';
-		if(isset($this->papar->senarai)):
-			echo '<br>$this->papar->senarai : '; print_r($this->papar->senarai);
-		endif;
-		echo '<br>$this->papar->myTable : '; print_r($this->papar->myTable);
-		echo '<br>$this->papar->_jadual : '; print_r($this->papar->_jadual);
-		echo '<br>$this->papar->carian : '; print_r($this->papar->carian);
-		echo '<br>$this->papar->c1 : '; print_r($this->papar->c1);
-		echo '<br>$this->papar->c2 : '; print_r($this->papar->c2);
-		if(isset($this->papar->medan)):
-			echo '<br>$this->papar->medan : '; print_r($this->papar->medan);
-		endif;
-		if(isset($this->papar->bentukJadual01)):
-			echo '<br>$this->papar->bentukJadual01 : '; print_r($this->papar->bentukJadual01);
-		endif;
-		if(isset($this->papar->bentukJadual02)):
-			echo '<br>$this->papar->bentukJadual02 : '; print_r($this->papar->bentukJadual02);
-		endif;
-		echo '<br>$this->papar->_pilih : '; print_r($this->papar->_pilih);
-		echo '<br>$this->papar->template : '; print_r($this->papar->template);
-		echo '</pre>';
-	}
-#-------------------------------------------------------------------------------------------
-	function debugKandunganPaparan01()
-	{
-		echo '<hr>Nama class :' . __METHOD__ . '()<hr><pre>';
 		$semak = array('idBorang','senarai','myTable','_jadual','carian','c1','c2',
-			'medan','bentukJadual01','bentukJadual02','_pilih','template');
+			'medan','bentukJadual01','bentukJadual02','_pilih',
+			'template','pilihJadual','template2','pilihJadual2');
+		$takWujud = array(); $kira = 0;
 
 		foreach($semak as $apa):
 			if(isset($this->papar->$apa)):
 				echo '<br>$this->papar->' . $apa . ' : ';
 				print_r($this->papar->$apa);
 			else:
-				echo '<br><font color="red">tidak wujud $this->papar->' . $apa . '</font>';
+				$takWujud[$kira++] = '$this->papar->' . $apa;
 			endif;
 		endforeach;
 
+		echo '<hr><font color="red">tidak wujud : '; print_r($takWujud);
+		echo '</font>';
 		echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------
