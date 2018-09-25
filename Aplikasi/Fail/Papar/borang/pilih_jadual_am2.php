@@ -1,8 +1,8 @@
 	<table class="excel">
 	<h3><?php echo $tajukjadual ?></h3>
 	<thead><tr>
-		<th>nama medan</th>
 		<th>keterangan</th>
+		<th>nama medan</th>
 		<th>data</th>
 		<th>peratusan</th>
 		<th>anggar</th>
