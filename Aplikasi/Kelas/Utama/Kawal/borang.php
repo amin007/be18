@@ -281,10 +281,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function cari()
+	public function cariapa($idBorang = null)
 	{
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		$this->papar->idBorang = (isset($_GET['cari'])) ? $_GET['cari'] : $idBorang;
+		$this->papar->pautan = URL . 'borang/temui/400/1';
 
 		# Pergi papar kandungan
 		$this->_folder = 'borang';
