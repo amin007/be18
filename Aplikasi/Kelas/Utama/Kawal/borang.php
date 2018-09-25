@@ -190,7 +190,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pembolehubah utama
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		list($entah, $medan, $carian, $susun) = $this->tanya->jadualAES($medanID,$dataID);
-		$this->papar->bentukJadual02[$myJadual] = $this->tanya->//cariSql
+		$this->papar->senarai[$myJadual] = $this->tanya->//cariSql
 			cariSemuaData
 			($myJadual, $medan, $carian, $susun);
 		# Set pembolehubah untuk Papar
@@ -313,15 +313,15 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		list($senaraiJadual,$medanID,$dataID) = $this->ubahsuaiKhas();
 		$this->ulangCariJadual($senaraiJadual,$medanID,$dataID);
-		$this->debugKandunganPaparan();
+		//$this->debugKandunganPaparan();
 
-		/*# Pergi papar kandungan
+		# Pergi papar kandungan
 		$this->_folder = 'borang';
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		$fail = array('index','b_ubah','z_contoh_link_pill','soalan4');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
+		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);//*/
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiKhas()
