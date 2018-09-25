@@ -69,6 +69,51 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 #=====================================================================================================
 #---------------------------------------------------------------------------------------------------#
+	function jadualDataCorp($cariApa)
+	{
+		/*$jadual = array('`aes`','`kawalan_aes`','`aes_alam_sekitar`',
+		'`aes_kp_205`','`aes_kp_206`','`aes_kp_207`','`aes_kp_800`',
+		'`aes_perkhidmatan`','`aes_pertanian`');//*/
+		$jadual = array('aes','kawalan_aes','aes_prosesan','aes_prosesan_x',
+		'aes_alam_sekitar','aes_kp_205','aes_kp_206','aes_kp_207','aes_kp_800',
+		'aes_perkhidmatan','aes_pertanian',
+		'kp_bst_q1_2017','kp_bst_q1_2018','kp_bst_q4_2017','kp_ejob_2018',
+		'kp_mdt_2017','kp_mdt_2018','kp_mm17','kp_mm18','kp_mm_2017','kp_pan17',
+		'kp_qss_2017','kp_qss_2018','kp_qss_2018_data',
+		'sample_kp411','sdsk_kp411');
+		$medan = '*';
+		# cari id berasaskan newss/ssm/sidap/nama
+		//$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
+		$apa = bersih(isset($cariApa[1]) ? $cariApa[1] : null);
+		//$apa = $cariApa[1];
+
+		return array($jadual,$medan,$apa);
+	}
+#---------------------------------------------------------------------------------------------------#
+	function dataCorp($cariApa)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//echo '<pre>$cariApa->'; print_r($cariApa); echo '</pre>';
+		$carian = null;
+		if($_POST==null || empty($_POST) ):
+			$carian .= null;
+		else:
+			list($jadual, $medan, $apa) = $this->jadualDataCorp($cariApa);
+			$carian[] = array( 'fix'=>'z%like%','atau'=>'WHERE',
+				'medan' => 'concat_ws("",newss,nossm,nama)',
+				'apa' => $apa );
+			$cariID = $apa;
+		endif;
+
+		//echo '<pre>$jadual->'; print_r($jadual); echo '</pre>';
+		//echo '<pre>$medan->'; print_r($medan); echo '</pre>';
+		//echo '<pre>$carian->'; print_r($carian); echo '</pre>';
+		//echo '<pre>$cariID->'; print_r($cariID); echo '</pre>';
+
+		return array($jadual, $medan, $carian, $cariID);
+	}
+#---------------------------------------------------------------------------------------------------#
+
 	public function medanRangka()
 	{
 		$medan = 'newss,ssm,concat_ws("<br>",nama,operator) as nama,'
