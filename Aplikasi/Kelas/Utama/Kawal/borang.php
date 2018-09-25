@@ -293,8 +293,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function cariapa($idBorang = null)
 	{
-		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		# Set pemboleubah utama
 		$this->papar->idBorang = (isset($_GET['cari'])) ? $_GET['cari'] : $idBorang;
 		$this->papar->pautan = URL . 'borang/temui/400/1';
 
@@ -394,9 +394,9 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
 		$this->setPembolehubah($kp,$idBorang);
-		$this->debugKandunganPaparan();//*/
+		//$this->debugKandunganPaparan();//*/
 
-		/*# Pergi papar kandungan
+		# Pergi papar kandungan
 		$this->_folder = 'borang';
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
 		$fail = array('index','index2','b_ubah','b_ubah_kawalan');
