@@ -192,7 +192,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
 #---------------------------------------------------------------------------------------------------#
-	function jadualAES($idBorang)
+	function jadualAES($medanID,$dataID)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
@@ -202,8 +202,8 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		# semak database
 			$carian[] = array('fix'=>'x=', # cari x= / %like% / xlike
 				'atau'=>'WHERE', # WHERE / OR / AND
-				'medan' => 'newss', # cari dalam medan apa
-				'apa' => $idBorang); # benda yang dicari//*/
+				'medan' => $medanID, # cari dalam medan apa
+				'apa' => $dataID); # benda yang dicari//*/
 
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
