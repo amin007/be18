@@ -15,13 +15,16 @@ class Borang extends \Aplikasi\Kitab\Kawal
 ##-----------------------------------------------------------------------------------------
 	public function index()
 	{
-		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		# Set pemboleubah utama
-		$this->papar->tajuk = namaClass($this);
+		$this->papar->idBorang = (isset($_GET['cari'])) ? $_GET['cari'] : null;
+		$this->papar->pautan = URL . 'borang/temui/400/1';
 
 		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, 'index', $noInclude=0);
+		$fail = array('1cari','index','b_ubah');
+		//echo '<br>$fail = ' . $fail[0] . '<hr>';
+		//$this->semakPembolehubah(); # Semak data dulu
+		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 ##-----------------------------------------------------------------------------------------
 	public function paparKandungan($folder, $fail, $noInclude)
@@ -289,22 +292,6 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
-	}
-#-------------------------------------------------------------------------------------------
-	public function cariapa($idBorang = null)
-	{
-		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		# Set pemboleubah utama
-		$this->papar->idBorang = (isset($_GET['cari'])) ? $_GET['cari'] : $idBorang;
-		$this->papar->pautan = URL . 'borang/temui/400/1';
-
-		# Pergi papar kandungan
-		$this->_folder = 'borang';
-		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
-		$fail = array('1cari','index','b_ubah');
-		//echo '<br>$fail = ' . $fail[0] . '<hr>';
-		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 	public function temui()
