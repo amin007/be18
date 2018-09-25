@@ -348,6 +348,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			//echo '<br>$jadual = ' . $jadual;
 			$this->panggilTable($jadual,$medanID,$dataID);
 		endforeach;
+		$this->papar->c1 = $this->papar->senarai['kawalan_aes'][0]['kp'];
 	}
 #-------------------------------------------------------------------------------------------
 	public function soalan4()
