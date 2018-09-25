@@ -287,14 +287,14 @@ class Borang extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		$this->_folder = 'borang';
-		$fail = array('index','b_ubah','z_contoh_link_pill','soalan4');
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
-		//echo '<br>$fail = ' . $fail[3] . '<hr>';
+		$fail = array('index','b_ubah','z_contoh_link_pill','soalan4');
+		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function temui()
+	public function temui() # daripada fungsi index()
 	{
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
