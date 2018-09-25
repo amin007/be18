@@ -289,7 +289,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		$this->_folder = 'borang';
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
-		$fail = array('index','b_ubah');
+		$fail = array('1cari','index','b_ubah');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
