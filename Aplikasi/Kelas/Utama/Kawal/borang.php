@@ -298,7 +298,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		list($dataID,$senaraiJadual) = $this->ubahsuaiKhas();
+		list($senaraiJadual,$medanID,$dataID) = $this->ubahsuaiKhas();
+		$this->ulangCariJadual($senaraiJadual,$medanID,$dataID);
 		$this->debugKandunganPaparan();
 
 		/*# Pergi papar kandungan
@@ -314,15 +315,24 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+		$medanID = 'newss';
+		$senaraiJadual = $this->tanya->pilihJadual();
 		$dataID = (isset($_POST['cari'])) ? bersih($_POST['cari']) : null;
-		list($senaraiJadual) = $this->tanya->pilihJadual();
 
 		$debugData = array('senaraiJadual','medanID','dataID');
-		echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
+		/*echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
 			echo '<br>$' . $semak . ' : '; print_r($$semak);
 		endif; endforeach; echo '</pre>';//*/
 
-		return array($dataID,$senaraiJadual); # pulangkan nilai
+		return array($senaraiJadual,$medanID,$dataID); # pulangkan nilai
+	}
+#-------------------------------------------------------------------------------------------
+	function ulangCariJadual($senaraiJadual,$medanID,$dataID)
+	{
+		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
+		foreach($senaraiJadual as $key => $jadual):
+			echo '<br>$jadual = ' . $jadual;
+		endforeach;
 	}
 #-------------------------------------------------------------------------------------------
 	public function soalan4()
