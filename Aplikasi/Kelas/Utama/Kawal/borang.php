@@ -299,7 +299,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$this->papar->idBorang = $idBorang = 'ini semua adalah cubaan';
-		$this->ubahsuaiPost('tahunan');
+		$this->ubahsuaiKhas();
 		$this->debugKandunganPaparan();
 
 		/*# Pergi papar kandungan
@@ -309,6 +309,21 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function ubahsuaiKhas()
+	{
+		list($senaraiJadual) = $this->tanya->pilihJadual();
+
+		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+		$posmen = (isset($_POST['cari'])) ? bersih($_POST['cari']) : null;
+
+		$debugData = array('pilih','senaraiJadual','medanID','dataID','posmen');
+		echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
+			echo '<br>$' . $semak . ' : '; print_r($$semak);
+		endif; endforeach; echo '</pre>';//*/
+
+		return array($posmen,$senaraiJadual,$senaraiJadual[0]); # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
 	public function soalan4()
