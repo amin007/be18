@@ -169,7 +169,9 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 	public function susunPembolehubah($pilih,$idBorang)
 	{
 		//$pilih = null;
-		if($pilih == 'infoIctHasil'): //echo "\$pilih = $pilih <br>";
+		if($pilih == 'semuaAES'): //echo "\$pilih = $pilih <br>";
+			list($myTable, $medan, $carian, $susun) = $this->jadualAES($idBorang);
+		elseif($pilih == 'infoIctHasil'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualInfoIctHasil($idBorang);
 		elseif($pilih == 'medanKP'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualMedanKP($idBorang);
@@ -186,6 +188,22 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		else: //echo "\$pilih = $pilih <br>";
 			$myTable = $medan = $carian = $susun = null;
 		endif;
+
+		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
+	}
+#---------------------------------------------------------------------------------------------------#
+	function jadualAES($idBorang)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
+		$myTable = null;
+		$medan = '*';
+		$carian = $susun = null;
+		# semak database
+			$carian[] = array('fix'=>'x=', # cari x= / %like% / xlike
+				'atau'=>'WHERE', # WHERE / OR / AND
+				'medan' => 'newss', # cari dalam medan apa
+				'apa' => $idBorang); # benda yang dicari//*/
 
 		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
