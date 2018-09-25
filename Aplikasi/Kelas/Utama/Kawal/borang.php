@@ -223,7 +223,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		list($senaraiJadual) = $this->tanya->pilihJadual($pilih);
 
-		$posmen = array();
+		$posmen = array(); //echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 		foreach ($_POST as $myTable => $value):
 			if ( in_array($myTable,$senaraiJadual) ):
 				foreach ($value as $kekunci => $papar)
@@ -233,11 +233,11 @@ class Borang extends \Aplikasi\Kitab\Kawal
 				}
 		endif; endforeach;//*/
 
-		echo '<pre>$pilih='; print_r($pilih); echo '</pre>';
-		echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
-		echo '<pre>$medanID='; print_r($medanID); echo '</pre>';
-		echo '<pre>$dataID='; print_r($dataID); echo '</pre>';
-		echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+		$debugData = array('pilih','senaraiJadual','medanID','dataID','posmen');
+		echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
+			echo '<br>$' . $semak . ' : '; print_r($$semak);
+		endif; endforeach; echo '</pre>';//*/
+
 		return array($posmen,$senaraiJadual,$senaraiJadual[0]); # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
