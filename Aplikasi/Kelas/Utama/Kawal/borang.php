@@ -76,7 +76,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function debugKandunganPaparan01()
 	{
 		echo '<hr>Nama class :' . __METHOD__ . '()<hr><pre>';
-		$semak = array('idBorang','myTable','_jadual','carian','c1','c2',
+		$semak = array('idBorang','senarai','myTable','_jadual','carian','c1','c2',
 			'medan','bentukJadual01','bentukJadual02','_pilih','template');
 
 		foreach($semak as $apa):
@@ -87,6 +87,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 				echo '<br><font color="red">tidak wujud $this->papar->' . $apa . '</font>';
 			endif;
 		endforeach;
+
+		echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------
 	function kandunganPaparan($pilih, $myTable)
