@@ -281,9 +281,33 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function cari(){}
+	public function cari()
+	{
+		# Set pemboleubah utama
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+
+		# Pergi papar kandungan
+		$this->_folder = 'borang';
+		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
+		$fail = array('index','b_ubah');
+		//echo '<br>$fail = ' . $fail[0] . '<hr>';
+		//$this->semakPembolehubah(); # Semak data dulu
+		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
+	}
 #-------------------------------------------------------------------------------------------
-	public function temui(){}
+	public function temui()
+	{
+		# Set pemboleubah utama
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+
+		/*# Pergi papar kandungan
+		$this->_folder = 'borang';
+		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
+		$fail = array('index','b_ubah','z_contoh_link_pill','soalan4');
+		//echo '<br>$fail = ' . $fail[0] . '<hr>';
+		//$this->semakPembolehubah(); # Semak data dulu
+		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
+	}
 #-------------------------------------------------------------------------------------------
 	public function soalan4()
 	{
