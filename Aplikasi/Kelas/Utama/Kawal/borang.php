@@ -221,7 +221,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiPost($pilih)
 	{
-		list($senaraiJadual,$medanID) = $this->tanya->pilihJadual($pilih);
+		list($senaraiJadual) = $this->tanya->pilihJadual($pilih);
 
 		$posmen = array();
 		foreach ($_POST as $myTable => $value):
@@ -233,12 +233,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 				}
 		endif; endforeach;//*/
 
-		//echo '<pre>$pilih='; print_r($pilih); echo '</pre>';
-		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
-		//echo '<pre>$medanID='; print_r($medanID); echo '</pre>';
-		//echo '<pre>$dataID='; print_r($dataID); echo '</pre>';
-		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
-		return array($posmen,$senaraiJadual,$senaraiJadual[0],$medanID); # pulangkan nilai
+		echo '<pre>$pilih='; print_r($pilih); echo '</pre>';
+		echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
+		echo '<pre>$medanID='; print_r($medanID); echo '</pre>';
+		echo '<pre>$dataID='; print_r($dataID); echo '</pre>';
+		echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+		return array($posmen,$senaraiJadual,$senaraiJadual[0]); # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
 	public function insertID($pilih)
@@ -299,7 +299,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$this->papar->idBorang = $idBorang = 'ini semua adalah cubaan';
-		$this->debugKandunganPaparan01();
+		$this->ubahsuaiPost('tahunan');
+		$this->debugKandunganPaparan();
 
 		/*# Pergi papar kandungan
 		$this->_folder = 'borang';
