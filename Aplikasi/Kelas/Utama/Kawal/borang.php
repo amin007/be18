@@ -97,9 +97,9 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->peratus = null;
 		$this->papar->perangkaan['idBorang'] = $idBorang;
 		$this->papar->perangkaan['nama'] = $idBorang;
-		$data = 12345;
-		$this->papar->perangkaan['hasil'] = $data;
-		$this->papar->perangkaan['belanja'] = $data;
+		$data = 'XXX';
+		$this->papar->perangkaan['hasil'] = $this->papar->bentukJadual01['be2016_hasil_servis'][0]['F2099'];
+		$this->papar->perangkaan['belanja'] = $this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2199'];
 		$this->papar->perangkaan['gaji'] = $data;
 		$this->papar->perangkaan['susut'] = $data;
 		$this->papar->perangkaan['aset'] = $data;
@@ -397,7 +397,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->setPembolehubah($kp,$idBorang);
 		//$this->debugKandunganPaparan();//*/
 
-		/*# Pergi papar kandungan
+		# Pergi papar kandungan
 		$fail = array('index','index2','b_ubah','b_ubah_kawalan');
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
