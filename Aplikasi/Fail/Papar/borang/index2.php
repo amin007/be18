@@ -49,7 +49,7 @@ function paparInput01($myTable,$key,$data,$banyakMedan,$_5p)
 	?><td><?php echo $key ?></td><?php
 	?><td><?php echo $data ?></td><?php
 	?><td><?php echo formula01($myTable,$key,$data,$_5p) ?></td><?php
-	?><td><?php echo $data ?></td><?php
+	?><td><?php echo formula02($myTable,$key,$data,$_5p) ?></td><?php
 	?><td><?php echo $data ?></td><?php
 	?></tr><?php
 }
@@ -84,18 +84,19 @@ function formula02($myTable,$key,$data,$_5p)
 {
 	$perpuluhan = 2;
 	if($myTable == 'be2016_hasil_servis'):
+		$peratus = $_5p['peratus'];
 		$jumlah = $_5p['hasil'];
-		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan,2) . '%';//*/
+		$kira00 = $data * $peratus;
+		//$kira01 = kiraPerpuluhan($kira00,2);
+		$kira02 = truncate_number($kira00);
+		$papar = $kira02;
 	elseif($myTable == 'be2016_belanja_servis'):
-		$jumlah = $_5p['belanja'];
+		/*jumlah = $_5p['belanja'];
 		$kiraan = $data / $jumlah;
 		$papar = kiraPerpuluhan($kiraan,4) . '%';//*/
-		//$papar = $myTable . '|' . $data;
+		$papar = $myTable . '|' . $data;
 	else:
-		$jumlah = '1969435';
-		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan,2) . '%';
+		$papar = kiraPerpuluhan($data,2) . '';
 	endif;
 
 	return $papar;
