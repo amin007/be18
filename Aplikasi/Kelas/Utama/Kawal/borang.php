@@ -98,12 +98,27 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->perangkaan['idBorang'] = $idBorang;
 		$this->papar->perangkaan['nama'] = $idBorang;
 		$data = 'XXX';
-		$this->papar->perangkaan['hasil'] = $this->papar->bentukJadual01['be2016_hasil_servis'][0]['F2099'];
-		$this->papar->perangkaan['belanja'] = $this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2199'];
-		$this->papar->perangkaan['gaji'] = $this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2163'];
-		$this->papar->perangkaan['susut'] = $this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2149'];
+		# semak sama ada nilai wujud atau tidak
+		$hasil = (isset($this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2099'])) ?
+			$this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2099'] : 0;
+		$belanja = (isset($this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2199'])) ?
+			$this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2199'] : 0;
+		$gaji = (isset($this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2163'])) ?
+			$this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2163'] : 0;
+		$susut = (isset($this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2149'])) ?
+			$this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2149'] : 0;
+		# f2148 = sewa lain2, f2147 = sewa tanah
+		$sewatanah = (isset($this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2147'])) ?
+			$this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2147'] : 0;
+		$sewalain = (isset($this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2148'])) ?
+			$this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2148'] : 0;
+		# masukkan nilai 5 perangkaan utama
+		$this->papar->perangkaan['hasil'] = $hasil;
+		$this->papar->perangkaan['belanja'] = $belanja;
+		$this->papar->perangkaan['gaji'] = $gaji;
+		$this->papar->perangkaan['susut'] = $susut;
 		$this->papar->perangkaan['aset'] = $data;
-		$this->papar->perangkaan['asetsewa'] = $data;
+		$this->papar->perangkaan['asetsewa'] = $sewatanah + $sewalain;
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
