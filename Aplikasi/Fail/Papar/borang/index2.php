@@ -84,18 +84,20 @@ function formula01($myTable,$key,$data,$_5p)
 #--------------------------------------------------------------------------------------------
 function formula02($myTable,$key,$data,$_5p)
 {# papar yang banyak perpuluhan
-	$peratus = $_5p['peratus'];
+	$peratus = $_5p['peratus']; $hasil = $_5p['hasil'];
+	$belanja01 = $_5p['belanja']; $belanja02 = $_5p['belanja_kini'];
 	$jumBelanja = $kira00 = $kira01 = $kira02 = $kira03 = 0;
 	if( ($myTable == 'be2016_hasil_servis') && ($key != 'F2099') ):
 		$papar = $data * $peratus;
 	elseif( ($myTable == 'be2016_hasil_servis') && ($key == 'F2099') ):
 		//$kira00 = $kira01 = $kira02 = $kira03 = 0;
 		$kira01 = $data * $peratus;
-		$papar = $kira01 . '=>' . ($jumHasil);
-	elseif( ($myTable == 'be2016_belanja_servis') && ($key != 'F2199') ):
-		$papar = kiraPerpuluhan($data * $peratus,5);
-	elseif( ($myTable == 'be2016_belanja_servis') && ($key == 'F2199') ):
-		$papar = $data * $peratus;
+		$papar = $kira01;
+	elseif( ($myTable == 'be2016_belanja_servis') ):
+		$kira00 = ($data/$belanja01) * $belanja02;
+		$papar = kiraPerpuluhan($kira00,8);
+	/*elseif( ($myTable == 'be2016_belanja_servis') && ($key == 'F2199') ):
+		$papar = $data * $peratus;*/
 	else:
 		$papar = kiraPerpuluhan($data,2) . '';
 	endif;
