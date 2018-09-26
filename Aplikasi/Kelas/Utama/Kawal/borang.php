@@ -416,11 +416,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->senarai['limaPerangkaan'][0]['gajiP']
 		$this->papar->senarai['limaPerangkaan'][0]['sijilP']
 		*/
-		$hasil = (isset($this->papar->senarai['limaPerangkaan'][0]['hasil'])) ?
-			$this->papar->senarai['limaPerangkaan'][0]['hasil'] : 0;
-		$belanja = 0;
-		$gaji = 0;
-		$susut = 0;
+		$hasil = $this->papar->senarai['limaPerangkaan'][0]['hasil'];
+		$belanja = $this->papar->senarai['limaPerangkaan'][0]['belanja'];
+		$gaji = $this->papar->senarai['limaPerangkaan'][0]['gajiL']
+			+ $this->papar->senarai['limaPerangkaan'][0]['gajiP'];
+		$aset = $this->papar->senarai['limaPerangkaan'][0]['harta'];
+		$susut = $this->papar->senarai['limaPerangkaan'][0]['susut'];
 		# f2148 = sewa lain2, f2147 = sewa tanah
 		$sewatanah = 0;
 		$sewalain = 0;
@@ -429,7 +430,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->perangkaan['belanja'] = $belanja;
 		$this->papar->perangkaan['gaji'] = $gaji;
 		$this->papar->perangkaan['susut'] = $susut;
-		$this->papar->perangkaan['aset'] = $data;
+		$this->papar->perangkaan['aset'] = $aset;
 		$this->papar->perangkaan['asetsewa'] = $sewatanah + $sewalain;
 		//*/
 	}
