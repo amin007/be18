@@ -370,7 +370,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function be($kp = null,$idBorang = null)
+	public function be($kp = null,$idBorang = null,$peratus = 0)
 	{
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
@@ -380,7 +380,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
-		$this->setPembolehubah($kp,$idBorang);
+		$this->setPembolehubah($kp,$idBorang,$peratus);
 		//$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
@@ -389,7 +389,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
 	}
 #-------------------------------------------------------------------------------------------
-	function setPembolehubah($kp, $idBorang)
+	function setPembolehubah($kp, $idBorang, $peratus)
 	{
 		$this->papar->_5p['kp'] = $this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
 		$this->papar->peratus = null; // rand(-30, 30)
