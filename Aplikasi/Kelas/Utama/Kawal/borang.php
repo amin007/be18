@@ -55,7 +55,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		echo '<hr>Nama class :' . __METHOD__ . '()<hr><pre>';
 		$semak = array('idBorang','senarai','myTable','_jadual','carian','c1','c2',
-			'medan','bentukJadual01','bentukJadual02','_pilih',
+			'medan','bentukJadual01','bentukJadual02','_pilih','5p',
 			'template','pilihJadual','template2','pilihJadual2');
 		$takWujud = array(); $kira = 0;
 
