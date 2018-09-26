@@ -222,6 +222,21 @@ function kira3($kira,$n)
 	return str_pad($kira,$n,"0",STR_PAD_LEFT);
 }
 
+function truncate_number($number, $precision = 2)
+{
+	# sumber https://stackoverflow.com/questions/9944001/delete-digits-after-two-decimal-points-without-rounding-the-value/9944052
+	# Zero causes issues, and no need to truncate
+	if ( 0 == (int)$number ) return $number;
+	# Are we negative?
+	$negative = $number / abs($number);
+	# Cast the number to a positive to solve rounding
+	$number = abs($number);
+	# Calculate precision number for dividing / multiplying
+	$precision = pow(10, $precision);
+	# Run the math, re-applying the negative value to ensure returns correctly negative / positive
+	return floor( $number * $precision ) / $precision * $negative;
+}
+
 function pilihKeyData($key,$keyData,$data)
 {
 	//echo '$key:' . $key; 
