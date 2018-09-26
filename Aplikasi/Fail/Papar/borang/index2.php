@@ -61,14 +61,29 @@ function formula00()
 #--------------------------------------------------------------------------------------------
 function formula01($myTable,$key,$data,$_5p)
 {
-	$buang01 = array('newss','nama','batch','form','kp','msic2008',
-		'KodBanci','NoSiri','F0002','F0014','F0015');
-	 $perpuluhan = 2;
-	if (in_array($key,$buang01)):
-		$papar = null;
-	elseif($data == '0'):
-		$papar = null;
-	elseif($myTable == 'be2016_hasil_servis'):
+	$perpuluhan = 2;
+	if($myTable == 'be2016_hasil_servis'):
+		$jumlah = $_5p['hasil'];
+		$kiraan = $data / $jumlah;
+		$papar = kiraPerpuluhan($kiraan,2) . '%';//*/
+	elseif($myTable == 'be2016_belanja_servis'):
+		$jumlah = $_5p['belanja'];
+		$kiraan = $data / $jumlah;
+		$papar = kiraPerpuluhan($kiraan,4) . '%';//*/
+		//$papar = $myTable . '|' . $data;
+	else:
+		$jumlah = '1969435';
+		$kiraan = $data / $jumlah;
+		$papar = kiraPerpuluhan($kiraan,2) . '%';
+	endif;
+
+	return $papar;
+}
+#--------------------------------------------------------------------------------------------
+function formula02($myTable,$key,$data,$_5p)
+{
+	$perpuluhan = 2;
+	if($myTable == 'be2016_hasil_servis'):
 		$jumlah = $_5p['hasil'];
 		$kiraan = $data / $jumlah;
 		$papar = kiraPerpuluhan($kiraan,2) . '%';//*/
