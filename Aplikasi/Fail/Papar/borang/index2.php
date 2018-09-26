@@ -21,7 +21,7 @@ foreach ($ulang as $key):
 	echo "\n<h4>" . keteranganMedan($key,$this->medan) . '</h4>';
 endforeach;//*/
 
-include 'soalan_anggaran.php';
+//include 'soalan_anggaran.php';
 include 'atas/dibawah.php';
 
 #--------------------------------------------------------------------------------------------
@@ -34,13 +34,15 @@ function formula01($myTable,$key,$data,$_5p)
 	elseif($data == '0'):
 		$papar = null;
 	elseif($myTable == 'be2016_hasil_servis'):
-		$jumlah = '1969435';
+		/*$jumlah = '1969435';
 		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan, $perpuluhan = 2) . '%';
+		$papar = kiraPerpuluhan($kiraan, $perpuluhan = 2) . '%';//*/
+		$papar = $myTable . '|' . $data;
 	elseif($myTable == 'be2016_belanja_servis'):
-		$jumlah = '1969435';
-		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan, $perpuluhan = 2) . '%';
+		$jumlah = $_5p['belanja'];
+		//$kiraan = $data / $jumlah;
+		$papar = kiraPerpuluhan($jumlah, $perpuluhan = 2) . '%';//*/
+		//$papar = $myTable . '|' . $data;
 	else:
 		$jumlah = '1969435';
 		$kiraan = $data / $jumlah;
