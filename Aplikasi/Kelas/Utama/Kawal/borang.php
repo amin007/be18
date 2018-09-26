@@ -391,8 +391,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		$this->papar->kp = $kp;
 		$this->papar->peratus = null;
-		$this->papar->perangkaan['idBorang'] = $idBorang;
-		$this->papar->perangkaan['nama'] = $idBorang;
+		$this->papar->5p['idBorang'] = $idBorang;
+		$this->papar->5p['nama'] = $idBorang;
 		$data = 'XXX';
 		# semak sama ada nilai wujud atau tidak
 		/*
@@ -425,12 +425,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$sewatanah = 0;
 		$sewalain = 0;
 		# masukkan nilai 5 perangkaan utama
-		$this->papar->perangkaan['hasil'] = $hasil;
-		$this->papar->perangkaan['belanja'] = $belanja;
-		$this->papar->perangkaan['gaji'] = $gaji;
-		$this->papar->perangkaan['susut'] = $susut;
-		$this->papar->perangkaan['aset'] = $aset;
-		$this->papar->perangkaan['asetsewa'] = $sewatanah + $sewalain;
+		$this->papar->5p['hasil'] = $hasil;
+		$this->papar->5p['belanja'] = $belanja;
+		$this->papar->5p['gaji'] = $gaji;
+		$this->papar->5p['susut'] = $susut;
+		$this->papar->5p['aset'] = $aset;
+		$this->papar->5p['asetsewa'] = $sewatanah + $sewalain;
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
