@@ -18,7 +18,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		# Set pemboleubah utama
 		$this->papar->idBorang = (isset($_GET['cari'])) ? $_GET['cari'] : null;
-		$this->papar->pautan = URL . 'borang/temui/400/1';
+		$random = rand(-30, 30);
+		$this->papar->pautan = URL . 'borang/temui/400/1/' . $random;
 
 		# Pergi papar kandungan
 		$fail = array('1cari','index','b_ubah');
@@ -278,12 +279,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function temui() # daripada fungsi index()
+	public function temui($a,$b,$c2) # daripada fungsi index()
 	{
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		list($senaraiJadual,$medanID,$dataID) = $this->ubahsuaiKhas();
-		$this->ulangCariJadual($senaraiJadual,$medanID,$dataID);
+		$this->ulangCariJadual($senaraiJadual,$medanID,$dataID,$c2);
 		//$this->debugKandunganPaparan();
 
 		# Pergi papar kandungan
@@ -322,7 +323,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		return $dataID;
 	}
 #-------------------------------------------------------------------------------------------
-	function ulangCariJadual($senaraiJadual,$medanID,$dataID)
+	function ulangCariJadual($senaraiJadual,$medanID,$dataID,$c2)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
@@ -334,6 +335,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		if(isset($this->papar->senarai['kawalan_aes'][0]['kp']))
 			$this->papar->c1 = $this->papar->senarai['kawalan_aes'][0]['kp'];
 		else $this->papar->c1 = '000';
+		$this->papar->c2 = $c2;
 	}
 #-------------------------------------------------------------------------------------------
 	public function soalan4()
@@ -390,7 +392,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function setPembolehubah($kp, $idBorang)
 	{
 		$this->papar->_5p['kp'] = $this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
-		$this->papar->peratus = null;
+		$this->papar->peratus = null; // rand(-30, 30)
 		$this->papar->_5p['idBorang'] = $idBorang;
 		$this->papar->_5p['nama'] = $idBorang;
 		$data = 'XXX';
