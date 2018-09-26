@@ -55,7 +55,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		echo '<hr>Nama class :' . __METHOD__ . '()<hr><pre>';
 		$semak = array('idBorang','senarai','myTable','_jadual','carian','c1','c2',
-			'medan','bentukJadual01','bentukJadual02','_pilih','5p',
+			'medan','bentukJadual01','bentukJadual02','_pilih','_5p',
 			'template','pilihJadual','template2','pilihJadual2');
 		$takWujud = array(); $kira = 0;
 
@@ -391,8 +391,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		$this->papar->kp = $kp;
 		$this->papar->peratus = null;
-		$this->papar->5p['idBorang'] = $idBorang;
-		$this->papar->5p['nama'] = $idBorang;
+		$this->papar->_5p['idBorang'] = $idBorang;
+		$this->papar->_5p['nama'] = $idBorang;
 		$data = 'XXX';
 		# semak sama ada nilai wujud atau tidak
 		/*
@@ -425,12 +425,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$sewatanah = 0;
 		$sewalain = 0;
 		# masukkan nilai 5 perangkaan utama
-		$this->papar->5p['hasil'] = $hasil;
-		$this->papar->5p['belanja'] = $belanja;
-		$this->papar->5p['gaji'] = $gaji;
-		$this->papar->5p['susut'] = $susut;
-		$this->papar->5p['aset'] = $aset;
-		$this->papar->5p['asetsewa'] = $sewatanah + $sewalain;
+		$this->papar->_5p['hasil'] = $hasil;
+		$this->papar->_5p['belanja'] = $belanja;
+		$this->papar->_5p['gaji'] = $gaji;
+		$this->papar->_5p['susut'] = $susut;
+		$this->papar->_5p['aset'] = $aset;
+		$this->papar->_5p['asetsewa'] = $sewatanah + $sewalain;
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
