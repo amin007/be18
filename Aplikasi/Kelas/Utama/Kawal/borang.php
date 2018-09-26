@@ -444,12 +444,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$nisbah = 1 + $nisbah;
 		$nilaiNisbah = 1;
 
-		$this->papar->_5p['hasil_kini'] = $nisbah * $this->papar->_5p['hasil']
-		$this->papar->_5p['belanja_kini'] = $nisbah * $this->papar->_5p['belanja']
-		$this->papar->_5p['gaji_kini'] = $nisbah * $this->papar->_5p['gaji']
-		$this->papar->_5p['susut_kini'] = $nisbah * $this->papar->_5p['susut']
-		$this->papar->_5p['aset_kini'] = $nisbah * $this->papar->_5p['aset']
-		$this->papar->_5p['asetsewa_kini'] = $nisbah * $this->papar->_5p['asetsewa']
+		$this->papar->_5p['hasil_kini'] = $nisbah * $this->papar->_5p['hasil'];
+		$this->papar->_5p['belanja_kini'] = $nisbah * $this->papar->_5p['belanja'];
+		$this->papar->_5p['gaji_kini'] = $nisbah * $this->papar->_5p['gaji'];
+		$this->papar->_5p['susut_kini'] = $nisbah * $this->papar->_5p['susut'];
+		$this->papar->_5p['aset_kini'] = $nisbah * $this->papar->_5p['aset'];
+		$this->papar->_5p['asetsewa_kini'] = $nisbah * $this->papar->_5p['asetsewa'];
 	}
 #-------------------------------------------------------------------------------------------
 	public function be2($idBorang = null)
