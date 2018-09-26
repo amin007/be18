@@ -222,7 +222,7 @@ function kira3($kira,$n)
 	return str_pad($kira,$n,"0",STR_PAD_LEFT);
 }
 
-function truncate_number($number, $precision = 2)
+function truncate_number($number, $precision = 0)
 {
 	# sumber https://stackoverflow.com/questions/9944001/delete-digits-after-two-decimal-points-without-rounding-the-value/9944052
 	# Zero causes issues, and no need to truncate
