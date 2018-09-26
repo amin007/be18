@@ -72,9 +72,9 @@ class Rangka_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($myTable,$medan,$carian,$atur,$j1,$j2);
 	}
 #---------------------------------------------------------------------------------------------------#
-	public function jadualRangka3($jadual,$cariID)
+	public function jadualRangka3($jadual,$medanID,$cariID)
 	{
-		list($j1,$j2,$medanID,$entah) = dpt_senarai('jadual_rangka3');
+		list($j1,$j2,$e1,$e2) = dpt_senarai('jadual_rangka3');
 		# bentuk tatasusunan $carian //
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
