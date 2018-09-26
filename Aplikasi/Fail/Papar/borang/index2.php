@@ -69,10 +69,9 @@ function formula01($myTable,$key,$data,$_5p)
 	elseif($data == '0'):
 		$papar = null;
 	elseif($myTable == 'be2016_hasil_servis'):
-		/*$jumlah = '1969435';
+		$jumlah = $_5p['hasil'];
 		$kiraan = $data / $jumlah;
 		$papar = kiraPerpuluhan($kiraan,2) . '%';//*/
-		$papar = $myTable . '|' . $data;
 	elseif($myTable == 'be2016_belanja_servis'):
 		$jumlah = $_5p['belanja'];
 		$kiraan = $data / $jumlah;
