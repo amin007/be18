@@ -175,6 +175,8 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 			list($myTable, $medan, $carian, $susun) = $this->jadualInfoIctHasil($idBorang);
 		elseif($pilih == 'medanKP'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualMedanKP($idBorang);
+		elseif($pilih == 'limaPerangkaan'): //echo "\$pilih = $pilih <br>";
+			list($myTable, $medan, $carian, $susun) = $this->jaduaLimaPerangkaan($idBorang);
 		elseif($pilih == 'semuaBE'): //echo "\$pilih = $pilih <br>";
 			list($myTable, $medan, $carian, $susun) = $this->jadualSemuaBE($idBorang);
 		elseif($pilih == 'hasilBE'): //echo "\$pilih = $pilih <br>";
@@ -248,6 +250,21 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
+		$myTable = null;
+		$medan = '*';
+		$carian = $susun = null;
+		# semak database
+			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
+				'atau' => 'WHERE', # WHERE / OR / AND
+				'medan' => 'NoSiri', # cari dalam medan apa
+				'apa' => $idBorang); # benda yang dicari//*/
+
+		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
+	}
+#---------------------------------------------------------------------------------------------------#
+	function jaduaLimaPerangkaan($idBorang)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		$myTable = null;
 		$medan = '*';
 		$carian = $susun = null;
