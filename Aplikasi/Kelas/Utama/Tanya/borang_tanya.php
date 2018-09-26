@@ -423,6 +423,14 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return $data;
 	}
 #---------------------------------------------------------------------------------------------------#
+	function data5P($m,$myTable)
+	{
+		$sql = 'SELECT ' . $m . '`F2099` hasil,`F2199` belanja,`F2163` gaji,'
+		. '`F2149` susut,`F2147` sewatanah,`F2148` sewalain '
+		. 'FROM ' . $myTable . '';
+		return $sql;
+	}
+#---------------------------------------------------------------------------------------------------#
 	public function soalanHasil()
 	{
 		$data = array('F2001','F2002','F2003','F2004','F2005','F2006','F2007','F2008','F2009','F2010',
