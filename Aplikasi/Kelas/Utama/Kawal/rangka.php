@@ -119,7 +119,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		list($jaduaLama,$senaraiJadual) = dpt_senarai('jadual_rangka2');
 		# ubahsuai $_POST
 		list($medanLama,$medanBaru,$cariID) = $this->tambahPost($senaraiJadual);
-		echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 		//echo '<pre>$medanLama='; print_r($medanLama); echo '</pre>';
 		//echo '<pre>$medanBaru='; print_r($medanBaru); echo '</pre>';
 
