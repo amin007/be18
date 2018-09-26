@@ -8,9 +8,12 @@ $html->medanCarian(
 );?>
 <!-- h1> Ini Template Khas01 </h1 -->
 <form method="POST" action="<?php echo $aksi ?>">
-<table class="table"><tr><td colpan="3"><?php
-$html->medanHantar(null, $class1);
-?></td></tr>
+<table class="table">
+<tr><td colspan="1">
+	<input class="form-control" type="text" name="medanID" value="<?php echo $this->medanID ?>">
+	<input class="form-control" type="text" name="cariID" value="<?php echo $this->cariID ?>">
+	<?php $html->medanHantar(null, $class1); ?>
+</td></tr>
 <tr>
 <?php
 foreach ($this->senarai as $myTable => $row)
@@ -20,10 +23,10 @@ foreach ($this->senarai as $myTable => $row)
 	{
 		$tajukjadual = '<span class="badge badge-success">' . $myTable . '</span>'
 		. "\r" . '<span class="badge">' . count($row) . '</span>';
-		echo "\n<td>" . $tajukjadual; ?>
-<!-- Jadual <?php echo $myTable ?> ########################################### -->
+		echo "\n<td>" . $tajukjadual . "\n"; ?>
+	<!-- Jadual <?php echo $myTable ?> ########################################### -->
 <?php include 'pilih_' . $pilihJadual . '.php'; ?>
-<!-- Jadual <?php echo $myTable ?> ########################################### -->
+	<!-- Jadual <?php echo $myTable ?> ########################################### -->
 <?php	echo "\n</td>";
 	} // if ( count($row)==0 )
 }
