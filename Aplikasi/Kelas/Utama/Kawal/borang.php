@@ -314,17 +314,28 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function ubahsuaiKhas()
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 		$medanID = 'newss';
+		$dataID = $this->cariDataIDdaa();
 		$senaraiJadual = $this->tanya->pilihJadual();
-		$dataID = (isset($_POST['cari'])) ? bersih($_POST['cari']) : null;
 
 		$debugData = array('senaraiJadual','medanID','dataID');
-		/*echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
+		echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
 			echo '<br>$' . $semak . ' : '; print_r($$semak);
 		endif; endforeach; echo '</pre>';//*/
 
 		return array($senaraiJadual,$medanID,$dataID); # pulangkan nilai
+	}
+#-------------------------------------------------------------------------------------------
+	function cariDataIDdaa()
+	{
+		echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+		if(isset($_POST['cari']))
+			$dataID = bersih($_POST['cari']);
+		elseif(isset($_POST['jika']['cari'][1]))
+			$dataID = bersih($_POST['jika']['cari'][1]);
+		else $dataID = null;
+
+		return $dataID;
 	}
 #-------------------------------------------------------------------------------------------
 	function ulangCariJadual($senaraiJadual,$medanID,$dataID)
