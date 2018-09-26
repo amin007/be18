@@ -50,7 +50,8 @@ function paparInput01($myTable,$key,$data,$banyakMedan,$_5p)
 	?><td><?php echo $data ?></td><?php
 	?><td><?php echo formula01($myTable,$key,$data,$_5p) ?></td><?php
 	?><td><?php echo formula02($myTable,$key,$data,$_5p) ?></td><?php
-	?><td><?php echo $data ?></td><?php
+	?><td><?php echo formula03($myTable,$key,$data,$_5p) ?></td><?php
+	?><td><?php //echo $data ?></td><?php
 	?></tr><?php
 }
 #--------------------------------------------------------------------------------------------
@@ -69,7 +70,7 @@ function formula01($myTable,$key,$data,$_5p)
 	elseif($myTable == 'be2016_belanja_servis'):
 		$jumlah = $_5p['belanja'];
 		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan,4) . '%';//*/
+		$papar = kiraPerpuluhan($kiraan,10) . '%';//*/
 		//$papar = $myTable . '|' . $data;
 	else:
 		$jumlah = '1969435';
@@ -82,31 +83,58 @@ function formula01($myTable,$key,$data,$_5p)
 #--------------------------------------------------------------------------------------------
 function formula02($myTable,$key,$data,$_5p)
 {
-	$jumlah = array();$peratus = $_5p['peratus'];
-	if($myTable == 'be2016_hasil_servis') && ($key != 'F2099')):
-		$kira00 = $data * $peratus;
-		//$kira01 = kiraPerpuluhan($kira00,2);
+	$peratus = $_5p['peratus'];
+	$jumHasil = $jumBelanja = $kira00 = $kira01 = $kira02 = $kira03 = 0;
+	if( ($myTable == 'be2016_hasil_servis') && ($key != 'F2099') ):
+		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
 		$kira02 = truncate_number($kira00);
 		$papar = $kira02;
-	elseif($myTable == 'be2016_hasil_servis') && ($key == 'F2099')):
-		$kira00 = $data * $peratus;
-		//$kira01 = kiraPerpuluhan($kira00,2);
-		$kira02 = truncate_number($kira00);
-		$kira03 = array_sum($jumlah);
-		//$papar = $kira02 . '|<br>' . $kira03;
-		$papar = $myTable . '|' . $kira03;
-	elseif($myTable == 'be2016_belanja_servis' && ($key != 'F2199')):
-		$kira00 = $data * $peratus;
-		//$kira01 = kiraPerpuluhan($kira00,2);
+	elseif( ($myTable == 'be2016_hasil_servis') && ($key == 'F2099') ):
+		$kira00 = $kira01 = $kira02 = $kira03 = 0;
+		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
 		$kira02 = truncate_number($kira00);
 		$papar = $kira02;
-		$jumlah[] = $kira02;
+	elseif( ($myTable == 'be2016_belanja_servis') && ($key != 'F2199') ):
+		$kira00 = $kira01 = $kira02 = $kira03 = 0;
+		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
+		$kira02 = truncate_number($kira00);
+		$papar = $kira02;
+	elseif( ($myTable == 'be2016_belanja_servis') && ($key == 'F2199') ):
+		$kira00 = $kira01 = $kira02 = $kira03 = 0;
+		$kira00 = $data * $peratus;
+		$kira02 = truncate_number($kira00);
+		$papar = $kira02;
 		//$papar = $myTable . '|' . $data;
-	elseif($myTable == 'be2016_belanja_servis' && ($key == 'F2199')):
+	else:
+		$papar = kiraPerpuluhan($data,2) . '';
+	endif;
+
+	return $papar;
+}
+#--------------------------------------------------------------------------------------------
+function formula03($myTable,$key,$data,$_5p)
+{
+	$peratus = $_5p['peratus'];
+	$jumHasil = $jumBelanja = $kira00 = $kira01 = $kira02 = $kira03 = 0;
+	if( ($myTable == 'be2016_hasil_servis') && ($key != 'F2099') ):
+		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
+		$kira02 = truncate_number($kira00);
+		$papar = $kira02;
+	elseif( ($myTable == 'be2016_hasil_servis') && ($key == 'F2099') ):
+		$kira00 = $kira01 = $kira02 = $kira03 = 0;
+		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
+		$kira02 = truncate_number($kira00);
+		$papar = $kira02;
+	elseif( ($myTable == 'be2016_belanja_servis') && ($key != 'F2199') ):
+		$kira00 = $kira01 = $kira02 = $kira03 = 0;
+		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
+		$kira02 = truncate_number($kira00);
+		$papar = $kira02;
+	elseif( ($myTable == 'be2016_belanja_servis') && ($key == 'F2199') ):
+		$kira00 = $kira01 = $kira02 = $kira03 = 0;
 		$kira00 = $data * $peratus;
 		$kira02 = truncate_number($kira00);
-		$kira03 = array_sum($jumlah);
-		$papar = $kira02 . '|<br>' . $kira03;
+		$papar = $kira02;
 		//$papar = $myTable . '|' . $data;
 	else:
 		$papar = kiraPerpuluhan($data,2) . '';
