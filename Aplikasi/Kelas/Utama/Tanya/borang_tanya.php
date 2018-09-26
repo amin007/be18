@@ -425,7 +425,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	function data5P($m,$myTable)
 	{
-		$sql = 'SELECT ' . $m . '`F2099` hasil,`F2199` belanja,`F2163` gaji,'
+		$sql = 'SELECT ' . $m . '`F2099` hasil,`F2199` belanja,'
 		. '`F2149` susut,`F0899` harta,`F2147` sewatanah,`F2148` sewalain,`F0999` sewaharta,'
 		. '`F1419` stafL,`F1819` gajiL,`F1509` sijilL,'
 		. '`F1439` stafP,`F1839` gajiP,`F1609` sijilP'
