@@ -2,7 +2,7 @@
 include 'atas/diatas.php';
 include 'atas/menu_atas.php';
 $mencari = $this->pautan;
-$mesej = '';
+$mesej = $this->pautan;
 $carian = $this->idBorang;
 ?>
 <div class="container">
