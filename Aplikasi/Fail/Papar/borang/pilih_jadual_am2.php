@@ -17,7 +17,7 @@
 			if($data == '0' or $data == NULL):
 				echo '';
 			else:
-				paparInput01($key,$data,$this->medan);
+				paparInput01($key,$data,$this->medan,$this->_5p);
 			endif;
 		}
 		?></tbody>
