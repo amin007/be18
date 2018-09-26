@@ -374,7 +374,6 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$db = 'pom_malaysiabaru.';
 		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
-		$this->panggilDB('semuaBE',$db . 'be2016_v2',$idBorang);
 		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
 		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
