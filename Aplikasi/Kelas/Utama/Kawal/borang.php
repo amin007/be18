@@ -381,6 +381,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
 		$this->setPembolehubah($kp,$idBorang,$peratus);
+		$this->kiraNisbah($peratus); // rand(-30, 30)
 		//$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
@@ -392,7 +393,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function setPembolehubah($kp, $idBorang, $peratus)
 	{
 		$this->papar->_5p['kp'] = $this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
-		$this->papar->peratus = null; // rand(-30, 30)
+		$this->papar->peratus = null;
 		$this->papar->_5p['idBorang'] = $idBorang;
 		$this->papar->_5p['nama'] = $idBorang;
 		$data = 'XXX';
@@ -434,6 +435,21 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->_5p['aset'] = $aset;
 		$this->papar->_5p['asetsewa'] = $sewatanah + $sewalain;
 		//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function kiraNisbah($peratus)
+	{
+		$nisbah = ($peratus!=null) ? (peratus)/100 : rand(-30, 30)/100;
+		//$nisbah = rand(-30, 30)/100;
+		$nisbah = 1 + $nisbah;
+		$nilaiNisbah = 1;
+
+		$this->papar->_5p['hasil_kini'] = $nisbah * $this->papar->_5p['hasil']
+		$this->papar->_5p['belanja_kini'] = $nisbah * $this->papar->_5p['belanja']
+		$this->papar->_5p['gaji_kini'] = $nisbah * $this->papar->_5p['gaji']
+		$this->papar->_5p['susut_kini'] = $nisbah * $this->papar->_5p['susut']
+		$this->papar->_5p['aset_kini'] = $nisbah * $this->papar->_5p['aset']
+		$this->papar->_5p['asetsewa_kini'] = $nisbah * $this->papar->_5p['asetsewa']
 	}
 #-------------------------------------------------------------------------------------------
 	public function be2($idBorang = null)
