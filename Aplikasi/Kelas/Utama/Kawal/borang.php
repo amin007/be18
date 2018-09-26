@@ -425,22 +425,24 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$aset = $this->papar->senarai['limaPerangkaan'][0]['harta'];
 		$susut = $this->papar->senarai['limaPerangkaan'][0]['susut'];
 		# f2148 = sewa lain2, f2147 = sewa tanah
-		$sewatanah = 0;
-		$sewalain = 0;
+		$sewatanah = $this->papar->senarai['limaPerangkaan'][0]['sewatanah'];
+		$sewalain = $this->papar->senarai['limaPerangkaan'][0]['sewalain'];
+		$asetsewa = $sewatanah + $sewalain;
+		//$asetsewa = $this->papar->senarai['limaPerangkaan'][0]['sewaharta'];
 		# masukkan nilai 5 perangkaan utama
 		$this->papar->_5p['hasil'] = $hasil;
 		$this->papar->_5p['belanja'] = $belanja;
 		$this->papar->_5p['gaji'] = $gaji;
 		$this->papar->_5p['susut'] = $susut;
 		$this->papar->_5p['aset'] = $aset;
-		$this->papar->_5p['asetsewa'] = $sewatanah + $sewalain;
+		$this->papar->_5p['asetsewa'] = $asetsewa;
 		# masukkan nilai anggaran
 		$this->papar->_5p['hasil_kini'] = intval($nisbah * $hasil);
-		$this->papar->_5p['belanja_kini'] = $nisbah * $belanja;
-		$this->papar->_5p['gaji_kini'] = $nisbah * $gaji;
-		$this->papar->_5p['susut_kini'] = $nisbah * $susut;
-		$this->papar->_5p['aset_kini'] = $nisbah * $aset;
-		$this->papar->_5p['asetsewa_kini'] = $nisbah * $asetsewa;
+		$this->papar->_5p['belanja_kini'] = intval($nisbah * $belanja);
+		$this->papar->_5p['gaji_kini'] = intval($nisbah * $gaji);
+		$this->papar->_5p['susut_kini'] = intval($nisbah * $susut);
+		$this->papar->_5p['aset_kini'] = intval($nisbah * $aset);
+		$this->papar->_5p['asetsewa_kini'] = intval($nisbah * $asetsewa);
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
