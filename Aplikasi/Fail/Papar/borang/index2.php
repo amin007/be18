@@ -24,9 +24,10 @@ include 'soalan_anggaran.php';
 include 'atas/dibawah.php';
 
 #--------------------------------------------------------------------------------------------
-function formula01($key,$data)
+function formula01($key,$data,$_5p)
 {
-	$buang01 = array('newss','nama','batch','form','kp','msic2008');
+	$buang01 = array('newss','nama','batch','form','kp','msic2008',
+		'KodBanci','NoSiri','F0002','F0014','F0015');
 	if (in_array($key,$buang01)):
 		$papar = null;
 	elseif($data == '0'):
@@ -40,7 +41,7 @@ function formula01($key,$data)
 	return $papar;
 }
 #--------------------------------------------------------------------------------------------
-function paparInput01($key,$data,$banyakMedan)
+function paparInput01($key,$data,$banyakMedan,$_5p)
 {
 	?><tr><?php
 	?><td align="right"><?php echo keteranganMedan($key,$banyakMedan) ?></td><?php
@@ -49,7 +50,7 @@ function paparInput01($key,$data,$banyakMedan)
 	/*?><td><?php echo $paparData . "\n\t" ?></td><?php*/
 	?><td><?php echo $key ?></td><?php
 	?><td><?php echo $data ?></td><?php
-	?><td><?php echo formula01($key,$data) ?></td><?php
+	?><td><?php echo formula01($key,$data,$_5p) ?></td><?php
 	?><td><?php echo $data ?></td><?php
 	?><td><?php echo $data ?></td><?php
 	?></tr><?php
