@@ -397,9 +397,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->setPembolehubah($kp,$idBorang);
 		//$this->debugKandunganPaparan();//*/
 
-		# Pergi papar kandungan
-		$this->_folder = 'borang';
-		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
+		/*# Pergi papar kandungan
 		$fail = array('index','index2','b_ubah','b_ubah_kawalan');
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
