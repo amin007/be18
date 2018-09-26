@@ -65,12 +65,12 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
-	public function tambah() 
+	public function tambah($kp = null,$dataID = null)
 	{
 		# Set pembolehubah utama
 		//echo '<hr>' . $this->_namaClass . '<hr>';
 		$this->ulangJadual();
-		$this->setPembolehUbah();
+		$this->setPembolehUbah($kp,$dataID);
 		$fail = array('index','b_ubah','b_ubah_kawalan','b_baru');
 
 		# Pergi papar kandungan
@@ -79,9 +79,9 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		//*/
     }
 #-------------------------------------------------------------------------------------------
-	public function setPembolehUbah()
+	public function setPembolehUbah($kp,$dataID)
 	{
-		$this->papar->medanID = $this->papar->cariID = null;
+		$this->papar->medanID = $this->papar->cariID = $dataID;
 		$this->papar->carian[] = 'semua';
 		$this->papar->_method = huruf('kecil', namaClass($this));
 		$this->papar->c1 = $this->papar->c2 = null;
