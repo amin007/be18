@@ -100,7 +100,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$data = 'XXX';
 		$this->papar->perangkaan['hasil'] = $this->papar->bentukJadual01['be2016_hasil_servis'][0]['F2099'];
 		$this->papar->perangkaan['belanja'] = $this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2199'];
-		$this->papar->perangkaan['gaji'] = $data;
+		$this->papar->perangkaan['gaji'] = $this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2163'];
 		$this->papar->perangkaan['susut'] = $data;
 		$this->papar->perangkaan['aset'] = $data;
 		$this->papar->perangkaan['asetsewa'] = $data;
