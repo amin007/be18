@@ -118,7 +118,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 	{
 		list($jaduaLama,$senaraiJadual) = dpt_senarai('jadual_rangka2');
 		# ubahsuai $_POST
-		list($medanLama,$medanBaru,$cariID) = $this->tambahPost($senaraiJadual);
+		list($medanLama,$medanBaru,$medanID,$cariID) = $this->tambahPost($senaraiJadual);
 		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 		//echo '<pre>$medanLama='; print_r($medanLama); echo '</pre>';
 		//echo '<pre>$medanBaru='; print_r($medanBaru); echo '</pre>';
@@ -126,7 +126,7 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 		# mula ulang $senaraiJadual
 		foreach ($senaraiJadual as $kunci => $jadual)
 		{# mula ulang table
-			$carian = $this->tanya->jadualRangka3($jadual,$cariID);
+			$carian = $this->tanya->jadualRangka3($jadual,$medanID,$cariID);
 			//$this->tanya->salinJadual($jadual . '_x', $medan = '*', $jadual);
 
 			$this->tanya->//tambahSqlJadualBarukeLama
@@ -161,9 +161,10 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 
 		$medanLama = $this->cantumMedan1($senaraiJadual, $posmen1);
 		$medanBaru = $this->cantumMedan2($senaraiJadual, $posmen2);
+		$medanID = bersih($_POST['medanID']);
 		$cariID = bersih($_POST['cariID']);
 
-		return array($medanLama,$medanBaru,$cariID); # pulangkan nilai
+		return array($medanLama,$medanBaru,$medanID,$cariID); # pulangkan nilai
 	}
 #-------------------------------------------------------------------------------------------
 	function cantumMedan1($jadual, $posmen)
