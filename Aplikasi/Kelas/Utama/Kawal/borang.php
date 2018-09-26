@@ -381,7 +381,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
 		$this->setPembolehubah($kp,$idBorang,$peratus);
-		$this->kiraNisbah($peratus); // rand(-30, 30)
+		//$this->kiraNisbah($peratus); // rand(-30, 30)
 		//$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
