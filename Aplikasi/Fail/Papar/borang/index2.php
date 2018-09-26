@@ -22,13 +22,12 @@ foreach ($ulang as $key):
 endforeach;//*/
 
 //include 'soalan_anggaran.php';
-formula00();
 include 'atas/dibawah.php';
 
 #--------------------------------------------------------------------------------------------
 function formula00()
 {
-	echo '<br>105 x 6.55957 = ' . bcdiv('105', '6.55957', 3);  // 16.007
+
 }
 #--------------------------------------------------------------------------------------------
 function formula01($myTable,$key,$data,$_5p)
