@@ -394,8 +394,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		$this->papar->_5p['kp'] = $this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
 		$this->papar->_5p['peratus'] = $nisbah = $this->kiraNisbah($peratus);
-		$this->papar->_5p['idBorang'] = $idBorang;
-		$this->papar->_5p['nama'] = $idBorang;
+		$this->papar->_5p['idBorang'] = 'Kod007JamesBond';
+		$this->papar->_5p['nama'] = 'Biarlah Rahsia';
 		$data = 'XXX';
 		# semak sama ada nilai wujud atau tidak
 		/*
