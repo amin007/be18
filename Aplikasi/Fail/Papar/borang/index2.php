@@ -108,6 +108,7 @@ function formula02($myTable,$key,$data,$_5p)
 function formula03($myTable,$key,$data,$_5p)
 {
 	$peratus = $_5p['peratus'];
+	$belanja01 = $_5p['belanja']; $belanja02 = $_5p['belanja_kini'];
 	$jumHasil = $jumBelanja = $kira00 = $kira01 = $kira02 = $kira03 = 0;
 	if( ($myTable == 'be2016_hasil_servis') && ($key != 'F2099') ):
 		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
