@@ -427,8 +427,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# f2148 = sewa lain2, f2147 = sewa tanah
 		$sewatanah = $this->papar->senarai['limaPerangkaan'][0]['sewatanah'];
 		$sewalain = $this->papar->senarai['limaPerangkaan'][0]['sewalain'];
-		$asetsewa = $sewatanah + $sewalain;
-		//$asetsewa = $this->papar->senarai['limaPerangkaan'][0]['sewaharta'];
+		//$asetsewa = $sewatanah + $sewalain;
+		$asetsewa = $this->papar->senarai['limaPerangkaan'][0]['sewaharta'];
 		# masukkan nilai 5 perangkaan utama
 		$this->papar->_5p['hasil'] = $hasil;
 		$this->papar->_5p['belanja'] = $belanja;
@@ -437,12 +437,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->_5p['aset'] = $aset;
 		$this->papar->_5p['asetsewa'] = $asetsewa;
 		# masukkan nilai anggaran
-		$this->papar->_5p['hasil_kini'] = intval($nisbah * $hasil);
-		$this->papar->_5p['belanja_kini'] = intval($nisbah * $belanja);
-		$this->papar->_5p['gaji_kini'] = intval($nisbah * $gaji);
-		$this->papar->_5p['susut_kini'] = intval($nisbah * $susut);
-		$this->papar->_5p['aset_kini'] = intval($nisbah * $aset);
-		$this->papar->_5p['asetsewa_kini'] = intval($nisbah * $asetsewa);
+		$this->papar->_5p['hasil_kini'] = truncate_number($nisbah * $hasil);
+		$this->papar->_5p['belanja_kini'] = truncate_number($nisbah * $belanja);
+		$this->papar->_5p['gaji_kini'] = truncate_number($nisbah * $gaji);
+		$this->papar->_5p['susut_kini'] = truncate_number($nisbah * $susut);
+		$this->papar->_5p['aset_kini'] = truncate_number($nisbah * $aset);
+		$this->papar->_5p['asetsewa_kini'] = truncate_number($nisbah * $asetsewa);
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
