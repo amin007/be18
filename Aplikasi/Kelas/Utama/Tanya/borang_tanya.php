@@ -429,7 +429,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		. '`F2149` susut,`F0899` harta,`F2147` sewatanah,`F2148` sewalain,`F0999` sewaharta,'
 		. '`F1419` stafL,`F1819` gajiL,`F1509` sijilL,'
 		. '`F1439` stafP,`F1839` gajiP,`F1609` sijilP'
-		. 'FROM ' . $myTable . '';
+		. ' FROM ' . $myTable . '';
 		return $sql;
 	}
 #---------------------------------------------------------------------------------------------------#
