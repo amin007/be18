@@ -81,7 +81,8 @@ class Rangka extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function setPembolehUbah($kp,$dataID)
 	{
-		$this->papar->medanID = $this->papar->cariID = $dataID;
+		$this->papar->medanID = $kp;
+		$this->papar->cariID = $dataID;
 		$this->papar->carian[] = 'semua';
 		$this->papar->_method = huruf('kecil', namaClass($this));
 		$this->papar->c1 = $this->papar->c2 = null;
