@@ -423,7 +423,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$db = 'pom_malaysiabaru.be2016_kp';
-		$md = 'kodbanci,nosiri,f0002,f0014,f0015,';
+		$md = 'kodbanci,nosiri,F0002,F0014,F0015,';
 		$sql = null;
 		foreach($this->tanya->dataBanci2016() as $jadual):
 			//$sql .= $this->tanya->soalanGajiSijil($md,$db.$jadual . 'a');
