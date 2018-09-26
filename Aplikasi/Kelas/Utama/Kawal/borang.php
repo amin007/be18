@@ -379,9 +379,9 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
 		$this->setPembolehubah($kp,$idBorang);
-		$this->debugKandunganPaparan();//*/
+		//$this->debugKandunganPaparan();//*/
 
-		/*# Pergi papar kandungan
+		# Pergi papar kandungan
 		$fail = array('index','index2','b_ubah','b_ubah_kawalan');
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
@@ -389,7 +389,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function setPembolehubah($kp, $idBorang)
 	{
-		$this->papar->kp = $kp;
+		$this->papar->_5p['kp'] = $this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
 		$this->papar->peratus = null;
 		$this->papar->_5p['idBorang'] = $idBorang;
 		$this->papar->_5p['nama'] = $idBorang;
