@@ -91,32 +91,6 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
-	function setPembolehubah($kp, $idBorang)
-	{
-		$this->papar->kp = $kp;
-		$this->papar->peratus = null;
-		$this->papar->perangkaan['idBorang'] = $idBorang;
-		$this->papar->perangkaan['nama'] = $idBorang;
-		$data = 'XXX';
-		# semak sama ada nilai wujud atau tidak
-		$hasil = (isset($this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2099'])) ?
-			$this->papar->bentukJadual01['be2016_belanja_servis'][0]['F2099'] : 0;
-		$belanja = 0;
-		$gaji = 0;
-		$susut = 0;
-		# f2148 = sewa lain2, f2147 = sewa tanah
-		$sewatanah = 0;
-		$sewalain = 0;
-		# masukkan nilai 5 perangkaan utama
-		$this->papar->perangkaan['hasil'] = $hasil;
-		$this->papar->perangkaan['belanja'] = $belanja;
-		$this->papar->perangkaan['gaji'] = $gaji;
-		$this->papar->perangkaan['susut'] = $susut;
-		$this->papar->perangkaan['aset'] = $data;
-		$this->papar->perangkaan['asetsewa'] = $sewatanah + $sewalain;
-		//*/
-	}
-#-------------------------------------------------------------------------------------------
 	function panggilDB($pilih,$myJadual,$idBorang)
 	{
 		# Set pembolehubah utama
@@ -406,12 +380,58 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
 		$this->setPembolehubah($kp,$idBorang);
-		//$this->debugKandunganPaparan();//*/
+		$this->debugKandunganPaparan();//*/
 
-		# Pergi papar kandungan
+		/*# Pergi papar kandungan
 		$fail = array('index','index2','b_ubah','b_ubah_kawalan');
 		//echo '<br>$fail = ' . $fail[3] . '<hr>';
 		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function setPembolehubah($kp, $idBorang)
+	{
+		$this->papar->kp = $kp;
+		$this->papar->peratus = null;
+		$this->papar->perangkaan['idBorang'] = $idBorang;
+		$this->papar->perangkaan['nama'] = $idBorang;
+		$data = 'XXX';
+		# semak sama ada nilai wujud atau tidak
+		/*
+		$this->papar->senarai['limaPerangkaan'][0]['kodbanci']
+		$this->papar->senarai['limaPerangkaan'][0]['nosiri']
+		$this->papar->senarai['limaPerangkaan'][0]['F0002']
+		$this->papar->senarai['limaPerangkaan'][0]['F0014']
+		$this->papar->senarai['limaPerangkaan'][0]['F0015']
+		$this->papar->senarai['limaPerangkaan'][0]['hasil']
+		$this->papar->senarai['limaPerangkaan'][0]['belanja']
+		$this->papar->senarai['limaPerangkaan'][0]['susut']
+		$this->papar->senarai['limaPerangkaan'][0]['harta']
+		$this->papar->senarai['limaPerangkaan'][0]['sewatanah']
+		$this->papar->senarai['limaPerangkaan'][0]['sewalain']
+		$this->papar->senarai['limaPerangkaan'][0]['sewaharta']
+		$this->papar->senarai['limaPerangkaan'][0]['stafL']
+		$this->papar->senarai['limaPerangkaan'][0]['gajiL']
+		$this->papar->senarai['limaPerangkaan'][0]['sijilL']
+		$this->papar->senarai['limaPerangkaan'][0]['stafP']
+		$this->papar->senarai['limaPerangkaan'][0]['gajiP']
+		$this->papar->senarai['limaPerangkaan'][0]['sijilP']
+		*/
+		$hasil = (isset($this->papar->senarai['limaPerangkaan'][0]['hasil'])) ?
+			$this->papar->senarai['limaPerangkaan'][0]['hasil'] : 0;
+		$belanja = 0;
+		$gaji = 0;
+		$susut = 0;
+		# f2148 = sewa lain2, f2147 = sewa tanah
+		$sewatanah = 0;
+		$sewalain = 0;
+		# masukkan nilai 5 perangkaan utama
+		$this->papar->perangkaan['hasil'] = $hasil;
+		$this->papar->perangkaan['belanja'] = $belanja;
+		$this->papar->perangkaan['gaji'] = $gaji;
+		$this->papar->perangkaan['susut'] = $susut;
+		$this->papar->perangkaan['aset'] = $data;
+		$this->papar->perangkaan['asetsewa'] = $sewatanah + $sewalain;
+		//*/
 	}
 #-------------------------------------------------------------------------------------------
 	public function be2($idBorang = null)
