@@ -22,13 +22,20 @@ foreach ($ulang as $key):
 endforeach;//*/
 
 //include 'soalan_anggaran.php';
+formula00();
 include 'atas/dibawah.php';
 
+#--------------------------------------------------------------------------------------------
+function formula00()
+{
+	echo '<br>105 x 6.55957 = ' . bcdiv('105', '6.55957', 3);  // 16.007
+}
 #--------------------------------------------------------------------------------------------
 function formula01($myTable,$key,$data,$_5p)
 {
 	$buang01 = array('newss','nama','batch','form','kp','msic2008',
 		'KodBanci','NoSiri','F0002','F0014','F0015');
+	 $perpuluhan = 2;
 	if (in_array($key,$buang01)):
 		$papar = null;
 	elseif($data == '0'):
@@ -36,17 +43,17 @@ function formula01($myTable,$key,$data,$_5p)
 	elseif($myTable == 'be2016_hasil_servis'):
 		/*$jumlah = '1969435';
 		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan, $perpuluhan = 2) . '%';//*/
+		$papar = kiraPerpuluhan($kiraan,2) . '%';//*/
 		$papar = $myTable . '|' . $data;
 	elseif($myTable == 'be2016_belanja_servis'):
 		$jumlah = $_5p['belanja'];
-		//$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($jumlah, $perpuluhan = 2) . '%';//*/
+		$kiraan = $data / $jumlah;
+		$papar = kiraPerpuluhan($kiraan,4) . '%';//*/
 		//$papar = $myTable . '|' . $data;
 	else:
 		$jumlah = '1969435';
 		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan, $perpuluhan = 2) . '%';
+		$papar = kiraPerpuluhan($kiraan,2) . '%';
 	endif;
 
 	return $papar;
