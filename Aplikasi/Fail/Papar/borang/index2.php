@@ -82,19 +82,18 @@ function formula01($myTable,$key,$data,$_5p)
 #--------------------------------------------------------------------------------------------
 function formula02($myTable,$key,$data,$_5p)
 {
-	$perpuluhan = 2;
+	$perpuluhan = 2;$peratus = $_5p['peratus'];
 	if($myTable == 'be2016_hasil_servis'):
-		$peratus = $_5p['peratus'];
-		$jumlah = $_5p['hasil'];
 		$kira00 = $data * $peratus;
 		//$kira01 = kiraPerpuluhan($kira00,2);
 		$kira02 = truncate_number($kira00);
 		$papar = $kira02;
 	elseif($myTable == 'be2016_belanja_servis'):
-		/*jumlah = $_5p['belanja'];
-		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan,4) . '%';//*/
-		$papar = $myTable . '|' . $data;
+		$kira00 = $data * $peratus;
+		//$kira01 = kiraPerpuluhan($kira00,2);
+		$kira02 = truncate_number($kira00);
+		$papar = $kira02;
+		//$papar = $myTable . '|' . $data;
 	else:
 		$papar = kiraPerpuluhan($data,2) . '';
 	endif;
