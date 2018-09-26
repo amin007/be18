@@ -119,10 +119,8 @@ function formula03($myTable,$key,$data,$_5p)
 		$kira02 = truncate_number($kira00);
 		$papar = $kira02;
 	elseif( ($myTable == 'be2016_belanja_servis') && ($key != 'F2199') ):
-		$kira00 = $kira01 = $kira02 = $kira03 = 0;
-		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
-		$kira02 = truncate_number($kira00);
-		$papar = $kira02;
+		$kira00 = ($data/$belanja01) * $belanja02;
+		$papar = truncate_number($kira00);
 	elseif( ($myTable == 'be2016_belanja_servis') && ($key == 'F2199') ):
 		$kira00 = $kira01 = $kira02 = $kira03 = 0;
 		$kira00 = $data * $peratus;
