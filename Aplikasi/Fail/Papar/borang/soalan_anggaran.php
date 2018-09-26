@@ -16,14 +16,15 @@ if ( isset($this->output) && isset($this->input) )
 		. ' | Nilai IO : ' . $NilaiIO . '<br>';
 }
 # nilai untuk input2 khas
-$perangkaan['newss'] = isset($this->perangkaan['idBorang']) ? $this->perangkaan['idBorang'] : null;
-$perangkaan['nama'] = isset($this->perangkaan['nama']) ? $this->perangkaan['nama'] : null;
-   $perangkaan['hasil_dulu'] = isset($this->perangkaan['hasil']) ?	$this->perangkaan['hasil'] : null;
- $perangkaan['belanja_dulu'] = isset($this->perangkaan['belanja']) ? $this->perangkaan['belanja'] : null;
-    $perangkaan['gaji_dulu'] = isset($this->perangkaan['gaji']) ? $this->perangkaan['gaji'] : null;
-   $perangkaan['susut_dulu'] = isset($this->perangkaan['susut']) ?	$this->perangkaan['susut'] : null;
-    $perangkaan['aset_dulu'] = isset($this->perangkaan['aset']) ? $this->perangkaan['aset'] : null;
-$perangkaan['asetsewa_dulu'] = isset($this->perangkaan['asetsewa']) ? $this->perangkaan['asetsewa'] : null;
+$perangkaan['kp'] = isset($this->_5p['kp']) ? $this->_5p['kp'] : null;
+$perangkaan['newss'] = isset($this->_5p['idBorang']) ? $this->_5p['idBorang'] : null;
+$perangkaan['nama'] = isset($this->_5p['nama']) ? $this->_5p['nama'] : null;
+   $perangkaan['hasil_dulu'] = isset($this->_5p['hasil']) ?	$this->_5p['hasil'] : null;
+ $perangkaan['belanja_dulu'] = isset($this->_5p['belanja']) ? $this->_5p['belanja'] : null;
+    $perangkaan['gaji_dulu'] = isset($this->_5p['gaji']) ? $this->_5p['gaji'] : null;
+   $perangkaan['susut_dulu'] = isset($this->_5p['susut']) ?	$this->_5p['susut'] : null;
+    $perangkaan['aset_dulu'] = isset($this->_5p['aset']) ? $this->_5p['aset'] : null;
+$perangkaan['asetsewa_dulu'] = isset($this->_5p['asetsewa']) ? $this->_5p['asetsewa'] : null;
 
 $nisbah = ($this->peratus!=null) ? ($this->peratus)/100 : rand(-30, 30)/100;
 //$nisbah = rand(-30, 30)/100;
@@ -38,7 +39,7 @@ $perangkaan['aset_kini'] = ($nilaiNisbah!=0) ? 	$nisbah * $perangkaan['aset_dulu
 $perangkaan['asetsewa_kini'] = ($nilaiNisbah!=0) ? $nisbah *  $perangkaan['asetsewa_dulu'] : null;
 
 $semasa = array(
-	'kp' => $this->kp,
+	'kp' => $perangkaan['kp'],
 	'newss' => $perangkaan['newss'],
 	'nama' => $perangkaan['nama'] ,
 	/*1*/'hasil_dulu' => $perangkaan['hasil_dulu'],
