@@ -20,8 +20,8 @@ include $this->template . '.php';
 //debug($this->dataID,$this->nama,$this->c1,$this->c2);
 $borang = pautan($this->dataID,$this->nama,$this->c1,$this->c2);
 $papar = implode("\n",$borang);
-echo "\n<hr>Pautan<hr>\n<pre>" . htmlentities($papar) . '</pre>';
-//echo "\n<hr>Klik sini ->" . ($papar);
+//echo "\n<hr>Pautan<hr>\n<pre>" . htmlentities($papar) . '</pre>';
+echo "\n<hr>" . ($papar);
 include 'atas/dibawah.php';
 
 #-------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ function pautan($dataID,$nama,$kp,$c2)
 		$p[] = '<input type="hidden" name="' . $key . '" value="' . $data . '">';
 	endforeach;
 	$p[] = '<h2><a href="javascript:document.forms[0].submit()"'
-	. ' class="btn btn-outline-dark">Ubah3</a></h2>';
+	. ' class="btn btn-outline-dark">Klik sini</a></h2>';
 
 	return $p;
 }
