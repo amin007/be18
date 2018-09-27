@@ -317,7 +317,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		//echo '$_POST:->'; $this->semakPembolehubah($_POST); # Semak data dulu
 		$db = 'pom_malaysiabaru.';
-		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
+		//$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
 		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
 		//$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		//$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
@@ -394,14 +394,18 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function godekPembolehubah03($kp, $idBorang, $peratus)
 	{
-		$this->papar->bentukJadual03[] = $this->papar->senarai['stafBE'][0]['L01-PEMILIK']
-		. '|' . $this->papar->senarai['stafBE'][0]['L01']
-		. '|' . $this->papar->senarai['stafBE'][0]['F4901']
-		. '|' . $this->papar->senarai['stafBE'][0]['F5001']
-		. '|' . $this->papar->senarai['stafBE'][0]['F1401']
-		. '|' . $this->papar->senarai['stafBE'][0]['F1801']
-		. '|' . $this->papar->senarai['stafBE'][0]['F5101'];
-
+		$ulang = array('01'=>'L01-PEMILIK','02'=>'L02-KELUARGA','12'=>'L03-PENGURUS',
+		'13','04','05','15','16','06','17','11','19',
+		'21','22','32','23','33','24','25','34','35','36','26','31',
+		'39'=>'P14-JUMLAH');
+		foreach($ulang as $key => $k1):
+			$this->papar->bentukJadual03['stafBE'][] = $k1 . '|L' . $key
+			. '|' . $this->papar->senarai['stafBE'][0]['F49'.$key]
+			. '|' . $this->papar->senarai['stafBE'][0]['F50'.$key]
+			. '|' . $this->papar->senarai['stafBE'][0]['F14'.$key]
+			. '|' . $this->papar->senarai['stafBE'][0]['F18'.$key]
+			. '|' . $this->papar->senarai['stafBE'][0]['F51'.$key];
+		endforeach;
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiKhas()
