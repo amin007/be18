@@ -257,7 +257,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		}# tamat ulang table
 
 		# Pergi papar kandungan
-		$lokasi = '' . $myTable;;
+		$lokasi = '' . $myTable;
 		//echo '<br>location: ' . URL . $lokasi;
 		header('location: ' . URL . $lokasi); //*/
 	}
