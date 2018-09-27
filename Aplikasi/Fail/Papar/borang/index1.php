@@ -19,7 +19,8 @@ $pilihJadual = 'jadual_am2'; # ubah suai data
 include $this->template . '.php';
 debug($this->nama,$this->c1);
 pautan();
-echo papar3();
+//echo papar00();
+//echo papar01();
 include 'atas/dibawah.php';
 
 #-------------------------------------------------------------------------------------
@@ -31,14 +32,15 @@ function debug($nama,$c1)
 }
 #-------------------------------------------------------------------------------------
 function pautan()
-{/*
+{
 	$p[] = '<form target="_blank" method="POST" action="' . URL . 'borang/cariapa">';
-	foreach():
-		$p[] = '<input type="hidden" name="" value="">';
+	foreach($_POST['semasa'] as $key => $data):
+		$p[] = '<input type="hidden" name="'.$key.'" value="'.$data.'">';
 	endforeach;
 	$p[] = '<h2><a href="javascript:document.forms[0].submit()"'
 	. ' class="btn btn-outline-dark">Ubah3</a></h2>';
-	//*/
+
+	return $p;
 }
 #-------------------------------------------------------------------------------------
 function kp()
