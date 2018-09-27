@@ -40,7 +40,7 @@ list($peratus,$nisbah,$nota) = nisbahperatusan($this->pautan);?>
 	<input type="text" class="form-control" name="semasa[peratus]" value="<?=$peratus?>" placeholder="<?=$peratus?>">
 </div>
 <!-- --------------------------------------------------------------------------------------------------- --><?php
-$ulang = array('kp'=>null,'nama'=>'Biarlah Rahsia');
+$ulang = array('kp'=>null,'nosiri'=>null,'nama'=>'Biarlah Rahsia');
 foreach($ulang as $kunci => $isiApa):?>
 <div class="input-group">
 	<div class="input-group-prepend">
@@ -65,7 +65,7 @@ foreach($ulang as $medanApa):?>
 	<div class="input-group-prepend"><span class="input-group-text">Catatan</span></div>
 	<textarea class="form-control" name="semasa[catatan]"><?php echo $nota ?></textarea>
 	<div class="input-group-prepend"><span class="input-group-text">
-		Papar Semua Nilai<select class="form-control" name="paparNilai">
+		Papar Semua Nilai<select class="form-control" name="semasa[paparNilai]">
 		<option>Ya</option><option>Tidak</option></select>
 	</span></div>
 </div>
