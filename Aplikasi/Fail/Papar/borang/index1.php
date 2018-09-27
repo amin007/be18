@@ -19,6 +19,7 @@ $pilihJadual = 'jadual_am2'; # ubah suai data
 include $this->template . '.php';
 debug($this->nama,$this->c1);
 pautan();
+echo papar3();
 include 'atas/dibawah.php';
 
 #-------------------------------------------------------------------------------------
@@ -37,5 +38,46 @@ function pautan()
 	. 'BST - Penyiasatan Bahan Binaan</a></h2>';
 }
 #-------------------------------------------------------------------------------------
+function kp()
+{
+	$kp = array (
+		array (
+		'form' => '<form target="_blank" method="POST" action="suku/bst/">',
+		'nama' => 'BST - Penyiasatan Bahan Binaan',
+		'input' => '<input type="hidden" name="suku" value="bst">'
+		),array (
+		'form' => '<form target="_blank" method="POST" action="suku/pan09/">',
+		'nama' => 'PAN09 - Penyiasatan Akaun Negara',
+		'input' => '<input type="hidden" name="suku" value="pan">',
+		),array (
+		'form' => '<form target="_blank" method="POST" action="suku/bts/">',
+		'nama' => 'BTS - Penyiasatan Kecenderungan Perniagaan',
+		'input' => '<input type="hidden" name="suku" value="bts">',
+		),array (
+		'form' => '<form target="_blank" method="POST" action="suku/qss12/">',
+		'nama' => 'QSS - Penyiasatan Perkhidmatan Suku Tahunan',
+		'input' => '<input type="hidden" name="suku" value="qss">',
+		)
+	);
+
+	return $kp;
+}
+#-------------------------------------------------------------------------------------
+function papar3()
+{
+	$isi = '<div align="left"><table>';
+	foreach ($sv as $key => $jenis):
+		$isi .= "\n\t" . '<tr><td class="kotak">'
+			 . "\n\t\t" . $jenis['form']
+			 . "\n\t\t" . $jenis['input']
+			 . "\n\t\t" . '<h2><a href="javascript:document.forms['
+			 . $key . '].submit()">'
+			 . "\n\t\t" . $jenis['nama'] . '</a></h2>'
+			 . "\n\t\t</form>"
+			 . "\n\t</td></tr>\r";
+	endforeach;
+	$isi .= '</table></div>' . "\r";
+	return $isi;
+}
 #-------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------;
