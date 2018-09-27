@@ -16,7 +16,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	public function index()
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 
 		# Pergi papar kandungan
 		$lokasi = 'borang/google';
@@ -266,7 +266,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function bentuksoalan()
 	{
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$this->papar->soalan = $this->tanya->soalan();
 
@@ -282,7 +282,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	public function google()
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 		$this->papar->idBorang = (isset($_GET['cari'])) ? $_GET['cari'] : null;
 		$random = rand(-30, 30);
 		$this->papar->pautan = URL . 'borang/temui/400/1/' . $random;
@@ -296,7 +296,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function temui($a,$b,$c2) # daripada fungsi index()
 	{
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		list($senaraiJadual,$medanID,$dataID) = $this->ubahsuaiKhas();
 		$this->ulangCariJadual($senaraiJadual,$medanID,$dataID,$c2);
@@ -355,7 +355,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function soalan4()
 	{
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		//$this->_folder = 'borang/kp205/';
 		$this->_folder = 'borang';
@@ -370,7 +370,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function soalanhasil($myJadual = null,$idBorang = null)
 	{
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$this->panggilDB('',$myJadual,$idBorang);
 		$this->panggilDB('infoIctHasil',$myJadual,$idBorang);
@@ -387,7 +387,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function be($kp = null,$idBorang = null,$peratus = 0)
 	{
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$db = 'pom_malaysiabaru.';
 		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
@@ -473,7 +473,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function be2($idBorang = null)
 	{
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$db = 'pom_malaysiabaru.be2016_kp';
 		$md = 'kodbanci,nosiri,F0002,F0014,F0015,';
@@ -497,7 +497,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function banci($idBorang = null)
 	{
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		//$ulangjadual = $this->tanya->dataBE();
 		//$ulangjadual = $this->tanya->dataBanci2016();
@@ -520,7 +520,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function ulangBilStaf($idBorang = null)
 	{
-		# Set pemboleubah utama
+		# Set pembolehubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$myDB = 'pom_malaysiabaru';
 		$myTable = 'be2016_kp890a';//'be2016_staf_servis02';
