@@ -319,16 +319,16 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$db = 'pom_malaysiabaru.';
 		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
 		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
-		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
-		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
-		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
-		$this->godekPembolehubah01($kp,$idBorang,$peratus);
-		$this->godekPembolehubah02($kp,$idBorang,$peratus);
+		//$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
+		//$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
+		$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
+		//$this->godekPembolehubah01($kp,$idBorang,$peratus);
+		//$this->godekPembolehubah02($kp,$idBorang,$peratus);
 		//$this->kiraNisbah($peratus);// rand(-30, 30)
-		//$this->debugKandunganPaparan();//*/
+		$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
-		$fail = array('index','index1','index2','b_ubah','soalan4');
+		/*$fail = array('index','index1','index2','b_ubah','soalan4');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
