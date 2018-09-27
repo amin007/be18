@@ -34,7 +34,7 @@ function debug($dataID,$nama,$c1)
 function pautan($dataID,$nama,$kp)
 {
 	$p[] = '<form target="_blank" method="POST" action="' . URL
-	. 'borang/cariapa/'.$kp.'">';
+	. 'borang/cariapa/'.$kp.'/'.$dataID.'">';
 	foreach($_POST['semasa'] as $key => $data):
 		$data = ($data == null) ? '0':$data;
 		$data = ($key == 'kp') ? $kp:$data;
