@@ -17,9 +17,25 @@ $pilihJadual = 'jadual_am2'; # ubah suai data
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
 
 include $this->template . '.php';
-
-echo '<pre>$this->nama='; print_r($this->nama); echo '</pre>';
-echo '<pre>$this->c1='; print_r($this->c1); echo '</pre>';
-echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
-
+debug($this->nama,$this->c1);
+pautan();
 include 'atas/dibawah.php';
+
+#-------------------------------------------------------------------------------------
+function debug($nama,$c1)
+{
+	echo '<pre>$this->nama=' . $nama .'</pre>';
+	echo '<pre>$this->c1=' . $c1 .'</pre>';
+	echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+}
+#-------------------------------------------------------------------------------------
+function pautan()
+{
+	$p[] = '<form target="_blank" method="POST" action="suku/bst/">';
+	$p[] = '<input type="hidden" name="suku" value="bst">';
+	$p[] = '<h2><a href="javascript:document.forms[0].submit()">'
+	. 'BST - Penyiasatan Bahan Binaan</a></h2>';
+}
+#-------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------;
