@@ -2,24 +2,64 @@
 include 'atas/diatas.php';
 include 'atas/menu_atas.php';
 $mencari = $this->pautan;
-$mesej = $this->pautan;
 $carian = $this->idBorang;
 ?>
 <div class="container">
-<form method="POST" action="<?=$mencari;?>" class="form-inline" autocomplete="off">
-<div class="form-group">
-	<label for="carian"><h1>Mahu cari apa? <?=$mesej?></h1></label>
-	<div class="input-group">
-		<input type="text" name="cari" value="<?=$carian;?>"
-		class="form-control" id="inputString"
-		onkeyup="lookup(this.value);" onblur="fill();">
-		<span class="input-group-addon"><input type="submit" value="mencari"></span>
+<!-- form method="POST" action="" class="form-inline" autocomplete="off" -->
+<form method="POST" action="<?=$mencari?>" autocomplete="off">
+<!-- --------------------------------------------------------------------------------------------------- -->
+<label for="carian"><h1>Mahu cari apa? <?=$mencari?></h1></label>
+<div class="input-group">
+	<input type="text" name="cari" value="<?=$carian?>"
+	class="form-control" id="inputString"
+	onkeyup="lookup(this.value);" onblur="fill();">
+	<span class="input-group-prepend"><input type="submit" value="mencari"></span>
+</div>
+<div class="input-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text">Senarai Syarikat</span>
+	</div>
+	<div class="suggestionsBox" id="suggestions" style="display: none;">
+		<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
 	</div>
 </div>
-<div class="suggestionsBox" id="suggestions" style="display: none;">
-	<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
+<!-- --------------------------------------------------------------------------------------------------- --><?php
+$pecah = explode('/', $this->pautan);
+//echo '<pre>'; print_r($pecah); echo '</pre>';
+
+$ulang = array('Nisbah &amp; Peratus'=>$pecah[10],'kp'=>null,
+'newss'=>'Kod007JamesBond','nama'=>'Biarlah Rahsia');
+foreach($ulang as $kunci => $isiApa):?>
+<div class="input-group">
+	<div class="input-group-prepend">
+		<span class="input-group-text"><?=$kunci?></span>
+	</div>
+	<input type="text" name="semasa[<?=$kunci?>]" class="form-control" placeholder="<?=$isiApa?>">
 </div>
+<!-- --------------------------------------------------------------------------------------------------- --><?php
+endforeach;
+
+$ulang = array('hasil','belanja','gaji','susut','aset','asetsewa');
+foreach($ulang as $medanApa):?>
+<div class="input-group">
+	<div class="input-group-prepend"><span class="input-group-text"><?=$medanApa?> dulu</span></div>
+	<input type="text" name="semasa[<?=$medanApa?>]" class="form-control">
+	<div class="input-group-prepend"><span class="input-group-text"><?=$medanApa?> kini</span></div>
+	<input type="text" name="semasa[<?=$medanApa?>_kini]" class="form-control">
+</div>
+<!-- --------------------------------------------------------------------------------------------------- -->
+<?php endforeach; ?>
+<div class="input-group">
+	<div class="input-group-prepend"><span class="input-group-text">Catatan</span></div>
+	<textarea name="semasa[catatan]" class="form-control" aria-label="With textarea"></textarea>
+	<div class="input-group-prepend"><span class="input-group-text">
+		Papar Semua Nilai<select name="paparNilai" class="form-control">
+		<option>Ya</option><option>Tidak</option></select>
+	</span></div>
+</div>
+<!-- --------------------------------------------------------------------------------------------------- -->
 </form></div><br>
+
 <?php
 include 'atas/dibawah.php';
 ?>
