@@ -395,9 +395,10 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function godekPembolehubah03($kp, $idBorang, $peratus)
 	{
 		$ulang = array('01'=>'L01-PEMILIK','02'=>'L02-KELUARGA','12'=>'L03-PENGURUS',
-		'13'=>'L04-PRO','04'=>'L05-PENYELIDIK','05'=>'L06-JURUTEKNIK',
-		'15'=>'L07-KERANI','16'=>'L08-JUALAN','06'=>'L09-KEMAHIRAN',
-		'17'=>'L10-MESIN','11'=>'L11-ASAS','19'=>'L12-JUM-TETAP',
+		'03'=>'L04-PRO','13'=>'L05-PENYELIDIK','04'=>'L06-JURUTEKNIK',
+		'05'=>'L07-KERANI','14'=>'L08-JUALAN','15'=>'L09-KEMAHIRAN',
+		'16'=>'L10-MESIN','16'=>'L11-ASAS',
+		'17'=>'L12-JUM-TETAP','11'=>'L13-JUM-SAM','19'=>'L14-JUMLAH',
 		'21'=>'P01-PEMILIK','22'=>'P02-KELUARGA','32'=>'P03-PENGURUS',
 		'23'=>'P04-PRO','33'=>'P05-PENYELIDIK','24'=>'P06-JURUTEKNIK',
 		'25'=>'P07-KERANI','34'=>'P08-JUALAN','35'=>'P09-KEMAHIRAN',
