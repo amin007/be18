@@ -17,24 +17,25 @@ $pilihJadual = 'jadual_am2'; # ubah suai data
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
 
 include $this->template . '.php';
-//debug($this->dataID,$this->nama,$this->c1);
-$borang = pautan($this->dataID,$this->nama,$this->c1);
+//debug($this->dataID,$this->nama,$this->c1,$this->c2);
+$borang = pautan($this->dataID,$this->nama,$this->c1,$this->c2);
 $papar = implode("\n",$borang);
 echo "\n<hr>Pautan<hr>\n<pre>" . htmlentities($papar) . '</pre>';
 include 'atas/dibawah.php';
 
 #-------------------------------------------------------------------------------------
-function debug($dataID,$nama,$c1)
+function debug($dataID,$nama,$c1,$c2)
 {
-	echo '<pre>$this->nama=' . $nama .'</pre>';
-	echo '<pre>$this->c1=' . $c1 .'</pre>';
+	echo '<br>$this->nama=' . $nama;
+	echo '<br>$this->c1=' . $c1;
+	echo '<br>$this->c1=' . $c2;
 	//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 }
 #-------------------------------------------------------------------------------------
-function pautan($dataID,$nama,$kp)
+function pautan($dataID,$nama,$kp,$c2)
 {
-	$p[] = '<form target="_blank" method="POST" action="' . URL
-	. 'borang/cariapa/' . $kp . '/' . $dataID . '">';
+	$p[] = '<form target="_blank" method="POST" action="' . URL . 'borang/cariapa/'
+	. $kp . '/' . $dataID . '/' . $c2 . '">';
 	foreach($_POST['semasa'] as $key => $data):
 		$data = ($data == null) ? '0' : $data;
 		$data = ($key == 'kp') ? $kp : $data;
