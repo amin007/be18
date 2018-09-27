@@ -86,6 +86,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->pilihJadual = 'pilih_jadual_am';
 		$this->papar->template2 = 'template_khas02';
 		$this->papar->pilihJadual2 = 'pilih_jadual_am2';
+		$this->papar->template3 = 'template_khas03';
+		$this->papar->pilihJadual3 = 'pilih_jadual_am';
 		//$this->papar->template2 = 'template_bootstrap';
 		//$this->papar->template3 = 'template_bootstrap_table';
 		//$this->papar->template1 = 'template_khas01';
@@ -326,10 +328,10 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//$this->godekPembolehubah02($kp,$idBorang,$peratus);
 		$this->godekPembolehubah03($kp,$idBorang,$peratus);
 		//$this->kiraNisbah($peratus);// rand(-30, 30)
-		$this->debugKandunganPaparan();//*/
+		//$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
-		/*$fail = array('index','index1','index2','b_ubah','soalan4');
+		$fail = array('index','index1','index2','b_ubah','soalan4');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
