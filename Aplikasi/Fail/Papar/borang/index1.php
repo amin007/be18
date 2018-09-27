@@ -45,7 +45,7 @@ function pautan($dataID,$nama,$kp,$c2)
 		$p[] = '<input type="hidden" name="' . $key . '" value="' . $data . '">';
 	endforeach;
 	$p[] = '<h2><a href="javascript:document.forms[0].submit()"'
-	. ' class="btn btn-outline-dark">Klik sini</a></h2>';
+	. ' target="_blank" class="btn btn-outline-dark">Klik sini</a></h2>';
 
 	return $p;
 }
