@@ -311,17 +311,26 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
 	}
 #-------------------------------------------------------------------------------------------
-	public function cariapa($a,$b,$c2) # daripada fungsi temui()
+	public function cariapa($kp,$idBorang,$peratus) # daripada fungsi temui()
 	{
 		# Set pembolehubah utama
 		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		echo '$_POST:->'; $this->semakPembolehubah($_POST); # Semak data dulu
+		//echo '$_POST:->'; $this->semakPembolehubah($_POST); # Semak data dulu
+		$db = 'pom_malaysiabaru.';
+		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
+		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
+		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
+		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
+		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
+		//$this->setPembolehubah($kp,$idBorang,$peratus);
+		//$this->kiraNisbah($peratus); // rand(-30, 30)
+		$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
 		/*$fail = array('index','index1','index2','b_ubah','soalan4');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
+		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiKhas()
