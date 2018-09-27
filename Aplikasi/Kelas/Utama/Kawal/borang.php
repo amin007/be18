@@ -398,13 +398,16 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		'13','04','05','15','16','06','17','11','19',
 		'21','22','32','23','33','24','25','34','35','36','26','31',
 		'39'=>'P14-JUMLAH');
-		foreach($ulang as $key => $k1):
-			$this->papar->bentukJadual03['stafBE'][] = $k1 . '|L' . $key
-			. '|' . $this->papar->senarai['stafBE'][0]['F49'.$key]
-			. '|' . $this->papar->senarai['stafBE'][0]['F50'.$key]
-			. '|' . $this->papar->senarai['stafBE'][0]['F14'.$key]
-			. '|' . $this->papar->senarai['stafBE'][0]['F18'.$key]
-			. '|' . $this->papar->senarai['stafBE'][0]['F51'.$key];
+		$m = 0;
+		foreach($ulang as $key => $data):
+			$this->papar->bentukJadual03['stafBE'][$m]['Kategori'] = $data;
+			$this->papar->bentukJadual03['stafBE'][$m]['Kod'] = 'L' . $key;
+			$this->papar->bentukJadual03['stafBE'][$m]['Msia'] = $this->papar->senarai['stafBE'][0]['F49'.$key];
+			$this->papar->bentukJadual03['stafBE'][$m]['Pati'] = $this->papar->senarai['stafBE'][0]['F50'.$key];
+			$this->papar->bentukJadual03['stafBE'][$m]['Jum'] = $this->papar->senarai['stafBE'][0]['F14'.$key];
+			$this->papar->bentukJadual03['stafBE'][$m]['Gaji'] = $this->papar->senarai['stafBE'][0]['F18'.$key];
+			$this->papar->bentukJadual03['stafBE'][$m]['Sub'] = $this->papar->senarai['stafBE'][0]['F51'.$key];
+			$m++;
 		endforeach;
 	}
 #-------------------------------------------------------------------------------------------
