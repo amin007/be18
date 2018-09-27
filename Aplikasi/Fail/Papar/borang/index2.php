@@ -45,12 +45,10 @@ function paparInput01($myTable,$key,$data,$banyakMedan,$_5p)
 	?><td align="right"><?php echo keteranganMedan($key,$banyakMedan) ?></td><?php
 	//$paparData = $html->tambahDropInput($this->_paparMedan, $this->_j2,
 	//$myTable, $kira, $key, $data);
-	$f1 = formula01($myTable,$key,$data,$_5p);
-	$f2 = formula02($myTable,$key,$data,$_5p);
 	?><td><?php echo $key ?></td><?php
 	?><td><?php echo $data ?></td><?php
-	?><td><?php echo $f1 ?></td><?php
-	?><td><?php echo $f2 ?></td><?php
+	?><td><?php echo formula01($myTable,$key,$data,$_5p) ?></td><?php
+	?><td><?php echo formula02($myTable,$key,$data,$_5p) ?></td><?php
 	?><td><?php echo formula03($myTable,$key,$data,$_5p) ?></td><?php
 	?><td><?php //echo $data ?></td><?php
 	?></tr><?php
@@ -65,39 +63,31 @@ function formula01($myTable,$key,$data,$_5p)
 {
 	$perpuluhan = 2;
 	if($myTable == 'be2016_hasil_servis'):
-		$jumlah = $_5p['hasil'];
-		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan,2) . '%';//*/
+		$kiraan = $data / $_5p['hasil'];
+		$papar = kiraPerpuluhan($kiraan,10) . '%';
 	elseif($myTable == 'be2016_belanja_servis'):
-		$jumlah = $_5p['belanja'];
-		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan,10) . '%';//*/
-		//$papar = $myTable . '|' . $data;
+		$kiraan = $data / $_5p['belanja'];
+		$papar = kiraPerpuluhan($kiraan,10) . '%';
 	else:
-		$jumlah = '1969435';
-		$kiraan = $data / $jumlah;
-		$papar = kiraPerpuluhan($kiraan,2) . '%';
+		$papar = kiraPerpuluhan($data,2) . '%';
 	endif;
 
 	return $papar;
 }
 #--------------------------------------------------------------------------------------------
 function formula02($myTable,$key,$data,$_5p)
-{# papar yang banyak perpuluhan
-	$peratus = $_5p['peratus']; $hasil = $_5p['hasil'];
+{# papar yang banyak perpuluhan//$kira01 = kiraPerpuluhan($kira00,2);
+	$peratus = $_5p['peratus'];
+	$hasil01 = $_5p['hasil']; $hasil02 = $_5p['hasil_kini'];
 	$belanja01 = $_5p['belanja']; $belanja02 = $_5p['belanja_kini'];
-	$jumBelanja = $kira00 = $kira01 = $kira02 = $kira03 = 0;
-	if( ($myTable == 'be2016_hasil_servis') && ($key != 'F2099') ):
-		$papar = $data * $peratus;
-	elseif( ($myTable == 'be2016_hasil_servis') && ($key == 'F2099') ):
-		//$kira00 = $kira01 = $kira02 = $kira03 = 0;
-		$kira01 = $data * $peratus;
-		$papar = $kira01;
-	elseif( ($myTable == 'be2016_belanja_servis') ):
+	if($myTable == 'be2016_hasil_servis'):
+		$kira00 = ($data/$hasil01) * $hasil02;
+		$papar = kiraPerpuluhan($kira00,10);
+	//elseif( ($myTable == 'be2016_hasil_servis') && ($key == 'F2099') ):
+	elseif($myTable == 'be2016_belanja_servis'):
 		$kira00 = ($data/$belanja01) * $belanja02;
-		$papar = kiraPerpuluhan($kira00,8);
-	/*elseif( ($myTable == 'be2016_belanja_servis') && ($key == 'F2199') ):
-		$papar = $data * $peratus;*/
+		$papar = kiraPerpuluhan($kira00,10);
+	//elseif( ($myTable == 'be2016_belanja_servis') && ($key == 'F2199') ):
 	else:
 		$papar = kiraPerpuluhan($data,2) . '';
 	endif;
@@ -106,28 +96,18 @@ function formula02($myTable,$key,$data,$_5p)
 }
 #--------------------------------------------------------------------------------------------
 function formula03($myTable,$key,$data,$_5p)
-{
+{//$kira01 = kiraPerpuluhan($kira00,2);
 	$peratus = $_5p['peratus'];
+	$hasil01 = $_5p['hasil']; $hasil02 = $_5p['hasil_kini'];
 	$belanja01 = $_5p['belanja']; $belanja02 = $_5p['belanja_kini'];
-	$jumHasil = $jumBelanja = $kira00 = $kira01 = $kira02 = $kira03 = 0;
-	if( ($myTable == 'be2016_hasil_servis') && ($key != 'F2099') ):
-		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
-		$kira02 = truncate_number($kira00);
-		$papar = $kira02;
-	elseif( ($myTable == 'be2016_hasil_servis') && ($key == 'F2099') ):
-		$kira00 = $kira01 = $kira02 = $kira03 = 0;
-		$kira00 = $data * $peratus; //$kira01 = kiraPerpuluhan($kira00,2);
-		$kira02 = truncate_number($kira00);
-		$papar = $kira02;
-	elseif( ($myTable == 'be2016_belanja_servis') && ($key != 'F2199') ):
+	if($myTable == 'be2016_hasil_servis'):
+		$kira00 = ($data/$hasil01) * $hasil02;
+		$papar = truncate_number($kira00);
+	//elseif( ($myTable == 'be2016_hasil_servis') && ($key == 'F2099') ):
+	elseif($myTable == 'be2016_belanja_servis'):
 		$kira00 = ($data/$belanja01) * $belanja02;
 		$papar = truncate_number($kira00);
-	elseif( ($myTable == 'be2016_belanja_servis') && ($key == 'F2199') ):
-		$kira00 = $kira01 = $kira02 = $kira03 = 0;
-		$kira00 = $data * $peratus;
-		$kira02 = truncate_number($kira00);
-		$papar = $kira02;
-		//$papar = $myTable . '|' . $data;
+	//elseif( ($myTable == 'be2016_belanja_servis') && ($key == 'F2199') ):
 	else:
 		$papar = kiraPerpuluhan($data,2) . '';
 	endif;
