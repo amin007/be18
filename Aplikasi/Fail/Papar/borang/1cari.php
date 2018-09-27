@@ -9,7 +9,10 @@ $mesej = null;
 <!-- form method="POST" action="" class="form-inline" autocomplete="off" -->
 <form method="POST" action="<?=$mencari?>" autocomplete="off">
 <!-- --------------------------------------------------------------------------------------------------- -->
-<label for="carian"><h1>Mahu cari apa? <?=$mesej?></h1></label>
+<label for="carian"><h1>Mahu <i class="fab fa-google"></i>
+<i class="fa fa-spinner fa-pulse fa-fw"></i>
+<i class="fab fa-opera"></i>gle apa? <?=$mesej?></h1></label>
+<!-- --------------------------------------------------------------------------------------------------- -->
 <div class="input-group">
 	<input type="text" name="cari" value="<?=$carian?>"
 	class="form-control" id="inputString"
