@@ -335,6 +335,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			$dataID = bersih($_POST['jika']['cari'][1]);
 		else $dataID = null;
 
+		$this->papar->dataID = $dataID;
+
 		return $dataID;
 	}
 #-------------------------------------------------------------------------------------------
