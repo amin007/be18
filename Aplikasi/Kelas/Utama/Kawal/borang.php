@@ -214,7 +214,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			($posmen[$jadual], $jadual, $medanID);
 		}# tamat ulang table
 
-		# pergi papar kandungan
+		# Pergi papar kandungan
 		$lokasi = 'vendor/profile';
 		//echo '<br>location: ' . URL . $lokasi;
 		header('location: ' . URL . $lokasi); //*/
@@ -256,7 +256,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			$this->tanya->tambahData($jadual, $posmen[$jadual]);
 		}# tamat ulang table
 
-		# pergi papar kandungan
+		# Pergi papar kandungan
 		$lokasi = '' . $myTable;;
 		//echo '<br>location: ' . URL . $lokasi;
 		header('location: ' . URL . $lokasi); //*/
