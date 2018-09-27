@@ -35,9 +35,9 @@ $mesej = null;
 list($peratus,$nisbah,$nota) = nisbahperatusan($this->pautan);?>
 <div class="input-group">
 	<div class="input-group-prepend"><span class="input-group-text">Nisbah</span></div>
-	<input type="text" class="form-control" name="semasa[nisbah]" placeholder="<?=$nisbah?>">
+	<input type="text" class="form-control" name="semasa[nisbah]" value="<?=$nisbah?>" placeholder="<?=$nisbah?>">
 	<div class="input-group-prepend"><span class="input-group-text">Peratus</span></div>
-	<input type="text" class="form-control" name="semasa[peratus]" placeholder="<?=$peratus?>">
+	<input type="text" class="form-control" name="semasa[peratus]" value="<?=$peratus?>" placeholder="<?=$peratus?>">
 </div>
 <!-- --------------------------------------------------------------------------------------------------- --><?php
 $ulang = array('kp'=>null,'nama'=>'Biarlah Rahsia');
