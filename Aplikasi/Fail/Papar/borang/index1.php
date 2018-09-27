@@ -18,8 +18,7 @@ $pilihJadual = 'jadual_am2'; # ubah suai data
 
 include $this->template . '.php';
 //debug($this->dataID,$this->nama,$this->c1);
-$borang = pautan($this->dataID0,$this->nama,$this->c1);
-//echo papar00();
+$borang = pautan($this->dataID,$this->nama,$this->c1);
 $papar = implode("\n",$borang);
 echo "\n<hr>Pautan<hr>\n<pre>" . htmlentities($papar) . '</pre>';
 include 'atas/dibawah.php';
