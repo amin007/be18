@@ -32,11 +32,7 @@ list($peratus,$nisbah,$nota) = nisbahperatusan($this->pautan);?>
 	<input type="text" name="semasa[peratus]" class="form-control" placeholder="<?=$peratus?>">
 </div>
 <!-- --------------------------------------------------------------------------------------------------- --><?php
-$pecah = explode('/', $this->pautan);
-//echo '<pre>'; print_r($pecah); echo '</pre>';
-
-$ulang = array('Nisbah &amp; Peratus'=>$pecah[10],'kp'=>null,
-'newss'=>'Kod007JamesBond','nama'=>'Biarlah Rahsia');
+$ulang = array('kp'=>null,'nama'=>'Biarlah Rahsia');
 foreach($ulang as $kunci => $isiApa):?>
 <div class="input-group">
 	<div class="input-group-prepend">
