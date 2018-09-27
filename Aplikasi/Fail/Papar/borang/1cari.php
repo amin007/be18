@@ -35,9 +35,9 @@ $mesej = null;
 list($peratus,$nisbah,$nota) = nisbahperatusan($this->pautan);?>
 <div class="input-group">
 	<div class="input-group-prepend"><span class="input-group-text">Nisbah</span></div>
-	<input type="text" name="semasa[nisbah]" class="form-control" placeholder="<?=$nisbah?>">
+	<input type="text" class="form-control" name="semasa[nisbah]" placeholder="<?=$nisbah?>">
 	<div class="input-group-prepend"><span class="input-group-text">Peratus</span></div>
-	<input type="text" name="semasa[peratus]" class="form-control" placeholder="<?=$peratus?>">
+	<input type="text" class="form-control" name="semasa[peratus]" placeholder="<?=$peratus?>">
 </div>
 <!-- --------------------------------------------------------------------------------------------------- --><?php
 $ulang = array('kp'=>null,'nama'=>'Biarlah Rahsia');
@@ -46,7 +46,7 @@ foreach($ulang as $kunci => $isiApa):?>
 	<div class="input-group-prepend">
 		<span class="input-group-text"><?=$kunci?></span>
 	</div>
-	<input type="text" name="semasa[<?=$kunci?>]" class="form-control" placeholder="<?=$isiApa?>">
+	<input type="text" class="form-control" name="semasa[<?=$kunci?>]" placeholder="<?=$isiApa?>">
 </div>
 <!-- --------------------------------------------------------------------------------------------------- --><?php
 endforeach;
@@ -55,17 +55,17 @@ $ulang = array('hasil','belanja','gaji','susut','aset','asetsewa');
 foreach($ulang as $medanApa):?>
 <div class="input-group">
 	<div class="input-group-prepend"><span class="input-group-text"><?=$medanApa?> dulu</span></div>
-	<input type="text" name="semasa[<?=$medanApa?>]" class="form-control">
+	<input type="text" class="form-control" name="semasa[<?=$medanApa?>]">
 	<div class="input-group-prepend"><span class="input-group-text"><?=$medanApa?> kini</span></div>
-	<input type="text" name="semasa[<?=$medanApa?>_kini]" class="form-control">
+	<input type="text" class="form-control" name="semasa[<?=$medanApa?>_kini]">
 </div>
 <!-- --------------------------------------------------------------------------------------------------- -->
 <?php endforeach; ?>
 <div class="input-group">
 	<div class="input-group-prepend"><span class="input-group-text">Catatan</span></div>
-	<textarea name="semasa[catatan]" class="form-control"><?php echo $nota ?></textarea>
+	<textarea class="form-control" name="semasa[catatan]"><?php echo $nota ?></textarea>
 	<div class="input-group-prepend"><span class="input-group-text">
-		Papar Semua Nilai<select name="paparNilai" class="form-control">
+		Papar Semua Nilai<select class="form-control" name="paparNilai">
 		<option>Ya</option><option>Tidak</option></select>
 	</span></div>
 </div>
