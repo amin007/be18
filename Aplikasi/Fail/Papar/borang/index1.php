@@ -34,12 +34,12 @@ function debug($dataID,$nama,$c1)
 function pautan($dataID,$nama,$kp)
 {
 	$p[] = '<form target="_blank" method="POST" action="' . URL
-	. 'borang/cariapa/'.$kp.'/'.$dataID.'">';
+	. 'borang/cariapa/' . $kp . '/' . $dataID . '">';
 	foreach($_POST['semasa'] as $key => $data):
-		$data = ($data == null) ? '0':$data;
-		$data = ($key == 'kp') ? $kp:$data;
-		$data = ($key == 'nama') ? $nama:$data;
-		$p[] = '<input type="hidden" name="'.$key.'" value="'.$data.'">';
+		$data = ($data == null) ? '0' : $data;
+		$data = ($key == 'kp') ? $kp : $data;
+		$data = ($key == 'nama') ? $nama : $data;
+		$p[] = '<input type="hidden" name="' . $key . '" value="' . $data . '">';
 	endforeach;
 	$p[] = '<h2><a href="javascript:document.forms[0].submit()"'
 	. ' class="btn btn-outline-dark">Ubah3</a></h2>';
