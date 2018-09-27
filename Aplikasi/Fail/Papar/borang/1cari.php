@@ -63,7 +63,7 @@ foreach($ulang as $medanApa):?>
 <?php endforeach; ?>
 <div class="input-group">
 	<div class="input-group-prepend"><span class="input-group-text">Catatan</span></div>
-	<textarea name="semasa[catatan]" class="form-control" aria-label="With textarea"></textarea>
+	<textarea name="semasa[catatan]" class="form-control"><?php echo $nota ?></textarea>
 	<div class="input-group-prepend"><span class="input-group-text">
 		Papar Semua Nilai<select name="paparNilai" class="form-control">
 		<option>Ya</option><option>Tidak</option></select>
@@ -78,9 +78,8 @@ include 'atas/dibawah.php';
 #----------------------------------------------------------------------------------------------------
 function nisbahperatusan($pautan)
 {
-	$pecah = explode('/', $pautan); //echo '<pre>'; print_r($pecah); echo '</pre>'; # 10->peratus
-	//$peratus = $pecah[10];
-	$peratus = 0;
+	$pecah = explode('/', $pautan); //echo '<pre>'; print_r($pecah); echo '</pre>';
+	$peratus = $pecah[10]; # 10->peratus
 	$nisbah = ($peratus!=null) ? ($peratus)/100 : rand(-30, 30)/100;
 	//$nisbah = rand(-30, 30)/100;
 	$nisbah = 1 + $nisbah;
