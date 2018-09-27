@@ -349,7 +349,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 
 		if(isset($this->papar->senarai['kawalan_aes'][0]['nama']))
 			$this->papar->nama = $this->papar->senarai['kawalan_aes'][0]['nama'];
-		elseif(isset($this->papar->senarai['kawalan_aes'][0]['kp']))
+		if(isset($this->papar->senarai['kawalan_aes'][0]['kp']))
 			$this->papar->c1 = $this->papar->senarai['kawalan_aes'][0]['kp'];
 		else $this->papar->c1 = '000';
 		$this->papar->c2 = $c2;
