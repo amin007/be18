@@ -21,6 +21,7 @@ include $this->template . '.php';
 $borang = pautan($this->dataID,$this->nama,$this->c1,$this->c2);
 $papar = implode("\n",$borang);
 echo "\n<hr>Pautan<hr>\n<pre>" . htmlentities($papar) . '</pre>';
+//echo "\n<hr>Klik sini ->" . ($papar);
 include 'atas/dibawah.php';
 
 #-------------------------------------------------------------------------------------
@@ -39,6 +40,7 @@ function pautan($dataID,$nama,$kp,$c2)
 	foreach($_POST['semasa'] as $key => $data):
 		$data = ($data == null) ? '0' : $data;
 		$data = ($key == 'kp') ? $kp : $data;
+		$data = ($key == 'nosiri') ? $dataID : $data;
 		$data = ($key == 'nama') ? $nama : $data;
 		$p[] = '<input type="hidden" name="' . $key . '" value="' . $data . '">';
 	endforeach;
