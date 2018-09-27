@@ -153,7 +153,7 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 	public function tanyaDataSesi()
 	{
 		$dataSulit = new \Aplikasi\Kitab\Sesi();
-		//echo '<pre>'; print_r($_SESSION) . '</pre>';
+		//echo '<pre>'; print_r($_SESSION); echo '</pre>';
 		$idUser = $dataSulit->get('idUser');
 		$namaPendek = $dataSulit->get('namaPendek');
 		/*echo 'idUser=' . $dataSulit->get('idUser') . '<br>';
