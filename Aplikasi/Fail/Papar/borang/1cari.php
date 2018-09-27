@@ -24,6 +24,14 @@ $carian = $this->idBorang;
 	</div>
 </div>
 <!-- --------------------------------------------------------------------------------------------------- --><?php
+list($peratus,$nisbah,$nota) = nisbahperatusan($this->pautan);?>
+<div class="input-group">
+	<div class="input-group-prepend"><span class="input-group-text">Nisbah</span></div>
+	<input type="text" name="semasa[nisbah]" class="form-control" placeholder="<?=$nisbah?>">
+	<div class="input-group-prepend"><span class="input-group-text">Peratus</span></div>
+	<input type="text" name="semasa[peratus]" class="form-control" placeholder="<?=$peratus?>">
+</div>
+<!-- --------------------------------------------------------------------------------------------------- --><?php
 $pecah = explode('/', $this->pautan);
 //echo '<pre>'; print_r($pecah); echo '</pre>';
 
@@ -62,4 +70,23 @@ foreach($ulang as $medanApa):?>
 
 <?php
 include 'atas/dibawah.php';
-?>
+
+#----------------------------------------------------------------------------------------------------
+function nisbahperatusan($pautan)
+{
+	$pecah = explode('/', $pautan); //echo '<pre>'; print_r($pecah); echo '</pre>'; # 10->peratus
+	//$peratus = $pecah[10];
+	$peratus = 0;
+	$nisbah = ($peratus!=null) ? ($peratus)/100 : rand(-30, 30)/100;
+	//$nisbah = rand(-30, 30)/100;
+	$nisbah = 1 + $nisbah;
+
+	if ($peratus==0):
+		$nota = 'nisbah=' . $nisbah . ' diberi boleh komputer';
+	else:
+		$nota = 'nisbah=' . $nisbah . ' dan peratus=' . $peratus . '%';
+	endif;
+
+	return array($peratus,$nisbah,$nota);
+}
+#----------------------------------------------------------------------------------------------------
