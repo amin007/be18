@@ -311,6 +311,19 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
 	}
 #-------------------------------------------------------------------------------------------
+	public function cariapa($a,$b,$c2) # daripada fungsi temui()
+	{
+		# Set pembolehubah utama
+		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		echo '$_POST:->'; $this->semakPembolehubah($_POST); # Semak data dulu
+
+		# Pergi papar kandungan
+		/*$fail = array('index','index1','index2','b_ubah','soalan4');
+		//echo '<br>$fail = ' . $fail[0] . '<hr>';
+		//$this->semakPembolehubah(); # Semak data dulu
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
+	}
+#-------------------------------------------------------------------------------------------
 	function ubahsuaiKhas()
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
