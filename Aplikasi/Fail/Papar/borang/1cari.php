@@ -3,12 +3,13 @@ include 'atas/diatas.php';
 include 'atas/menu_atas.php';
 $mencari = $this->pautan;
 $carian = $this->idBorang;
+$mesej = null;
 ?>
 <div class="container">
 <!-- form method="POST" action="" class="form-inline" autocomplete="off" -->
 <form method="POST" action="<?=$mencari?>" autocomplete="off">
 <!-- --------------------------------------------------------------------------------------------------- -->
-<label for="carian"><h1>Mahu cari apa? <?=$mencari?></h1></label>
+<label for="carian"><h1>Mahu cari apa? <?=$mesej?></h1></label>
 <div class="input-group">
 	<input type="text" name="cari" value="<?=$carian?>"
 	class="form-control" id="inputString"
