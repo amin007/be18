@@ -56,8 +56,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		echo '<hr>Nama class :' . __METHOD__ . '()<hr><pre>';
 		$semak = array('idBorang','senarai','myTable','_jadual','carian','c1','c2',
-			'medan','bentukJadual01','bentukJadual02','_pilih','_5p',
-			'template','pilihJadual','template2','pilihJadual2');
+			'medan','bentukJadual01','bentukJadual02','bentukJadual03',
+			'_pilih','_5p','template','pilihJadual','template2','pilihJadual2');
 		$takWujud = array(); $kira = 0;
 
 		foreach($semak as $apa):
@@ -324,6 +324,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
 		//$this->godekPembolehubah01($kp,$idBorang,$peratus);
 		//$this->godekPembolehubah02($kp,$idBorang,$peratus);
+		$this->godekPembolehubah03($kp,$idBorang,$peratus);
 		//$this->kiraNisbah($peratus);// rand(-30, 30)
 		$this->debugKandunganPaparan();//*/
 
@@ -389,6 +390,18 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->_5p['aset_kini'] = truncate_number($aset);
 		$this->papar->_5p['asetsewa_kini'] = truncate_number($asetsewa);
 		//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function godekPembolehubah03($kp, $idBorang, $peratus)
+	{
+		$this->papar->bentukJadual03[] = $this->papar->senarai['stafBE'][0]['L01-PEMILIK']
+		. '|' . $this->papar->senarai['stafBE'][0]['L01']
+		. '|' . $this->papar->senarai['stafBE'][0]['F4901']
+		. '|' . $this->papar->senarai['stafBE'][0]['F5001']
+		. '|' . $this->papar->senarai['stafBE'][0]['F1401']
+		. '|' . $this->papar->senarai['stafBE'][0]['F1801']
+		. '|' . $this->papar->senarai['stafBE'][0]['F5101'];
+
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiKhas()
