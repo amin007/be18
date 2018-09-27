@@ -17,24 +17,29 @@ $pilihJadual = 'jadual_am2'; # ubah suai data
 //echo '<pre>$senarai='; print_r($this->senarai); echo '</pre>';
 
 include $this->template . '.php';
-debug($this->nama,$this->c1);
-pautan();
+//debug($this->dataID,$this->nama,$this->c1);
+$borang = pautan($this->dataID0,$this->nama,$this->c1);
 //echo papar00();
-//echo papar01();
+$papar = implode("\n",$borang);
+echo "\n<hr>Pautan<hr>\n<pre>" . htmlentities($papar) . '</pre>';
 include 'atas/dibawah.php';
 
 #-------------------------------------------------------------------------------------
-function debug($nama,$c1)
+function debug($dataID,$nama,$c1)
 {
-	//echo '<pre>$this->nama=' . $nama .'</pre>';
-	//echo '<pre>$this->c1=' . $c1 .'</pre>';
-	echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
+	echo '<pre>$this->nama=' . $nama .'</pre>';
+	echo '<pre>$this->c1=' . $c1 .'</pre>';
+	//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 }
 #-------------------------------------------------------------------------------------
-function pautan()
+function pautan($dataID,$nama,$kp)
 {
-	$p[] = '<form target="_blank" method="POST" action="' . URL . 'borang/cariapa">';
+	$p[] = '<form target="_blank" method="POST" action="' . URL
+	. 'borang/cariapa/'.$kp.'">';
 	foreach($_POST['semasa'] as $key => $data):
+		$data = ($data == null) ? '0':$data;
+		$data = ($key == 'kp') ? $kp:$data;
+		$data = ($key == 'nama') ? $nama:$data;
 		$p[] = '<input type="hidden" name="'.$key.'" value="'.$data.'">';
 	endforeach;
 	$p[] = '<h2><a href="javascript:document.forms[0].submit()"'
