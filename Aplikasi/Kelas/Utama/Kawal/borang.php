@@ -322,15 +322,73 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
-		//$this->setPembolehubah($kp,$idBorang,$peratus);
-		//$this->kiraNisbah($peratus); // rand(-30, 30)
-		$this->debugKandunganPaparan();//*/
+		$this->godekPembolehubah01($kp,$idBorang,$peratus);
+		$this->godekPembolehubah02($kp,$idBorang,$peratus);
+		//$this->kiraNisbah($peratus);// rand(-30, 30)
+		//$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
 		/*$fail = array('index','index1','index2','b_ubah','soalan4');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function godekPembolehubah01($kp, $idBorang, $peratus)
+	{
+		$this->papar->_5p['kp'] = $this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
+		$this->papar->_5p['peratus'] = $nisbah = $this->kiraNisbah($peratus);
+		$this->papar->_5p['idBorang'] = $_POST['nosiri'];//'Kod007JamesBond';
+		$this->papar->_5p['nama'] = $_POST['nama'];//'Biarlah Rahsia';
+		# semak sama ada nilai wujud atau tidak
+		$hasil = $this->papar->senarai['limaPerangkaan'][0]['hasil'];
+		$belanja = $this->papar->senarai['limaPerangkaan'][0]['belanja'];
+		$gaji = $this->papar->senarai['limaPerangkaan'][0]['gajiL']
+			+ $this->papar->senarai['limaPerangkaan'][0]['gajiP'];
+		$aset = $this->papar->senarai['limaPerangkaan'][0]['harta'];
+		$susut = $this->papar->senarai['limaPerangkaan'][0]['susut'];
+		# f2148 = sewa lain2, f2147 = sewa tanah
+		$sewatanah = $this->papar->senarai['limaPerangkaan'][0]['sewatanah'];
+		$sewalain = $this->papar->senarai['limaPerangkaan'][0]['sewalain'];
+		//$asetsewa = $sewatanah + $sewalain;
+		$asetsewa = $this->papar->senarai['limaPerangkaan'][0]['sewaharta'];
+		# masukkan nilai 5 perangkaan utama
+		$this->papar->_5p['hasil'] = $hasil;
+		$this->papar->_5p['belanja'] = $belanja;
+		$this->papar->_5p['gaji'] = $gaji;
+		$this->papar->_5p['susut'] = $susut;
+		$this->papar->_5p['aset'] = $aset;
+		$this->papar->_5p['asetsewa'] = $asetsewa;
+		//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function godekPembolehubah02($kp, $idBorang, $peratus)
+	{
+		# semak sama ada nilai wujud atau tidak
+		/*
+		$_POST['kp']$_POST['nosiri']$_POST['nama']
+		$_POST['hasil']	$_POST['hasil_kini']
+		$_POST['belanja'] $_POST['belanja_kini']
+		$_POST['gaji'] $_POST['gaji_kini']
+		$_POST['susut'] $_POST['susut_kini']
+		$_POST['aset'] $_POST['aset_kini']
+		$_POST['asetsewa'] $_POST['asetsewa_kini']
+		$_POST['catatan']
+		*/
+		$hasil = bersih($_POST['hasil_kini']);
+		$belanja = bersih($_POST['belanja_kini']);
+		$gaji = bersih($_POST['gaji_kini']);
+		$susut = bersih($_POST['susut_kini']);
+		$aset = bersih($_POST['aset_kini']);
+		$asetsewa = bersih($_POST['asetsewa_kini']);
+		# masukkan nilai anggaran
+		$this->papar->_5p['hasil_kini'] = truncate_number($hasil);
+		$this->papar->_5p['belanja_kini'] = truncate_number($belanja);
+		$this->papar->_5p['gaji_kini'] = truncate_number($gaji);
+		$this->papar->_5p['susut_kini'] = truncate_number($susut);
+		$this->papar->_5p['aset_kini'] = truncate_number($aset);
+		$this->papar->_5p['asetsewa_kini'] = truncate_number($asetsewa);
+		//*/
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiKhas()
