@@ -17,15 +17,15 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		# Set pemboleubah utama
-		$this->papar->idBorang = (isset($_GET['cari'])) ? $_GET['cari'] : null;
-		$random = rand(-30, 30);
-		$this->papar->pautan = URL . 'borang/temui/400/1/' . $random;
 
 		# Pergi papar kandungan
-		$fail = array('1cari','index','b_ubah');
+		$lokasi = 'borang/google';
+		//echo '<br>location: ' . URL . $lokasi;
+		header('location: ' . URL . $lokasi); //*/
+		/*$fail = array('1cari','index','b_ubah');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
+		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);*/
 	}
 ##-----------------------------------------------------------------------------------------
 	public function paparKandungan($folder, $fail, $noInclude)
