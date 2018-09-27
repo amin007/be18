@@ -26,7 +26,7 @@ $perangkaan['nama'] = isset($this->_5p['nama']) ? $this->_5p['nama'] : null;
     $perangkaan['aset_dulu'] = isset($this->_5p['aset']) ? $this->_5p['aset'] : null;
 $perangkaan['asetsewa_dulu'] = isset($this->_5p['asetsewa']) ? $this->_5p['asetsewa'] : null;
 
-$nisbah = ($this->peratus!=null) ? ($this->peratus)/100 : rand(-30, 30)/100;
+$nisbah = ($this->_5p['peratus']!=null) ? ($this->_5p['peratus'])/100 : rand(-30, 30)/100;
 //$nisbah = rand(-30, 30)/100;
 $nisbah = 1 + $nisbah;
 $nilaiNisbah = 1;
