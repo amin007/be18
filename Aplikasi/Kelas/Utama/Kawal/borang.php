@@ -395,9 +395,14 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function godekPembolehubah03($kp, $idBorang, $peratus)
 	{
 		$ulang = array('01'=>'L01-PEMILIK','02'=>'L02-KELUARGA','12'=>'L03-PENGURUS',
-		'13','04','05','15','16','06','17','11','19',
-		'21','22','32','23','33','24','25','34','35','36','26','31',
-		'39'=>'P14-JUMLAH');
+		'13'=>'L04-PRO','04'=>'L05-PENYELIDIK','05'=>'L06-JURUTEKNIK',
+		'15','16','06',
+		'17','11','19',
+		'21','22','32',
+		'23','33','24',
+		'25','34','35',
+		'36'=>'P11-ASAS',
+		'26'=>'P12-JUM-TETAP','31'=>'P13-JUM-SAM','39'=>'P14-JUMLAH');
 		$m = 0;
 		foreach($ulang as $key => $data):
 			$this->papar->bentukJadual03['stafBE'][$m]['Kategori'] = $data;
