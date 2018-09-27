@@ -25,17 +25,20 @@ include 'atas/dibawah.php';
 #-------------------------------------------------------------------------------------
 function debug($nama,$c1)
 {
-	echo '<pre>$this->nama=' . $nama .'</pre>';
-	echo '<pre>$this->c1=' . $c1 .'</pre>';
+	//echo '<pre>$this->nama=' . $nama .'</pre>';
+	//echo '<pre>$this->c1=' . $c1 .'</pre>';
 	echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 }
 #-------------------------------------------------------------------------------------
 function pautan()
-{
-	$p[] = '<form target="_blank" method="POST" action="suku/bst/">';
-	$p[] = '<input type="hidden" name="suku" value="bst">';
-	$p[] = '<h2><a href="javascript:document.forms[0].submit()">'
-	. 'BST - Penyiasatan Bahan Binaan</a></h2>';
+{/*
+	$p[] = '<form target="_blank" method="POST" action="' . URL . 'borang/cariapa">';
+	foreach():
+		$p[] = '<input type="hidden" name="" value="">';
+	endforeach;
+	$p[] = '<h2><a href="javascript:document.forms[0].submit()"'
+	. ' class="btn btn-outline-dark">Ubah3</a></h2>';
+	//*/
 }
 #-------------------------------------------------------------------------------------
 function kp()
@@ -66,12 +69,12 @@ function kp()
 function papar3()
 {
 	$isi = '<div align="left"><table>';
-	foreach ($sv as $key => $jenis):
+	foreach (kp() as $key => $jenis):
 		$isi .= "\n\t" . '<tr><td class="kotak">'
 			 . "\n\t\t" . $jenis['form']
 			 . "\n\t\t" . $jenis['input']
 			 . "\n\t\t" . '<h2><a href="javascript:document.forms['
-			 . $key . '].submit()">'
+			 . $key . '].submit()" class="btn btn-outline-dark">'
 			 . "\n\t\t" . $jenis['nama'] . '</a></h2>'
 			 . "\n\t\t</form>"
 			 . "\n\t</td></tr>\r";
