@@ -305,10 +305,10 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		$this->_folder = 'borang';
 		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
-		$fail = array('index','b_ubah','z_contoh_link_pill','soalan4');
+		$fail = array('index','index1','index2','b_ubah','soalan4');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);//*/
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiKhas()
@@ -347,7 +347,9 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			$this->panggilTable($jadual,$medanID,$dataID);
 		endforeach;
 
-		if(isset($this->papar->senarai['kawalan_aes'][0]['kp']))
+		if(isset($this->papar->senarai['kawalan_aes'][0]['nama']))
+			$this->papar->nama = $this->papar->senarai['kawalan_aes'][0]['nama'];
+		elseif(isset($this->papar->senarai['kawalan_aes'][0]['kp']))
 			$this->papar->c1 = $this->papar->senarai['kawalan_aes'][0]['kp'];
 		else $this->papar->c1 = '000';
 		$this->papar->c2 = $c2;
