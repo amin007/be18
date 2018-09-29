@@ -319,14 +319,14 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		//echo '$_POST:->'; $this->semakPembolehubah($_POST); # Semak data dulu
 		$db = 'pom_malaysiabaru.';
-		//$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
-		//$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
-		$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
-		//$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
-		//$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
-		//$this->godekPembolehubah01($kp,$idBorang,$peratus);
-		//$this->godekPembolehubah02();
-		$this->godekPembolehubah03();
+		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
+		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
+		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
+		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
+		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
+		$this->godekPembolehubah01($kp,$idBorang,$peratus);
+		$this->godekPembolehubah02();
+		//$this->godekPembolehubah03();
 		$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
