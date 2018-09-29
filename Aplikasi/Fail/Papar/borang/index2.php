@@ -9,7 +9,8 @@ $buang01 = array('newss','nama','batch','form','kp','msic2008',
 	'KodBanci','NoSiri','F0002','F0014','F0015');
 # include fail
 include $this->template . '.php';
-include $this->template2 . '.php';
+if(isset($this->bentukJadual01))
+	include $this->template2 . '.php';
 if(isset($this->bentukJadual03))
 	include $this->template3 . '.php';
 
