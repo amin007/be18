@@ -19,6 +19,7 @@ $pilihJadual = 'jadual_am2'; # ubah suai data
 include $this->template . '.php';
 //debug($this->dataID,$this->nama,$this->c1,$this->c2);
 $borang = pautan($this->dataID,$this->nama,$this->c1,$this->c2);
+# pautan() sesuai untuk Chrome sahaja, firefox tak jalan
 $papar = implode("\n",$borang);
 //echo "\n<hr>Pautan<hr>\n<pre>" . htmlentities($papar) . '</pre>';
 echo "\n<hr>" . ($papar);
@@ -35,8 +36,8 @@ function debug($dataID,$nama,$c1,$c2)
 #-------------------------------------------------------------------------------------
 function pautan($dataID,$nama,$kp,$c2)
 {
-	$p[] = '<form target="_blank" method="POST" action="' . URL . 'borang/cariapa/'
-	. $kp . '/' . $dataID . '/' . $c2 . '">';
+	$p[] = '<form method="POST" action="' . URL . 'borang/cariapa/'
+	. $kp . '/' . $dataID . '/' . $c2 . '">';//target="_blank"
 	foreach($_POST['semasa'] as $key => $data):
 		$data = ($data == null) ? '0' : $data;
 		$data = ($key == 'kp') ? $kp : $data;
@@ -46,6 +47,7 @@ function pautan($dataID,$nama,$kp,$c2)
 	endforeach;
 	$p[] = '<h2><a href="javascript:document.forms[0].submit()"'
 	. ' target="_blank" class="btn btn-outline-dark">Klik sini</a></h2>';
+	$p[] = '</form>';
 
 	return $p;
 }
