@@ -142,7 +142,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$pecah = explode('.', $myTable);
 		$myJadual = $pecah[1];
 		list($entah, $medan, $carian, $susun) = $this->tanya->susunPembolehubah($pilih,$idBorang);
-		$this->papar->bentukJadual01[$myJadual] = $this->tanya->//cariSql
+		$this->papar->bentukJadual01[$pilih] = $this->tanya->//cariSql
 			cariSemuaData
 			($myTable, $medan, $carian, $susun);
 		# Set pembolehubah untuk Papar
@@ -322,12 +322,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
 		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
-		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
+		//$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		$this->godekPembolehubah01($kp,$idBorang,$peratus);
 		$this->godekPembolehubah02();
 		//$this->godekPembolehubah03();
-		$this->debugKandunganPaparan();//*/
+		//$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
 		/*$fail = array('index','index1','index2','b_ubah','soalan4');
