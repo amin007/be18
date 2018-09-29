@@ -10,7 +10,8 @@ $buang01 = array('newss','nama','batch','form','kp','msic2008',
 # include fail
 include $this->template . '.php';
 include $this->template2 . '.php';
-include $this->template3 . '.php';
+if(isset($this->bentukJadual03))
+	include $this->template3 . '.php';
 
 # untuk debug
 //echo '<pre>$carian='; print_r($this->carian); echo '</pre>';
