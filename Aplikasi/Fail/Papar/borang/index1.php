@@ -18,7 +18,7 @@ $pilihJadual = 'jadual_am2'; # ubah suai data
 
 include $this->template . '.php';
 //debug($this->dataID,$this->nama,$this->c1,$this->c2);
-$borang = pautan($this->dataID,$this->nama,$this->c1,$this->c2);
+$borang = pautanServis($this->dataID,$this->nama,$this->c1,$this->c2);
 # pautan() sesuai untuk Chrome sahaja, firefox tak jalan
 $papar = implode("\n",$borang);
 //echo "\n<hr>Pautan<hr>\n<pre>" . htmlentities($papar) . '</pre>';
@@ -34,7 +34,7 @@ function debug($dataID,$nama,$c1,$c2)
 	//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 }
 #-------------------------------------------------------------------------------------
-function pautan($dataID,$nama,$kp,$c2)
+function pautanServis($dataID,$nama,$kp,$c2)
 {
 	$p[] = '<form method="POST" action="' . URL . 'borang/cariapa/'
 	. $kp . '/' . $dataID . '/' . $c2 . '">';//target="_blank"
@@ -45,8 +45,10 @@ function pautan($dataID,$nama,$kp,$c2)
 		$data = ($key == 'nama') ? $nama : $data;
 		$p[] = '<input type="hidden" name="' . $key . '" value="' . $data . '">';
 	endforeach;
-	$p[] = '<h2><a href="javascript:document.forms[0].submit()"'
-	. ' target="_blank" class="btn btn-outline-dark">Klik sini</a></h2>';
+	//$p[] = '<h2><a href="javascript:document.forms[0].submit()"'
+	//. ' target="_blank" class="btn btn-outline-dark">Klik sini</a></h2>';
+	$p[] = '<input type="submit" value="Untuk Servis"'
+	. 'class="btn btn-primary btn-large">';
 	$p[] = '</form>';
 
 	return $p;
