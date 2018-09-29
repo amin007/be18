@@ -325,12 +325,11 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		$this->godekPembolehubah01($kp,$idBorang,$peratus);
-		$this->godekPembolehubah02();
-		//$this->godekPembolehubah03();
-		$this->debugKandunganPaparan();//*/
+		$this->godekPembolehubah02();//$this->godekPembolehubah03();
+		//$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
-		/*$fail = array('index','index1','index2','b_ubah','soalan4');
+		$fail = array('index','index1','index2','b_ubah','soalan4');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
