@@ -325,13 +325,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
 		$this->godekPembolehubah01($kp,$idBorang,$peratus);
-		$this->godekPembolehubah02($kp,$idBorang,$peratus);
-		$this->godekPembolehubah03($kp,$idBorang,$peratus);
-		//$this->kiraNisbah($peratus);// rand(-30, 30)
-		//$this->debugKandunganPaparan();//*/
+		$this->godekPembolehubah02();
+		$this->godekPembolehubah03();
+		$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
-		$fail = array('index','index1','index2','b_ubah','soalan4');
+		/*$fail = array('index','index1','index2','b_ubah','soalan4');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
@@ -395,7 +394,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
-	function godekPembolehubah03($kp, $idBorang, $peratus)
+	function godekPembolehubah03()
 	{
 		$ulang = array('01'=>'L01-PEMILIK','02'=>'L02-KELUARGA','12'=>'L03-PENGURUS',
 		'03'=>'L04-PRO','13'=>'L05-PENYELIDIK','04'=>'L06-JURUTEKNIK',
@@ -408,16 +407,15 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		'36'=>'P10-MESIN','26'=>'P11-ASAS',
 		'37'=>'P12-JUM-TETAP','31'=>'P13-JUM-SAM','39'=>'P14-JUMLAH');
 		$m = 0; $j = 'bentukJadual03';
-		foreach($ulang as $key => $data):
-			$this->papar->$j['staf'][$m]['Kategori'] = $data;
-			$this->papar->$j['staf'][$m]['Kod'] = 'L' . $key;
-			$this->papar->$j['staf'][$m]['Msia'] = $this->papar->senarai['stafBE'][0]['F49'.$key];
-			$this->papar->$j['staf'][$m]['Pati'] = $this->papar->senarai['stafBE'][0]['F50'.$key];
-			$this->papar->$j['staf'][$m]['Jum'] = $this->papar->senarai['stafBE'][0]['F14'.$key];
-			$this->papar->$j['staf'][$m]['Gaji'] = $this->papar->senarai['stafBE'][0]['F18'.$key];
-			$this->papar->$j['staf'][$m]['Sub'] = $this->papar->senarai['stafBE'][0]['F51'.$key];
-			$m++;
-		endforeach;
+		foreach($ulang as $key => $data): if($this->papar->senarai['stafBE'][0]['F14'.$key] != 0):
+				$this->papar->$j['staf'][$m]['Kod'] = $data;
+				$this->papar->$j['staf'][$m]['Msia'] = $this->papar->senarai['stafBE'][0]['F49'.$key];
+				$this->papar->$j['staf'][$m]['Pati'] = $this->papar->senarai['stafBE'][0]['F50'.$key];
+				$this->papar->$j['staf'][$m]['Jum'] = $this->papar->senarai['stafBE'][0]['F14'.$key];
+				$this->papar->$j['staf'][$m]['Gaji'] = $this->papar->senarai['stafBE'][0]['F18'.$key];
+				$this->papar->$j['staf'][$m]['Sub'] = $this->papar->senarai['stafBE'][0]['F51'.$key];
+				$m++;
+		endif;endforeach;
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiKhas()
