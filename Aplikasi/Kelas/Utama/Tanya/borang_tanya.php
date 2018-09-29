@@ -440,6 +440,11 @@ class Borang_Tanya extends \Aplikasi\Kitab\Tanya
 		return $data;
 	}
 #---------------------------------------------------------------------------------------------------#
+	function buangNilai($bentukJadual01)
+	{
+		$this->semakPembolehubah($bentukJadual01,'teste');
+	}
+#---------------------------------------------------------------------------------------------------#
 	function data5P($m,$myTable)
 	{
 		$sql = 'SELECT ' . $m . '`F2099` hasil,`F2199` belanja,'
