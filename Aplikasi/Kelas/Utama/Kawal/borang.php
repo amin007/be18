@@ -322,7 +322,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
 		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
-		//$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
+		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		$this->godekPembolehubah01($kp,$idBorang,$peratus);
 		$this->godekPembolehubah02();
