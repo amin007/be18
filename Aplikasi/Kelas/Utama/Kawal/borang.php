@@ -316,22 +316,22 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	public function cariapa($kp,$idBorang,$peratus) # daripada fungsi temui()
 	{
 		# Set pembolehubah utama
-		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		echo '$_POST:->'; $this->semakPembolehubah($_POST); # Semak data dulu
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		//echo '$_POST:->'; $this->semakPembolehubah($_POST); # Semak data dulu
 		$db = 'pom_malaysiabaru.';
-		//$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
+		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
 		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
-		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
+		//$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
-		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
-		//$this->godekPembolehubah01($kp,$idBorang,$peratus);
-		//$this->godekPembolehubah02($kp,$idBorang,$peratus);
+		$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
+		$this->godekPembolehubah01($kp,$idBorang,$peratus);
+		$this->godekPembolehubah02($kp,$idBorang,$peratus);
 		$this->godekPembolehubah03($kp,$idBorang,$peratus);
 		//$this->kiraNisbah($peratus);// rand(-30, 30)
-		$this->debugKandunganPaparan();//*/
+		//$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
-		/*$fail = array('index','index1','index2','b_ubah','soalan4');
+		$fail = array('index','index1','index2','b_ubah','soalan4');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
 		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);//*/
@@ -339,8 +339,9 @@ class Borang extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function godekPembolehubah01($kp, $idBorang, $peratus)
 	{
-		$this->papar->_5p['kp'] = $this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
-		$this->papar->_5p['peratus'] = $nisbah = $this->kiraNisbah($peratus);
+		$this->papar->_5p['kp'] = $kp;
+		//$this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
+		$this->papar->_5p['peratus'] = $peratus;
 		$this->papar->_5p['idBorang'] = $_POST['nosiri'];//'Kod007JamesBond';
 		$this->papar->_5p['nama'] = $_POST['nama'];//'Biarlah Rahsia';
 		# semak sama ada nilai wujud atau tidak
@@ -365,7 +366,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
-	function godekPembolehubah02($kp, $idBorang, $peratus)
+	function godekPembolehubah02()
 	{
 		# semak sama ada nilai wujud atau tidak
 		/*
@@ -406,15 +407,15 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		'25'=>'P07-KERANI','34'=>'P08-JUALAN','35'=>'P09-KEMAHIRAN',
 		'36'=>'P10-MESIN','26'=>'P11-ASAS',
 		'37'=>'P12-JUM-TETAP','31'=>'P13-JUM-SAM','39'=>'P14-JUMLAH');
-		$m = 0;
+		$m = 0; $j = 'bentukJadual03';
 		foreach($ulang as $key => $data):
-			$this->papar->bentukJadual03['stafBE'][$m]['Kategori'] = $data;
-			$this->papar->bentukJadual03['stafBE'][$m]['Kod'] = 'L' . $key;
-			$this->papar->bentukJadual03['stafBE'][$m]['Msia'] = $this->papar->senarai['stafBE'][0]['F49'.$key];
-			$this->papar->bentukJadual03['stafBE'][$m]['Pati'] = $this->papar->senarai['stafBE'][0]['F50'.$key];
-			$this->papar->bentukJadual03['stafBE'][$m]['Jum'] = $this->papar->senarai['stafBE'][0]['F14'.$key];
-			$this->papar->bentukJadual03['stafBE'][$m]['Gaji'] = $this->papar->senarai['stafBE'][0]['F18'.$key];
-			$this->papar->bentukJadual03['stafBE'][$m]['Sub'] = $this->papar->senarai['stafBE'][0]['F51'.$key];
+			$this->papar->$j['staf'][$m]['Kategori'] = $data;
+			$this->papar->$j['staf'][$m]['Kod'] = 'L' . $key;
+			$this->papar->$j['staf'][$m]['Msia'] = $this->papar->senarai['stafBE'][0]['F49'.$key];
+			$this->papar->$j['staf'][$m]['Pati'] = $this->papar->senarai['stafBE'][0]['F50'.$key];
+			$this->papar->$j['staf'][$m]['Jum'] = $this->papar->senarai['stafBE'][0]['F14'.$key];
+			$this->papar->$j['staf'][$m]['Gaji'] = $this->papar->senarai['stafBE'][0]['F18'.$key];
+			$this->papar->$j['staf'][$m]['Sub'] = $this->papar->senarai['stafBE'][0]['F51'.$key];
 			$m++;
 		endforeach;
 	}
@@ -593,8 +594,9 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$sql = null;
 		foreach($this->tanya->dataBanci2016() as $jadual):
 			//$sql .= $this->tanya->soalanGajiSijil($md,$db.$jadual . 'a');
-			$sql[] = $this->tanya->data5P($md,$db.$jadual . 'a');
-			//$sql[] = $this->tanya->soalanGaji02($md,$db.$jadual . 'a');
+			//$sql[] = $this->tanya->data5P($md,$db.$jadual . 'a');
+			//$sql[] = $this->tanya->soalanGaji($md,$db.$jadual . 'a');
+			$sql[] = $this->tanya->soalanGaji02($md,$db.$jadual . 'a');
 			//$this->panggilDB2('semuaBE',$db.$jadual . 'a',$idBorang);
 		endforeach;//*/
 		$sqlAll = "CREATE TABLE be2016_staf_servis02 AS \r" . implode(" UNION \r",$sql);
