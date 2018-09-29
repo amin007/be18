@@ -408,14 +408,18 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$m = 0; $j = 'bentukJadual03';
 		foreach($ulang as $key => $data):
 			if($this->papar->senarai['stafBE'][0]['F14'.$key] != 0):
-				echo '<br>Data staf ' . $data . ' kosong';
-			else: echo '<br>Data staf ada';
-				/*$this->papar->$j['staf'][$m]['Kod'] = $data;
-				$this->papar->$j['staf'][$m]['Msia'] = $this->papar->senarai['stafBE'][0]['F49'.$key];
-				$this->papar->$j['staf'][$m]['Pati'] = $this->papar->senarai['stafBE'][0]['F50'.$key];
-				$this->papar->$j['staf'][$m]['Jum'] = $this->papar->senarai['stafBE'][0]['F14'.$key];
-				$this->papar->$j['staf'][$m]['Gaji'] = $this->papar->senarai['stafBE'][0]['F18'.$key];
-				$this->papar->$j['staf'][$m]['Sub'] = $this->papar->senarai['stafBE'][0]['F51'.$key];
+				//echo '<br>Data staf ' . $data . ' ada';
+				$this->papar->bentukJadual03['staf'][$m]['Kod'] = $data;
+				$this->papar->bentukJadual03['staf'][$m]['Msia']
+					= $this->papar->senarai['stafBE'][0]['F49'.$key];
+				$this->papar->bentukJadual03['staf'][$m]['Pati']
+					= $this->papar->senarai['stafBE'][0]['F50'.$key];
+				$this->papar->bentukJadual03['staf'][$m]['Jum']
+					= $this->papar->senarai['stafBE'][0]['F14'.$key];
+				$this->papar->bentukJadual03['staf'][$m]['Gaji']
+					= $this->papar->senarai['stafBE'][0]['F18'.$key];
+				$this->papar->bentukJadual03['staf'][$m]['Sub']
+					= $this->papar->senarai['stafBE'][0]['F51'.$key];
 				$m++;//*/
 		endif;endforeach;
 	}
