@@ -321,12 +321,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$db = 'pom_malaysiabaru.';
 		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
 		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
+		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
 		//$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
-		$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
 		$this->godekPembolehubah01($kp,$idBorang,$peratus);
 		$this->godekPembolehubah02();
-		$this->godekPembolehubah03();
+		//$this->godekPembolehubah03();
 		$this->debugKandunganPaparan();//*/
 
 		# Pergi papar kandungan
@@ -341,8 +341,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$this->papar->_5p['kp'] = $kp;
 		//$this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
 		$this->papar->_5p['peratus'] = $peratus;
-		$this->papar->_5p['idBorang'] = $_POST['nosiri'];//'Kod007JamesBond';
-		$this->papar->_5p['nama'] = $_POST['nama'];//'Biarlah Rahsia';
+		$this->papar->_5p['idBorang'] = 'Kod007JamesBond'; //$_POST['nosiri'];
+		$this->papar->_5p['nama'] = 'Biarlah Rahsia'; //$_POST['nama'];;
 		# semak sama ada nilai wujud atau tidak
 		$hasil = $this->papar->senarai['limaPerangkaan'][0]['hasil'];
 		$belanja = $this->papar->senarai['limaPerangkaan'][0]['belanja'];
@@ -353,7 +353,6 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# f2148 = sewa lain2, f2147 = sewa tanah
 		$sewatanah = $this->papar->senarai['limaPerangkaan'][0]['sewatanah'];
 		$sewalain = $this->papar->senarai['limaPerangkaan'][0]['sewalain'];
-		//$asetsewa = $sewatanah + $sewalain;
 		$asetsewa = $this->papar->senarai['limaPerangkaan'][0]['sewaharta'];
 		# masukkan nilai 5 perangkaan utama
 		$this->papar->_5p['hasil'] = $hasil;
@@ -378,19 +377,19 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$_POST['asetsewa'] $_POST['asetsewa_kini']
 		$_POST['catatan']
 		*/
-		$hasil = bersih($_POST['hasil_kini']);
-		$belanja = bersih($_POST['belanja_kini']);
-		$gaji = bersih($_POST['gaji_kini']);
-		$susut = bersih($_POST['susut_kini']);
-		$aset = bersih($_POST['aset_kini']);
-		$asetsewa = bersih($_POST['asetsewa_kini']);
+		$hasil = truncate_number($_POST['hasil_kini']);
+		$belanja = truncate_number($_POST['belanja_kini']);
+		$gaji = truncate_number($_POST['gaji_kini']);
+		$susut = truncate_number($_POST['susut_kini']);
+		$aset = truncate_number($_POST['aset_kini']);
+		$asetsewa = truncate_number($_POST['asetsewa_kini']);
 		# masukkan nilai anggaran
-		$this->papar->_5p['hasil_kini'] = truncate_number($hasil);
-		$this->papar->_5p['belanja_kini'] = truncate_number($belanja);
-		$this->papar->_5p['gaji_kini'] = truncate_number($gaji);
-		$this->papar->_5p['susut_kini'] = truncate_number($susut);
-		$this->papar->_5p['aset_kini'] = truncate_number($aset);
-		$this->papar->_5p['asetsewa_kini'] = truncate_number($asetsewa);
+		$this->papar->_5p['hasil_kini'] = ($hasil);
+		$this->papar->_5p['belanja_kini'] = ($belanja);
+		$this->papar->_5p['gaji_kini'] = ($gaji);
+		$this->papar->_5p['susut_kini'] = ($susut);
+		$this->papar->_5p['aset_kini'] = ($aset);
+		$this->papar->_5p['asetsewa_kini'] = ($asetsewa);
 		//*/
 	}
 #-------------------------------------------------------------------------------------------
@@ -407,14 +406,17 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		'36'=>'P10-MESIN','26'=>'P11-ASAS',
 		'37'=>'P12-JUM-TETAP','31'=>'P13-JUM-SAM','39'=>'P14-JUMLAH');
 		$m = 0; $j = 'bentukJadual03';
-		foreach($ulang as $key => $data): if($this->papar->senarai['stafBE'][0]['F14'.$key] != 0):
-				$this->papar->$j['staf'][$m]['Kod'] = $data;
+		foreach($ulang as $key => $data):
+			if($this->papar->senarai['stafBE'][0]['F14'.$key] != 0):
+				echo '<br>Data staf ' . $data . ' kosong';
+			else: echo '<br>Data staf ada';
+				/*$this->papar->$j['staf'][$m]['Kod'] = $data;
 				$this->papar->$j['staf'][$m]['Msia'] = $this->papar->senarai['stafBE'][0]['F49'.$key];
 				$this->papar->$j['staf'][$m]['Pati'] = $this->papar->senarai['stafBE'][0]['F50'.$key];
 				$this->papar->$j['staf'][$m]['Jum'] = $this->papar->senarai['stafBE'][0]['F14'.$key];
 				$this->papar->$j['staf'][$m]['Gaji'] = $this->papar->senarai['stafBE'][0]['F18'.$key];
 				$this->papar->$j['staf'][$m]['Sub'] = $this->papar->senarai['stafBE'][0]['F51'.$key];
-				$m++;
+				$m++;//*/
 		endif;endforeach;
 	}
 #-------------------------------------------------------------------------------------------
