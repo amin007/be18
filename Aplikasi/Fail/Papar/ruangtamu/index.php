@@ -12,6 +12,7 @@ echo 'levelPengguna=' . $Sesi->get('be18_levelPengguna') . '';//*/
 
 	<a class="btn btn-primary btn-large" href="<?php echo URL ?>ruangtamu/logout">Pergi Lebih Jauh<i class="fa fa-binoculars fa-2x"></i></a>
 	<a class="btn btn-success btn-large" target="_blank" href="<?php echo URL ?>borang">Borang<i class="fa fa-binoculars fa-2x"></i></a>
+	<a class="btn btn-success btn-large" target="_blank" href="<?php echo URL ?>borang/industri">MSIC<i class="fa fa-binoculars fa-2x"></i></a>
 
 </div><!-- / class="hero-unit" -->
 </div><!-- / class="container" -->
