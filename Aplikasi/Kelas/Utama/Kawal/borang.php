@@ -470,6 +470,52 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	}
 #-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
+	public function industri()
+	{
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		# Set pembolehubah utama
+		$this->papar->idBorang = (isset($_GET['cari'])) ? $_GET['cari'] : null;
+		$random = rand(-30, 30);
+		$this->papar->pautan = URL . 'borang/temui/400/1/' . $random;
+
+		# Pergi papar kandungan
+		$fail = array('1cari','1cariIndustri','index','b_ubah');
+		//echo '<br>$fail = ' . $fail[0] . '<hr>';
+		//$this->semakPembolehubah(); # Semak data dulu
+		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
+	}
+#-------------------------------------------------------------------------------------------
+	public function msic($a,$b,$c2) # daripada fungsi index()
+	{
+		# Set pembolehubah utama
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		list($senaraiJadual,$medanID,$dataID) = $this->ubahsuaiKhas02();
+		$this->ulangCariJadual($senaraiJadual,$medanID,$dataID,$c2);
+		//$this->debugKandunganPaparan();
+
+		# Pergi papar kandungan
+		$this->_folder = 'borang';
+		//echo '<br>$this->_folder = ' . $this->_folder . '<hr>';
+		$fail = array('index','index1','index2','b_ubah','soalan4');
+		//echo '<br>$fail = ' . $fail[0] . '<hr>';
+		//$this->semakPembolehubah(); # Semak data dulu
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function ubahsuaiKhas02()
+	{
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		$medanID = 'msic02008';
+		$dataID = bersih($_POST['cariIndustri']);
+		$senaraiJadual = $this->tanya->pilihJadual();
+		$debugData = array('senaraiJadual','medanID','dataID');
+		/*echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
+			echo '<br>$' . $semak . ' : '; print_r($$semak);
+		endif; endforeach; echo '</pre>';//*/
+		return array($senaraiJadual,$medanID,$dataID); # pulangkan nilai
+	}
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 	public function soalan4()
 	{
 		# Set pembolehubah utama
