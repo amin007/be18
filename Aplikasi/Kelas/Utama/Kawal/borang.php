@@ -490,7 +490,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pembolehubah utama
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		list($senaraiJadual,$medanID,$dataID) = $this->ubahsuaiKhas02();
-		$this->ulangCariJadual($senaraiJadual,$medanID,$dataID,$c2);
+		$this->ulangCariJadual02($senaraiJadual,$medanID,$dataID,$c2);
 		//$this->debugKandunganPaparan();
 
 		# Pergi papar kandungan
@@ -513,6 +513,16 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			echo '<br>$' . $semak . ' : '; print_r($$semak);
 		endif; endforeach; echo '</pre>';//*/
 		return array($senaraiJadual,$medanID,$dataID); # pulangkan nilai
+	}
+#-------------------------------------------------------------------------------------------
+	function ulangCariJadual02($senaraiJadual,$medanID,$dataID,$c2)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
+		foreach($senaraiJadual as $key => $jadual):
+			//echo '<br>$jadual = ' . $jadual;
+			$this->panggilTable($jadual,$medanID,$dataID);
+		endforeach;
 	}
 #-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
