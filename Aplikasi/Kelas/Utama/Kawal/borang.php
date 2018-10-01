@@ -506,7 +506,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$medanID = 'msic2008';
-		$dataID = bersih($_POST['cariIndustri']);
+		$this->papar->dataID = $dataID = bersih($_POST['cariIndustri']);
 		//$senaraiJadual = dpt_senarai('msicbaru');
 		$senaraiJadual = $this->tanya->pilihJadual();
 		$debugData = array('senaraiJadual','medanID','dataID');
@@ -525,12 +525,12 @@ class Borang extends \Aplikasi\Kitab\Kawal
 			//echo '<br>$jadual = ' . $jadual;
 			$this->panggilTable($jadual,$medanID,$dataID);
 		endforeach;
-		if(isset($this->papar->senarai['kawalan_aes'][0]['nama']))
-			$this->papar->nama = $this->papar->senarai['kawalan_aes'][0]['nama'];
-		if(isset($['kp']))
-			$this->papar->c1 = $this->papar->senarai['kawalan_aes'][0]['kp'];
+		if(isset($_POST['semasa']['nama']))
+			$this->papar->nama = bersih($_POST['semasa']['nama']);
+		if(isset($_POST['semasa']['kp']))
+			$this->papar->c1 = bersih($_POST['semasa']['kp']);
 		else $this->papar->c1 = '000';
-		$this->papar->c2 = $c2;
+		$this->papar->c2 = $c2;//*/
 	}
 #-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
