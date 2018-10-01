@@ -476,7 +476,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		# Set pembolehubah utama
 		$this->papar->idBorang = (isset($_GET['cari'])) ? $_GET['cari'] : null;
 		$random = rand(-30, 30);
-		$this->papar->pautan = URL . 'borang/temui/400/1/' . $random;
+		$this->papar->pautan = URL . 'borang/msic/400/1/' . $random;
 
 		# Pergi papar kandungan
 		$fail = array('1cari','1cariIndustri','index','b_ubah');
