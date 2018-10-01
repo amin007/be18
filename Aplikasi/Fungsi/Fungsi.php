@@ -97,6 +97,8 @@ function dpt_senarai($pilih)
 		$jadual = unserialize(PROSESAN);
 	elseif ($pilih == 'staf_biasa') :
 		$jadual = unserialize(PEGAWAI);
+	elseif ($pilih == 'jadual_msic') :
+		$jadual = unserialize(JADUAL_MSIC);
 	elseif ($pilih == 'jadual_kawalan') :
 		$jadual = unserialize(JADUAL_KAWALAN);
 	elseif ($pilih == 'jadual_kawalan2') :
