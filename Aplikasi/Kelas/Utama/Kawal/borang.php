@@ -520,10 +520,17 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//echo '<pre>$senaraiJadual='; print_r($senaraiJadual); echo '</pre>';
+		//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
 		foreach($senaraiJadual as $key => $jadual):
 			//echo '<br>$jadual = ' . $jadual;
 			$this->panggilTable($jadual,$medanID,$dataID);
 		endforeach;
+		if(isset($this->papar->senarai['kawalan_aes'][0]['nama']))
+			$this->papar->nama = $this->papar->senarai['kawalan_aes'][0]['nama'];
+		if(isset($['kp']))
+			$this->papar->c1 = $this->papar->senarai['kawalan_aes'][0]['kp'];
+		else $this->papar->c1 = '000';
+		$this->papar->c2 = $c2;
 	}
 #-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
