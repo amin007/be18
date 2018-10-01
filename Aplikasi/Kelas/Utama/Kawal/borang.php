@@ -482,7 +482,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$fail = array('1cari','1cariIndustri','index','b_ubah');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
 		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder, $fail[0], $noInclude=1);
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 	public function msic($a,$b,$c2) # daripada fungsi index()
