@@ -507,7 +507,8 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
 		$medanID = 'msic';
 		$dataID = bersih($_POST['cariIndustri']);
-		$senaraiJadual = dpt_senarai('msicbaru');
+		//$senaraiJadual = dpt_senarai('msicbaru');
+		$senaraiJadual = $this->tanya->pilihJadual();
 		$debugData = array('senaraiJadual','medanID','dataID');
 		/*echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
 			echo '<br>$' . $semak . ' : '; print_r($$semak);
