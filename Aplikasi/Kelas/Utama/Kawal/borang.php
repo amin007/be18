@@ -573,6 +573,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 		$db = 'pom_malaysiabaru.';
 		$this->panggilMedan('medanKP',$db . 'medanKeterangan',$kp = '890');
 		$this->panggilDB('limaPerangkaan',$db . 'be2016_servis_5p',$idBorang);
+		$this->panggilDB('pertubuhan',$db . 'pertubuhan',$idBorang);
 		$this->panggilDBKhas01('hasilBE',$db . 'be2016_hasil_servis',$idBorang);
 		$this->panggilDBKhas01('belanjaBE',$db . 'be2016_belanja_servis',$idBorang);
 		//$this->panggilDB('stafBE',$db . 'be2016_staf_servis02',$idBorang);//*/
@@ -590,9 +591,11 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	{
 		$this->papar->_5p['kp'] = $this->papar->senarai['limaPerangkaan'][0]['kodbanci'];
 		$this->papar->_5p['peratus'] = $nisbah = $this->kiraNisbah($peratus);
-		$this->papar->_5p['idBorang'] = 'Kod007JamesBond';
+		$this->papar->_5p['idBorang'] = ($idBorang == null) ? 'Kod007JamesBond' : $idBorang;
+		/*if(isset($this->papar->senarai['pertubuhan'][0]['NaPer'])):
+			$nama = $this->papar->senarai['pertubuhan'][0]['NaPer'];
+			$this->papar->_5p['nama'] = $nama;//*/
 		$this->papar->_5p['nama'] = 'Biarlah Rahsia';
-		$data = 'XXX';
 		# semak sama ada nilai wujud atau tidak
 		/*
 		$this->papar->senarai['limaPerangkaan'][0]['kodbanci']
