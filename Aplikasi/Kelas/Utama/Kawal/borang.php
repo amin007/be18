@@ -505,7 +505,7 @@ class Borang extends \Aplikasi\Kitab\Kawal
 	function ubahsuaiKhas02()
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$medanID = 'msic02008';
+		$medanID = 'msic';
 		$dataID = bersih($_POST['cariIndustri']);
 		$senaraiJadual = $this->tanya->pilihJadual();
 		$debugData = array('senaraiJadual','medanID','dataID');
