@@ -474,20 +474,21 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		{	echo '<li>Jumpa ' . $bilKes . '</li>';
 			foreach($paparKes as $key => $data)
 			{
-				echo '<li onClick="fill(\'' . $data['newss'] . '\');">'
-				. ($key+1) . '-' . $data['nama'] . '-' . $data['newss']
-				. '-SSM ' . $data['nossm'] . '-' . $data['operator']
-				. '-KP' . $data['kp'] . '</li>';
+				echo '<li onClick="fill(\'' . $data['msic'] . '\');">'
+				. ($key+1) . '-' . $data['s'] . '|' . $data['msic']
+				. '|' .  $data['keterangan'] . '|' . $data['notakaki']
+				. '|' . $data['msic2000'] . '</li>';
 			}# tamat - foreach($paparKes as $key => $data)
 		}# tamat - $bilKes ==0
 	}
 #------------------------------------------------------------------------------------------
 	function msicDB($cari)
 	{
-		list($myTable, $medan01) = dpt_senarai('jadual_kawalan');
-		$medan = 'newss,nama,nossm,operator,kp';
+		list($myTable, $medan01) = dpt_senarai('jadual_msic');
+		/*seksyen,bahagian,kumpulan,kelas,msic,keterangan,msic2000,notakaki*/
+		$medan = 'seksyen s,msic,keterangan,msic2000,notakaki';
 		$carian[] = array('fix'=>'z%like%','atau'=>'WHERE',
-			'medan'=>'concat_ws(" ",newss,nossm,nama)','apa'=>$cari);
+			'medan'=>'concat_ws(" ",msic,keterangan,notakaki)','apa'=>$cari);
 		$susun['dari'] = 10;
 
 		$paparKes = //$this->tanya->cariSql($myTable, $medan, $carian, $susun);
