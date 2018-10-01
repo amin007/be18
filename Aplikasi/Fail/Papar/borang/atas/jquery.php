@@ -15,8 +15,10 @@ if (isset($this->js))
 ?><?php 
 $dataURL = dpt_url();
 //echo '<pre>'; echo '<br>$dataURL:<br>'; print_r($dataURL); echo '</pre>';
-$classKhas = array('ubah','hadirbulan','awal','batch','senarai','google');
+$classKhas = array('ubah','hadirbulan','awal','batch','senarai','google','industri');
 if ( isset($dataURL[1]) && ( in_array($dataURL[1],$classKhas) )) :
+$benda = ( $dataURL[1] == 'industri') ? 'msic' : 'syarikat';
+$caribenda = URL . 'cari/' . $benda . '/';
 echo "\n\n"; ?>
 <script type="text/javascript">
 	function lookup(inputString) 
@@ -27,7 +29,7 @@ echo "\n\n"; ?>
 		} 
 		else 
 		{
-			$.get("<?php echo URL ?>cari/syarikat/", {cari: inputString}, function(data)
+			$.get("<?php echo $caribenda ?>", {cari: inputString}, function(data)
 			{
 				if(data.length >0) 
 				{ 
