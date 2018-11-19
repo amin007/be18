@@ -81,6 +81,8 @@ function dpt_senarai($pilih)
 		$jadual = unserialize(MSICBARU);
 	elseif ($pilih == 'produk') :
 		$jadual = unserialize(PRODUK);
+	elseif ($pilih == 'ssm') :
+		$jadual = unserialize(SSM);
 	elseif ($pilih == 'jadual_login') :
 		$jadual = unserialize(JADUAL_LOGIN);
 	elseif ($pilih == 'jadual_biodata') :
