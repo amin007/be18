@@ -97,6 +97,18 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($f, $at, $m1, $m2, $apa);
 	}
 #---------------------------------------------------------------------------------------------------#
+	function bentukPembolehubah2($post, $key, $m0)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		$fx = isset($post['fix'][$key]) ? $post['fix'][$key] : null;
+		$f = ($fx=='x') ? 'x=' : '%like%';
+		$at = isset($post['atau'][$key]) ? $post['atau'][$key] : 'WHERE';
+		$m1 = $m2 = null;
+		$apa = isset($post['cari'][$key]) ? $post['cari'][$key] : null;
+
+		return array($f, $at, $m1, $m2, $apa);
+	}
+#---------------------------------------------------------------------------------------------------#
 	function bentukCarian($post, $myTable)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
