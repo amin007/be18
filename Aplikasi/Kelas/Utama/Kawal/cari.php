@@ -128,6 +128,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		elseif ($apa=='produk') $jadual = 'pom_dataekonomi.kodproduk_mei2011';
 		elseif ($apa=='johor') $jadual = 'pom_lokaliti.a_johor'; # negeri johor/malaysia
 		elseif ($apa=='malaysia') $jadual = 'pom_lokaliti.a_malaysia'; # negeri johor/malaysia
+		elseif ($apa=='ssm') $jadual = 'pom_malaysiabaru.ssm-rob_businessinfo';
 		elseif ($apa=='prosesan') $jadual = 'pom_dataekonomi.data_mm_prosesan';
 		elseif ($apa=='operasi') $jadual = 'kawalan_aes';
 
@@ -240,6 +241,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->sayaPilihMalaysia($cari, $susun, $limit);
 		elseif($jadual=='syarikat')
 			$this->sayaPilihSyarikat($cari, $susun, $limit);
+		elseif($jadual=='ssm')
+			$this->sayaPilihSSM($cari, $susun, $limit);
 		elseif($jadual=='data_mm_prosesan')
 			$this->sayaPilihDataMM($cari, $susun, $limit);
 		elseif($jadual=='operasi')
@@ -348,6 +351,24 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->papar->senarai[$myTable] = $this->tanya->
 				//cariSql($myTable, $medan, $carian, $susun);
 				cariSemuaData($myTable, $medan, $carian, $susun);
+		}# tamat ulang table//*/
+
+		$this->papar->carian = $cari;
+		$this->papar->cariID = $cariID;
+	}
+#------------------------------------------------------------------------------------------
+	function sayaPilihSSM($cari, $susun, $limit)
+	{
+		$jadual = dpt_senarai('ssm');
+		//echo 'jadual:' . $this->semakPembolehubah($jadual);
+		$medan = '*';
+
+		foreach ($jadual as $key => $myTable)
+		{# mula ulang table
+			list($carian,$cariID) = $this->tanya->bentukCarian($_POST['jika'], $myTable);
+			$this->papar->senarai[$myTable] = $this->tanya->
+				cariSql($myTable, $medan, $carian, $susun);
+				//cariSemuaData($myTable, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
