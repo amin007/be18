@@ -202,7 +202,7 @@ class Sql
 			if ($max!=null)    $susunan .= ($dari==0) ? 
 				" LIMIT $max\r" : " LIMIT $dari,$max\r";
 
-		return $susunan; //echo '<pre>$susunan:'; print_r($susunan); echo '</pre>';				
+		return $susunan; //echo '<pre>$susunan:'; print_r($susunan); echo '</pre>';
 	}
 #-------------------------------------------------------------------------------------------------
 	private function semakPembolehUbah($mengira,$kumpul,$order,$dari,$max)
@@ -214,7 +214,7 @@ class Sql
 		echo '<br>$max = ' . $max;
 		echo '<hr>';
 		//*/
-	}	
+	}
 #-------------------------------------------------------------------------------------------------
 	public function bentukSqlSelect($myTable, $medan, $carian, $susun = null)
 	{
