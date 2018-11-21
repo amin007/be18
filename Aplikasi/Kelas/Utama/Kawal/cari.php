@@ -128,7 +128,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		elseif ($apa=='produk') $jadual = 'pom_dataekonomi.kodproduk_mei2011';
 		elseif ($apa=='johor') $jadual = 'pom_lokaliti.a_johor'; # negeri johor/malaysia
 		elseif ($apa=='malaysia') $jadual = 'pom_lokaliti.a_malaysia'; # negeri johor/malaysia
-		elseif ($apa=='ssm') $jadual = 'pom_malaysiabaru.`ssmrob_info2`';
+		elseif ($apa=='ssm') $jadual = 'pom_malaysiabaru.`ssmrob_info`';
 		elseif ($apa=='prosesan') $jadual = 'pom_dataekonomi.data_mm_prosesan';
 		elseif ($apa=='operasi') $jadual = 'kawalan_aes';
 
@@ -367,8 +367,8 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		{# mula ulang table
 			list($carian,$cariID) = $this->tanya->bentukCarian($_POST['jika'], $myTable);
 			$this->papar->senarai[$myTable] = $this->tanya->
-				//cariSql($myTable, $medan, $carian, $susun);
-				cariSemuaData($myTable, $medan, $carian, $susun);
+				cariSql($myTable, $medan, $carian, $susun);
+				//cariSemuaData($myTable, $medan, $carian, $susun);
 		}# tamat ulang table//*/
 
 		$this->papar->carian = $cari;
