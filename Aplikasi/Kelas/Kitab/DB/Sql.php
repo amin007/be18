@@ -76,14 +76,19 @@ class Sql
 	{
 		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
 		//array('or(x=)','or(%like%)')
+		$pecah = explode('|', $medan);
 		if($fix=='or(x=)') //" $di (`$cari`='$apa' OR msic2000='$apa')\r" :
-		{	$pecah = explode('|', $medan);
-			$jika .= " $di(`" . $pecah[0] . "` = '$cariApa' "
-			. " OR `" . $pecah[1] . "` = '$cariApa')\r";	}
+			$jika .= " $di(`" . $pecah[0] . "` = '$cariApa'"
+			. " OR `" . $pecah[1] . "` = '$cariApa')\r";
+		elseif($fix=='or2(x=)')
+			$jika .= " $di(" . $pecah[0] . " = '$cariApa'"
+			. " OR " . $pecah[1] . " = '$cariApa')\r";
 		elseif($fix=='or(%like%)')
-		{	$pecah = explode('|', $medan);
-			$jika .= " $di(`" . $pecah[0] . "` like '%$cariApa%' "
-			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";	}
+			$jika .= " $di(`" . $pecah[0] . "` like '%$cariApa%'"
+			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";
+		elseif($fix=='or2(%like%)')
+			$jika .= " $di(`" . $pecah[0] . "` like '%$cariApa%'"
+			. " OR `" . $pecah[1] . "` like '%$cariApa%')\r";
 
 		return $jika; //echo '<br>' . $jika;
 	}
@@ -141,7 +146,7 @@ class Sql
 			$dimana .= $this->jikaLike($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('in','xin')) )
 			$dimana .= $this->jikaDalamKurungan($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array('or(x=)','or(%like%)')) )
+		elseif( in_array($fix,array('or(x=)','or2(x=)','or(%like%)','or2(%like%)')) )
 			$dimana .= $this->jikaAtauKurungan($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('khas2','xkhas2','khas3','xkhas4')) )
 			$dimana .= $this->jikaRegexp($fix,$di,$medan,$cariApa,$akhir);
