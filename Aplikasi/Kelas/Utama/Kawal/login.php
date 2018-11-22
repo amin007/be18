@@ -130,7 +130,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$passwordAsal = $_POST['password'];
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
 		# semak database
-			$carian[] = array('fix'=>'like', # cari x= atau %like%
+			$carian[] = array('fix'=>'or(x=)', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => $medan01, # cari dalam medan apa
 				'apa' => $email); # benda yang dicari
