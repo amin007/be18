@@ -67,7 +67,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 	function registerid()
 	{
 		# debug $_POST
-		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
+		//echo '<pre>Test $_POST->'; print_r($_POST); echo  '</pre>';
 
 		# Set pemboleubah utama
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
@@ -80,9 +80,9 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
 		//$this->log_sql($myTable, $medan, $senaraiData);
 		# Semak data
-			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
-			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
-			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
+			//echo '<pre>$_POST='; print_r($_POST); echo  '</pre>';
+			//echo '<pre>$posmen='; print_r($posmen); echo  '</pre>';
+			//echo '<pre>$senaraiData='; print_r($senaraiData); echo  '</pre>';
 
 		# Pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
@@ -107,7 +107,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 	function semakid()
 	{
 		# debug $_POST
-		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
+		//echo '<pre>Test $_POST->'; print_r($_POST); echo  '</pre>';
 
 		# semak data $this->tanya->ujiID(); 
 		//$this->tanya->semakid();
@@ -144,7 +144,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 				//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
 				$kira = sizeof($cariNama);//*/
 		# semak pembolehubah
-		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
+		//echo '<pre>Test $_POST->'; print_r($_POST); echo  '</pre>';
 		//echo '<pre>password->'; print_r($password); echo '</pre>';
 		//echo '<pre>$cariNama::'; print_r($cariNama) . '<pre>';
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
