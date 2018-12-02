@@ -289,12 +289,10 @@ class Tanya
 ## tamat - untuk update sql
 ##################################################################################################
 #-------------------------------------------------------------------------------------------------
-	/*public function buangTerus($data, $myTable)
+	/*public function buangTerus($cariID, $data, $myTable)
 	{
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
-		$cariID = 'newss';
-
-		// set sql
+		# set sql
 		//$sql = " DELETE `$myTable` WHERE `$cariID` = '{$data[$cariID]}' ";
 		//echo '<pre>$sql->', print_r($sql); echo '</pre>';
 		$this->db->delete($myTable, "`$cariID` = '{$data[$cariID]}' ");
