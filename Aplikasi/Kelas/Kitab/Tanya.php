@@ -294,7 +294,7 @@ class Tanya
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 		# set sql
 		//$sql = " DELETE `$myTable` WHERE `$cariID` = '{$data[$cariID]}' ";
-		//echo '<pre>$sql->', print_r($sql); echo '</pre>';
+		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		$this->db->delete($myTable, "`$cariID` = '{$data[$cariID]}' ");
 	}//*/
 #-------------------------------------------------------------------------------------------------
