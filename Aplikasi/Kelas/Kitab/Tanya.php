@@ -150,8 +150,7 @@ class Tanya
 	#---------------------------------------------------------------------------------------------
 	public function tambahArahanSqlBanyakNilai($myTable, $medan, $data)
 	{
-		$sql = $this->insertSql->arahanValues($myTable, $medan, $data);
-		return $sql;
+		return $this->insertSql->arahanValues($myTable, $medan, $data);
 	}
 	#---------------------------------------------------------------------------------------------
 	public function tambahBanyakNilai($myTable, $medan, $data)
